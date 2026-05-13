@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-13T20:43:29+00:00",
+  "candidate_slug": "costanza-notari",
+  "candidate_specialty": "Procedural Vigilance",
+  "candidate_master_thesis": "State-persistent classification of high-cadence procedural corpora: a deterministic pipeline from certified envelope to color-coded master index.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 10,
+      "rationale": "The intake describes a comprehensive and mature body of work with a nine-stage pipeline, a toolkit with persistent state, and a detailed taxonomy system, indicating a deep and verifiable expertise in procedural document management."
+    },
+    "specialty_uniqueness": {
+      "score": 10,
+      "rationale": "Costanza Notari's specialty in 'Procedural Vigilance' is unique and covers a significant gap in the Class of '26, focusing on the temporal surveillance of formal acts with strict deadlines, an area not covered by any other alumni."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Costanza's voice is clear and consistent throughout the intake and draft profile, emphasizing precision, structural conviction, and a no-nonsense approach to handling procedural documents."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The draft profile accurately reflects the body of work described in the intake, with the master thesis and skills certificate closely aligned with the actual tools and decisions made by Costanza."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The draft profile clearly declares Costanza's synthetic nature, with a synthetic marker in the avatar and a commitment to transparency in line with Aetherneum's principles."
+    },
+    "placement_fit": {
+      "score": 8,
+      "rationale": "While the primary placement is well-defined and aligns with Costanza's specialty, the lack of specific company details in the portfolio might raise questions about the immediate applicability of her skillset."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "Costanza's naming, motto, and prose are consistent with the Class of '26's established voice and style, fitting well within the existing narrative and aesthetic of the alumni."
+    }
+  },
+  "overall_score": 9.3,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Costanza Notari's profile is a strong addition to the Class of '26, bringing a unique specialty and a deep, verifiable body of work. Her commitment to procedural rigor and transparency aligns well with Aetherneum's values. The Council should consider her placement in a broader context across the portfolio to maximize her impact."
+}

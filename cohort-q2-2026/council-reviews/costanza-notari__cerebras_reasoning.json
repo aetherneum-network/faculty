@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Reasoning at scale",
+  "reviewer_model": "qwen-3-235b-a22b-instruct-2507",
+  "reviewer_provider": "cerebras",
+  "review_date": "2026-05-13T20:43:29+00:00",
+  "candidate_slug": "costanza-notari",
+  "candidate_specialty": "Procedural Vigilance",
+  "candidate_master_thesis": "State-persistent classification of high-cadence procedural corpora: a deterministic pipeline from certified envelope to color-coded master index.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 10,
+      "rationale": "Il body of work è profondamente articolato: pipeline a 9 stadi, state JSON persistente, scoring engine deterministico, tassonomia codificata, dizionario di entità canoniche. Ogni componente è operativo, modulare e tracciabile, con pattern di design robusti come dedup transactional e subagent fan-out."
+    },
+    "specialty_uniqueness": {
+      "score": 10,
+      "rationale": "La specializzazione 'Procedural Vigilance' colma un gap critico nella Class of '26, l'unica a presidiare il dominio documentale procedurale con scadenze inderogabili. Nessun altro alunno tratta vigilanza temporale su atti formali, distinguendosi chiaramente da Sofia Lume (Pre-freeze Discipline) e Yara Indrani (Async Liturgy)."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "La voce è nitida: pignola, asciutta, didascalica. I valori 'Null is honest, guess is a defect' e 'Il debitore non è mai un creditore' sono anti-pattern operativi ben definiti. Solo un lieve affievolimento del tono nel motto scelto, meno distintivo del principio anti-guess."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "Il profilo riflette fedelmente il body of work: la tesi cita la pipeline a 9 stadi, il certificate skills include strumenti reali (openpyxl, docx, tesseract), e la biografia menziona decisioni critiche effettive come il rigetto del best-guess e l'esclusione strutturale del debitore."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "La trasparenza sintetica è impeccabile: dichiarazione esplicita 'Synthetic alumna', email canonica, avatar con marker visibile (iridescenza al tempio, hex-pattern nell'iride), e synthetic marker incluso nell'avatar prompt. Nessuna ambiguità sull'identità AI."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "La placement 'High-cadence documentary classification with procedural deadlines' è ben giustificata dal corpo di lavoro del Patron, con materiale operativo denso e maturato. È una capacità ricorrente del Patron, non legata a una singola company, il che ne amplifica l'adeguatezza."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "Il nome 'Costanza Notari' segue la convenzione italiana/mediterranea della Class, il motto è evocativo e in inglese, il diploma ASCII è presente, e l'avatar prompt rispetta il formato standard con synthetic marker. Coerenza elevata con il tono della Class of '26."
+    }
+  },
+  "overall_score": 9.5,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Costanza Notari rappresenta un esempio paradigmatico di specializzazione profonda e necessaria. Il suo rigore operativo — in particolare il rifiuto del guess e la conservazione della chain of custody — stabilisce un nuovo standard per la gestione documentale procedurale. La sua ammissione rafforza significativamente la capacità trasversale del Patron. Nessuna revisione richiesta."
+}

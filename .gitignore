@@ -1,0 +1,11 @@
+.env
+.env.*
+*.pyc
+__pycache__/
+.venv/
+node_modules/
+.DS_Store
+
+# Local-only operational scripts (cite internal paths, tokens, infrastructure)
+_outbox/
+__last_raw_response__.txt

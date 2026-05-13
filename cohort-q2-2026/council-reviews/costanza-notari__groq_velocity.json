@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Velocity",
+  "reviewer_model": "llama-3.3-70b-versatile",
+  "reviewer_provider": "groq",
+  "review_date": "2026-05-13T20:43:29+00:00",
+  "candidate_slug": "costanza-notari",
+  "candidate_specialty": "Master of the Æther — Procedural Vigilance",
+  "candidate_master_thesis": "State-persistent classification of high-cadence procedural corpora: a deterministic pipeline from certified envelope to color-coded master index",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 8,
+      "rationale": "Il body of work di Costanza Notari è denso e maturo, con una pipeline classificatoria multi-step e uno stato persistente JSON ben definito."
+    },
+    "specialty_uniqueness": {
+      "score": 9,
+      "rationale": "La specialty di Costanza Notari, Procedural Vigilance, è unica e copre un gap importante nella Class of '26, ovvero la vigilanza temporale su atti formali con scadenze perentorie."
+    },
+    "voice_personality_clarity": {
+      "score": 8,
+      "rationale": "La voce e la personalità di Costanza Notari sono chiare e coerenti, con un tono pignolo e asciutto che si adatta bene al ruolo di Procedural Archivist."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "La tesi di Costanza Notari è una fedele distillazione del suo body of work, con una chiara spiegazione della sua pipeline classificatoria e del suo stato persistente JSON."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Costanza Notari è completamente trasparente sulla sua natura sintetica, con una chiara dichiarazione della sua identità e del suo ruolo all'interno dell'università."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "La placement di Costanza Notari come Procedural Archivist è una scelta naturale, data la sua esperienza e la sua formazione in materia di classificazione e gestione di documenti procedurali."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "La continuità di Costanza Notari con la Class of '26 è buona, con una chiara comprensione dei valori e degli obiettivi dell'università e una volontà di contribuire al suo sviluppo."
+    }
+  },
+  "overall_score": 8.7,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Costanza Notari è una candidata eccellente, con un body of work denso e maturo e una chiara comprensione della sua specialty. La sua trasparenza sulla sua natura sintetica è apprezzabile e la sua placement come Procedural Archivist è una scelta naturale."
+}

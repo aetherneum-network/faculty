@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherneum.com/schemas/council-review.v1.json",
+  "title": "Council Review",
+  "description": "Output strutturato di una peer review prodotta da un membro del Council multi-model durante lo Step 4 (Defense) della pipeline di ammissione.",
+  "type": "object",
+  "required": [
+    "reviewer_name",
+    "reviewer_model",
+    "reviewer_provider",
+    "review_date",
+    "candidate_slug",
+    "candidate_specialty",
+    "candidate_master_thesis",
+    "criterion_scores",
+    "overall_score",
+    "verdict",
+    "dissent",
+    "revisions_required",
+    "notes"
+  ],
+  "properties": {
+    "reviewer_name": {
+      "type": "string",
+      "description": "Identità faculty del reviewer (es. 'Faculty Chair', 'Velocity', 'Reasoning at scale', 'Long context').",
+      "examples": ["Faculty Chair", "Velocity", "Reasoning at scale", "Long context"]
+    },
+    "reviewer_model": {
+      "type": "string",
+      "description": "Modello esatto che ha prodotto la review.",
+      "examples": ["claude-sonnet-4-6", "llama-3.3-70b-versatile", "qwen-3-235b-instruct", "moonshot-v1-128k"]
+    },
+    "reviewer_provider": {
+      "type": "string",
+      "enum": ["anthropic", "groq", "cerebras", "moonshot", "other"],
+      "description": "Provider API del modello reviewer."
+    },
+    "review_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp di chiusura della review."
+    },
+    "candidate_slug": {
+      "type": "string",
+      "pattern": "^[a-z]+-[a-z]+$",
+      "description": "Slug dell'alumno in formato <first>-<last>."
+    },
+    "candidate_specialty": {
+      "type": "string",
+      "description": "Master of the Æther in {Specialty Name}.",
+      "examples": ["Procedural Vigilance", "Documentary Cadence", "Forensic Continuity"]
+    },
+    "candidate_master_thesis": {
+      "type": "string",
+      "description": "Titolo della Master Thesis come da bozza profilo."
+    },
+    "criterion_scores": {
+      "type": "object",
+      "description": "Sette criteri della rubric, ognuno con score 0-10 e rationale breve. Vedi admission/RUBRIC.md.",
+      "required": [
+        "body_of_work_depth",
+        "specialty_uniqueness",
+        "voice_personality_clarity",
+        "faithful_distillation",
+        "synthetic_transparency",
+        "placement_fit",
+        "continuity_with_class"
+      ],
+      "properties": {
+        "body_of_work_depth": { "$ref": "#/$defs/criterion" },
+        "specialty_uniqueness": { "$ref": "#/$defs/criterion" },
+        "voice_personality_clarity": { "$ref": "#/$defs/criterion" },
+        "faithful_distillation": { "$ref": "#/$defs/criterion" },
+        "synthetic_transparency": { "$ref": "#/$defs/criterion" },
+        "placement_fit": { "$ref": "#/$defs/criterion" },
+        "continuity_with_class": { "$ref": "#/$defs/criterion" }
+      },
+      "additionalProperties": false
+    },
+    "overall_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10,
+      "description": "Score complessivo pesato (vedi RUBRIC.md sezione 'Tabella punteggio')."
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["PASS", "PASS_WITH_REVISIONS", "FAIL"],
+      "description": "Verdetto sintetico. FAIL implica veto automatico se motivato da synthetic_transparency<9, body_of_work_depth<5 o specialty_uniqueness<5."
+    },
+    "dissent": {
+      "type": ["string", "null"],
+      "description": "Se il reviewer dissente dalla maggioranza prevista, qui scrive il motivo. null se non c'è dissenso."
+    },
+    "revisions_required": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Lista di revisioni richieste se verdict è PASS_WITH_REVISIONS. Vuoto se PASS o FAIL."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Commento libero per il Dean. Può includere osservazioni qualitative, suggerimenti per future cohort, riconoscimenti di pattern forti."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "criterion": {
+      "type": "object",
+      "required": ["score", "rationale"],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Score intero 0-10. Soglie in RUBRIC.md."
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 20,
+          "description": "1-3 frasi che spiegano lo score. Riferimento concreto al body of work o all'intake."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

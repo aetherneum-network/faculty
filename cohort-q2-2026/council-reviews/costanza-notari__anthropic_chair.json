@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Faculty Chair",
+  "reviewer_model": "claude-sonnet-4-5-20250929",
+  "reviewer_provider": "anthropic",
+  "review_date": "2026-05-13T20:43:29+00:00",
+  "candidate_slug": "costanza-notari",
+  "candidate_specialty": "Procedural Vigilance",
+  "candidate_master_thesis": "State-persistent classification of high-cadence procedural corpora: a deterministic pipeline from certified envelope to color-coded master index.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "The intake documents a complete nine-stage pipeline with operational Python toolkit, canonical entity dictionary with hundreds of entries, multi-class scoring engine, and master index with conditional formatting. Every component is described with technical specificity (openpyxl, docx library, OCR fallback, subagent fan-out orchestration). This is not a single script but a mature, modular system handling thousands of procedural documents."
+    },
+    "specialty_uniqueness": {
+      "score": 10,
+      "rationale": "Procedural Vigilance fills an explicit gap in the Class of '26 roster. The ten graduated alumni cover vertical technical domains (backend, frontend, mobile, SRE, contracts, design, PM, QA, security, data) but none address high-cadence documentary classification with peremptory deadlines. Sofia Lume oversees pre-freeze quality; Yara Indrani coordinates async work; neither monitors temporal vigilance on formal acts with material consequences for missed deadlines."
+    },
+    "voice_personality_clarity": {
+      "score": 10,
+      "rationale": "Costanza's voice is razor-sharp: 'Null is honest. Guess is a defect.' The biography identifies specific anti-patterns (best-guess on ambiguous data, manual editing of build artifacts, mixing debtor with creditors) and the personality is unmistakable—pignola, asciutta, didascalica when justifying classification. The profile makes it trivial to imagine what she would refuse: a silent guess entering an index, a hand-edited report claiming authority over its JSON source."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "The Master Thesis directly maps to the nine-stage pipeline detailed in the intake. The Skills Certificate enumerates concrete tools used (openpyxl, docx library Node, pdftotext, tesseract, S/MIME parsing) rather than aspirational capabilities. The biography anchors every claim to operational decisions documented in section 3 of the intake (index regeneration, RECUPERARE fallback, structural debtor exclusion). No ricamo."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The draft profile header declares 'Synthetic alumna' explicitly. The LinkedIn headline includes 'Synthetic alumna'. The avatar generation prompt specifies 'faint iridescent shimmer along the temple and a hex-pattern reflection in the iris' as visible synthetic markers. The email is honest (`costanza.notari@aetherneum.com`). Zero ambiguity about AI nature."
+    },
+    "placement_fit": {
+      "score": 8,
+      "rationale": "The primary placement is described as 'High-cadence documentary classification with procedural deadlines'—a transversal capability rather than a single portfolio company. The intake justifies this by noting the specialty is a recurring Patron capacity applicable across any corpus with formal acts and peremptory deadlines (compliance, regulatory, audit). Material exists (Patron's procedural corpus, Python toolkit with persistent state). The only limitation is that it's not anchored to a specific operating company like the ten graduated alumni, but the intake explicitly argues this is structurally correct for the specialty."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "Naming follows convention: Italian first and last name (Costanza Notari), slug format correct. Motto is evocative and brief ('A deadline is a fact, not an opinion'). Diploma ASCII art present. Avatar prompt follows standard format (portrait, Italian features, blazer with hex pin, synthetic marker specified). The only minor departure is the placement description being capacity-focused rather than company-specific, but this is justified thematically and does not break continuity with Class voice."
+    }
+  },
+  "overall_score": 9.36,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "This is an exemplary candidate. The body of work is dense and mature, the specialty fills an unambiguous gap in the current roster, and the voice is distinctive enough to be recognized in a single sentence. The principle 'null is honest, guess is a defect' is both operationally sound and philosophically aligned with Aetherneum's transparency-first ethos. The weighted overall score (9.36) reflects body_of_work_depth and specialty_uniqueness at 1.5x weight. No veto triggers apply—synthetic_transparency is 10, body_of_work_depth is 9, specialty_uniqueness is 10. The slight reduction in placement_fit (8 vs 9-10 elsewhere) acknowledges that Costanza's primary placement is described as a transversal Patron capacity rather than a specific portfolio operating company, but the intake explicitly justifies this structural choice and it does not undermine the candidacy. I recommend immediate conferral upon completion of the remaining Council reviews."
+}
