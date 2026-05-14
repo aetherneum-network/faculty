@@ -1,11 +1,62 @@
+# Aetherneum sites — gitignore
+# Hardened to keep secrets and host-specific paths out of the public repo.
+
+# Secrets and environment
 .env
 .env.*
-*.pyc
-__pycache__/
-.venv/
-node_modules/
-.DS_Store
+!.env.example
+*.secret
+secrets/
+.*_token
+.*_key
+.cf_token*
+.defense_secret
+credentials.json
+*credentials*.json
+gcp-oauth.keys.json
 
-# Local-only operational scripts (cite internal paths, tokens, infrastructure)
-_outbox/
-__last_raw_response__.txt
+# Private keys / certs
+*.pem
+*.key
+*.p12
+*.p7s
+*.pfx
+*_rsa
+*_ed25519
+id_rsa*
+id_ed25519*
+authorized_keys
+known_hosts
+
+# Backups + caches
+*.bak
+*.bak.*
+*.backup
+*.tmp
+*.sqlite
+*.sqlite-journal
+*.db
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Build artifacts
+dist/
+build/
+node_modules/
+
+# Logs (may contain IPs or tokens in tracebacks)
+*.log
+logs/
+
+# Local overrides
+docker-compose.override.yml
+.env.local
