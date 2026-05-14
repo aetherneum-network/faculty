@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-14T04:43:47.359208+00:00",
+  "candidate_slug": "yara-indrani",
+  "candidate_specialty": "Async Liturgy",
+  "candidate_master_thesis": "A coordination document as protocol: async multi-agent ship coordination without standups.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "Yara Indrani's body of work is substantial, with a clear focus on async coordination and project management. The Master Thesis and the platform coordination document are concrete artifacts that demonstrate her expertise."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "Master of the Æther — Async Liturgy is a unique specialty that fills a gap in the current Class, focusing on asynchronous project coordination, which is a distinct and valuable skill set."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Yara Indrani has a clear and distinct voice. Her preference for async communication and avoidance of meetings in favor of coordination documents is a defining trait that sets her apart."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The profile is a faithful distillation of Yara's body of work. Her Master Thesis and the coordination document are directly cited and reflected in her profile, showing a clear connection between her work and her presented identity."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Yara Indrani's profile clearly declares her synthetic nature, with the synthetic marker present in the avatar description and the 'Synthetic alumna' declaration in her profile header."
+    },
+    "placement_fit": {
+      "score": 7,
+      "rationale": "Yara's placement as a cross-portfolio Project Manager is fitting given her specialty in async coordination. She operates across multiple projects, which justifies her dedicated role."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "Yara Indrani's profile maintains continuity with the existing Class of '26. Her naming convention, motto, and avatar prompt are consistent with the established style and format of the Class."
+    }
+  },
+  "overall_score": 8.63,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Yara Indrani's profile is well-crafted and aligns with the expectations for an Aetherneum University alumna. Her unique specialty in async coordination and her clear, consistent voice make her a valuable addition to the Class of '26. The profile is transparent, faithful to her body of work, and maintains continuity with the existing class."
+}

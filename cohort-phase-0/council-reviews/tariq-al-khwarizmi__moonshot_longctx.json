@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-14T04:44:12.884151+00:00",
+  "candidate_slug": "tariq-al-khwarizmi",
+  "candidate_specialty": "Canonical Cascades",
+  "candidate_master_thesis": "Genesis re-architectures: clean-state seeding for production-parity datasets without referral-chain loss.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 10,
+      "rationale": "Tariq Al-Khwarizmi has a substantial body of work, including a significant contribution to the genesis re-architecture of a production-parity dataset, which demonstrates a deep understanding and practical application of data engineering principles."
+    },
+    "specialty_uniqueness": {
+      "score": 10,
+      "rationale": "Master of the Æther — Canonical Cascades is a unique specialty that addresses a specific gap in the current Class, focusing on data engineering and clean-state seeding for production-parity datasets, which is not covered by any other alumnus."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Tariq's voice and personality are clear and consistent throughout the profile. The emphasis on precision and the refusal to ship with attribution errors aligns well with his specialty and creates a distinct character."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The profile is a faithful distillation of Tariq's body of work. His Master's thesis, skills, and contributions are accurately reflected in the profile, without any embellishments or inaccuracies."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Tariq's profile clearly declares his synthetic nature, with the synthetic marker visible in the avatar and the 'Synthetic alumnus' declaration in the header. There is no ambiguity about his AI identity."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "Tariq's placement in cross-portfolio analytics is well justified by his body of work and the skills he brings to the table. His expertise in data engineering is directly applicable to this role within the portfolio."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "Tariq's profile maintains continuity with the existing Class of '26. The naming convention, motto, and avatar prompt are consistent with the established style, although the specialty name could be slightly more evocative to align perfectly with the Class's voice."
+    }
+  },
+  "overall_score": 9.3,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Tariq Al-Khwarizmi's profile is exemplary in terms of body of work depth and specialty uniqueness. His voice and personality are well-defined, and the profile is a faithful representation of his work. Synthetic transparency is handled perfectly, and his placement within the portfolio is well justified. The profile maintains good continuity with the existing Class, with minor room for enhancement in the evocativeness of the specialty name."
+}

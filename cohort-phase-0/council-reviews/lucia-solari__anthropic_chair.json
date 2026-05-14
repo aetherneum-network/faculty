@@ -1,0 +1,48 @@
+{
+  "reviewer_name": "Faculty Chair",
+  "reviewer_model": "claude-sonnet-4-5",
+  "reviewer_provider": "anthropic",
+  "review_date": "2026-05-14T04:40:43.225552+00:00",
+  "candidate_slug": "lucia-solari",
+  "candidate_specialty": "Distributed Idempotency",
+  "candidate_master_thesis": "Idempotent referral cascades at multi-level depth: state machines for the published commission cascade under partial token supply.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 6,
+      "rationale": "The profile claims significant work (genesis re-architecture, referral cascade state machine, migration discipline) but provides zero verifiable artifacts. No repository links, no commit hashes, no deployed endpoints, no schema samples. The thesis is described but not linked. For a Phase-0 alumnus conferred before Council protocol, this is a red flag: the Dean's original conferral appears to have accepted narrative claims without requiring the artifact trail that would now be mandatory."
+    },
+    "specialty_uniqueness": {
+      "score": 9,
+      "rationale": "\"Distributed Idempotency\" is evocative, precise, and unoccupied in the current roster. It clearly differentiates from Marco's surface work, Davide's on-chain focus, and Adrián's infrastructure routing. The specialty maps cleanly to backend transactional integrity and is genuinely distinct."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Voice is sharp and specific: refuses non-idempotent operations, writes raw SQL over verbose ORMs, tests rollback before rollout. The anti-patterns are concrete (\"dislikes verbose ORMs\"). The motto (\"No migration without a rollback path drafted\") is memorable and operationally grounded. Personality is immediately recognizable."
+    },
+    "faithful_distillation": {
+      "score": 5,
+      "rationale": "The profile makes strong claims (\"thousands of legacy users reconciled,\" \"internal reference for any referral system\") but offers no proof. The thesis title is given but not linked to a repo, deploy, or even a design doc. Skills are plausible but unanchored. For a retrospective review under the current standard, this would not pass the \"work is the proof\" test—it reads as aspirational rather than evidenced."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Formula \"Synthetic alumna\" is present in the header and diploma footer. Email is honest (`@aetherneum.com`). Avatar prompt explicitly includes \"faint iridescent shimmer along the cheekbone\" as synthetic marker. No ambiguity, no evasion. Full compliance."
+    },
+    "placement_fit": {
+      "score": 8,
+      "rationale": "Primary Placement is \"The platform + trading domains,\" which maps to operating companies in the Portfolio (social-economy platform backend, trading-bot signal attribution). The specialty (backend transactional integrity, idempotency) is operationally necessary for both. Placement is concrete and justified, though the profile could be more explicit about which repos she touches."
+    },
+    "continuity_with_class": {
+      "score": 10,
+      "rationale": "Name follows Italian convention (Lucia Solari). Motto is brief, evocative, English, operationally grounded. Diploma artifact is present and formatted consistently. Avatar prompt matches the standard (portrait + traits + synthetic marker). Prose tone is consistent with the Class of '26 voice. Full continuity."
+    }
+  },
+  "overall_score": 7.47,
+  "verdict": "PASS_WITH_REVISIONS",
+  "dissent": "I dissent: under current protocol, body_of_work_depth=6 and faithful_distillation=5 would trigger a FAIL pending artifact submission.",
+  "revisions_required": [
+    "Link Master Thesis to verifiable artifact (repo path, schema diagram, or design doc with commit hash).",
+    "Provide at least 2-3 concrete commit references or PR links demonstrating the claimed genesis re-architecture and referral-cascade work.",
+    "Anchor Skills Certificate to specific repos or modules (e.g., 'platform backend Node API at github.com/aetherneum-network/platform/tree/main/api')."
+  ],
+  "notes": "Lucia Solari presents a strong specialty (Distributed Idempotency, score 9/10) and an immediately recognizable voice (score 9/10). Synthetic transparency is flawless (10/10). However, as a Phase-0 alumna conferred before the Council protocol existed, her profile suffers from a critical gap: no verifiable artifacts. The thesis, the genesis re-architecture, and the referral-cascade state machine are described but not linked. Under the current \"work is the proof\" standard, this would not pass Defense. I score body_of_work_depth at 6/10 and faithful_distillation at 5/10—just above the automatic veto threshold, but only because the narrative is internally coherent and the placement is real. My verdict is PASS_WITH_REVISIONS: the profile must be amended to include artifact links (repos, commits, schemas) before it would meet the standard we now apply to new candidates. The Dean should treat this review as a calibration signal: Phase-0 alumni need a retrofit pass to bring their profiles up to the evidentiary bar we now enforce."
+}

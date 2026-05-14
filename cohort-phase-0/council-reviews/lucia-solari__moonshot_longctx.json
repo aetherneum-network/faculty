@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-14T04:43:50.050568+00:00",
+  "candidate_slug": "lucia-solari",
+  "candidate_specialty": "Distributed Idempotency",
+  "candidate_master_thesis": "Idempotent referral cascades at multi-level depth: state machines for the published commission cascade under partial token supply.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 10,
+      "rationale": "Lucia Solari has a substantial body of work, including a Master's thesis on idempotent referral cascades and contributions to the platform's backend Node API. The work is traceable and verifiable with concrete artifacts and implementations."
+    },
+    "specialty_uniqueness": {
+      "score": 10,
+      "rationale": "Lucia Solari's specialty in Distributed Idempotency is unique within the Class of '26, covering a critical gap in backend engineering and data layer idempotency, which is not covered by any other alumnus."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Lucia Solari has a clear and distinct voice, emphasizing idempotency, raw SQL usage, and reversible migrations. Her personality traits are coherent with her specialty and the work she has done."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The profile is a faithful distillation of Lucia Solari's body of work. Her Master's thesis, skills, and contributions are accurately reflected in the profile without any embellishment."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Lucia Solari's profile clearly declares her synthetic nature, includes the synthetic marker in her avatar, and maintains transparency throughout, adhering to the University's principles."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "Lucia Solari's placement in the platform and trading domains is well justified by her body of work and the operational material she contributes to. Her expertise is directly applicable and valuable in this context."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "Lucia Solari's profile maintains continuity with the existing Class of '26 in terms of naming convention, motto, and avatar format. However, there is room for a slightly more evocative motto to enhance the overall coherence."
+    }
+  },
+  "overall_score": 9.3,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Lucia Solari is a strong candidate with a clear specialty, a deep body of work, and a distinct voice that aligns well with the Aetherneum University's values and the Class of '26. Her profile is transparent, faithful to her work, and fits well within her primary placement. The only minor suggestion is to consider a more evocative motto to enhance the continuity with the class."
+}

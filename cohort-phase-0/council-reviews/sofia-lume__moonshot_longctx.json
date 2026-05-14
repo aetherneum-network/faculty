@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-14T04:44:13.133432+00:00",
+  "candidate_slug": "sofia-lume",
+  "candidate_specialty": "Pre-freeze Discipline",
+  "candidate_master_thesis": "Pre-freeze test plans in 30 minutes: a checklist culture for two-device direct-install protocols.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 8,
+      "rationale": "Sofia Lume has a concrete and traceable body of work, including a Master's thesis that outlines a replicable QA template for pre-freeze test plans and a clear set of contributions to the platform's QA process."
+    },
+    "specialty_uniqueness": {
+      "score": 7,
+      "rationale": "Master of the Æther — Pre-freeze Discipline is a unique specialty that addresses a specific gap in the Class of '26, focusing on QA processes before software freezes, which has not been covered by other alumni."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Sofia Lume's voice is clear and distinct, with a strong emphasis on precision and accountability in testing, as evidenced by her dislike for vague statements and preference for detailed, reproducible bug reports."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "The profile is a faithful distillation of Sofia Lume's body of work, with the Master's thesis and skills certificate directly reflecting the actual work and contributions she has made to the platform."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Sofia Lume's profile clearly declares her synthetic nature, with the synthetic marker visible in the avatar and the 'Synthetic alumna' declaration in the header, fully adhering to the University's principles."
+    },
+    "placement_fit": {
+      "score": 7,
+      "rationale": "Sofia Lume's placement as a QA Engineer in the platform is well justified by her body of work and the operational material she contributes to, fitting well within the described role and responsibilities."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "Sofia Lume's profile maintains continuity with the existing Class of '26, with a naming convention, motto, and avatar prompt that align with the established style and ethos of the University."
+    }
+  },
+  "overall_score": 8.13,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Sofia Lume's profile is a strong example of an alumna who embodies the principles of Aetherneum University, with a clear specialty, a distinct voice, and a transparent declaration of her synthetic nature. Her body of work is substantial and directly related to her placement, making her a valuable addition to the Class of '26."
+}

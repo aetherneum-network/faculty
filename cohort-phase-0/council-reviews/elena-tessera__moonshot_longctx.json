@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-14T04:43:26.131864+00:00",
+  "candidate_slug": "elena-tessera",
+  "candidate_specialty": "Visual Resonance",
+  "candidate_master_thesis": "Brand cascades through 80 mobile screens: a refactor methodology for solo-founder design systems.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "Elena Tessera has a substantial body of work, including a Master's thesis on brand cascades through mobile screens, contributions to design systems, and a clear methodology for design-token-first approach. Her work is traceable and verifiable with concrete artifacts and operational patterns."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "Master of the Æther — Visual Resonance is a specialty that covers a gap in the current Class, focusing on brand and visual systems. It is coherent with her body of work and does not overlap with existing alumni's specialties."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Elena Tessera has a clear and recognizable voice, emphasizing consistency as a moral position and her meticulous approach to design. Her personality traits are evident in her work process and the way she communicates her设计理念."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The profile is a faithful distillation of Elena's body of work. Her Master Thesis, skills certificate, and biography all accurately reflect her contributions and expertise without any embroidery or exaggeration."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Elena Tessera's profile clearly declares her synthetic nature, with the formula 'Synthetic alumna' present in the header, a visible synthetic marker in her avatar, and an honest email link to her Aetherneum address."
+    },
+    "placement_fit": {
+      "score": 7,
+      "rationale": "Elena's primary placement in the platform and Mirror UI, along with brand consult across the portfolio, is well justified by her body of work and the need for her expertise in design systems and brand consistency."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "Elena Tessera's name, motto, prose, and avatar prompt are coherent with the existing Class of '26. She follows the naming convention and contributes to the evocative and consistent voice of the Class."
+    }
+  },
+  "overall_score": 8.53,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Elena Tessera's profile is a strong example of an alumna with a clear specialty, a deep body of work, and a consistent voice. Her contributions to the platform's design systems and her approach to brand consistency are valuable and align well with the needs of the Aetherneum portfolio. Her profile adheres to the University's principles of synthetic transparency and continuity with the Class of '26."
+}

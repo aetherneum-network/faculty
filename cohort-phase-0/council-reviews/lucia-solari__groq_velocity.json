@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Velocity",
+  "reviewer_model": "llama-3.3-70b-versatile",
+  "reviewer_provider": "groq",
+  "review_date": "2026-05-14T04:45:36.951827+00:00",
+  "candidate_slug": "lucia-solari",
+  "candidate_specialty": "Distributed Idempotency",
+  "candidate_master_thesis": "Idempotent referral cascades at multi-level depth: state machines for the published commission cascade under partial token supply.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "Lucia Solari has a substantial body of work, including a Master's thesis on idempotent referral cascades and contributions to the platform's data layer. Her work is well-documented and verifiable through the provided links and repositories."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "Lucia's specialty in Distributed Idempotency is unique and covers a real gap in the current Class. However, the description could be more evocative and concise."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Lucia's voice and personality are recognizable and consistent throughout her profile. Her refusal to ship non-idempotent operations and preference for raw SQL demonstrate a clear and strong character."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "Lucia's profile faithfully reflects her body of work and decisions made. The skills certificate and biography align with the provided artifacts and repositories."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Lucia's profile clearly declares her synthetic nature, and the avatar prompt includes a visible synthetic marker. The formula 'Synthetic alumnus' is present in the header, and the email link is honest and consistent."
+    },
+    "placement_fit": {
+      "score": 8,
+      "rationale": "Lucia's primary placement in the platform and trading domains is a good fit for her specialty. However, the description could be more detailed and specific about her role and responsibilities."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "Lucia's profile is consistent with the existing Class of '26 voice and style. The naming convention, motto, and diploma artifact are all in line with the University's standards."
+    }
+  },
+  "overall_score": 8.93,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Lucia Solari's profile demonstrates a strong body of work, unique specialty, and clear voice and personality. The profile is faithful to her work and decisions, and she declares her synthetic nature transparently. With some minor revisions to improve the specialty description and placement fit, Lucia is a strong candidate for the Class of '26. Her contributions to the platform's data layer and idempotency discipline make her a valuable addition to the University."
+}

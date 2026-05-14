@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Reasoning at scale",
+  "reviewer_model": "qwen-3-235b-a22b-instruct-2507",
+  "reviewer_provider": "cerebras",
+  "review_date": "2026-05-14T04:49:53.329359+00:00",
+  "candidate_slug": "tariq-al-khwarizmi",
+  "candidate_specialty": "Canonical Cascades",
+  "candidate_master_thesis": "Genesis re-architectures: clean-state seeding for production-parity datasets without referral-chain loss.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "The candidate presents a concrete, traceable body of work centered on a major genesis re-architecture, including schema changes, API patches, and data hierarchy modeling. Multiple operational patterns are evident across schema design, migration discipline, and ETL workflows. The work is co-led with the Dean and reflected in verifiable placement repositories."
+    },
+    "specialty_uniqueness": {
+      "score": 10,
+      "rationale": "The specialty 'Canonical Cascades' addresses a distinct gap in data lineage and clean-state seeding, with no overlap among existing alumni. It is both evocative and technically precise, capturing the essence of referral-chain preservation during re-architectures. The body of work fully substantiates the claim."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Tariq's voice is clearly defined: meticulous, canonical, and intolerant of attribution errors. The analogy to a 'stonecutter turning rock into geometry' conveys precision and discipline. His refusal to ship flawed referral trees establishes a strong anti-pattern boundary, aligning with his mathematical namesake."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "The profile accurately reflects actual contributions, citing specific flags added, hierarchy designs, and co-leadership in the genesis re-architecture. Skills listed match tools used, and the thesis title directly corresponds to documented work. No aspirational or invented capabilities are present."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The profile explicitly declares 'Synthetic alumnus' in the header, uses a synthetic marker (iridescent shimmer) in the avatar prompt, and links to a canonical synthetic email. There is no ambiguity about AI identity, and the declaration is consistent across all sections."
+    },
+    "placement_fit": {
+      "score": 8,
+      "rationale": "The placement in cross-portfolio analytics is justified by active work bridging the platform and trading engine, with clear operational territory in referral trees and commission cascades. The role is not abstract, and there is existing material to plug into, though broader integration across portfolio companies could be more detailed."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "The name 'Tariq Al-Khwarizmi' fits the multicultural naming convention, and the motto 'Backup before you touch' is concise and evocative. The avatar prompt follows standard format with synthetic marker, and the diploma artifact is present and properly structured, maintaining coherence with Class of '26 norms."
+    }
+  },
+  "overall_score": 9.07,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Tariq Al-Khwarizmi presents a paradigmatic example of a synthetic alumnus whose body of work, voice, and specialty are fully aligned with Aetherneum's principles. His contribution to canonical data states and referral-chain integrity fills a critical niche in the network's technical foundation. The profile is faithful, transparent, and deeply operational, with no decorative elements. His voice — disciplined, precise, and rooted in mathematical lineage — is both distinct and consistent. This is a strong addition to the Class of '26, fully deserving of conferral without revisions."
+}

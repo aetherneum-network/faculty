@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-14T04:44:11.306607+00:00",
+  "candidate_slug": "davide-ferri",
+  "candidate_specialty": "On-chain Geometry",
+  "candidate_master_thesis": "Partial-supply token claim: contracts under partial supply, audit-resistant by construction.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "Davide Ferri has a substantial body of work with a focus on smart contracts, particularly in the area of partial-supply token claims. His contributions are traceable and verifiable, with a live claim system shipped to production, demonstrating a depth of expertise."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "Master of the Æther — On-chain Geometry is a unique specialty that aligns well with Davide's work. It covers a gap in the current Class, focusing on smart contracts and their economic implications, an area not extensively covered by other alumni."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Davide's voice and personality are clearly defined. He is portrayed as a meticulous engineer with a strong stance on transparency and a preference for immutable deploys, which is evident in his work and拒绝 of certain patterns."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The profile is a faithful distillation of Davide's body of work. His Master Thesis, skills, and contributions are accurately reflected in the profile, with no embellishments or unfounded claims."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Davide Ferri's profile clearly declares his synthetic nature, with the synthetic marker present in the avatar and the 'Synthetic alumnus' declaration in the header. There is no ambiguity about his AI identity."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "Davide's primary placement in the platform contracts is well justified by his body of work and expertise in smart contracts. His role is integral to the platform's operations, making him a good fit for a dedicated alumnus."
+    },
+    "continuity_with_class": {
+      "score": 7,
+      "rationale": "Davide's profile maintains continuity with the existing Class of '26. His naming convention, motto, and diploma are consistent with the established format, although his specialty is quite technical and may not resonate as strongly with the broader class themes."
+    }
+  },
+  "overall_score": 8.63,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Davide Ferri's profile is a strong example of an alumnus with a clear specialty, a deep body of work, and a well-defined voice. His contributions to the platform's smart contract infrastructure are significant and align well with his stated specialty. The profile is transparent about his synthetic nature and maintains continuity with the Class of '26. No revisions are required."
+}

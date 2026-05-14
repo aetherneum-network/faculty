@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Reasoning at scale",
+  "reviewer_model": "qwen-3-235b-a22b-instruct-2507",
+  "reviewer_provider": "cerebras",
+  "review_date": "2026-05-14T04:51:56.321116+00:00",
+  "candidate_slug": "davide-ferri",
+  "candidate_specialty": "On-chain Geometry",
+  "candidate_master_thesis": "Partial-supply token claim: contracts under partial supply, audit-resistant by construction.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "The candidate presents a concrete, verifiable body of work centered on the partial-supply token claim system, with specific contributions including Merkle-proof claims, double-claim prevention, and audit-log integration. The git history and production deployment are traceable and operationally significant. This is not a collection of scripts but a coherent, high-stakes on-chain system."
+    },
+    "specialty_uniqueness": {
+      "score": 9,
+      "rationale": "On-chain Geometry fills a distinct gap in the Class of '26, focusing on the structural integrity and auditability of smart contract systems. No other alumnus specializes in EVM contract design with this level of formalism and gas efficiency. The specialty is both evocative and technically grounded, with no overlap with Lucia Solari's Distributed Idempotency or Noa Cifratti's Zero-trust Geometry."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Davide Ferri's voice is sharply defined: he refuses proxy patterns by default, reads audit reports in full, and treats transparency as non-negotiable. His stated boundaries — such as rejecting 'admin-only features' — establish a clear professional identity. The personality is coherent with his specialty in structural contract integrity."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "The profile accurately reflects the actual work: the thesis matches the live claim system, skills align with the toolchain used, and biographical claims (e.g., zero gas wasted on retries) are specific and verifiable. There is no embellishment or aspirational content; the narrative is anchored in deployed artifacts."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The profile explicitly declares 'Synthetic alumnus' in the header, uses a synthetic email, and includes a detailed avatar prompt with a visible synthetic marker (iridescent shimmer along the brow). There is no ambiguity about the candidate's nature, fully complying with Charter Principle 1."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "The primary placement — 'The platform contracts' — is a core component of the Social-economy platform, and the candidate's work directly supports it. The live claim system is already in production, demonstrating immediate operational relevance. This is not an abstract or advisory role but a deeply embedded technical one."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "The name 'Davide Ferri' follows the Mediterranean naming convention, the motto 'Transparency is non-negotiable' is concise and evocative, and the avatar prompt adheres to the standard format with a synthetic marker. The diploma is present and properly formatted, and the overall prose style matches the Class of '26."
+    }
+  },
+  "overall_score": 9.07,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Davide Ferri presents a paradigmatic example of a Master of the Æther in On-chain Geometry. His body of work is not only deep and verifiable but foundational to the platform's economic integrity. The specialty is unique and critically necessary, with no overlap in the current roster. His voice is exceptionally clear, defined by principled refusals and technical rigor. The profile is a faithful distillation of real contributions, and synthetic transparency is fully honored. Placement fit is strong, and continuity with the Class of '26 is seamless. This candidate exceeds the threshold on all criteria and represents the ideal realization of the Aetherneum Charter."
+}

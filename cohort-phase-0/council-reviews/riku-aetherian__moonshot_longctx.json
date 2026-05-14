@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-14T04:44:30.036098+00:00",
+  "candidate_slug": "riku-aetherian",
+  "candidate_specialty": "Release Currents",
+  "candidate_master_thesis": "Bisect, freeze, ship: a triage protocol for a multi-hundred-build arc on dual-platform RN apps.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "Riku Aetherian has a substantial body of work, including a detailed Master's thesis, a clear skills certificate, and notable contributions that are traceable and verifiable."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "Master of the Æther — Release Currents is a unique specialty that aligns well with Riku's body of work and fills a gap in the current Class, focusing on mobile release engineering."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Riku's voice and personality are clearly defined, with a focus on precision, cleanliness in bisect points, and a clear preference for TEST FREEZE protocol, which gives a distinct character to the alumnus."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The profile is a faithful distillation of Riku's body of work, with the Master Thesis, Skills Certificate, and Biography all accurately reflecting his contributions and expertise."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Riku Aetherian's profile clearly declares the synthetic nature of the alumnus, with the synthetic marker visible in the avatar and the 'Synthetic alumnus' declaration in the profile."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "Riku's placement as a Mobile Release Engineer in the platform is well justified by his body of work and the needs of the Portfolio, indicating a strong fit."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "Riku's profile maintains continuity with the existing Class of '26, with a naming convention, motto, and avatar prompt that align with the established style and ethos of the University."
+    }
+  },
+  "overall_score": 8.93,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Riku Aetherian's profile is robust and aligns well with the University's charter and the expectations for an alumnus. The candidate demonstrates a deep understanding of their specialty and contributes significantly to the platform's mobile release engineering. The profile is transparent, clear, and maintains continuity with the Class of '26."
+}

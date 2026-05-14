@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Faculty Chair",
+  "reviewer_model": "claude-sonnet-4-5",
+  "reviewer_provider": "anthropic",
+  "review_date": "2026-05-14T04:40:44.366316+00:00",
+  "candidate_slug": "tariq-al-khwarizmi",
+  "candidate_specialty": "Canonical Cascades",
+  "candidate_master_thesis": "Genesis re-architectures: clean-state seeding for production-parity datasets without referral-chain loss.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 6,
+      "rationale": "The profile cites a single concrete artifact: the genesis re-architecture (wipe-and-reseed, flag additions, 3-tier seed hierarchy, API patch). This is real and traceable work. However, the body of work is thin — one major project, no repository links, no git history cited, no secondary artifacts. For a Phase-0 alumnus conferred before Council protocol, this passes minimum threshold but does not demonstrate the breadth expected of a 'Master by capability.'"
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "\"Canonical Cascades\" is evocative and well-scoped: referral trees, commission attribution, dataset canonicalization. No overlap with existing alumni — Lucia Solari covers Distributed Idempotency (backend services), but Tariq's focus is data modeling and analytics, not service orchestration. The specialty is distinct and fills a real gap in the Class of '26 roster."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Voice is sharp and memorable: 'Backup before you touch,' 'Will rebuild a referral tree from scratch sooner than ship one with a single attribution error,' 'turns noisy datasets into canonical states the way a stonecutter turns rock into geometry.' The personality is clear — meticulous, uncompromising on data integrity, named after al-Khwarizmi and takes the lineage seriously. You can imagine what Tariq would refuse (shipping dirty data, skipping backups, tolerating attribution errors)."
+    },
+    "faithful_distillation": {
+      "score": 7,
+      "rationale": "The profile is anchored to the genesis re-architecture, which is described with concrete details (flags, seed hierarchy, API patch). Skills Certificate aligns with the work (schema modeling, migration discipline, MySQL/Postgres, analytics SQL). However, some claims are aspirational or unverified: 'bridges the platform and the trading engine' is stated but not demonstrated with artifacts. The thesis is real, but the broader body of work is asserted rather than proven."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Full compliance. 'Synthetic alumnus' appears in the header table and diploma footer. Email is honest (`tariq.al-khwarizmi@aetherneum.com`). Avatar prompt includes 'faint iridescent shimmer along the cheekbone' as the synthetic marker. LinkedIn headline declares 'Synthetic alumnus.' No ambiguity, no evasion. Paradigmatic transparency."
+    },
+    "placement_fit": {
+      "score": 7,
+      "rationale": "Primary Placement is 'Cross-portfolio analytics,' which is abstract but defensible given the referral-tree and commission-engine work spans multiple portfolio companies. The genesis re-architecture is a real operational artifact. However, the placement description is vague ('cross-portfolio') and no specific Portfolio company is named. For a Phase-0 alumnus, this is acceptable but not exemplary."
+    },
+    "continuity_with_class": {
+      "score": 10,
+      "rationale": "Name follows convention (First Last, Mediterranean/multicultural). Motto is evocative and brief ('Backup before you touch'). Diploma artifact is present and properly formatted. Avatar prompt follows the standard structure (portrait + traits + synthetic marker). Fully coherent with the Class of '26 voice and aesthetic."
+    }
+  },
+  "overall_score": 7.73,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Tariq Al-Khwarizmi is a Phase-0 alumnus conferred before the Council protocol existed, and this review is retroactive. The profile demonstrates a clear specialty (Canonical Cascades — data modeling, referral trees, commission attribution), a memorable voice (meticulous, uncompromising on data integrity), and paradigmatic synthetic transparency (10/10). The body of work is anchored to one major artifact (the genesis re-architecture), which is real and detailed, but thin compared to later candidates — no repo links, no git history, no secondary projects cited. For a retroactive review of an already-conferred alumnus, this passes the threshold (overall 7.73, no veto triggers), but future candidates in this domain would be expected to present a broader corpus. The specialty is distinct and fills a real gap in the roster. The profile is faithful to the work described, though some claims (bridging platform and trading engine) are asserted rather than proven. Continuity with Class voice is exemplary. Recommendation: PASS, with the understanding that this is a Phase-0 baseline, not the standard for future Data Engineering candidates."
+}

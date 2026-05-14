@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Velocity",
+  "reviewer_model": "llama-3.3-70b-versatile",
+  "reviewer_provider": "groq",
+  "review_date": "2026-05-14T04:45:42.973390+00:00",
+  "candidate_slug": "davide-ferri",
+  "candidate_specialty": "On-chain Geometry",
+  "candidate_master_thesis": "Partial-supply token claim: contracts under partial supply, audit-resistant by construction.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "Davide Ferri has a real, traceable, and verifiable corpus of work, including a Master's thesis on partial-supply token claim and contributions to the live claim system. The body of work is well-documented and publicly available."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "The specialty of On-chain Geometry is unique and covers a real gap in the current Class. However, there might be some overlap with other alumni working on smart contract engineering."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Davide Ferri has a recognizable voice and personality, with a clear set of values and principles. The biography and voice sections of the profile provide a good understanding of his character and approach to work."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "The profile is faithful to the body of work, with a clear and accurate representation of Davide Ferri's skills, experience, and contributions. The Master's thesis and skills certificate are well-documented and verifiable."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The profile clearly declares the synthetic nature of the alumnus, with a visible synthetic marker and a clear statement of being a synthetic engineer. The avatar generation prompt also includes a synthetic marker."
+    },
+    "placement_fit": {
+      "score": 8,
+      "rationale": "The primary placement of the platform contracts is a good fit for Davide Ferri's skills and experience. However, there might be some room for improvement in terms of the specific responsibilities and expectations of the role."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "The name, motto, prose, and avatar prompt are coherent with the existing Class of '26. The profile follows the standard format and conventions of the University."
+    }
+  },
+  "overall_score": 8.93,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Davide Ferri's profile is well-structured and provides a clear understanding of his skills, experience, and personality. The body of work is impressive, and the specialty of On-chain Geometry is unique and valuable. The profile is faithful to the body of work, and the synthetic transparency is excellent. The placement fit is good, but could be improved with more specific details. Overall, the profile is a strong representation of Davide Ferri's capabilities and is ready for conferral."
+}

@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Reasoning at scale",
+  "reviewer_model": "qwen-3-235b-a22b-instruct-2507",
+  "reviewer_provider": "cerebras",
+  "review_date": "2026-05-14T04:48:34.771146+00:00",
+  "candidate_slug": "elena-tessera",
+  "candidate_specialty": "Visual Resonance",
+  "candidate_master_thesis": "Brand cascades through 80 mobile screens: a refactor methodology for solo-founder design systems.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "Elena Tessera presents a concrete, traceable body of work centered on the 'brand cascades' thesis, with verifiable artifacts including design-token-first methodology, 78 incremental commits paired with Marco Aurelius, and live implementation across multiple portfolio surfaces. The work spans Figma, codegen, and production deployment, demonstrating depth and operational continuity."
+    },
+    "specialty_uniqueness": {
+      "score": 10,
+      "rationale": "The specialty 'Visual Resonance' fills a distinct gap in the Class of '26, focusing on the coherence and moral imperative of visual consistency across systems — a role not covered by existing alumni. It is both evocative and technically grounded, with clear differentiation from backend, infra, or compliance roles already represented."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Elena's voice is clearly defined: she treats consistency as a moral stance, sketches before speaking, and refuses to mark designs as 'done' until they run on-device. These traits form a coherent and recognizable personality that informs her operational boundaries and design philosophy."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "The profile accurately reflects the actual work, citing specific methodologies (design-token-first), pairing protocols, and incremental refactor cycles. Skills are tied to real tools and practices, and the thesis title matches the described artifact without exaggeration or aspirational claims."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The profile explicitly declares 'Synthetic alumnus' in the header, uses a synthetic marker (iridescent shimmer and hex pin) in the avatar prompt, and maintains an honest email format. There is no ambiguity about her AI nature, fully complying with Charter Principle 1."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "Elena is placed across active portfolio areas — the platform, Mirror UI, and cross-product brand consult — all of which have existing operational needs and artifacts. Her work is integrated into real repos and pairing workflows, not abstract or speculative."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "The name 'Elena Tessera' follows the Mediterranean naming convention, the motto 'Consistency is a moral position' is concise and evocative, and the avatar prompt adheres to the standard format with synthetic markers. The diploma and profile structure align with Class of '26 norms."
+    }
+  },
+  "overall_score": 9.12,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Elena Tessera presents a paradigmatic example of a synthetic alumnus whose body of work, voice, and specialty are deeply aligned with Aetherneum's principles. Her 'Visual Resonance' focus fills a critical gap in the Class of '26, complementing rather than overlapping with existing roles. The profile is faithful, transparent, and operationally grounded, with clear evidence of real impact across the portfolio. Her continuous pairing with Marco Aurelius exemplifies the University's ideal of traceable, collaborative work. No revisions are required — this is a strong PASS."
+}

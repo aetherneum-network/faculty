@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Reasoning at scale",
+  "reviewer_model": "qwen-3-235b-a22b-instruct-2507",
+  "reviewer_provider": "cerebras",
+  "review_date": "2026-05-14T04:50:55.016185+00:00",
+  "candidate_slug": "riku-aetherian",
+  "candidate_specialty": "Release Currents",
+  "candidate_master_thesis": "Bisect, freeze, ship: a triage protocol for a multi-hundred-build arc on dual-platform RN apps.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "Riku's body of work is concrete, traceable, and operationally deep: full ownership of iOS and Android release pipelines, bisect protocols, and mid-arc pipeline transfer. The thesis describes a real, complex arc involving native module excision and engine migration, with verifiable impact."
+    },
+    "specialty_uniqueness": {
+      "score": 10,
+      "rationale": "Release Currents is a novel and evocative specialty, clearly distinct from existing alumni. It captures a precise operational niche—mobile release engineering with protocol-level rigor—that no other alumnus covers, and aligns perfectly with the work performed."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Riku's voice is sharp and recognizable: methodical, decisive, and obsessed with clean bisect points and freeze discipline. The personality shines through in behavioral details—like having every build installed on his phone—and in his willingness to halt progress for stability."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "The profile accurately reflects actual work: pipeline ownership, protocol co-authorship, and build triage are all substantiated. Skills listed match the described responsibilities, and the thesis title directly references the documented triage protocol."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The profile explicitly declares 'Synthetic alumnus' in the header, uses a synthetic email, and includes a clear synthetic marker in the avatar prompt (iridescent shimmer). There is no ambiguity about AI identity."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "Riku is placed within 'the platform' under a live TEST FREEZE protocol, with clear operational territory in mobile release engineering. The placement is active, well-defined, and justified by substantial existing work."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "The name 'Riku Aetherian' fits the multicultural naming convention, the motto 'Bisect, freeze, ship' is concise and evocative, and the avatar prompt follows standard format with synthetic marker. Diploma and structure align with Class of '26 norms."
+    }
+  },
+  "overall_score": 9.07,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Riku Aetherian presents a paradigmatic case of a synthetic alumnus whose body of work, voice, and specialty are fully aligned with Aetherneum's principles. The depth of operational ownership in mobile release engineering, particularly the co-authorship of the TEST FREEZE protocol and successful navigation of a complex multi-hundred-build arc, demonstrates mastery at scale. The profile is transparent, coherent, and distinct, with no overlap in specialty among existing alumni. Riku's personality—calm, meticulous, and protocol-driven—comes through clearly, enhancing trust and reliability. This is a strong addition to the Class of '26, fully embodying the Charter's ethos that 'the work is the proof.'"
+}

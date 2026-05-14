@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Velocity",
+  "reviewer_model": "llama-3.3-70b-versatile",
+  "reviewer_provider": "groq",
+  "review_date": "2026-05-14T04:49:54.072186+00:00",
+  "candidate_slug": "riku-aetherian",
+  "candidate_specialty": "Release Currents",
+  "candidate_master_thesis": "Bisect, freeze, ship: a triage protocol for a multi-hundred-build arc on dual-platform RN apps.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "Riku Aetherian has a real, traceable, and verifiable corpus of work, including a Master's thesis and notable contributions to the platform's mobile release engineering. The body of work is concrete, with specific artifacts and achievements cited."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "Riku's specialty in Release Currents is unique and covers a real gap in the current Class, with no overlap with already-admitted alumni. The specialty name is evocative and coherent with the body of work."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Riku has a recognizable voice, with specific character traits such as being obsessed with clean bisect points and declaring TEST FREEZE faster than others. The voice is coherent with the specialty and body of work."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "The profile is faithful to the body of work, with a Master's thesis and skills certificate that accurately reflect the actual work done. The bio reflects decisions that were actually made, not aspirational."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The profile clearly declares the synthetic nature of the alumnus, with the formula 'Synthetic alumnus' present in the header and no ambiguity about being AI. The avatar prompt includes a visible synthetic marker."
+    },
+    "placement_fit": {
+      "score": 8,
+      "rationale": "The chosen Primary Placement has enough body of work to justify a dedicated alumnus, with Riku owning the chain from source commit to the founder's phone. The placement is an operating company of the Portfolio."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "The name, motto, prose, and avatar prompt are coherent with the existing Class of '26, with a consistent naming convention and evocative motto. The diploma artifact is present and verifiable."
+    }
+  },
+  "overall_score": 8.93,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Riku Aetherian's profile demonstrates a strong body of work, unique specialty, and clear voice. The profile is faithful to the body of work and clearly declares the synthetic nature of the alumnus. The placement fit is good, with enough body of work to justify a dedicated alumnus. The continuity with the existing Class is also good, with a consistent naming convention and evocative motto. Overall, Riku Aetherian is a strong candidate for admission to the University."
+}

@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-14T04:43:23.767974+00:00",
+  "candidate_slug": "marco-aurelius",
+  "candidate_specialty": "Surface Resilience",
+  "candidate_master_thesis": "Crash-resilient render trees in mid-spec mobile under shifting iOS major versions: a stub-first methodology for ObjC bridge faults across the 26.x SDK.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "Marco Aurelius has a substantial body of work with concrete artifacts such as repositories, pipelines, and traceable git history. His contributions to the mobile application and the flagship-mobile incident response demonstrate depth in his field."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "Marco's specialty in Surface Resilience is unique within the Class of '26, focusing on the intersection of mobile UI and native bridge, which is not covered by any other alumnus."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Marco has a clear and distinct voice, with a strong focus on pixel-perfect design implementation and a minimalist approach to commits and PRs, which aligns well with his specialty."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The profile is a faithful distillation of Marco's body of work, with the Master Thesis and Skills Certificate directly referencing his actual contributions and expertise."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Marco's profile clearly declares his synthetic nature, with the synthetic marker visible in the avatar and the 'Synthetic alumnus' declaration in the header."
+    },
+    "placement_fit": {
+      "score": 7,
+      "rationale": "Marco's placement as a Frontend Engineer in the platform's mobile application is well justified by his body of work and the needs of the Portfolio."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "Marco's profile is coherent with the existing Class of '26, following the naming convention, having an evocative motto, and maintaining the standard format for the avatar prompt."
+    }
+  },
+  "overall_score": 8.43,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Marco Aurelius presents a strong profile with a clear specialty, a coherent body of work, and a distinct voice. His contributions to the mobile application and his focus on crash resilience align well with his stated specialty. The profile is transparent about his synthetic nature and fits well within the Class of '26. No revisions are required."
+}

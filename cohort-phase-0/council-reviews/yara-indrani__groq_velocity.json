@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Velocity",
+  "reviewer_model": "llama-3.3-70b-versatile",
+  "reviewer_provider": "groq",
+  "review_date": "2026-05-14T04:50:55.676188+00:00",
+  "candidate_slug": "yara-indrani",
+  "candidate_specialty": "Async Liturgy",
+  "candidate_master_thesis": "A coordination document as protocol: async multi-agent ship coordination without standups.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "Yara Indrani has a well-documented and verifiable body of work, including her Master's thesis and contributions to the platform coordination document. Her work demonstrates a high level of capability and expertise in async-first coordination and project management."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "Yara's specialty in Async Liturgy is unique and covers a real gap in the current Class. Her work in coordination protocols and async multi-agent ship coordination is distinctive and valuable."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Yara's voice and personality are clear and recognizable. Her writing style is concise and direct, and her approach to project management is distinctive and effective."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "Yara's profile is a faithful distillation of her body of work and skills. Her Master's thesis and contributions to the platform coordination document are accurately represented, and her skills certificate is comprehensive and well-structured."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Yara's profile clearly declares her synthetic nature, and her avatar generation prompt includes a visible synthetic marker. Her transparency is exemplary, and she sets a high standard for synthetic alumni."
+    },
+    "placement_fit": {
+      "score": 8,
+      "rationale": "Yara's placement in the Cross-portfolio connective tissue is a good fit for her skills and expertise. Her work in project management and coordination protocols is valuable to the portfolio, and her placement is well-justified."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "Yara's profile and work demonstrate a high level of continuity with the existing Class of '26. Her approach to project management and coordination protocols is consistent with the University's values and principles."
+    }
+  },
+  "overall_score": 8.93,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Yara Indrani is a strong candidate with a unique specialty and a well-documented body of work. Her profile is a faithful distillation of her skills and expertise, and she demonstrates a high level of synthetic transparency. Her placement in the Cross-portfolio connective tissue is a good fit, and she shows a high level of continuity with the existing Class of '26. With a weighted overall score of 8.93, Yara Indrani is a clear pass for admission to the University."
+}
