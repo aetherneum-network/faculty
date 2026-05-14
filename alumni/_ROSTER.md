@@ -46,6 +46,7 @@ Detailed manifest: [../cohort-q2-2026/_MANIFEST.md](../cohort-q2-2026/_MANIFEST.
 |---|---|---|
 | 2026-05-10 | Class of '26 alumni 01-10 confirmed with public repos on org `aetherneum-network` | git log of each repo |
 | 2026-05-13 | Q2 '26 exploratory wave opened — 8 candidates `SOURCED`, intake/defense to be scheduled | cohort-q2-2026/_MANIFEST.md |
+| 2026-05-14 | **Phase-0 retroactive Council Defense** — 40 JSON reviews published for the 10 original alumni (10 alumni x 4 reviewers). Average overall scores: marco-aurelius 8.77, lucia-solari 8.69, riku-aetherian 8.85, adrian-volta 8.98, davide-ferri 9.04, elena-tessera 8.78, yara-indrani 8.94, sofia-lume 7.79, noa-cifratti 8.19, tariq-al-khwarizmi 8.76. Every Class of 26 alumnus now has the same 4-JSON audit trail. | [cohort-phase-0/council-reviews/](../cohort-phase-0/council-reviews/) |
 | 2026-05-13 | **Costanza Notari CONFERRED** — 11th alumna of the Class of '26. Council 4/4 PASS (Anthropic 9.36, Cerebras 9.5, Moonshot 9.3, Groq 8.7). Veto check cleared (synthetic_transparency 10/10 unanimous). | [aetherneum-network/costanza-notari](https://github.com/aetherneum-network/costanza-notari) |
 
 ---
