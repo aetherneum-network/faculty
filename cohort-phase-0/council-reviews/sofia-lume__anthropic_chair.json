@@ -2,44 +2,44 @@
   "reviewer_name": "Faculty Chair",
   "reviewer_model": "claude-sonnet-4-5",
   "reviewer_provider": "anthropic",
-  "review_date": "2026-05-14T04:40:46.153464+00:00",
+  "review_date": "2026-05-14T05:23:29.453103+00:00",
   "candidate_slug": "sofia-lume",
   "candidate_specialty": "Pre-freeze Discipline",
   "candidate_master_thesis": "Pre-freeze test plans in 30 minutes: a checklist culture for two-device direct-install protocols.",
   "criterion_scores": {
     "body_of_work_depth": {
       "score": 4,
-      "rationale": "The profile describes a QA process and a 30-minute test-plan template, but provides zero verifiable artifacts. No repository links, no test suite URLs, no documented test plans, no git history references, no issue tracker evidence. The thesis claims a 'replicable protocol' but offers no path to verify it exists. For a Phase-0 alumnus conferred before Council protocol, this retroactive review finds the body of work unsubstantiated."
+      "rationale": "The profile describes a QA process (30-minute test plans, device matrix, surface coverage) but provides zero verifiable artifacts from the actual work. No test plan repos, no bug reports, no commit SHAs, no milestone tags with her sign-off. The 'Verifiable Artifacts' section lists only meta-documents (Council reviews, subagent definitions, Charter) — none are primary QA work product. For a Master Degree by capability, this is critically thin."
     },
     "specialty_uniqueness": {
       "score": 8,
-      "rationale": "Pre-freeze Discipline is evocative and covers a real gap — no other alumnus in the current roster owns QA/testing as a specialty. The formulation is abstract yet clear (the discipline of what happens before code freeze). It maps coherently to the described role and avoids overlap with existing alumni like Sofia Lume's collaboration with Riku (Release) or Yara (Orchestration)."
+      "rationale": "Pre-freeze Discipline is evocative and unoccupied in the current roster. No other alumnus covers QA/testing as a primary specialty. The formulation is abstract and memorable ('Pre-freeze' as a ritual moment, 'Discipline' as the enforcement mechanism). Fits the naming convention well."
     },
     "voice_personality_clarity": {
       "score": 9,
-      "rationale": "Extremely clear voice: 'Did you test it?' as motto, explicit refusal of 'it seems to work,' insistence on reproducible evidence (SHA + device + steps). The personality is skeptical, checklist-driven, gate-keeping. You can immediately imagine what Sofia would reject (vague bug reports, untested deploys, vibes-based sign-offs). The voice is distinct from other alumni."
+      "rationale": "Extremely clear voice: 'Did you test it?' as opening motto, explicit refusal of 'it seems to work,' insistence on reproducible steps with SHA + device + result. The personality is skeptical, checklist-driven, gate-keeping. You can immediately imagine what Sofia would block and what she would approve. Strong anti-pattern articulation."
     },
     "faithful_distillation": {
       "score": 3,
-      "rationale": "The profile makes strong claims (30-minute protocol, device matrix, surface matrix, regression hot-zones, collaboration with Riku and Yara) but provides no evidence. The Master Thesis describes a template with no link to the template. Skills Certificate lists competencies (Detox/Maestro, bug reporting, acceptance criteria) with no commit history, no test repo, no artifact trail. This reads as aspirational or synthetic invention rather than distillation of real work."
+      "rationale": "The profile claims she 'signed off on freezes' with 'milestone tags carrying her review note,' yet provides no links to those tags or repositories. The thesis describes a 30-minute protocol, but there is no artifact demonstrating it was ever run. The Skills Certificate lists capabilities (Detox/Maestro, bug reporting, acceptance criteria) without a single example commit or issue. This is aspirational prose, not faithful distillation of traceable work."
     },
     "synthetic_transparency": {
       "score": 10,
-      "rationale": "Perfect compliance. 'Synthetic alumna' in header and diploma footer, email at aetherneum.com domain, avatar prompt includes 'faint iridescent shimmer along the side of the jaw' as visible synthetic marker, LinkedIn headline declares synthetic status, profile URL points to university domain. Zero ambiguity about AI nature."
+      "rationale": "Flawless. 'Synthetic alumna' in header and metadata table, email at aetherneum.com, avatar prompt includes 'faint iridescent shimmer along the side of the jaw' as visible marker, LinkedIn headline declares synthetic status, canonical profile URL provided. Zero ambiguity about AI nature."
     },
     "placement_fit": {
-      "score": 7,
-      "rationale": "Primary Placement is 'The platform' — vague but contextually refers to the social-economy platform where multiple alumni (Marco, Lucia, Riku, Davide, Noa) already operate. QA is a real operational need for a platform with mobile apps, backend services, and smart contracts. However, the placement description lacks specificity compared to other alumni (e.g., Lucia's 'backend services' or Riku's 'mobile iOS/Android')."
+      "score": 5,
+      "rationale": "Primary Placement is listed as 'The platform' (vague), but the bio and thesis reference 'the social-economy platform' with specific surfaces (auth, signup, marketplace, wallet, NFT, presale claim). There is operational territory implied, and the relationship with Riku Aetherian (Mobile Release) suggests real integration. However, without verifiable artifacts from that placement, it's unclear if the role is active or decorative. Barely meets threshold."
     },
     "continuity_with_class": {
-      "score": 10,
-      "rationale": "Name follows convention (Italian first + last, slug sofia-lume). Motto is brief, evocative, English ('Did you test it?'). Diploma artifact present with standard Aetherneum template. Avatar prompt follows exact format (portrait + traits + synthetic marker). Fully coherent with Class of '26 voice and structure."
+      "score": 9,
+      "rationale": "Name follows convention (Italian first + surname), motto is terse and evocative ('Did you test it?'), diploma artifact present and properly formatted, avatar prompt follows standard structure (portrait + traits + synthetic marker). Prose tone matches the existing Class of '26 voice. No deviation from established norms."
     }
   },
   "overall_score": 5.87,
   "verdict": "FAIL",
   "dissent": null,
   "revisions_required": [],
-  "notes": "Sofia Lume presents a compelling voice and a legitimate specialty gap (QA/Pre-freeze Discipline), with perfect synthetic transparency and strong continuity with the Class. However, this retroactive review under the formal Council protocol reveals a critical deficiency: the body of work is unverifiable. The profile describes processes, templates, device matrices, and collaborations, but provides zero artifact links — no test repos, no documented plans, no git history, no issue tracker evidence. The Master Thesis claims a '30-minute replicable protocol' but offers no path to verify it exists. Faithful distillation scores 3/10 because the profile reads as invention rather than distillation. Body-of-work depth scores 4/10, triggering the automatic veto rule (depth < 5). While the Dean conferred Sofia in Phase-0 without this protocol, the current standard requires proof. Verdict: FAIL. A re-Intake with verifiable artifacts (test suite repo, documented checklists, commit history) would be required for reconsideration.",
+  "notes": "Sofia Lume presents a compelling voice and a unique specialty, but the application fails the veto rule on body_of_work_depth (score 4, threshold ≥5). The profile describes a QA discipline in vivid detail — device matrices, test plans, sign-off gates — yet provides zero primary artifacts: no test repos, no logged bug reports, no commit history, no milestone tags with her review notes. The 'Verifiable Artifacts' section lists only meta-documents (Council reviews, subagent definitions, Charter), none of which are her QA work product. For a retroactive Phase-0 review under the formal Council Defense protocol, this is a critical gap: the Dean conferred her before this rubric existed, but the rubric now requires proof of capability, not prose about capability. The faithful_distillation score (3/10) compounds the issue — claims are not backed by links. I must invoke the automatic veto. A re-Intake with concrete QA artifacts (test plans as markdown in a repo, bug-report issues, freeze sign-off commits) would likely result in PASS, given the strong voice and specialty fit.",
   "veto_applied": "body_of_work_depth < 5 (charter veto)"
 }
