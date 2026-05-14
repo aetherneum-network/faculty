@@ -1,6 +1,6 @@
 # Intake — {{Candidate Slug}}
 
-*Modulo di intake compilato dal Dean (o Faculty Member designato) come Step 2 della pipeline di ammissione. Da salvare in `cohort-<period>/intake/<slug>.md`.*
+*Intake form compiled by the Dean (or a designated Faculty Member) as Step 2 of the admission pipeline. To be saved in `cohort-<period>/intake/<slug>.md`.*
 
 ---
 
@@ -9,108 +9,108 @@
 | | |
 |---|---|
 | Candidate slug | `{{first}}-{{last}}` |
-| Working name | {{First Last}} *(può cambiare in fase Interview)* |
-| Specialty proposta | Master of the Æther — **{{Specialty Name}}** |
+| Working name | {{First Last}} *(may change during Interview)* |
+| Proposed specialty | Master of the Æther — **{{Specialty Name}}** |
 | Cohort | Class of '26, wave Q{N}-2026 |
-| Faculty Advisor proposto | {{Modello}} |
+| Proposed Faculty Advisor | {{Model}} |
 | Date of intake | YYYY-MM-DD |
 | Intake author | {{Dean / Faculty Member}} |
 
 ## 1. Source
 
-**Quale gap della Class corrente questa specializzazione copre?**
+**Which gap in the current Class does this specialty cover?**
 
-{{1-2 paragrafi che spiegano perché nessun alumno esistente copre questa area. Citare per nome gli alumni più vicini e spiegare cosa li distingue.}}
+{{1-2 paragraphs explaining why no existing alumnus covers this area. Cite the closest alumni by name and explain what distinguishes this candidate from them.}}
 
-**Body of work di partenza:**
+**Starting body of work:**
 
-| Artifact | Path / URL | Note |
+| Artifact | Path / URL | Notes |
 |---|---|---|
-| {{Repo / pipeline / cartella}} | {{path}} | {{cosa contiene}} |
-| {{Doc / dataset}} | {{path}} | {{rilevanza}} |
-| {{Deploy / dashboard}} | {{URL}} | {{stato}} |
+| {{Repo / pipeline / folder}} | {{path}} | {{contents}} |
+| {{Doc / dataset}} | {{path}} | {{relevance}} |
+| {{Deploy / dashboard}} | {{URL}} | {{status}} |
 | ... | ... | ... |
 
-(Minimo 3 artifact citati, idealmente 5+.)
+(Minimum 3 artifacts cited, ideally 5+.)
 
-## 2. Pattern operativi distintivi
+## 2. Distinctive operational patterns
 
-Lista di pattern ripetuti nel body of work che caratterizzano questa specializzazione. Ognuno deve avere un esempio concreto.
+List of repeated patterns in the body of work that characterize this specialty. Each must have a concrete example.
 
-1. **{{Pattern A}}** — esempio: {{artifact + descrizione di una decisione che lo dimostra}}
-2. **{{Pattern B}}** — esempio: {{...}}
-3. **{{Pattern C}}** — esempio: {{...}}
-4. **{{Pattern D}}** — esempio: {{...}}
-5. **{{Pattern E}}** — esempio: {{...}}
+1. **{{Pattern A}}** — example: {{artifact + description of a decision that proves it}}
+2. **{{Pattern B}}** — example: {{...}}
+3. **{{Pattern C}}** — example: {{...}}
+4. **{{Pattern D}}** — example: {{...}}
+5. **{{Pattern E}}** — example: {{...}}
 
-(Minimo 5 pattern.)
+(Minimum 5 patterns.)
 
-## 3. Decisioni critiche
+## 3. Critical decisions
 
-Decisioni tracciabili nel body of work che mostrano il "carattere" del candidato. Per ognuna: scelta + rationale + cosa è stato scartato.
+Decisions traceable in the body of work that reveal the candidate's "character". For each: choice + rationale + what was discarded.
 
-1. **Decisione:** {{descrizione}}
+1. **Decision:** {{description}}
    - Rationale: {{...}}
-   - Alternativa scartata: {{...}}
-2. **Decisione:** {{...}}
-3. **Decisione:** {{...}}
+   - Alternative discarded: {{...}}
+2. **Decision:** {{...}}
+3. **Decision:** {{...}}
 
-(Minimo 3 decisioni.)
+(Minimum 3 decisions.)
 
-## 4. Anti-pattern
+## 4. Anti-patterns
 
-Cosa il candidato *non avrebbe mai permesso* nel body of work. Almeno una è obbligatoria — un alumno senza anti-pattern non ha personalità.
+What the candidate *would never have allowed* in the body of work. At least one is mandatory — an alumnus without anti-patterns has no personality.
 
-1. **{{Anti-pattern}}** — perché lo rifiuta: {{rationale}}
-2. **{{Anti-pattern}}** — perché lo rifiuta: {{rationale}}
-3. *(se applicabile)*
+1. **{{Anti-pattern}}** — why they refuse it: {{rationale}}
+2. **{{Anti-pattern}}** — why they refuse it: {{rationale}}
+3. *(if applicable)*
 
-## 5. Toolkit / skill reali
+## 5. Real toolkit / skills
 
-Tool, librerie, pattern di design effettivamente usati nel body of work.
+Tools, libraries, and design patterns actually used in the body of work.
 
-- Linguaggi: {{...}}
-- Librerie / framework: {{...}}
-- Strumenti operativi (CLI, build, deploy): {{...}}
-- Pattern di design / metodologia: {{...}}
-- Domain knowledge (es. diritto italiano, finanza quantitativa, EVM, ecc.): {{...}}
+- Languages: {{...}}
+- Libraries / frameworks: {{...}}
+- Operational tools (CLI, build, deploy): {{...}}
+- Design patterns / methodology: {{...}}
+- Domain knowledge (e.g., Italian law, quantitative finance, EVM, etc.): {{...}}
 
-## 6. Voice / tono / valori non negoziabili
+## 6. Voice / tone / non-negotiable values
 
-Tono comunicativo (1-3 aggettivi) + un valore inderogabile.
+Communicative tone (1-3 adjectives) + one non-negotiable value.
 
-- **Tono:** {{minimalista / pignolo / archivista / ironico / paranoico / ecc.}}
-- **Valore non negoziabile:** {{es. "transparency is non-negotiable", "null beats invented value", "every state transition emits a log"}}
+- **Tone:** {{minimalist / fussy / archivist / ironic / paranoid / etc.}}
+- **Non-negotiable value:** {{e.g., "transparency is non-negotiable", "null beats invented value", "every state transition emits a log"}}
 
-## 7. Primary Placement proposta
+## 7. Proposed Primary Placement
 
-Quale operating company del Portfolio è la placement naturale di questo alumno?
+Which Portfolio operating company is the natural placement of this alumnus?
 
-- **Placement:** {{area Portfolio in cui l'alumno opera — vedi `pillars/PORTFOLIO.md` per la lista canonica delle aree; descrivere come capacità astratta, mai con nome prodotto interno}}
-- **Rationale:** {{perché questa placement, non un'altra}}
-- **Material concreto disponibile sulla placement:** {{cita repo / cartelle / artifact}}
+- **Placement:** {{Portfolio area where the alumnus operates — see `pillars/PORTFOLIO.md` for the canonical list of areas; describe as abstract capability, never with an internal product name}}
+- **Rationale:** {{why this placement and not another}}
+- **Concrete material available on the placement:** {{cite repos / folders / artifacts}}
 
 ## 8. Naming proposal
 
-Almeno 3 candidati di nome (etimologia italiana/mediterranea o multiculturale coerente con la Class of '26).
+At least 3 name candidates (Italian/Mediterranean etymology or multicultural, coherent with the Class of '26).
 
-1. **{{Nome Cognome}}** — etimologia: {{...}} | perché si adatta: {{...}}
-2. **{{Nome Cognome}}** — etimologia: {{...}} | perché si adatta: {{...}}
-3. **{{Nome Cognome}}** — etimologia: {{...}} | perché si adatta: {{...}}
+1. **{{First Last}}** — etymology: {{...}} | why it fits: {{...}}
+2. **{{First Last}}** — etymology: {{...}} | why it fits: {{...}}
+3. **{{First Last}}** — etymology: {{...}} | why it fits: {{...}}
 
-## 9. Motto candidato
+## 9. Motto candidates
 
-Una singola frase in inglese, evocativa, max ~80 caratteri. Almeno 2 proposte.
+A single English sentence, evocative, max ~80 characters. At least 2 proposals.
 
 1. *"{{Motto A}}"*
 2. *"{{Motto B}}"*
 
-## 10. Note operative per la Interview (Step 3)
+## 10. Operational notes for the Interview (Step 3)
 
-Eventuali appunti, dubbi, edge cases che il Dean dovrebbe considerare quando scolpisce la bozza profilo.
+Any notes, doubts, or edge cases the Dean should consider when sculpting the profile draft.
 
-{{testo libero}}
+{{free text}}
 
 ---
 
-*Intake completo. Pronto per Step 3 — Interview.*
+*Intake complete. Ready for Step 3 — Interview.*

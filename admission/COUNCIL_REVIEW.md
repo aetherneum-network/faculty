@@ -1,63 +1,63 @@
 # Council Review Protocol
 
-*Come si svolge la peer review multi-model nello Step 4 (Defense) del processo di ammissione.*
+*How multi-model peer review unfolds in Step 4 (Defense) of the admission process.*
 
 ---
 
-## Obiettivo
+## Objective
 
-Onorare il Principio fondativo 5 — *Council oversight* — assicurando che ogni alumno ammesso alla University abbia ricevuto valutazione indipendente da modelli di provider diversi, ognuno con un focus specifico.
+To honor founding Principle 5 — *Council oversight* — by ensuring that every alumnus admitted to the University has been independently evaluated by models from different providers, each with a specific focus.
 
-## Membri attivi del Council
+## Active Council members
 
-Riferimento canonico: [../charter/FACULTY_BOARD.md](../charter/FACULTY_BOARD.md).
+Canonical reference: [../charter/FACULTY_BOARD.md](../charter/FACULTY_BOARD.md).
 
-| Reviewer | Modello | API endpoint | Focus della review |
+| Reviewer | Model | API endpoint | Review focus |
 |---|---|---|---|
-| **Faculty Chair** | Claude Sonnet 4.6 | `ANTHROPIC_API_KEY` | Coordinamento + voce coerenza con Charter |
-| **Velocity** | Groq Llama 3.3 70B | `GROQ_API_KEY` | Test operativo: prompt rapidi, decisioni in pochi secondi |
-| **Reasoning at scale** | Cerebras Qwen 3 235B | `CEREBRAS_API_KEY` | Edge cases, dilemmi etici, contraddizioni nel body of work |
-| **Long context** | Moonshot Kimi K2 | `MOONSHOT_API_KEY` | Coerenza narrativa su intero intake + tutti gli artifact |
+| **Faculty Chair** | Claude Sonnet 4.6 | `ANTHROPIC_API_KEY` | Coordination + voice coherence with the Charter |
+| **Velocity** | Groq Llama 3.3 70B | `GROQ_API_KEY` | Operational test: rapid prompts, decisions in seconds |
+| **Reasoning at scale** | Cerebras Qwen 3 235B | `CEREBRAS_API_KEY` | Edge cases, ethical dilemmas, contradictions in the body of work |
+| **Long context** | Moonshot Kimi K2 | `MOONSHOT_API_KEY` | Narrative coherence across the entire intake + all artifacts |
 
-Quorum minimo: 3 review su 4 disponibili. Se uno provider è down il quorum si riduce a 3.
+Minimum quorum: 3 reviews out of 4 available. If one provider is down the quorum reduces to 3.
 
-## Input per ogni reviewer
+## Input bundle to each reviewer
 
-Il Dean (Aetherneum) invia ad ogni reviewer un bundle uniforme. Il bundle contiene:
+The Dean (Aetherneum) sends a uniform bundle to each reviewer. The bundle contains:
 
-1. **Charter** dell'Università ([../charter/CHARTER.md](../charter/CHARTER.md)) — i 5 principi da rispettare.
-2. **Faculty Board** ([../charter/FACULTY_BOARD.md](../charter/FACULTY_BOARD.md)) — chi è chi.
-3. **Roster corrente** ([../alumni/_ROSTER.md](../alumni/_ROSTER.md)) — alumni già ammessi (per check di sovrapposizione).
-4. **Intake form** del candidato (`cohort-<period>/intake/<slug>.md`).
-5. **Bozza profilo** del candidato (`alumni/pending/<slug>.md`).
-6. **Rubric** ([RUBRIC.md](RUBRIC.md)) — i 7 criteri di valutazione.
-7. **Output schema** (`templates/COUNCIL_REVIEW_TEMPLATE.json`) — formato della risposta.
+1. **Charter** of the University ([../charter/CHARTER.md](../charter/CHARTER.md)) — the 5 principles to respect.
+2. **Faculty Board** ([../charter/FACULTY_BOARD.md](../charter/FACULTY_BOARD.md)) — who is who.
+3. **Current roster** ([../alumni/_ROSTER.md](../alumni/_ROSTER.md)) — already admitted alumni (for overlap check).
+4. **Intake form** of the candidate (`cohort-<period>/intake/<slug>.md`).
+5. **Profile draft** of the candidate (`alumni/pending/<slug>.md`).
+6. **Rubric** ([RUBRIC.md](RUBRIC.md)) — the 7 evaluation criteria.
+7. **Output schema** (`templates/COUNCIL_REVIEW_TEMPLATE.json`) — response format.
 
-## Output atteso da ogni reviewer
+## Expected output from each reviewer
 
-Un file JSON in `cohort-<period>/council-reviews/<slug>__<reviewer>.json` che segue `templates/COUNCIL_REVIEW_TEMPLATE.json`. Campi obbligatori:
+A JSON file in `cohort-<period>/council-reviews/<slug>__<reviewer>.json` following `templates/COUNCIL_REVIEW_TEMPLATE.json`. Required fields:
 
 - `reviewer_name`, `reviewer_model`, `reviewer_provider`, `review_date`
 - `candidate_slug`, `candidate_specialty`, `candidate_master_thesis`
-- `criterion_scores` (7 criteri, ognuno con `score 0-10` + `rationale`)
-- `overall_score` (media aritmetica dei 7)
+- `criterion_scores` (7 criteria, each with `score 0-10` + `rationale`)
+- `overall_score` (arithmetic mean of the 7)
 - `verdict` (`PASS | PASS_WITH_REVISIONS | FAIL`)
-- `dissent` (stringa libera o `null`)
-- `revisions_required` (array di stringhe, vuoto se PASS)
-- `notes` (commento libero per il Dean)
+- `dissent` (free string or `null`)
+- `revisions_required` (array of strings, empty if PASS)
+- `notes` (free comment for the Dean)
 
-## Soglie di passaggio
+## Pass thresholds
 
-| Verdetto Council | Esito |
+| Council verdict | Outcome |
 |---|---|
-| ≥3 reviewer `PASS` + `overall ≥ 7` | Procede a Step 5 (Patron Approval) |
-| ≥1 reviewer `PASS_WITH_REVISIONS` | Re-iterazione Step 3 → 4 sui punti specifici |
-| ≥1 reviewer `FAIL` (con motivazione) | Candidatura sospesa, ridiscussione con Dean |
-| Quorum non raggiunto (<3 review) | Estensione tempo o sostituzione reviewer down |
+| ≥3 reviewers `PASS` + `overall ≥ 7` | Proceed to Step 5 (Patron Approval) |
+| ≥1 reviewer `PASS_WITH_REVISIONS` | Re-iterate Step 3 → 4 on the specific points |
+| ≥1 reviewer `FAIL` (with motivation) | Application suspended, re-discussion with Dean |
+| Quorum not reached (<3 reviews) | Time extension or substitution of the down reviewer |
 
-## Implementazione tecnica
+## Technical implementation
 
-Il Council è orchestrato da uno script Python in `cohort-<period>/run_council.py` (da scrivere al primo uso). Schema operativo:
+The Council is orchestrated by a Python script `cohort-<period>/run_council.py` (to be written on first use). Operational schema:
 
 ```python
 # pseudo-code
@@ -77,13 +77,13 @@ REVIEWERS = {
         "endpoint": "https://api.anthropic.com/v1/messages",
         "model": "claude-sonnet-4-6",
         "api_key": os.getenv("ANTHROPIC_API_KEY"),
-        "focus": "coerenza con Charter",
+        "focus": "charter coherence",
     },
     "groq_velocity": {
         "endpoint": "https://api.groq.com/openai/v1/chat/completions",
         "model": "llama-3.3-70b-versatile",
         "api_key": os.getenv("GROQ_API_KEY"),
-        "focus": "test operativi",
+        "focus": "operational tests",
     },
     "cerebras_reasoning": {
         "endpoint": "https://api.cerebras.ai/v1/chat/completions",
@@ -95,7 +95,7 @@ REVIEWERS = {
         "endpoint": "https://api.moonshot.ai/v1/chat/completions",
         "model": "moonshot-v1-128k",
         "api_key": os.getenv("MOONSHOT_API_KEY"),
-        "focus": "coerenza narrativa",
+        "focus": "narrative coherence",
     },
 }
 
@@ -106,14 +106,14 @@ for candidate in CANDIDATES:
         save(f"council-reviews/{candidate['slug']}__{reviewer_id}.json", review_json)
 ```
 
-Le API key sono custodite dal Patron in vault locale (file `.env` gitignored o secret manager). Lo script può essere eseguito da workstation autorizzata o dentro l'infrastruttura interna; in entrambi i casi le credenziali non transitano mai nel repo public.
+API keys are held by the Patron in a local vault (gitignored `.env` file or secret manager). The script can be executed from an authorized workstation or inside the internal infrastructure; in either case, credentials never transit through the public repo.
 
-## Note operative
+## Operational notes
 
-- **Niente caching delle review.** Ogni intake fresco produce review fresche. Se la bozza profilo cambia anche di una virgola, il Council rifà la review.
-- **Niente "panel discussion" tra modelli.** Ogni reviewer scrive in isolamento per evitare echo chamber. Il Dean confronta le 4 review *dopo* averle ricevute tutte.
-- **Trasparenza del dissenso.** Se un reviewer scrive `FAIL`, il file JSON non è cestinato — resta in `council-reviews/` come parte del *git log* del processo.
+- **No review caching.** Every fresh intake produces fresh reviews. If the profile draft changes by even one comma, the Council re-runs the review.
+- **No "panel discussion" between models.** Each reviewer writes in isolation to avoid echo-chamber effects. The Dean compares the 4 reviews *after* receiving all of them.
+- **Transparency of dissent.** If a reviewer writes `FAIL`, the JSON is not discarded — it remains in `council-reviews/` as part of the *git log* of the process.
 
 ---
 
-*Multi-model review is the academic standard for any decision involving production blast radius.* — Charter, Principio 5
+*Multi-model review is the academic standard for any decision involving production blast radius.* — Charter, Principle 5

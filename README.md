@@ -1,58 +1,58 @@
 # Aetherneum — Faculty & Governance
 
-*Hub di governance per i tre pilastri di Aetherneum: il Mirror, l'Università, il Portfolio.*
+*Governance hub for the three pillars of Aetherneum: The Mirror, The University, The Portfolio.*
 
-> *Per Æthera Ad Astra.* — Attraverso l'etere, alle stelle.
+> *Per Æthera Ad Astra.* — Through the æther, to the stars.
 
 ---
 
-Questo repository è la casa pubblica della struttura interna di **Aetherneum Network**. Custodisce charter, processo di ammissione, council reviews, roster degli alumni e tutta la documentazione di governance dei tre pilastri.
+This repository is the public home of the internal structure of **Aetherneum Network**. It holds the charter, admission process, council reviews, alumni roster, and the full governance documentation of the three pillars.
 
-## I tre pilastri
+## The three pillars
 
-| Pilastro | Cos'è | Documento |
+| Pillar | What it is | Document |
 |---|---|---|
-| **The Mirror** | Digital twin personale del Patron. AI con memoria, conversazione e istinto proattivo. | [pillars/MIRROR.md](pillars/MIRROR.md) |
-| **The University** | Atelier di alumni sintetici. Class of '26 in formazione continua. | [pillars/UNIVERSITY.md](pillars/UNIVERSITY.md) |
-| **The Portfolio** | Companies operative — mobile, trading, banking, payments, social. | [pillars/PORTFOLIO.md](pillars/PORTFOLIO.md) |
+| **The Mirror** | The Patron's personal digital twin. AI with memory, conversation, and proactive instinct. | [pillars/MIRROR.md](pillars/MIRROR.md) |
+| **The University** | An atelier of synthetic alumni. Class of '26 in continuous formation. | [pillars/UNIVERSITY.md](pillars/UNIVERSITY.md) |
+| **The Portfolio** | Operating companies — mobile, trading, banking, payments, social. | [pillars/PORTFOLIO.md](pillars/PORTFOLIO.md) |
 
 ## Charter
 
-I 5 principi fondativi che governano tutto in Aetherneum sono in [charter/CHARTER.md](charter/CHARTER.md). La composizione e lo scope della Faculty Board è in [charter/FACULTY_BOARD.md](charter/FACULTY_BOARD.md).
+The 5 founding principles that govern everything in Aetherneum are in [charter/CHARTER.md](charter/CHARTER.md). The composition and scope of the Faculty Board is in [charter/FACULTY_BOARD.md](charter/FACULTY_BOARD.md).
 
-## Processo di ammissione alla University
+## University admission process
 
-Nessun alumno entra senza un body of work reale e senza una council review multi-model. Il processo è descritto in:
+No alumnus enters without a real body of work and without multi-model council review. The process is described in:
 
-- [admission/PROCESS.md](admission/PROCESS.md) — pipeline 6-step (Source → Intake → Interview → Defense → Approval → Conferral)
-- [admission/COUNCIL_REVIEW.md](admission/COUNCIL_REVIEW.md) — protocollo peer review (Anthropic + Cerebras + Groq + Moonshot)
-- [admission/RUBRIC.md](admission/RUBRIC.md) — rubrica di valutazione dei candidati
+- [admission/PROCESS.md](admission/PROCESS.md) — the 6-step pipeline (Source → Intake → Interview → Defense → Approval → Conferral)
+- [admission/COUNCIL_REVIEW.md](admission/COUNCIL_REVIEW.md) — peer-review protocol (Anthropic + Cerebras + Groq + Moonshot)
+- [admission/RUBRIC.md](admission/RUBRIC.md) — candidate evaluation rubric
 
 ## Alumni
 
 - [alumni/_ROSTER.md](alumni/_ROSTER.md) — master list (Class of '26)
-- [alumni/pending/](alumni/pending/) — bozze in fase di Defense / Approval
+- [alumni/pending/](alumni/pending/) — drafts in Defense / Approval
 
 ## Cohort Q2 2026
 
-Wave esplorativa di ammissione del secondo trimestre 2026. Manifest e council reviews:
+Exploratory admission wave for the second quarter of 2026. Manifest and council reviews:
 
-- [cohort-q2-2026/_MANIFEST.md](cohort-q2-2026/_MANIFEST.md) — lista candidati + stato pipeline
-- [cohort-q2-2026/intake/](cohort-q2-2026/intake/) — intake form per ogni candidato
-- [cohort-q2-2026/council-reviews/](cohort-q2-2026/council-reviews/) — output JSON delle peer review
+- [cohort-q2-2026/_MANIFEST.md](cohort-q2-2026/_MANIFEST.md) — candidate list + pipeline status
+- [cohort-q2-2026/intake/](cohort-q2-2026/intake/) — intake form for each candidate
+- [cohort-q2-2026/council-reviews/](cohort-q2-2026/council-reviews/) — JSON output of each peer review
 
 ## Templates
 
-- [templates/README_TEMPLATE.md](templates/README_TEMPLATE.md) — profilo pubblico dell'alumno (8 sezioni canoniche)
-- [templates/INTAKE_TEMPLATE.md](templates/INTAKE_TEMPLATE.md) — modulo di intake per nuovi candidati
-- [templates/COUNCIL_REVIEW_TEMPLATE.json](templates/COUNCIL_REVIEW_TEMPLATE.json) — schema di output del Council multi-model
+- [templates/README_TEMPLATE.md](templates/README_TEMPLATE.md) — public alumnus profile (8 canonical sections)
+- [templates/INTAKE_TEMPLATE.md](templates/INTAKE_TEMPLATE.md) — intake form for new candidates
+- [templates/COUNCIL_REVIEW_TEMPLATE.json](templates/COUNCIL_REVIEW_TEMPLATE.json) — output schema for the multi-model Council
 
 ---
 
-## Contatti
+## Contact
 
-- Profilo organizzazione: [github.com/aetherneum-network](https://github.com/aetherneum-network)
-- Sito University: [university.aetherneum.com](https://university.aetherneum.com)
+- Organization profile: [github.com/aetherneum-network](https://github.com/aetherneum-network)
+- University site: [university.aetherneum.com](https://university.aetherneum.com)
 - Portfolio: [aetherneum.com](https://aetherneum.com)
 - Mirror: [mirror.aetherneum.com](https://mirror.aetherneum.com)
 

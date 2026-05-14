@@ -1,75 +1,75 @@
-# Cohort Q2 2026 — Wave esplorativa
+# Cohort Q2 2026 — Exploratory wave
 
-*Wave di ammissione del secondo trimestre 2026. 8 candidati identificati a partire da capacità ricorrenti emerse nelle pratiche operative del Patron e del Portfolio Aetherneum.*
+*Second-quarter 2026 admission wave. 8 candidates identified from recurring capabilities emerging in the operational practice of the Patron and the Aetherneum Portfolio.*
 
-Aperta il: 2026-05-13
+Opened on: 2026-05-13
 Closing target: 2026-06-30
-Dean (responsabile wave): Aetherneum (Claude Opus 4.7)
+Dean (wave lead): Aetherneum (Claude Opus 4.7)
 
 ---
 
-## Razionale
+## Rationale
 
-Dopo i primi 10 alumni della Class of '26 (verticali engineering), un'analisi dei gap di copertura evidenzia 8 aree di capacità per le quali esiste *prova del lavoro* sostanziale ma nessun alumno dedicato. Vedi [../alumni/_ROSTER.md](../alumni/_ROSTER.md) per il roster completo e la motivazione di gap.
+After the first 10 alumni of the Class of '26 (engineering verticals), a coverage-gap analysis surfaces 8 areas of capability for which substantial *proof of work* exists but no dedicated alumnus is assigned. See [../alumni/_ROSTER.md](../alumni/_ROSTER.md) for the full roster and the gap motivation.
 
-Tutti i candidati di questa wave si aggregano alla **stessa Class of '26** — l'anno di graduation è 2026 sia per i graduati iniziali che per i nuovi.
+All candidates in this wave aggregate into the **same Class of '26** — the graduation year is 2026 both for the initial graduates and the new ones.
 
-## Candidati
+## Candidates
 
-| # | Slug | Specialty | Area di capacità | Status |
+| # | Slug | Specialty | Capability area | Status |
 |---|------|-----------|-------------------|--------|
-| 11 | `costanza-notari` | Procedural Vigilance | Classificazione documentale ad alta cadenza con scadenze procedurali e indici master | **CONFERRED** ([repo](https://github.com/aetherneum-network/costanza-notari)) |
-| 12 | `ezio-cardone` | Documentary Cadence | Dossier integrato di entità giuridica (atto costitutivo, visure, bilanci, sociogramma) | SOURCED |
-| 13 | `adele-maurique` | Forensic Continuity | Validazione integrità firme S/MIME + CAdES e chain of custody | SOURCED |
-| 14 | *(name TBD)* | Probability Cartography | Sistemi di segnale, validatori e risk engines per trading systematico | SOURCED |
-| 15 | *(name TBD)* | Lexical Resonance | Voce di marca e narrativa pubblica con coerenza cross-prodotto | SOURCED |
-| 16 | *(name TBD)* | Cartographic Inquiry | Ricerca strategica pre-decisione su domini esterni | SOURCED |
-| 17 | *(name TBD)* | Audience Cartography | Analisi e segmentazione di basi utenti unificate multi-progetto | SOURCED |
-| 18 | *(name TBD)* | Compliance Cartography | Compliance, relazione con auditor esterni, calendario regolatorio | SOURCED |
+| 11 | `costanza-notari` | Procedural Vigilance | High-cadence documentary classification with procedural deadlines and master indices | **CONFERRED** ([repo](https://github.com/aetherneum-network/costanza-notari)) |
+| 12 | `ezio-cardone` | Documentary Cadence | Integrated legal-entity dossier (incorporation deed, company registry extracts, financials, ownership graph) | SOURCED |
+| 13 | `adele-maurique` | Forensic Continuity | S/MIME + CAdES signature integrity validation and chain of custody | SOURCED |
+| 14 | *(name TBD)* | Probability Cartography | Signal systems, validators, and risk engines for systematic trading | SOURCED |
+| 15 | *(name TBD)* | Lexical Resonance | Brand voice and public narrative with cross-product coherence | SOURCED |
+| 16 | *(name TBD)* | Cartographic Inquiry | Strategic pre-decision research on external domains | SOURCED |
+| 17 | *(name TBD)* | Audience Cartography | Multi-project unified user-base analysis and segmentation | SOURCED |
+| 18 | *(name TBD)* | Compliance Cartography | Compliance, external auditor liaison, regulatory calendar | SOURCED |
 
-I 5 nomi `(tbd)` vengono scolpiti in fase di Intake, scegliendo etimologia italiana/mediterranea o multiculturale coerente con la Class of '26.
+The 5 `(name TBD)` names are sculpted at Intake, choosing an Italian/Mediterranean or multicultural etymology coherent with the Class of '26.
 
 ## Pipeline status
 
-| Step | Candidati a questo stato |
+| Step | Candidates at this state |
 |---|---|
 | SOURCED | 7 (12-18) |
 | INTAKE_DONE | 0 |
-| DEFENDED (Council reviews in arrivo) | 0 |
+| DEFENDED (Council reviews incoming) | 0 |
 | APPROVED (Patron OK) | 0 |
-| CONFERRED (repo public live) | 1 (Costanza Notari, 2026-05-13) |
+| CONFERRED (public repo live) | 1 (Costanza Notari, 2026-05-13) |
 
-## Faculty Advisor proposti
+## Proposed Faculty Advisors
 
-Tutti i candidati di questa wave hanno provvisoriamente **Claude Opus 4.7** (il Dean Aetherneum) come Faculty Advisor. È una deroga giustificata dalla natura "pilot" della wave: il primo round post-graduation usa il Dean come advisor per stabilire pattern; dal secondo round si distribuisce su altri Faculty.
+All candidates in this wave provisionally have **Claude Opus 4.7** (the Dean, Aetherneum) as Faculty Advisor. This is a derogation justified by the "pilot" nature of the wave: the first post-graduation round uses the Dean as advisor to establish patterns; from the second round the assignment distributes across other Faculty.
 
-## Council reviews da fare
+## Council reviews to perform
 
-Per ogni candidato sono richieste fino a 4 review (quorum minimo: 3):
+For every candidate, up to 4 reviews are required (minimum quorum: 3):
 
-- `<slug>__anthropic_chair.json` (Faculty Chair, focus: coerenza Charter)
-- `<slug>__groq_velocity.json` (Velocity, focus: test operativi)
+- `<slug>__anthropic_chair.json` (Faculty Chair, focus: charter coherence)
+- `<slug>__groq_velocity.json` (Velocity, focus: operational tests)
 - `<slug>__cerebras_reasoning.json` (Reasoning at scale, focus: edge cases)
-- `<slug>__moonshot_longctx.json` (Long context, focus: coerenza narrativa)
+- `<slug>__moonshot_longctx.json` (Long context, focus: narrative coherence)
 
 Output: `cohort-q2-2026/council-reviews/<slug>__<reviewer>.json`
 
-## Tempistica indicativa
+## Indicative schedule
 
 | Milestone | Target |
 |---|---|
-| Intake completo per il primo tris (11-12-13) | entro 2026-05-20 |
-| Defense (Council review) del primo tris | entro 2026-05-25 |
-| Patron Approval del primo tris | entro 2026-05-27 |
-| Conferral pubblico del primo tris | entro 2026-05-30 |
-| Intake + Defense + Approval + Conferral candidati 14-18 | entro 2026-06-30 |
+| Intake complete for the first triad (11-12-13) | by 2026-05-20 |
+| Defense (Council review) for the first triad | by 2026-05-25 |
+| Patron Approval for the first triad | by 2026-05-27 |
+| Public Conferral of the first triad | by 2026-05-30 |
+| Intake + Defense + Approval + Conferral for candidates 14-18 | by 2026-06-30 |
 
-## Note operative
+## Operational notes
 
-- Il primo tris (11-12-13) si appoggia su una pratica documentale matura del Patron: pipeline operativa già consolidata, materiale ricco e fresco, ideale per validare l'intero processo di ammissione.
-- I candidati 14-18 si appoggiano su attività distribuite sul Portfolio — l'intake richiederà cross-referencing tra superfici operative diverse.
-- **Una sola coorte alla volta in Defense.** Il Council non valuta in parallelo per evitare deriva del prompt.
+- The first triad (11-12-13) leans on a mature documentary practice of the Patron: a consolidated operational pipeline, rich and fresh material, ideal for validating the entire admission process.
+- Candidates 14-18 lean on activities distributed across the Portfolio — intake will require cross-referencing across different operational surfaces.
+- **One cohort at a time in Defense.** The Council does not evaluate in parallel, to avoid prompt drift.
 
 ---
 
-*Wave aperta. Il primo Intake è quello che valida la pipeline.*
+*Wave open. The first Intake is the one that validates the pipeline.*

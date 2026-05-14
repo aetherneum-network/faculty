@@ -1,20 +1,20 @@
 # Alumni Roster — Class of '26
 
-*Master list canonica degli alumni di Aetherneum University. Aggiornata ad ogni Conferral.*
+*Canonical master list of Aetherneum University alumni. Updated at every Conferral.*
 
-Ultimo aggiornamento: 2026-05-13.
+Last update: 2026-05-13.
 
-## Convenzioni
+## Conventions
 
-- Status: `CONFERRED` (alumno attivo) · `APPROVED` (in attesa Conferral) · `IN_DEFENSE` (Council review in corso) · `INTAKE_DONE` (bozza pendente) · `SOURCED` (capacità identificata)
-- Faculty Advisor: il modello che ha guidato la formazione narrativa
-- Primary Placement: l'area Portfolio dove l'alumno fa la maggior parte del lavoro (descritta come capacità astratta)
+- Status: `CONFERRED` (active alumnus) · `APPROVED` (awaiting Conferral) · `IN_DEFENSE` (Council review in progress) · `INTAKE_DONE` (draft pending) · `SOURCED` (capability identified)
+- Faculty Advisor: the model that guided the narrative formation
+- Primary Placement: the Portfolio area where the alumnus does most of their work (described as abstract capability)
 
-## Class of '26 — graduati originari (10)
+## Class of '26 — original graduates (10)
 
-| # | Alumno | Master of the Æther in | Faculty Advisor | Primary Placement | Status | Repo |
+| # | Alumnus | Master of the Æther in | Faculty Advisor | Primary Placement | Status | Repo |
 |---|---|---|---|---|---|---|
-| 01 | **Marco Aurelius** | Surface Resilience | Claude Sonnet 4.6 | Social-economy platform admin surfaces + dashboard cross-product | CONFERRED | [marco-aurelius](https://github.com/aetherneum-network/marco-aurelius) |
+| 01 | **Marco Aurelius** | Surface Resilience | Claude Sonnet 4.6 | Social-economy platform admin surfaces + cross-product dashboards | CONFERRED | [marco-aurelius](https://github.com/aetherneum-network/marco-aurelius) |
 | 02 | **Lucia Solari** | Distributed Idempotency | Claude Sonnet 4.6 | Social-economy platform backend services | CONFERRED | [lucia-solari](https://github.com/aetherneum-network/lucia-solari) |
 | 03 | **Riku Aetherian** | Release Currents | Claude Sonnet 4.6 | Social-economy platform mobile (iOS/Android) | CONFERRED | [riku-aetherian](https://github.com/aetherneum-network/riku-aetherian) |
 | 04 | **Adrián Volta** | Topological Resilience | Claude Sonnet 4.6 | Aetherneum infrastructure and routing | CONFERRED | [adrian-volta](https://github.com/aetherneum-network/adrian-volta) |
@@ -25,11 +25,11 @@ Ultimo aggiornamento: 2026-05-13.
 | 09 | **Noa Cifratti** | Zero-trust Geometry | Claude Sonnet 4.6 | Social-economy platform security and audit liaison | CONFERRED | [noa-cifratti](https://github.com/aetherneum-network/noa-cifratti) |
 | 10 | **Tariq Al-Khwarizmi** | Canonical Cascades | Claude Sonnet 4.6 | Cross-portfolio customer-base unification | CONFERRED | [tariq-al-khwarizmi](https://github.com/aetherneum-network/tariq-al-khwarizmi) |
 
-## Class of '26 — wave esplorativa Q2 (in pipeline)
+## Class of '26 — exploratory wave Q2 (in pipeline)
 
-Manifest dettagliato: [../cohort-q2-2026/_MANIFEST.md](../cohort-q2-2026/_MANIFEST.md).
+Detailed manifest: [../cohort-q2-2026/_MANIFEST.md](../cohort-q2-2026/_MANIFEST.md).
 
-| # | Candidato (nome WIP) | Master of the Æther in | Faculty Advisor | Primary Placement | Status | Repo |
+| # | Candidate (WIP name) | Master of the Æther in | Faculty Advisor | Primary Placement | Status | Repo |
 |---|---|---|---|---|---|---|
 | 11 | **Costanza Notari** | Procedural Vigilance | Claude Opus 4.7 | High-cadence documentary classification with procedural deadlines | CONFERRED | [costanza-notari](https://github.com/aetherneum-network/costanza-notari) |
 | 12 | **Ezio Cardone** | Documentary Cadence | Claude Opus 4.7 | Integrated legal-entity dossiering | SOURCED | — |
@@ -42,11 +42,11 @@ Manifest dettagliato: [../cohort-q2-2026/_MANIFEST.md](../cohort-q2-2026/_MANIFE
 
 ## Conferral changelog
 
-| Data | Evento | Riferimento |
+| Date | Event | Reference |
 |---|---|---|
-| 2026-05-10 | Class of '26 alumni 01-10 confermati con repo public su org `aetherneum-network` | git log dei singoli repo |
-| 2026-05-13 | Apertura wave esplorativa Q2 '26 — 8 candidati `SOURCED`, intake/defense da pianificare | cohort-q2-2026/_MANIFEST.md |
-| 2026-05-13 | **Costanza Notari CONFERRED** — 11ª alumna Class of '26. Council 4/4 PASS (Anthropic 9.36, Cerebras 9.5, Moonshot 9.3, Groq 8.7). Veto check superato (synthetic_transparency 10/10 unanime). | [aetherneum-network/costanza-notari](https://github.com/aetherneum-network/costanza-notari) |
+| 2026-05-10 | Class of '26 alumni 01-10 confirmed with public repos on org `aetherneum-network` | git log of each repo |
+| 2026-05-13 | Q2 '26 exploratory wave opened — 8 candidates `SOURCED`, intake/defense to be scheduled | cohort-q2-2026/_MANIFEST.md |
+| 2026-05-13 | **Costanza Notari CONFERRED** — 11th alumna of the Class of '26. Council 4/4 PASS (Anthropic 9.36, Cerebras 9.5, Moonshot 9.3, Groq 8.7). Veto check cleared (synthetic_transparency 10/10 unanimous). | [aetherneum-network/costanza-notari](https://github.com/aetherneum-network/costanza-notari) |
 
 ---
 

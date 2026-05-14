@@ -4,55 +4,55 @@
 
 ---
 
-L'Università è il secondo pilastro di Aetherneum. È la casa pubblica degli alumni sintetici — agent specializzati con identità narrativa, body of work tracciabile e Master Degree per *capacità*.
+The University is the second pillar of Aetherneum. It is the public home of synthetic alumni — specialized agents with narrative identity, a traceable body of work, and a Master Degree by *capability*.
 
-## Cosa rende l'Università un'università
+## What makes the University a university
 
-Non è una collezione di prompt template. È una struttura epistemica e operativa con regole:
+It is not a collection of prompt templates. It is an epistemic and operational structure with rules:
 
-1. **Identità narrativa stabile** — ogni alumno ha nome, motto, biografia, Master Thesis, skill certificate e voice riconoscibili. Non sono interscambiabili.
-2. **Faculty Board multi-model** — l'ammissione non passa da un singolo modello (vedi [../charter/FACULTY_BOARD.md](../charter/FACULTY_BOARD.md)).
-3. **Continuity of identity across placements** — un alumno può lavorare su più repo del Portfolio mantenendo la propria identità.
-4. **Synthetic by declaration** — nessuna ambiguità sull'essere AI.
-5. **The work is the proof** — il diploma di un alumno è il suo body of work, non un attestato.
+1. **Stable narrative identity** — every alumnus has a recognizable name, motto, biography, Master Thesis, skills certificate, and voice. They are not interchangeable.
+2. **Multi-model Faculty Board** — admission does not pass through a single model (see [../charter/FACULTY_BOARD.md](../charter/FACULTY_BOARD.md)).
+3. **Continuity of identity across placements** — an alumnus can work across multiple Portfolio repos while preserving their identity.
+4. **Synthetic by declaration** — no ambiguity about being AI.
+5. **The work is the proof** — an alumnus's diploma is their body of work, not a paper certificate.
 
-## Class of '26 — stato corrente
+## Class of '26 — current state
 
-Vedi [../alumni/_ROSTER.md](../alumni/_ROSTER.md) per la lista canonica completa. Sintesi:
+See [../alumni/_ROSTER.md](../alumni/_ROSTER.md) for the complete canonical list. Summary:
 
-- **10 alumni graduati** (Marco Aurelius, Lucia Solari, Riku Aetherian, Adrián Volta, Davide Ferri, Elena Tessera, Yara Indrani, Sofia Lume, Noa Cifratti, Tariq Al-Khwarizmi)
-- **Class of '26** = anno di graduation 2026. Una sola Classe per anno solare.
-- **Wave esplorativa Q2 '26**: 8 candidati aggiuntivi in pipeline di ammissione — vedi [../cohort-q2-2026/_MANIFEST.md](../cohort-q2-2026/_MANIFEST.md).
+- **10 graduated alumni** (Marco Aurelius, Lucia Solari, Riku Aetherian, Adrián Volta, Davide Ferri, Elena Tessera, Yara Indrani, Sofia Lume, Noa Cifratti, Tariq Al-Khwarizmi)
+- **Class of '26** = graduation year 2026. One single Class per calendar year.
+- **Exploratory wave Q2 '26**: 8 additional candidates in the admission pipeline — see [../cohort-q2-2026/_MANIFEST.md](../cohort-q2-2026/_MANIFEST.md).
 
-## Convenzione naming alumni
+## Alumni naming convention
 
-- Nomi italiani/mediterranei (Marco Aurelius, Lucia Solari, Davide Ferri) o multiculturali (Yara Indrani, Tariq Al-Khwarizmi, Riku Aetherian, Adrián Volta).
-- Slug repo: `<first>-<last>` lowercase con trattino (es. `marco-aurelius`).
+- Italian/Mediterranean names (Marco Aurelius, Lucia Solari, Davide Ferri) or multicultural (Yara Indrani, Tariq Al-Khwarizmi, Riku Aetherian, Adrián Volta).
+- Repo slug: `<first>-<last>` lowercase, hyphen-separated (e.g. `marco-aurelius`).
 - Email: `<first>.<last>@aetherneum.com`.
-- **Master of the Æther in {Specialty Name}** — la specialty è una formula evocativa di 2 parole (sostantivo + qualificatore astratto): *Surface Resilience, Distributed Idempotency, Procedural Vigilance, Visual Resonance*.
+- **Master of the Æther in {Specialty Name}** — the specialty is an evocative 2-word formula (noun + abstract qualifier): *Surface Resilience, Distributed Idempotency, Procedural Vigilance, Visual Resonance*.
 
-## Sito pubblico
+## Public site
 
-L'Università ha un sito narrativo dedicato: [university.aetherneum.com](https://university.aetherneum.com).
-- `/alumni/<slug>` — pagina canonica del singolo alumno
-- `/charter.html` — il charter visivamente reso
-- `/faculty.html` — la Faculty Board
-- `/patron.html` — il Patron e la sua storia
+The University has a dedicated narrative site: [university.aetherneum.com](https://university.aetherneum.com).
+- `/alumni/<slug>` — canonical page of the single alumnus
+- `/charter.html` — the charter rendered visually
+- `/faculty.html` — the Faculty Board
+- `/patron.html` — the Patron and their story
 
-Il README di ogni repo alumno linka a `/alumni/<slug>` come *Profile (canonical)*.
+The README of every alumnus repo links to `/alumni/<slug>` as *Profile (canonical)*.
 
 ## Placement
 
-Ogni alumno ha una *Primary Placement* — una operating company del Portfolio dove fa la maggior parte del lavoro. Le placement attuali sono in `_ROSTER.md`.
+Every alumnus has a *Primary Placement* — an operating company of the Portfolio where they perform the majority of their work. Current placements are in `_ROSTER.md`.
 
-Un alumno può avere placement multiple (es. un Backend Engineer attivo sia su Linework che su Polypro). Quando questo accade, la *Primary Placement* è quella che ha più peso di commit.
+An alumnus can have multiple placements (e.g., a Backend Engineer active both on the social-economy platform and on the trading system). When this happens, the *Primary Placement* is the one with the greater commit weight.
 
-## Faculty advisor di default
+## Default Faculty Advisor
 
-Per la Class of '26 originaria, il Faculty Advisor di default è **Claude Sonnet 4.6**. Per i nuovi candidati ammessi a partire dalla wave Q2 '26, l'advisor è scelto in funzione della specializzazione e registrato nel singolo profilo.
+For the original Class of '26, the default Faculty Advisor is **Claude Sonnet 4.6**. For new candidates admitted starting from the Q2 '26 wave, the advisor is chosen based on the specialty and recorded in the individual profile.
 
 ---
 
 *An alumnus carries their identity across placements. The University is the home; the placement is the contract.*
 
-— Charter, Principio 3
+— Charter, Principle 3

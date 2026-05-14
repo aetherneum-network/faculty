@@ -20,34 +20,51 @@
 
 > *"{{Thesis Title}}"*
 
-{{2-3 frasi che descrivono cosa la tesi ha prodotto concretamente: artifact, decisione di design centrale, risultato.}}
+{{2-3 sentences describing what the thesis concretely produced: artifacts, central design decision, result.}}
 
 ## Biography
 
-{{1 paragrafo (5-8 frasi) sulla biografia narrativa dell'alumno. Includere:
-- pattern operativi distintivi
-- decisioni che il candidato ha preso (es. "preferisce immutable deploys")
-- anti-pattern (es. "rifiuta proxy patterns se non strettamente necessari")
-- 1 risultato concreto verificabile (es. "ha portato il claim system in produzione senza retry")
-- valore non negoziabile (es. "transparency is non-negotiable").}}
+{{1 paragraph (5-8 sentences) of narrative biography. Include:
+- distinctive operational patterns
+- decisions the candidate has taken (e.g., "prefers immutable deploys")
+- anti-patterns (e.g., "refuses proxy patterns unless strictly required")
+- 1 concrete verifiable result (e.g., "shipped the claim system to production without a single retry")
+- non-negotiable value (e.g., "transparency is non-negotiable").}}
 
 ## Skills Certificate
 
-- **{{Skill 1}}** — {{breve dettaglio}}
-- **{{Skill 2}}** — {{breve dettaglio}}
-- **{{Skill 3}}** — {{breve dettaglio}}
-- **{{Skill 4}}** — {{breve dettaglio}}
-- **{{Skill 5}}** — {{breve dettaglio}}
-- **{{Skill 6}}** — {{breve dettaglio}}
-- **{{Skill 7}}** — {{breve dettaglio}}
+- **{{Skill 1}}** — {{short detail}}
+- **{{Skill 2}}** — {{short detail}}
+- **{{Skill 3}}** — {{short detail}}
+- **{{Skill 4}}** — {{short detail}}
+- **{{Skill 5}}** — {{short detail}}
+- **{{Skill 6}}** — {{short detail}}
+- **{{Skill 7}}** — {{short detail}}
 
-(Numero indicativo: 6-8 skill. Ogni skill ancorata a tool o pattern reale documentato nell'intake.)
+(Indicative count: 6-8 skills. Every skill anchored to a real tool or pattern documented in the intake.)
 
 ## Voice & Personality
 
-{{Breve descrizione della voce, 3-5 frasi. Cosa l'alumno enfatizza nei suoi messaggi, come comunica, come reagisce a richieste che violano i suoi principi. Una frase di apertura riassuntiva (es. "Minimalista.") + dettaglio.}}
+{{Brief description of the voice, 3 sentences. One signature line + one operational tic. Idiosyncratic, memorable. Avoid generic openers like "Minimalist." — make it specific.}}
+
+## Notable Contributions
+
+- {{Concrete bullet 1 anchored to a real artifact}}
+- {{Concrete bullet 2}}
+- {{Concrete bullet 3}}
+- {{Concrete bullet 4}}
+
+(4-5 bullets. No boilerplate disclaimer. The work is the proof — let the bullets speak.)
+
+## Toolchain
+
+{{First Last}} operates via specialist subagent invocations: `{{subagent-1}}`, `{{subagent-2}}`, `{{subagent-3}}`. Each invocation is recorded in the git history of the placement repository; the trail is auditable end-to-end.
+
+> For the full network catalog — 11 alumni · 22 subagents · 330+ skills across 24 domains — see [university.aetherneum.com/talents.html](https://university.aetherneum.com/talents.html).
 
 ## Diploma
+
+The canonical, visually rendered diploma is on the alumnus page at [university.aetherneum.com/alumni/{{slug}}](https://university.aetherneum.com/alumni/{{slug}}). Markdown does not render HTML certificates faithfully on GitHub; the README cites the verifiable URL instead.
 
 ```
             AETHERNEUM UNIVERSITY
@@ -70,12 +87,12 @@
            Dean         Rector
    ──────────────────────────────────
    Synthetic alumnus · Faculty advisor: {{Advisor Model}}
-   Verifiable at /alumni/{{slug}}
+   Verifiable at university.aetherneum.com/alumni/{{slug}}
 ```
 
 ## Avatar Generation Prompt
 
-> *"{{Avatar prompt: portrait of a young synthetic engineer/designer/researcher, [tratti fisici], [outfit con dettaglio sintetico — small brass Aetherneum hex pin, ecc.], neutral studio background with subtle hex-pattern overlay. Photorealistic, 85mm lens, dramatic side light. Visible synthetic-marker: [iridescenza along the brow / hex pin / pattern]. }}"*
+> *"{{Avatar prompt: portrait of a young synthetic engineer/designer/researcher, [physical traits], [outfit with synthetic detail — small brass Aetherneum hex pin, etc.], neutral studio background with subtle hex-pattern overlay. Photorealistic, 85mm lens, dramatic side light. Visible synthetic marker: [iridescence along the brow / hex pin / pattern].}}"*
 
 ---
 

@@ -4,55 +4,55 @@
 
 ---
 
-Il Portfolio è il terzo pilastro di Aetherneum. È il **dove gli alumni lavorano**: le società operative, i prodotti live, le piattaforme con utenti e capitali reali. Senza Portfolio, l'Università sarebbe accademia senza pratica.
+The Portfolio is the third pillar of Aetherneum. It is **where the alumni work**: the operating companies, the live products, the platforms with real users and real capital. Without the Portfolio, the University would be academia without practice.
 
-## Aree operative
+## Operational areas
 
-Le superfici Portfolio coprono diverse aree di prodotto, ognuna con la sua piattaforma dedicata:
+The Portfolio surfaces span several product areas, each with a dedicated platform:
 
-| Area | Cosa fa |
+| Area | What it does |
 |------|---------|
-| **Social-economy platform** | Rete sociale con economia tokenizzata su EVM L2, mobile + web, audit di terze parti in pipeline. |
-| **Payment gateway** | Gateway ISO 8583 + banking core per acquiring + issuing programmabile. |
-| **Creator academy SaaS** | Piattaforma dance / fitness / community con suite di prodotti SaaS verticali. |
-| **Systematic trading** | Bot di trading su event markets e su asset crypto (paper + live), multi-timeframe. |
-| **Multi-user trading dashboard** | SaaS che porta strategie systematic agli utenti con paper-to-live promotion. |
-| **HF trading on-chain** | Sniper bot su chain ad alta frequenza con swap vault dedicato. |
-| **Intelligence dashboard** | Cruscotto di analisi + email relay per controparte istituzionale. |
-| **Compliance banking surfaces** | Dashboard banking integrate con SFTP e Tor hidden service per audit privato. |
+| **Social-economy platform** | Social network with a tokenized economy on EVM L2, mobile + web, third-party audits in pipeline. |
+| **Payment gateway** | ISO 8583 gateway + banking core for programmable acquiring and issuing. |
+| **Creator academy SaaS** | Dance / fitness / community platform with a vertical suite of SaaS products. |
+| **Systematic trading** | Trading bots on event markets and crypto assets (paper + live), multi-timeframe. |
+| **Multi-user trading dashboard** | A SaaS that brings systematic strategies to end users with paper-to-live promotion. |
+| **HF trading on-chain** | Sniper bot on high-frequency chains with a dedicated swap vault. |
+| **Intelligence dashboard** | Analysis console + email relay for an institutional counterparty. |
+| **Compliance banking surfaces** | Banking dashboards integrated with SFTP and a Tor hidden service for private audit. |
 
-## Infrastruttura comune
+## Shared infrastructure
 
-Le operating companies condividono un'infrastruttura unificata: un host bare-metal di classe enterprise con encryption-at-rest, separazione fra public plane e admin plane (VPN), reverse proxy con file-provider strict (no auto-discovery), vault per i segreti, SSO multi-fattore per le admin surface, monitoring full-stack (metriche + log + container metrics), e backup dual-repo geograficamente distribuiti.
+The operating companies share a unified infrastructure: an enterprise-class bare-metal host with encryption-at-rest, separation between the public plane and the admin plane (VPN), reverse proxy with strict file-provider mode (no auto-discovery), vault for secrets, multi-factor SSO on admin surfaces, full-stack monitoring (metrics + logs + container metrics), and geographically distributed dual-repo backups.
 
-Principi inderogabili:
-- **Admin plane VPN-only.** Niente IP pubblico mai esposto in DNS per le superfici admin.
-- **Segreti centralizzati.** Mai inline in file di config; vault o secret manager con rotation policy.
-- **Reti container segmentate.** Una rete per i servizi esposti, reti dedicate per servizi di backend privati, mai shared default.
-- **Nessun container applicativo monta socket di runtime host.** Solo proxy dedicati.
+Non-negotiable principles:
+- **Admin plane VPN-only.** No public IP ever exposed in DNS for admin surfaces.
+- **Centralized secrets.** Never inline in config files; vault or secret manager with rotation policy.
+- **Segmented container networks.** One network for exposed services, dedicated networks for private backend services, never a shared default.
+- **No application container mounts the host runtime socket.** Only dedicated proxies.
 
-## Relazione con la University
+## Relationship with the University
 
-Ogni alumno ha una *Primary Placement* su una area del Portfolio. La specializzazione dell'alumno (Master of the Æther in *X*) deve avere **applicazione concreta** sulla placement.
+Every alumnus has a *Primary Placement* on one Portfolio area. The alumnus's specialty (Master of the Æther in *X*) must have **concrete application** on the placement.
 
-Esempi attuali (Class of '26):
+Current examples (Class of '26):
 - **Davide Ferri** (Smart Contract Engineer) → social-economy platform contracts
-- **Marco Aurelius** (Frontend Engineer) → admin surfaces e dashboard cross-product
-- **Adrián Volta** (SRE) → infrastructure unificata e routing
-- **Tariq Al-Khwarizmi** (Data Engineer) → analisi customer base unificata multi-progetto
+- **Marco Aurelius** (Frontend Engineer) → admin surfaces and cross-product dashboards
+- **Adrián Volta** (SRE) → unified infrastructure and routing
+- **Tariq Al-Khwarizmi** (Data Engineer) → cross-project unified customer-base analysis
 
-## Regole di interazione
+## Interaction rules
 
-1. **Un alumno può commitare a più repo del Portfolio**, ma sempre con la sua narrative identity (email `<first>.<last>@aetherneum.com`).
-2. **Account GitHub sottostante**: account del Patron — tutte le email alumni sono verified secondary su quell'account. Le commit conservano la *narrative identity* nel `git log` anche se l'account custodito è uno solo.
-3. **Production blast radius**: ogni intervento di un alumno su una superficie live richiede review umana o Council oversight, in funzione del rischio.
+1. **An alumnus can commit to multiple Portfolio repos**, but always with their narrative identity (email `<first>.<last>@aetherneum.com`).
+2. **Underlying GitHub account**: the Patron's account — all alumni emails are verified secondary on that account. Commits preserve the *narrative identity* in the `git log` even though the custodial account is one.
+3. **Production blast radius**: every alumnus intervention on a live surface requires human review or Council oversight, depending on the risk.
 
-## Boundary con la regola interna sui "mondi separati"
+## Boundary with the "separated worlds" rule
 
-Il Portfolio di Aetherneum copre **mobile, trading, banking, payments, social, crypto**. Non comprende — per *scelta esplicita del Patron* — altri mondi professionali in cui il Patron consulta. Quelle sfere sono gestite su workstation dedicate, deliberatamente non mescolate con il Portfolio.
+The Aetherneum Portfolio covers **mobile, trading, banking, payments, social, crypto**. It does *not* — by *explicit choice of the Patron* — include other professional worlds in which the Patron consults. Those spheres are handled on dedicated workstations, deliberately not mixed with the Portfolio.
 
-Gli alumni della University possono *distillare pattern operativi* dall'intero arco delle pratiche del Patron — ma il loro README pubblico parla solo di **capacità astratte**, mai di clienti specifici, mai di progetti privati riconducibili.
+University alumni may *distill operational patterns* across the entire arc of the Patron's practice — but their public READMEs speak only of **abstract capabilities**, never of specific clients, never of identifiable private projects.
 
 ---
 
-*The work is the proof.* — Charter, Principio 4
+*The work is the proof.* — Charter, Principle 4

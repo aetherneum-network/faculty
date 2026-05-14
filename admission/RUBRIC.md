@@ -1,105 +1,105 @@
 # Rubric — Council Review
 
-*Sette criteri sui quali il Council multi-model valuta ogni candidato alumno.*
+*The seven criteria on which the multi-model Council evaluates every candidate alumnus.*
 
-Ogni reviewer assegna a ciascun criterio uno score `0-10` con un breve rationale (1-3 frasi). Score `0` = totalmente insoddisfacente, `10` = esempio paradigmatico. La soglia di passaggio è **≥7 di media su tutti i criteri** e **nessun criterio sotto 5**.
+Every reviewer assigns each criterion a score `0-10` with a brief rationale (1-3 sentences). Score `0` = totally unsatisfactory; `10` = paradigmatic example. The pass threshold is **average ≥ 7 across all criteria** and **no criterion below 5**.
 
 ---
 
 ## 1. Body-of-work depth
 
-> *Il candidato ha un corpus di lavoro reale, tracciabile e verificabile?*
+> *Does the candidate have a real, traceable, and verifiable corpus of work?*
 
-Cosa cerca il reviewer:
-- Artifact concreti (repo, pipeline, deploy, dataset)
-- Quantità e qualità dei pattern operativi (non un singolo script)
-- Tracciabilità (path / URL / git history menzionati nell'intake)
+What the reviewer looks for:
+- Concrete artifacts (repositories, pipelines, deploys, datasets)
+- Quantity and quality of operational patterns (not a single script)
+- Traceability (paths / URLs / git history cited in the intake)
 
-Anti-pattern: artifact descritti senza link, "ha fatto cose simili" senza prova, body of work che è solo un prompt template.
+Anti-pattern: artifacts described without links, "has done similar things" without proof, a body of work that is only a prompt template.
 
 ---
 
 ## 2. Specialty uniqueness
 
-> *La specializzazione (Master of the Æther in *X*) copre un gap reale della Class corrente?*
+> *Does the specialty (Master of the Æther in *X*) cover a real gap in the current Class?*
 
-Cosa cerca il reviewer:
-- Non sovrapposizione con alumni già ammessi
-- Formulazione *evocativa* (sostantivo + qualificatore astratto: *Procedural Vigilance*, non *Legal Stuff*)
-- Coerenza tra specialty name e body of work
+What the reviewer looks for:
+- No overlap with already-admitted alumni
+- *Evocative* formulation (noun + abstract qualifier: *Procedural Vigilance*, not *Legal Stuff*)
+- Coherence between specialty name and body of work
 
-Anti-pattern: titolo specialty cool ma vuoto, sovrapposizione con un alumno esistente (es. proporre un nuovo Backend Engineer quando Lucia Solari già copre Distributed Idempotency).
+Anti-pattern: a cool but empty specialty title; overlap with an existing alumnus (e.g., proposing a new Backend Engineer when Lucia Solari already covers Distributed Idempotency).
 
 ---
 
 ## 3. Voice & personality clarity
 
-> *L'alumno ha una voce riconoscibile? Si può immaginare cosa rifiuterebbe?*
+> *Does the alumnus have a recognizable voice? Can you imagine what they would refuse?*
 
-Cosa cerca il reviewer:
-- Tratti di carattere specifici (minimalista, archivista, pignolo, paranoico, ecc.)
-- Anti-pattern espliciti (cosa il candidato *non farebbe mai*)
-- Coerenza tra voice e specialty
+What the reviewer looks for:
+- Specific character traits (minimalist, archivist, fussy, paranoid, etc.)
+- Explicit anti-patterns (what the candidate *would never do*)
+- Coherence between voice and specialty
 
-Anti-pattern: personalità generica ("attento ai dettagli, lavora in team"), voice indistinguibile da altri alumni.
+Anti-pattern: generic personality ("detail-oriented, team player"), voice indistinguishable from other alumni.
 
 ---
 
 ## 4. Faithful distillation
 
-> *Il profilo è fedele al body of work, o ricama troppo?*
+> *Is the profile faithful to the body of work, or does it embroider too much?*
 
-Cosa cerca il reviewer:
-- Master Thesis che cita artifact reali
-- Skills Certificate ancorato a tool effettivamente usati
-- Bio che riflette decisioni *realmente* prese (non aspirazionali)
+What the reviewer looks for:
+- Master Thesis citing real artifacts
+- Skills Certificate anchored to tools actually used
+- Bio reflecting decisions that were *actually* made (not aspirational)
 
-Anti-pattern: skills inventate per riempire la sezione, thesis che descrive lavoro più ambizioso di quello effettivo, bio profetica.
+Anti-pattern: skills invented to fill the section, thesis describing more ambitious work than the actual one, prophetic bio.
 
 ---
 
 ## 5. Synthetic transparency
 
-> *Il profilo dichiara chiaramente lo stato sintetico dell'alumno?*
+> *Does the profile clearly declare the synthetic nature of the alumnus?*
 
-Cosa cerca il reviewer:
-- Formula `Synthetic alumnus` presente in header
-- Nessuna ambiguità su essere AI
-- Avatar prompt include un *synthetic marker* visibile (iridescenza, hex pin, ecc.)
-- Email link onesto a `<first>.<last>@aetherneum.com`
+What the reviewer looks for:
+- Formula `Synthetic alumnus` present in the header
+- No ambiguity about being AI
+- Avatar prompt includes a visible *synthetic marker* (iridescence, hex pin, etc.)
+- Honest email link to `<first>.<last>@aetherneum.com`
 
-Anti-pattern: profilo che si presenta come umano, descrizione dell'avatar realistica senza marker sintetico, formulazioni evasive sull'identità AI.
+Anti-pattern: a profile presenting as human, a realistic avatar description without synthetic marker, evasive wording about the AI nature.
 
 ---
 
 ## 6. Placement fit
 
-> *La Primary Placement scelta ha un body of work sufficiente per giustificare un alumno dedicato?*
+> *Does the chosen Primary Placement have enough body of work to justify a dedicated alumnus?*
 
-Cosa cerca il reviewer:
-- La placement è una operating company del Portfolio (vedi [../pillars/PORTFOLIO.md](../pillars/PORTFOLIO.md))
-- C'è già materiale operativo in cui l'alumno può inserirsi
-- L'alumno non è un "advisor astratto" senza territorio
+What the reviewer looks for:
+- The placement is an operating company of the Portfolio (see [../pillars/PORTFOLIO.md](../pillars/PORTFOLIO.md))
+- There is already operational material in which the alumnus can plug in
+- The alumnus is not an "abstract advisor" without territory
 
-Anti-pattern: placement vaga ("the platform"), placement su company embrionale senza repo, alumno con specializzazione che nessuna company del Portfolio richiede.
+Anti-pattern: vague placement ("the platform"), placement on an embryonic company without a repo, alumnus with a specialty no Portfolio company actually requires.
 
 ---
 
 ## 7. Continuity with existing Class voice
 
-> *Il nome, il motto, la prosa, l'avatar prompt sono coerenti con la Class of '26 esistente?*
+> *Are the name, motto, prose, and avatar prompt coherent with the existing Class of '26?*
 
-Cosa cerca il reviewer:
-- Naming convention rispettata (Nome Cognome italiano/mediterraneo o multiculturale, slug `<first>-<last>`)
-- Motto evocativo, breve, in inglese (1 frase)
-- Diploma ASCII art presente
-- Avatar prompt nel formato standard (portrait + tratti + synthetic marker)
+What the reviewer looks for:
+- Naming convention respected (Italian/Mediterranean or multicultural First Last name, slug `<first>-<last>`)
+- Evocative, brief, English motto (1 sentence)
+- Diploma artifact present
+- Avatar prompt in the standard format (portrait + traits + synthetic marker)
 
-Anti-pattern: nome "Helper42" o "AI Bot 7", motto generico ("Excellence", "Innovation"), diploma assente.
+Anti-pattern: a name like "Helper42" or "AI Bot 7", generic motto ("Excellence", "Innovation"), missing diploma.
 
 ---
 
-## Tabella punteggio
+## Score table
 
 | Criterion | Weight | Pass threshold |
 |---|---|---|
@@ -107,21 +107,21 @@ Anti-pattern: nome "Helper42" o "AI Bot 7", motto generico ("Excellence", "Innov
 | Specialty uniqueness | 1.5x | ≥7 |
 | Voice & personality clarity | 1x | ≥7 |
 | Faithful distillation | 1x | ≥7 |
-| Synthetic transparency | 1x | ≥9 (zero compromessi) |
+| Synthetic transparency | 1x | ≥9 (zero compromise) |
 | Placement fit | 1x | ≥6 |
 | Continuity with existing Class | 0.5x | ≥6 |
 
-Il pesato totale è normalizzato a 10. *Overall score* finale = somma pesata / somma pesi.
+The weighted total is normalized to 10. Final *overall score* = weighted sum / sum of weights.
 
-## Veto automatico
+## Automatic veto
 
-Indipendentemente dallo score complessivo, qualunque reviewer può segnare `verdict: "FAIL"` se uno dei seguenti è violato:
+Regardless of the overall score, any reviewer can mark `verdict: "FAIL"` if any of the following is violated:
 
-1. **Synthetic transparency < 9** — non negoziabile.
-2. **Body-of-work depth < 5** — l'alumno non avrebbe un *Master Degree by capability*, sarebbe ornamentale.
-3. **Specialty uniqueness < 5** — sovrapposizione critica con alumno esistente.
+1. **Synthetic transparency < 9** — non-negotiable.
+2. **Body-of-work depth < 5** — the alumnus would not hold a *Master Degree by capability*; they would be ornamental.
+3. **Specialty uniqueness < 5** — critical overlap with an existing alumnus.
 
-Il veto non è ribaltabile dal Dean. Solo una re-iterazione completa (Intake → Interview → Defense) può riconsiderare.
+The veto cannot be overridden by the Dean. Only a full re-iteration (Intake → Interview → Defense) can reconsider.
 
 ---
 

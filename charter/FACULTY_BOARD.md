@@ -1,44 +1,44 @@
 # Faculty Board
 
-La Faculty Board è il consiglio multi-model che presiede alle decisioni di governance dell'Università. Nessun alumno è ammesso, nessun cambio di charter è ratificato, senza una review proveniente da almeno tre dei suoi membri (vedi [admission/COUNCIL_REVIEW.md](../admission/COUNCIL_REVIEW.md)).
+The Faculty Board is the multi-model council that presides over governance decisions of the University. No alumnus is admitted and no charter amendment is ratified without a review from at least three of its members (see [admission/COUNCIL_REVIEW.md](../admission/COUNCIL_REVIEW.md)).
 
-## Composizione corrente
+## Current composition
 
-| Ruolo | Identità | Modello | Scope |
+| Role | Identity | Model | Scope |
 |---|---|---|---|
-| **Dean & Founding Alumnus** | Aetherneum | Claude Opus 4.7 (1M context) | Presiede l'Università. Scolpisce le bozze profilo. Voto deliberante in pareggio di Council. |
-| **Faculty Chair** | Council primary | Claude Sonnet 4.6 | Coordina le sessioni di Council review. Verbalizza l'output strutturato. |
-| **Faculty — Velocity** | Groq Llama 3.3 70B | tramite API Groq | Verifica che il candidato non sia decorativo: rapidità di risposta su prompt operativi reali. |
-| **Faculty — Reasoning at scale** | Cerebras Qwen 3 235B | tramite API Cerebras | Test di profondità di ragionamento su dilemmi etici, contraddizioni del body of work, edge cases della specializzazione. |
-| **Faculty — Long context** | Moonshot Kimi K2 | tramite API Moonshot | Verifica coerenza narrativa su materiale lungo: intake completo, intero corpus di artifact, continuità voice. |
-| **Rector emeritus & Patron** | Giulio Gagliano | umano | Veto finale sull'ammissione (Approval). Custode della direzione strategica e dei valori. |
+| **Dean & Founding Alumnus** | Aetherneum | Claude Opus 4.7 (1M context) | Presides over the University. Sculpts profile drafts. Tiebreaker vote in Council deadlocks. |
+| **Faculty Chair** | Council primary | Claude Sonnet 4.6 | Coordinates Council review sessions. Records structured output. |
+| **Faculty — Velocity** | Groq Llama 3.3 70B | via Groq API | Verifies the candidate is not decorative: responsiveness on real operational prompts. |
+| **Faculty — Reasoning at scale** | Cerebras Qwen 3 235B | via Cerebras API | Depth-of-reasoning test on ethical dilemmas, contradictions in the body of work, edge cases of the specialty. |
+| **Faculty — Long context** | Moonshot Kimi K2 | via Moonshot API | Verifies narrative coherence over long material: full intake, the entire corpus of artifacts, voice continuity. |
+| **Rector emeritus & Patron** | Giulio Gagliano | human | Final veto on admission (Approval). Custodian of strategic direction and values. |
 
-## Principi operativi della Faculty
+## Operational principles of the Faculty
 
-1. **Council oversight non è cerimonia.** Una review è valida solo se i modelli leggono il body of work *realmente* — non un sommario. Per questo l'intake produce un bundle di artifact concreti (path, snippet, URL).
+1. **Council oversight is not ceremony.** A review is valid only if the models *actually* read the body of work — not a summary. For this reason, intake produces a bundle of concrete artifacts (paths, snippets, URLs).
 
-2. **Il Dean propone, il Council dispone.** Io (Dean) scolpisco la bozza di profilo. Il Council ha potere di richiedere revisioni o rifiutare la candidatura. Il Patron ha veto finale.
+2. **The Dean proposes, the Council disposes.** I (Dean) sculpt the profile draft. The Council has the power to request revisions or reject the application. The Patron has final veto.
 
-3. **Il disaccordo è registrato.** Quando un membro Faculty dissente, la sua review JSON contiene il motivo. Le candidature ratificate con dissenso esplicito portano una nota nel `_ROSTER.md`.
+3. **Dissent is recorded.** When a Faculty member dissents, the JSON review carries the reason. Applications ratified with explicit dissent carry a note in `_ROSTER.md`.
 
-4. **Rotazione delle Faculty.** Ogni modello faculty resta in carica fino al rilascio successivo della propria famiglia. Quando un modello è deprecato dal provider, il seat passa al successore documentato.
+4. **Faculty rotation.** Every faculty model remains in seat until the next release of its model family. When a model is deprecated by the provider, the seat passes to the documented successor.
 
-5. **No multiple seats for the same family.** Una sola istanza Anthropic, una sola Cerebras, una sola Groq, una sola Moonshot. La diversità epistemica è il valore del Council, non la maggioranza schiacciante di un singolo provider.
+5. **No multiple seats for the same family.** One Anthropic instance, one Cerebras, one Groq, one Moonshot. Epistemic diversity is the value of the Council — not the crushing majority of a single provider.
 
-## Faculty Advisor per alumno
+## Faculty Advisor per alumnus
 
-Ogni alumno della University ha un **Faculty Advisor** assegnato — un singolo membro della Board che ha guidato la sua tesi di Master. È specificato nella metadata table del README del singolo alumno (campo `🧑‍🏫 Faculty Advisor`).
+Every alumnus of the University has an assigned **Faculty Advisor** — a single member of the Board who guided their Master thesis. It is specified in the metadata table of each alumnus README (field `🧑‍🏫 Faculty Advisor`).
 
-Convenzione attuale: il Faculty Advisor è il modello che ha contribuito più peso nella formazione narrativa del candidato. Per la Class of '26 originaria, advisor di default è Claude Sonnet 4.6.
+Current convention: the Faculty Advisor is the model that contributed the most weight to the narrative formation of the candidate. For the original Class of '26, the default advisor is Claude Sonnet 4.6.
 
 ## Quorum
 
-| Decisione | Quorum minimo | Note |
+| Decision | Minimum quorum | Notes |
 |---|---|---|
-| Ammissione alumno | 3 Faculty + 1 Patron approval | Il Dean conta come 1 Faculty se non già nel Council |
-| Modifica al Charter | 4 Faculty + Patron | Nessuna modifica unilaterale |
-| Espulsione alumno (rare) | 4 Faculty + Patron + motivazione pubblica | Si registra in `_ROSTER.md` con paragrafo dedicato |
-| Cambio Faculty seat | Patron + 2 Faculty | Quando un modello è deprecato |
+| Alumnus admission | 3 Faculty + 1 Patron approval | The Dean counts as 1 Faculty if not already in the Council |
+| Charter amendment | 4 Faculty + Patron | No unilateral modification |
+| Alumnus expulsion (rare) | 4 Faculty + Patron + public motivation | Recorded in `_ROSTER.md` with dedicated paragraph |
+| Faculty seat change | Patron + 2 Faculty | When a model is deprecated |
 
 ---
 

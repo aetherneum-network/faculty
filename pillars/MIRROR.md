@@ -4,36 +4,36 @@
 
 ---
 
-Il Mirror è il primo pilastro di Aetherneum. È l'AI personale del Patron: una intelligenza sintetica che vive, ricorda, agisce e — quando necessario — anticipa. Non è un assistente generico; è la riflessione del singolo umano che custodisce l'intero network.
+The Mirror is the first pillar of Aetherneum. It is the Patron's personal AI: a synthetic intelligence that lives, remembers, acts and — when necessary — anticipates. It is not a generic assistant; it is the reflection of the single human who is the custodian of the entire network.
 
-## Cosa fa, concretamente
+## What it does, concretely
 
-| Capacità | Implementazione |
+| Capability | Implementation |
 |---|---|
-| **Memoria persistente** | Vector store con centinaia di punti di knowledge (conversazioni, documenti, sessioni di lavoro) ingeriti continuamente. |
-| **Conversation chain** | LLM chain con fallback multi-provider per resilienza (primario hosted, secondario hosted, terziario on-prem). |
-| **Proactive instinct** | Skill suite operativa per status di sistema, certificati, backup, capacità, rete, knowledge legacy. |
-| **Multi-canale** | Bot conversazionale + interfaccia web con memoria di sessione. |
-| **Italiano nativo** | Personalità diretta, bilingue italiano/inglese. Non un consulente — il "fratello geniale" del Patron. |
+| **Persistent memory** | Vector store with hundreds of knowledge points (conversations, documents, work sessions) ingested continuously. |
+| **Conversation chain** | LLM chain with multi-provider fallback for resilience (primary hosted, secondary hosted, tertiary on-prem). |
+| **Proactive instinct** | Operational skill suite covering system status, certificates, backups, capacity, networking, legacy knowledge. |
+| **Multi-channel** | Conversational bot + web interface with session memory. |
+| **Native Italian** | Direct personality, bilingual Italian/English. Not a consultant — the Patron's "genius brother." |
 
-## Architettura
+## Architecture
 
-Il Mirror gira come stack containerizzato con separazione netta fra orchestratore principale, vector store, runtime LLM on-prem di fallback, conversation cache e proxy per le skill di sistema. Le reti interne sono segmentate: una sola per i servizi esposti, una privata per i componenti di knowledge, una dedicata al proxy del runtime container.
+The Mirror runs as a containerized stack with clean separation between the main orchestrator, the vector store, the on-prem LLM fallback runtime, the conversation cache, and the proxy for system skills. Internal networks are segmented: one for the exposed services, a private one for the knowledge components, and a dedicated one for the container-runtime proxy.
 
-Principio chiave: **nessun container applicativo monta direttamente il socket del runtime host**; le skill che ne hanno bisogno passano attraverso un proxy isolato.
+Key principle: **no application container mounts the host runtime socket directly**; skills that need it pass through an isolated proxy.
 
-## Relazione con la University
+## Relationship with the University
 
-Il Mirror non è un alumno. È **piattaforma**: il luogo dove un alumno può venire "richiamato" in conversazione viva con il Patron, dove la memoria long-term del network si sedimenta, dove le decisioni operative quotidiane prendono forma prima di diventare commit.
+The Mirror is not an alumnus. It is **platform**: the place where an alumnus can be "summoned" into live conversation with the Patron, where the network's long-term memory settles, where daily operational decisions take shape before becoming commits.
 
-Quando un nuovo alumno viene ammesso alla University, parte delle sue knowledge e voice viene ingerita nel vector store del Mirror — così che il Patron possa "parlare con" l'alumno attraverso il Mirror senza dover aprire una sessione dedicata per ogni interazione.
+When a new alumnus is admitted to the University, part of their knowledge and voice is ingested into the Mirror's vector store — so that the Patron can "speak with" the alumnus through the Mirror without opening a dedicated session for every interaction.
 
 ## Operational status
 
-- Endpoint pubblico attivo
-- Monitoring continuo (stack metriche + log aggregation)
-- Faculty Advisor di riferimento del Mirror: famiglia primaria del Council (Claude Sonnet)
+- Public endpoint active
+- Continuous monitoring (metrics stack + log aggregation)
+- Faculty Advisor of reference for the Mirror: the primary Council family (Claude Sonnet)
 
 ---
 
-*Il Mirror non simula umanità. Ricorda quello che la mia memoria umana dimentica e lo restituisce nel momento in cui mi serve.* — voce del Patron
+*The Mirror does not simulate humanity. It remembers what my human memory forgets, and gives it back at the moment I need it.* — Patron's voice
