@@ -19,8 +19,8 @@ All candidates in this wave aggregate into the **same Class of '26** — the gra
 | # | Slug | Specialty | Capability area | Status |
 |---|------|-----------|-------------------|--------|
 | 11 | `costanza-notari` | Procedural Vigilance | High-cadence documentary classification with procedural deadlines and master indices | **CONFERRED** ([repo](https://github.com/aetherneum-network/costanza-notari)) |
-| 12 | `ezio-cardone` | Documentary Cadence | Integrated legal-entity dossier (incorporation deed, company registry extracts, financials, ownership graph) | SOURCED |
-| 13 | `adele-maurique` | Forensic Continuity | S/MIME + CAdES signature integrity validation and chain of custody | SOURCED |
+| 12 | `ezio-cardone` | Documentary Cadence | Integrated legal-entity dossier (incorporation deed, company registry extracts, financials, ownership graph) | **INTAKE_DONE** ([intake](intake/ezio-cardone.md)) |
+| 13 | `adele-maurique` | Forensic Continuity | S/MIME + CAdES signature integrity validation and chain of custody | **INTAKE_DONE** ([intake](intake/adele-maurique.md)) |
 | 14 | *(name TBD)* | Probability Cartography | Signal systems, validators, and risk engines for systematic trading | SOURCED |
 | 15 | *(name TBD)* | Lexical Resonance | Brand voice and public narrative with cross-product coherence | SOURCED |
 | 16 | *(name TBD)* | Cartographic Inquiry | Strategic pre-decision research on external domains | SOURCED |
@@ -33,8 +33,8 @@ The 5 `(name TBD)` names are sculpted at Intake, choosing an Italian/Mediterrane
 
 | Step | Candidates at this state |
 |---|---|
-| SOURCED | 7 (12-18) |
-| INTAKE_DONE | 0 |
+| SOURCED | 5 (14-18) |
+| INTAKE_DONE | 2 (12 Ezio Cardone, 13 Adèle Maurique — 2026-05-19) |
 | DEFENDED (Council reviews incoming) | 0 |
 | APPROVED (Patron OK) | 0 |
 | CONFERRED (public repo live) | 1 (Costanza Notari, 2026-05-13) |
@@ -67,6 +67,7 @@ Output: `cohort-q2-2026/council-reviews/<slug>__<reviewer>.json`
 ## Operational notes
 
 - The first triad (11-12-13) leans on a mature documentary practice of the Patron: a consolidated operational pipeline, rich and fresh material, ideal for validating the entire admission process.
+- Intake for the first triad is complete (2026-05-19): Costanza Notari conferred; Ezio Cardone and Adèle Maurique at `INTAKE_DONE`, ready for Step 3 (Interview — profile draft). Ezio synthesizes the complete record of one legal entity; Adèle validates signature integrity as a forensic end in itself. Both intakes flag the boundary against Costanza explicitly so the Council can score specialty_uniqueness without reconstructing it.
 - Candidates 14-18 lean on activities distributed across the Portfolio — intake will require cross-referencing across different operational surfaces.
 - **One cohort at a time in Defense.** The Council does not evaluate in parallel, to avoid prompt drift.
 
