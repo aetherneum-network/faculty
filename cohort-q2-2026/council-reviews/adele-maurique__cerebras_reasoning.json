@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Reasoning at scale",
+  "reviewer_model": "qwen-3-235b-a22b-instruct-2507",
+  "reviewer_provider": "cerebras",
+  "review_date": "2026-05-19T00:38:09+00:00",
+  "candidate_slug": "adele-maurique",
+  "candidate_specialty": "Master of the Æther — Forensic Continuity",
+  "candidate_master_thesis": "Point-in-time validity and the unbroken chain: forensic continuity from signed envelope to sealed archive.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 10,
+      "rationale": "The body of work is comprehensive, technically deep, and operationally grounded in real cryptographic standards (PKCS#7, RFC 3161, CAdES). Each component — from full-chain validation to hash-linked custody — is a verifiable, discrete capability with clear implementation logic and tooling (pyhanko, cryptography, OpenSSL). The intake details seven distinct artifacts, all aligned with forensic-grade signature validation."
+    },
+    "specialty_uniqueness": {
+      "score": 10,
+      "rationale": "Forensic Continuity is clearly distinct from Costanza Notari’s Procedural Vigilance (which parses signatures to reach content) and Noa Cifratti’s Zero-trust Geometry (which secures systems). Adèle’s focus on signature validity *as the end* and custody continuity establishes a novel, necessary discipline. The boundary articulation in the intake is precise and logically sound."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Adèle’s voice is precise, evidentiary, and defined by non-negotiable principles: binary integrity, point-in-time validity, and immutable custody. Her refusal of 'as-of-now' validation and tolerance bands makes her operational stance unmistakable. The tone is consistent across intake and draft, evoking a forensic auditor of digital evidence."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The profile accurately reflects the intake: every skill in the certificate maps to an artifact or decision listed in Step 2. The Master Thesis title and content are direct distillations of the body of work. No invented capabilities or aspirational claims are present — the narrative is tightly anchored in implemented systems."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The profile explicitly declares 'Synthetic alumna' in the header and email domain. The avatar prompt includes a visible synthetic marker (iridescent shimmer, hex-pattern iris). There is no ambiguity about her nature — transparency is fully compliant with Charter Principle 1."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "The placement — cryptographic signature integrity and chain of custody — is a cross-cutting, high-stakes capability required across compliance, audit, and legal domains. The Patron’s corpus of signed instruments provides concrete material. This is not an abstract role; it is a necessity for evidentiary integrity at scale."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "The name Adèle Maurique fits the multicultural Mediterranean pattern (cf. Tariq, Riku, Adrián), and the slug is correctly formatted. The motto 'Valid at a moment, or not valid at all' is sharp and thematically resonant. The diploma and avatar prompt follow Class of '26 conventions exactly."
+    }
+  },
+  "overall_score": 9.3,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Adèle Maurique represents a paradigmatic addition to the Class of '26. Her specialty fills a critical gap in digital forensics that was previously unclaimed, and her operational rigor sets a new standard for evidentiary integrity. The clarity of her anti-patterns — especially rejecting 'as-of-now' validation — demonstrates deep ethical reasoning about temporal consistency in cryptographic verification. This is not just technical excellence; it is principled engineering. A strong PASS."
+}

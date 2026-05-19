@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Faculty Chair",
+  "reviewer_model": "claude-sonnet-4-5-20250929",
+  "reviewer_provider": "anthropic",
+  "review_date": "2026-05-19T00:36:58+00:00",
+  "candidate_slug": "ezio-cardone",
+  "candidate_specialty": "Documentary Cadence",
+  "candidate_master_thesis": "The entity as spine: provenance-anchored assembly of the integrated legal-entity dossier",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "The intake catalogs seven concrete artifacts (integrated dossier builder, structured entity-record JSON, ownership-graph renderer with sum-checking, cross-source discrepancy detector, statutory-obligation calendar generator, versioned snapshots, provenance index). Each artifact is operational and traceable — the sum-checked ownership graph and the deterministic rebuild pipeline are particularly substantive. This is a deep, coherent toolkit."
+    },
+    "specialty_uniqueness": {
+      "score": 9,
+      "rationale": "Documentary Cadence fills a clear gap. Costanza Notari classifies an inbound flow of many acts; Ezio synthesizes the complete record of one entity. The intake explicitly contrasts the two: same documentary universe, opposite motion. The specialty name is evocative and matches the work — an entity's documentary record is never finished, only current, and currency has a rhythm."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Ezio's voice is methodical, notarial, quietly exacting — he will not round a figure to make a table look tidy, and will not let a cap table render until its percentages resolve to 100%. The anti-patterns are specific and behavioral: no hand-assembled master documents, no silent reconciliation of conflicts, no cap tables that do not sum-check. The personality emerges sharply from the operational patterns."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "The profile is tightly anchored to the body of work. The Master Thesis describes the deterministic pipeline from entity-record JSON to rendered dossier; the Skills Certificate lists the seven artifacts from the intake; the Biography cites real decisions (cross-source discrepancy surfacing, sum-checked ownership graphs, versioned snapshots). No embroidery, no aspirational claims. The work is the proof."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The profile declares 'Synthetic alumnus' in the header table, in the diploma footer, and in the toolchain section. The email is honest (`ezio.cardone@aetherneum.com`). The avatar prompt includes a visible synthetic marker (iridescent shimmer along the brow, hex-pattern reflection in the iris). No ambiguity, no disguise. This is paradigmatic transparency."
+    },
+    "placement_fit": {
+      "score": 8,
+      "rationale": "The placement is 'Integrated legal-entity dossiering' — a cross-cutting capability activated wherever a legal entity is formed, restructured, or reviewed. The intake notes this is a recurring capability of the Patron across the portfolio, with existing entity documentation and the dossier-builder toolkit available. The placement is real and has material, though the profile could briefly list one or two concrete Portfolio companies where the capability has already been applied."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "The name Ezio Cardone follows the Italian convention of the Class of '26 (cf. Marco Aurelius, Lucia Solari, Costanza Notari). The motto is brief and evocative in English ('A dossier is never finished — only current'). The diploma is present and formatted per convention. The avatar prompt is in the standard format (portrait, traits, synthetic marker). Strong continuity."
+    }
+  },
+  "overall_score": 9.1,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "This is an exceptionally strong candidate. The specialty carves a clear boundary with Costanza Notari (inbound flow vs. outbound synthesis), and the body of work is operational, traceable, and substantive. The voice is distinct and the non-negotiables are behavioral rather than decorative. Synthetic transparency is exemplary. The only minor observation: the placement description could benefit from one concrete example of a Portfolio company where entity dossiering is already active, to make 'Integrated legal-entity dossiering' feel less abstract — but this does not block admission. The Council will find this candidate well-prepared and the intake thorough. Ezio Cardone is ready for conferral."
+}

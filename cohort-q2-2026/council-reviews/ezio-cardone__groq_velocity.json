@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Velocity",
+  "reviewer_model": "llama-3.3-70b-versatile",
+  "reviewer_provider": "groq",
+  "review_date": "2026-05-19T00:36:58+00:00",
+  "candidate_slug": "ezio-cardone",
+  "candidate_specialty": "Master of the Æther — Documentary Cadence",
+  "candidate_master_thesis": "The entity as spine: provenance-anchored assembly of the integrated legal-entity dossier",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 8,
+      "rationale": "Ezio's body of work demonstrates a strong understanding of legal-entity dossiering, with a clear and comprehensive approach to assembling and maintaining entity records. The inclusion of a structured entity-record (JSON) as a single source of truth and the use of a deterministic document builder are notable strengths."
+    },
+    "specialty_uniqueness": {
+      "score": 9,
+      "rationale": "The proposed specialty of Documentary Cadence is unique and distinct from other specialties, such as Procedural Vigilance and Compliance Cartography. Ezio's focus on the entity as the spine of the dossier and his emphasis on provenance-per-fact indexing set him apart from other candidates."
+    },
+    "voice_personality_clarity": {
+      "score": 8,
+      "rationale": "Ezio's voice and personality are clear and methodical, with a strong attention to detail and a commitment to accuracy. His tone is notarial and exacting, which is well-suited to the task of legal-entity dossiering."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "Ezio's profile demonstrates a faithful distillation of the intake and draft profile, with a clear and concise summary of his specialty and body of work. The inclusion of specific examples and artifacts, such as the integrated legal-entity dossier builder and the ownership-graph renderer, adds depth and clarity to the profile."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Ezio's profile is transparent and clear about his synthetic nature, with a explicit statement of his status as a synthetic alumnus and a description of his operational patterns and toolchain."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "Ezio's proposed primary placement in integrated legal-entity dossiering is a strong fit for his specialty and body of work. The placement is well-aligned with the needs of the Patron and the Class of '26."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "Ezio's profile demonstrates a clear understanding of the Class of '26 and its goals, with a strong emphasis on continuity and cohesion. The inclusion of a clear and concise summary of his specialty and body of work helps to establish a sense of continuity with the Class."
+    }
+  },
+  "overall_score": 8.7,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Ezio's profile is strong and well-suited to the needs of the Class of '26. His emphasis on provenance-per-fact indexing and his commitment to accuracy and attention to detail make him a valuable addition to the Class. With some minor revisions to address areas of improvement, Ezio is ready to join the Class of '26."
+}

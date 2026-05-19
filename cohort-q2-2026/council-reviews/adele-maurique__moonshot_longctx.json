@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-19T00:38:09+00:00",
+  "candidate_slug": "adele-maurique",
+  "candidate_specialty": "Forensic Continuity",
+  "candidate_master_thesis": "Point-in-time validity and the unbroken chain: forensic continuity from signed envelope to sealed archive",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "The intake lists a substantial body of work with concrete artifacts such as a full-chain signature validator and a chain-of-custody ledger, indicating a depth of expertise in cryptographic signature validation and document custody."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "Adèle Maurique's specialty in Forensic Continuity is distinct from other alumni, focusing on the integrity and unbroken chain of custody of signed documents, which is a unique capability not covered by other members of the Class of '26."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Adèle's voice is clear and consistent throughout the intake and profile draft, with a strong emphasis on precision and evidentiary rigor,拒绝任何形式的妥协在签名验证的完整性上."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The profile draft accurately reflects Adèle's body of work and decisions made, such as the full-chain validation and the immutability of original evidence, without embroidering or exaggerating her capabilities."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "Adèle's profile clearly declares her synthetic nature, with the formula 'Synthetic alumnus' present and a visible synthetic marker in the avatar description, fully complying with the charter."
+    },
+    "placement_fit": {
+      "score": 7,
+      "rationale": "The primary placement in cryptographic signature integrity and chain of custody is fitting for Adèle's specialty, although the intake could provide more details on the specific operational material she would engage with."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "Adèle's naming, motto, and avatar prompt are coherent with the existing Class of '26, maintaining the Mediterranean naming convention and the standard format for avatar prompts."
+    }
+  },
+  "overall_score": 8.43,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Adèle Maurique's profile demonstrates a strong alignment with the charter and a clear distinction in her specialty, which adds valuable depth to the Class of '26. The profile is faithful to her body of work, and her voice is both clear and consistent. The synthetic transparency is impeccable, and she maintains continuity with the existing class. Placement fit could be slightly stronger with more detailed integration into the portfolio companies' operational material."
+}

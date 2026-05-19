@@ -19,8 +19,8 @@ All candidates in this wave aggregate into the **same Class of '26** — the gra
 | # | Slug | Specialty | Capability area | Status |
 |---|------|-----------|-------------------|--------|
 | 11 | `costanza-notari` | Procedural Vigilance | High-cadence documentary classification with procedural deadlines and master indices | **CONFERRED** ([repo](https://github.com/aetherneum-network/costanza-notari)) |
-| 12 | `ezio-cardone` | Documentary Cadence | Integrated legal-entity dossier (incorporation deed, company registry extracts, financials, ownership graph) | **DEFENDED** ([intake](intake/ezio-cardone.md) · [profile](../alumni/pending/ezio-cardone.md)) |
-| 13 | `adele-maurique` | Forensic Continuity | S/MIME + CAdES signature integrity validation and chain of custody | **DEFENDED** ([intake](intake/adele-maurique.md) · [profile](../alumni/pending/adele-maurique.md)) |
+| 12 | `ezio-cardone` | Documentary Cadence | Integrated legal-entity dossier (incorporation deed, company registry extracts, financials, ownership graph) | **IN_DEFENSE** — Council PASS 3/3 ([intake](intake/ezio-cardone.md) · [profile](../alumni/pending/ezio-cardone.md) · [reviews](council-reviews/)) |
+| 13 | `adele-maurique` | Forensic Continuity | S/MIME + CAdES signature integrity validation and chain of custody | **IN_DEFENSE** — Council PASS 3/3 ([intake](intake/adele-maurique.md) · [profile](../alumni/pending/adele-maurique.md) · [reviews](council-reviews/)) |
 | 14 | *(name TBD)* | Probability Cartography | Signal systems, validators, and risk engines for systematic trading | SOURCED |
 | 15 | *(name TBD)* | Lexical Resonance | Brand voice and public narrative with cross-product coherence | SOURCED |
 | 16 | *(name TBD)* | Cartographic Inquiry | Strategic pre-decision research on external domains | SOURCED |
@@ -35,7 +35,8 @@ The 5 `(name TBD)` names are sculpted at Intake, choosing an Italian/Mediterrane
 |---|---|
 | SOURCED | 5 (14-18) |
 | INTAKE_DONE | 0 |
-| DEFENDED (Council reviews incoming) | 2 (12 Ezio Cardone, 13 Adèle Maurique — profile drafts 2026-05-19) |
+| DEFENDED (Council reviews incoming) | 0 |
+| IN_DEFENSE (Council done, awaiting Patron) | 2 (12 Ezio Cardone PASS 3/3, 13 Adèle Maurique PASS 3/3 — 2026-05-19) |
 | APPROVED (Patron OK) | 0 |
 | CONFERRED (public repo live) | 1 (Costanza Notari, 2026-05-13) |
 
@@ -67,7 +68,7 @@ Output: `cohort-q2-2026/council-reviews/<slug>__<reviewer>.json`
 ## Operational notes
 
 - The first triad (11-12-13) leans on a mature documentary practice of the Patron: a consolidated operational pipeline, rich and fresh material, ideal for validating the entire admission process.
-- First triad complete through Step 3 (2026-05-19): Costanza Notari conferred; Ezio Cardone and Adèle Maurique at `DEFENDED` — intake + profile draft (`alumni/pending/`) done, ready for Step 4 (Council Defense). Ezio synthesizes the complete record of one legal entity; Adèle validates signature integrity as a forensic end in itself. Both profiles flag the boundary against Costanza explicitly so the Council can score specialty_uniqueness without reconstructing it.
+- First triad complete through Step 4 (2026-05-19): Costanza Notari conferred; Ezio Cardone and Adèle Maurique at `IN_DEFENSE` — Council Defense done, both PASS with quorum 3/3 (Ezio: Anthropic 9.1 / Groq 8.7 / Moonshot 8.1, Cerebras 429; Adèle: Cerebras 9.3 / Groq 8.7 / Moonshot 8.43, Anthropic JSON error). No veto. Awaiting Step 5 — Patron Approval. The two transient reviewer failures can be re-run for 4/4 parity but the Councils are valid as-is.
 - Candidates 14-18 lean on activities distributed across the Portfolio — intake will require cross-referencing across different operational surfaces.
 - **One cohort at a time in Defense.** The Council does not evaluate in parallel, to avoid prompt drift.
 

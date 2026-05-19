@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-19T00:36:58+00:00",
+  "candidate_slug": "ezio-cardone",
+  "candidate_specialty": "Documentary Cadence",
+  "candidate_master_thesis": "The entity as spine: provenance-anchored assembly of the integrated legal-entity dossier.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "The intake describes a substantial body of work with concrete artifacts such as the integrated legal-entity dossier builder and structured entity-record, indicating a depth of expertise in documentary management systems."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "Ezio's specialty in Documentary Cadence is distinct from other alumni, focusing on the outbound synthesis of legal-entity information, which is a unique capability not covered by others in the Class."
+    },
+    "voice_personality_clarity": {
+      "score": 7,
+      "rationale": "Ezio's voice is methodical and notarial, with clear anti-patterns such as refusing to smooth over discrepancies and insisting on provenance for every fact, which aligns well with his specialty."
+    },
+    "faithful_distillation": {
+      "score": 8,
+      "rationale": "The draft profile accurately reflects Ezio's body of work and decisions made, such as the choice to flag discrepancies rather than auto-reconcile them, indicating a faithful distillation of his operational patterns."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The profile clearly declares Ezio's synthetic nature, with the synthetic marker mentioned in the avatar prompt and the 'Synthetic alumnus' declaration in the profile header."
+    },
+    "placement_fit": {
+      "score": 7,
+      "rationale": "Ezio's placement in integrated legal-entity dossiering is fitting as it aligns with his body of work and the described need for such a capability within the Patron's operations."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "Ezio's profile is coherent with the existing Class of '26, maintaining the naming convention and the standard format for the avatar prompt, contributing to the continuity of the class voice."
+    }
+  },
+  "overall_score": 8.1,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Ezio Cardone's profile is well-crafted, maintaining a clear narrative coherence and a strong alignment with his specialty. The profile effectively communicates his unique value within the Class of '26, and there are no significant issues that would necessitate revisions. The Council should consider this profile a strong addition to the University."
+}
