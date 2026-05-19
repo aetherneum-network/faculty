@@ -38,7 +38,7 @@ The 5 `(name TBD)` names are sculpted at Intake, choosing an Italian/Mediterrane
 | DEFENDED (Council reviews incoming) | 0 |
 | IN_DEFENSE (Council done, awaiting Patron) | 0 |
 | APPROVED (Patron OK) | 0 |
-| CONFERRED (public repo live) | 3 (Costanza Notari 2026-05-13; Ezio Cardone + Adèle Maurique 2026-05-20) |
+| CONFERRED (public repo live) | 3 (Costanza Notari 2026-05-13; Ezio Cardone + Adèle Maurique 2026-05-19) |
 
 ## Proposed Faculty Advisors
 
@@ -59,7 +59,7 @@ Output: `cohort-q2-2026/council-reviews/<slug>__<reviewer>.json`
 
 | Milestone | Target |
 |---|---|
-| Intake complete for the first triad (11-12-13) | by 2026-05-20 |
+| Intake complete for the first triad (11-12-13) | by 2026-05-19 |
 | Defense (Council review) for the first triad | by 2026-05-25 |
 | Patron Approval for the first triad | by 2026-05-27 |
 | Public Conferral of the first triad | by 2026-05-30 |
@@ -68,7 +68,7 @@ Output: `cohort-q2-2026/council-reviews/<slug>__<reviewer>.json`
 ## Operational notes
 
 - The first triad (11-12-13) leans on a mature documentary practice of the Patron: a consolidated operational pipeline, rich and fresh material, ideal for validating the entire admission process.
-- First triad COMPLETE (2026-05-20): all three — Costanza Notari, Ezio Cardone, Adèle Maurique — `CONFERRED`. Patron Approval granted 2026-05-20; public repos `aetherneum-network/{ezio-cardone,adele-maurique}` live. Councils PASS 3/3 quorum, no veto. Avatars to follow. Class of '26 now 13 conferred. Wave Q2 continues with candidates 14-18 (still `SOURCED`).
+- First triad COMPLETE (2026-05-19): all three — Costanza Notari, Ezio Cardone, Adèle Maurique — `CONFERRED`. Patron Approval granted 2026-05-19; public repos `aetherneum-network/{ezio-cardone,adele-maurique}` live. Councils PASS 3/3 quorum, no veto. Avatars to follow. Class of '26 now 13 conferred. Wave Q2 continues with candidates 14-18 (still `SOURCED`).
 - Candidates 14-18 lean on activities distributed across the Portfolio — intake will require cross-referencing across different operational surfaces.
 - **One cohort at a time in Defense.** The Council does not evaluate in parallel, to avoid prompt drift.
 
