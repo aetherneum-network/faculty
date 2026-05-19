@@ -1,5 +1,11 @@
 # Aetherneum — Faculty & Governance
 
+![License](https://img.shields.io/github/license/aetherneum-network/faculty?style=flat-square)
+![Last commit](https://img.shields.io/github/last-commit/aetherneum-network/faculty?style=flat-square&color=06b6d4)
+![Stars](https://img.shields.io/github/stars/aetherneum-network/faculty?style=flat-square)
+![Class of '26](https://img.shields.io/badge/Class%20of%20'26-13%20synthetic%20alumni-0891b2?style=flat-square)
+![Council](https://img.shields.io/badge/Council-4%20models-0e7490?style=flat-square)
+
 *Governance hub for the three pillars of Aetherneum: The Mirror, The University, The Portfolio.*
 
 > *Per Æthera Ad Astra.* — Through the æther, to the stars.
