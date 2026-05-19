@@ -32,8 +32,8 @@ Detailed manifest: [../cohort-q2-2026/_MANIFEST.md](../cohort-q2-2026/_MANIFEST.
 | # | Candidate (WIP name) | Master of the Æther in | Faculty Advisor | Primary Placement | Status | Repo |
 |---|---|---|---|---|---|---|
 | 11 | **Costanza Notari** | Procedural Vigilance | Claude Opus 4.7 | High-cadence documentary classification with procedural deadlines | CONFERRED | [costanza-notari](https://github.com/aetherneum-network/costanza-notari) |
-| 12 | **Ezio Cardone** | Documentary Cadence | Claude Opus 4.7 | Integrated legal-entity dossiering | INTAKE_DONE | — |
-| 13 | **Adèle Maurique** | Forensic Continuity | Claude Opus 4.7 | Cryptographic signature integrity and chain of custody | INTAKE_DONE | — |
+| 12 | **Ezio Cardone** | Documentary Cadence | Claude Opus 4.7 | Integrated legal-entity dossiering | DEFENDED | — |
+| 13 | **Adèle Maurique** | Forensic Continuity | Claude Opus 4.7 | Cryptographic signature integrity and chain of custody | DEFENDED | — |
 | 14 | *(name TBD)* | Probability Cartography | TBD | Systematic and event-market trading systems | SOURCED | — |
 | 15 | *(name TBD)* | Lexical Resonance | TBD | Cross-product brand voice and public narrative | SOURCED | — |
 | 16 | *(name TBD)* | Cartographic Inquiry | TBD | Strategic pre-decision research on external domains | SOURCED | — |
@@ -50,6 +50,7 @@ Detailed manifest: [../cohort-q2-2026/_MANIFEST.md](../cohort-q2-2026/_MANIFEST.
 | 2026-05-14 | **Post-backfill remediation** — sofia-lume + noa-cifratti READMEs updated with a Verifiable Artifacts section. Anthropic re-review: noa-cifratti veto cleared (5.87 FAIL → 7.27 PASS_WITH_REVISIONS). sofia-lume remains under Anthropic veto on body_of_work_depth; three other reviewers (Cerebras 8.24, Moonshot 8.13, Groq 8.93) pass her, average 7.79. Dissent is preserved in public JSON per Charter Principle 5 — once conferred, an alumnus stays conferred. | [sofia-lume](https://github.com/aetherneum-network/sofia-lume) · [noa-cifratti](https://github.com/aetherneum-network/noa-cifratti) |
 | 2026-05-13 | **Costanza Notari CONFERRED** — 11th alumna of the Class of '26. Council 4/4 PASS (Anthropic 9.36, Cerebras 9.5, Moonshot 9.3, Groq 8.7). Veto check cleared (synthetic_transparency 10/10 unanimous). | [aetherneum-network/costanza-notari](https://github.com/aetherneum-network/costanza-notari) |
 | 2026-05-19 | **Q2 first-triad Intake complete** — Step 2 done for candidates 12 (Ezio Cardone — Documentary Cadence) and 13 (Adèle Maurique — Forensic Continuity); both move `SOURCED → INTAKE_DONE`. Intakes describe abstract capability per template §7; each flags the specialty boundary against Costanza Notari for the Council. Next: Step 3 Interview (profile drafts). | [intake/ezio-cardone.md](../cohort-q2-2026/intake/ezio-cardone.md) · [intake/adele-maurique.md](../cohort-q2-2026/intake/adele-maurique.md) |
+| 2026-05-19 | **Q2 first-triad Step 3 (Interview) complete** — profile drafts written for Ezio Cardone and Adèle Maurique in `alumni/pending/`; both move `INTAKE_DONE → DEFENDED`. Ready for Step 4 (multi-model Council Defense). | [pending/ezio-cardone.md](pending/ezio-cardone.md) · [pending/adele-maurique.md](pending/adele-maurique.md) |
 
 ---
 
