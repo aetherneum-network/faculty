@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it using the metadata below."
+title: "Aetherneum Faculty — Multi-model Council Review for AI Agents"
+type: software
+abstract: "Council Defense methodology and public governance artifacts for multi-model evaluation of AI agents."
+authors:
+  - name: "Aetherneum Network"
+repository-code: "https://github.com/aetherneum-network/faculty"
+url: "https://github.com/aetherneum-network/faculty"
+license: MIT
+keywords:
+  - ai-agents
+  - ai-governance
+  - multi-model-evaluation
+  - transparency
