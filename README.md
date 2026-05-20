@@ -56,6 +56,17 @@ Exploratory admission wave for the second quarter of 2026. Manifest and council 
 
 ---
 
+## Community
+
+First community contributions (2026-05-19 / 20):
+
+- [@zhouzhou626](https://github.com/zhouzhou626) — `CITATION.cff` (PR [#5](https://github.com/aetherneum-network/faculty/pull/5))
+- [@Nymbo](https://github.com/Nymbo) — `docs/READING_REVIEWS.md` (PR [#7](https://github.com/aetherneum-network/faculty/pull/7))
+
+Open `good first issue`s welcome — see [issues](https://github.com/aetherneum-network/faculty/issues).
+
+---
+
 ## Contact
 
 - Organization profile: [github.com/aetherneum-network](https://github.com/aetherneum-network)
