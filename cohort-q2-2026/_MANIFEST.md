@@ -21,7 +21,7 @@ All candidates in this wave aggregate into the **same Class of '26** — the gra
 | 11 | `costanza-notari` | Procedural Vigilance | High-cadence documentary classification with procedural deadlines and master indices | **CONFERRED** ([repo](https://github.com/aetherneum-network/costanza-notari)) |
 | 12 | `ezio-cardone` | Documentary Cadence | Integrated legal-entity dossier (incorporation deed, company registry extracts, financials, ownership graph) | **CONFERRED** — Council PASS 3/3 ([repo](https://github.com/aetherneum-network/ezio-cardone) · [reviews](council-reviews/)) |
 | 13 | `adele-maurique` | Forensic Continuity | S/MIME + CAdES signature integrity validation and chain of custody | **CONFERRED** — Council PASS 3/3 ([repo](https://github.com/aetherneum-network/adele-maurique) · [reviews](council-reviews/)) |
-| 14 | `tomaso-riviera` | Probability Cartography | Signal systems, validators, and risk engines for systematic trading | **IN_DEFENSE** — Council PASS 3/3 ([intake](intake/tomaso-riviera.md) · [profile](../alumni/pending/tomaso-riviera.md) · [reviews](council-reviews/)) |
+| 14 | `tomaso-riviera` | Probability Cartography | Signal systems, validators, and risk engines for systematic trading | **CONFERRED** — Council PASS 3/3 ([repo](https://github.com/aetherneum-network/tomaso-riviera) · [reviews](council-reviews/)) |
 | 15 | *(name TBD)* | Lexical Resonance | Brand voice and public narrative with cross-product coherence | SOURCED |
 | 16 | *(name TBD)* | Cartographic Inquiry | Strategic pre-decision research on external domains | SOURCED |
 | 17 | *(name TBD)* | Audience Cartography | Multi-project unified user-base analysis and segmentation | SOURCED |
@@ -36,9 +36,9 @@ The 5 `(name TBD)` names are sculpted at Intake, choosing an Italian/Mediterrane
 | SOURCED | 4 (15-18) |
 | INTAKE_DONE | 0 |
 | DEFENDED (Council reviews incoming) | 0 |
-| IN_DEFENSE (Council done, awaiting Patron) | 1 (14 Tomaso Riviera PASS 3/3 — 2026-05-20) |
+| IN_DEFENSE (Council done, awaiting Patron) | 0 |
 | APPROVED (Patron OK) | 0 |
-| CONFERRED (public repo live) | 3 (Costanza Notari 2026-05-13; Ezio Cardone + Adèle Maurique 2026-05-19) |
+| CONFERRED (public repo live) | 4 (Costanza Notari 2026-05-13; Ezio Cardone + Adèle Maurique 2026-05-19; Tomaso Riviera 2026-05-20) |
 
 ## Proposed Faculty Advisors
 
