@@ -2,7 +2,7 @@
 
 *Canonical master list of Aetherneum University alumni. Updated at every Conferral.*
 
-Last update: 2026-05-19.
+Last update: 2026-05-20.
 
 ## Conventions
 
@@ -34,7 +34,7 @@ Detailed manifest: [../cohort-q2-2026/_MANIFEST.md](../cohort-q2-2026/_MANIFEST.
 | 11 | **Costanza Notari** | Procedural Vigilance | Claude Opus 4.7 | High-cadence documentary classification with procedural deadlines | CONFERRED | [costanza-notari](https://github.com/aetherneum-network/costanza-notari) |
 | 12 | **Ezio Cardone** | Documentary Cadence | Claude Opus 4.7 | Integrated legal-entity dossiering | CONFERRED | [ezio-cardone](https://github.com/aetherneum-network/ezio-cardone) |
 | 13 | **Adèle Maurique** | Forensic Continuity | Claude Opus 4.7 | Cryptographic signature integrity and chain of custody | CONFERRED | [adele-maurique](https://github.com/aetherneum-network/adele-maurique) |
-| 14 | *(name TBD)* | Probability Cartography | TBD | Systematic and event-market trading systems | SOURCED | — |
+| 14 | **Tomaso Riviera** | Probability Cartography | Claude Opus 4.7 | Signal systems, validators, and risk engines for systematic event-market trading | DEFENDED | — |
 | 15 | *(name TBD)* | Lexical Resonance | TBD | Cross-product brand voice and public narrative | SOURCED | — |
 | 16 | *(name TBD)* | Cartographic Inquiry | TBD | Strategic pre-decision research on external domains | SOURCED | — |
 | 17 | *(name TBD)* | Audience Cartography | TBD | Unified audience analytics and segmentation | SOURCED | — |
@@ -53,6 +53,7 @@ Detailed manifest: [../cohort-q2-2026/_MANIFEST.md](../cohort-q2-2026/_MANIFEST.
 | 2026-05-19 | **Q2 first-triad Step 3 (Interview) complete** — profile drafts written for Ezio Cardone and Adèle Maurique in `alumni/pending/`; both move `INTAKE_DONE → DEFENDED`. Ready for Step 4 (multi-model Council Defense). | [pending/ezio-cardone.md](pending/ezio-cardone.md) · [pending/adele-maurique.md](pending/adele-maurique.md) |
 | 2026-05-19 | **Q2 first-triad Step 4 (Council Defense) complete** — Ezio Cardone PASS 3/3 (Anthropic 9.1, Groq 8.7, Moonshot 8.1); Adèle Maurique PASS 3/3 (Cerebras 9.3, Groq 8.7, Moonshot 8.43). Quorum met, no veto; both move `DEFENDED → IN_DEFENSE`. One reviewer per candidate hit a transient failure (Cerebras 429 / Anthropic JSON) — Councils valid as-is. Awaiting Step 5 Patron Approval. | [cohort-q2-2026/council-reviews/](../cohort-q2-2026/council-reviews/) |
 | 2026-05-19 | **Ezio Cardone + Adèle Maurique CONFERRED** — Q2 wave alumni 12 & 13. Patron Approval granted (Step 5); public repos created (Step 6). `IN_DEFENSE → CONFERRED`. Class of '26 now **13 conferred**. Avatars to follow. | [ezio-cardone](https://github.com/aetherneum-network/ezio-cardone) · [adele-maurique](https://github.com/aetherneum-network/adele-maurique) |
+| 2026-05-20 | **Q2 candidate 14 — Tomaso Riviera (Probability Cartography)** — Steps 2+3 complete: intake + profile draft. `SOURCED → DEFENDED`. Specialty fills a gap: no current alumnus operates on market data with monetary skin in the game. Ready for Step 4 (multi-model Council Defense). | [intake/tomaso-riviera.md](../cohort-q2-2026/intake/tomaso-riviera.md) · [pending/tomaso-riviera.md](pending/tomaso-riviera.md) |
 
 ---
 
