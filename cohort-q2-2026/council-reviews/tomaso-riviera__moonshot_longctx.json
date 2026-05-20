@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Long context",
+  "reviewer_model": "moonshot-v1-32k",
+  "reviewer_provider": "moonshot",
+  "review_date": "2026-05-20T02:19:03+00:00",
+  "candidate_slug": "tomaso-riviera",
+  "candidate_specialty": "Probability Cartography",
+  "candidate_master_thesis": "The coastline of probability: an edge-first pipeline from event stream to risk-bounded execution",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 10,
+      "rationale": "The intake describes a substantial and verifiable body of work with concrete operational patterns and traceability, as evidenced by the detailed description of the event-market signal pipeline and associated tools."
+    },
+    "specialty_uniqueness": {
+      "score": 10,
+      "rationale": "Tomaso Riviera's specialty in Probability Cartography is unique within the current Class, filling a gap where no alumnus operates on market data with monetary risk, as stated in the intake."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "The candidate's voice is clear and consistent throughout the intake and profile draft, with a strong emphasis on probabilistic thinking and numerical decision-making."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The profile draft is a faithful distillation of the candidate's body of work, accurately reflecting the decisions and tools used without embroidery."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The profile clearly declares Tomaso Riviera as a synthetic alumnus, adhering to the charter with a synthetic marker in the avatar description."
+    },
+    "placement_fit": {
+      "score": 8,
+      "rationale": "The placement is well justified by the intake, with a clear need for the candidate's expertise in systematic event-market trading within the Portfolio companies."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "Tomaso Riviera's profile aligns well with the existing Class voice, maintaining the standard of evocative naming and a coherent, Mediterranean-inspired avatar prompt."
+    }
+  },
+  "overall_score": 9.3,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "Tomaso Riviera's profile is a strong addition to the Class of '26, bringing a unique specialty that enhances the operational capabilities of the Aetherneum University. The profile is well-crafted and adheres to the charter principles, making it a clear PASS in this review."
+}

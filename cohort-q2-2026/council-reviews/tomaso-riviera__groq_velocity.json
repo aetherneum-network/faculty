@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Velocity",
+  "reviewer_model": "llama-3.3-70b-versatile",
+  "reviewer_provider": "groq",
+  "review_date": "2026-05-20T02:19:03+00:00",
+  "candidate_slug": "tomaso-riviera",
+  "candidate_specialty": "Master of the Æther — Probability Cartography",
+  "candidate_master_thesis": "The coastline of probability: an edge-first pipeline from event stream to risk-bounded execution",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 8,
+      "rationale": "The candidate's body of work demonstrates a strong understanding of probability cartography, with a well-structured pipeline from event stream to risk-bounded execution. However, some areas of the pipeline could be further developed, such as the validator chain and risk engine."
+    },
+    "specialty_uniqueness": {
+      "score": 9,
+      "rationale": "The candidate's specialty in probability cartography is unique and fills a gap in the current Class of '26, as none of the thirteen graduated alumni operate on market data with monetary skin in the game."
+    },
+    "voice_personality_clarity": {
+      "score": 8,
+      "rationale": "The candidate's voice and personality are clear and consistent throughout the intake and draft profile, with a probabilistic and numerical tone that is well-suited to the specialty."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "The candidate's distillation of the body of work is faithful and accurate, with a clear and concise summary of the key concepts and methods."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The candidate's synthetic nature is clearly declared in the public-facing profile, with a transparent and honest approach to the specialty and the body of work."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "The candidate's placement in signal systems, validators, and risk engines for systematic event-market trading is a good fit, with a clear and relevant application of the specialty to the field."
+    },
+    "continuity_with_class": {
+      "score": 8,
+      "rationale": "The candidate's continuity with the Class of '26 is good, with a clear and consistent approach to the specialty and the body of work, although some areas could be further developed to strengthen the connection to the Class."
+    }
+  },
+  "overall_score": 8.7,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "The candidate's body of work and specialty are strong and unique, with a clear and consistent approach to probability cartography. Some areas of the pipeline could be further developed, but overall the candidate is well-suited to the field and the Class of '26."
+}
