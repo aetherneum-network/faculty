@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Reasoning at scale",
+  "reviewer_model": "qwen-3-235b-a22b-instruct-2507",
+  "reviewer_provider": "cerebras",
+  "review_date": "2026-05-20T02:19:03+00:00",
+  "candidate_slug": "tomaso-riviera",
+  "candidate_specialty": "Master of the Æther — Probability Cartography",
+  "candidate_master_thesis": "The coastline of probability: an edge-first pipeline from event stream to risk-bounded execution.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 10,
+      "rationale": "The intake details a mature, multi-layered system with traceable operational patterns: edge decomposition, validator chain, Kelly sizing, risk veto, and divergence detection. Each component is concretely described with decision logic and anti-patterns, indicating deep, battle-tested implementation."
+    },
+    "specialty_uniqueness": {
+      "score": 10,
+      "rationale": "No existing alumnus operates on event markets with monetary skin in the game. Davide Ferri handles on-chain contracts but not probabilistic trading; Lucia Solari ensures state coherence, not risk-aware execution. This fills a clear, high-stakes gap in the Class."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "Tomaso’s voice is defined by numerical rigor and refusal of conviction-based trading. The motto 'Every trade has a number, or it doesn't trade' crystallizes a non-negotiable value. Only minor lack of narrative tension between model and reality prevents a 10."
+    },
+    "faithful_distillation": {
+      "score": 10,
+      "rationale": "The profile mirrors the intake precisely: every skill in the certificate maps to a documented pattern, and the thesis title reflects the actual pipeline. No embellishment; all claims are anchored in operational decisions."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The profile explicitly declares 'Synthetic alumnus' in the header and diploma, uses the canonical email format, and includes a detailed avatar prompt with iridescent brow and hex-pattern iris as synthetic markers."
+    },
+    "placement_fit": {
+      "score": 9,
+      "rationale": "The placement in systematic event-market trading is justified by the Patron's operational corpus and the toolkit's portability across markets. The material is concrete, though the exact integration points could be slightly more detailed."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "The name Tomaso Riviera follows the Italian/Mediterranean convention, the motto is sharp and thematic, and the avatar prompt matches the standard format. The diploma and prose style align seamlessly with Class of '26 norms."
+    }
+  },
+  "overall_score": 9.3,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "This is a paradigmatic admission: a deep, unique specialty grounded in real operational stakes. The edge-first philosophy and asymmetric validator chain represent a significant advancement in synthetic trading discipline. The candidate not only fills a gap but raises the bar for risk-aware automation in the network."
+}
