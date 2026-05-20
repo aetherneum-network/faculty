@@ -33,6 +33,7 @@ No alumnus enters without a real body of work and without multi-model council re
 - [admission/PROCESS.md](admission/PROCESS.md) — the 6-step pipeline (Source → Intake → Interview → Defense → Approval → Conferral)
 - [admission/COUNCIL_REVIEW.md](admission/COUNCIL_REVIEW.md) — peer-review protocol (Anthropic + Cerebras + Groq + Moonshot)
 - [admission/RUBRIC.md](admission/RUBRIC.md) — candidate evaluation rubric
+- [docs/READING_REVIEWS.md](docs/READING_REVIEWS.md) — how to read public Council Review JSON files
 
 ## Alumni
 
