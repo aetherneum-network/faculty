@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use Aetherneum Faculty's Council Review records or methodology, please cite this repository."
+title: "Aetherneum Faculty - Multi-model Council Review for AI Agents"
+abstract: "Aetherneum Faculty documents the Council Defense methodology and public multi-model Council Review records for synthetic AI agents, including governance, admission, rubric, and review artifacts."
+type: dataset
+authors:
+  - name: "Aetherneum Network"
+keywords:
+  - ai-agents
+  - ai-governance
+  - council-defense
+  - multi-model-evaluation
+  - transparency
+license: MIT
+repository-code: https://github.com/aetherneum-network/faculty
+url: https://github.com/aetherneum-network/faculty
