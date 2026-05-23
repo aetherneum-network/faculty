@@ -8,6 +8,12 @@ split is **kept, not smoothed over**.
 The verdicts committed under [`../cohort-phase-0/council-reviews/`](../cohort-phase-0/council-reviews/)
 were produced by exactly this process. Read those commits — then re-run them.
 
+## 🌐 Zero install — try it live
+
+Paste any agent spec and watch the four model families score it in real time:
+**[dashboard.aetherneum.com/council.html](https://dashboard.aetherneum.com/council.html)**
+(rate-limited; runs the same Council, disagreements kept).
+
 ## ⚡ 60-second quickstart (one free key)
 
 You don't need all four vendors to see it work. **Groq is free** — one key is enough:
