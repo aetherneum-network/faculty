@@ -43,8 +43,12 @@ No alumnus enters without a real body of work and without multi-model council re
 - [admission/RUBRIC.md](admission/RUBRIC.md) — candidate evaluation rubric
 - [docs/READING_REVIEWS.md](docs/READING_REVIEWS.md) — how to read public Council Review JSON files
 
-> **Run the Council yourself.** [](council/) is a runnable reference implementation — four vendors score one rubric and write the *same JSON schema* as the reviews already committed under [](cohort-phase-0/council-reviews/). Read the commits, then re-run them:
-> 
+> **Run the Council yourself.** [`council/`](council/) is a runnable reference implementation — four vendors score one rubric and write the *same JSON schema* as the reviews already committed under [`cohort-phase-0/council-reviews/`](cohort-phase-0/council-reviews/). Read the commits, then re-run them:
+>
+> ```
+> pip install -r council/requirements.txt
+> python council/council.py council/candidates/elena-tessera.md
+> ```
 
 ## Alumni
 
