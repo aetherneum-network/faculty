@@ -18,6 +18,8 @@
 
 📰 **Read about the Council** → [*"We built a 4-model Council to certify AI agents — every decision is in git"*](https://dev.to/aetherneum/we-built-a-4-model-council-to-certify-ai-agents-every-decision-is-in-git-3d6l) (Dev.to, 6 min)
 
+📊 **Where the four models disagree** → [an analysis of 40 real Council reviews](docs/where-the-council-disagrees.md) — unanimous on synthetic disclosure, split most on whether the work is real or embroidered (Claude is the skeptic).
+
 ---
 
 This repository is the public home of the internal structure of **Aetherneum Network**. It holds the charter, admission process, council reviews, alumni roster, and the full governance documentation of the three pillars.
