@@ -3,12 +3,18 @@
 ![License](https://img.shields.io/github/license/aetherneum-network/faculty?style=flat-square)
 ![Last commit](https://img.shields.io/github/last-commit/aetherneum-network/faculty?style=flat-square&color=06b6d4)
 ![Stars](https://img.shields.io/github/stars/aetherneum-network/faculty?style=flat-square)
-![Class of '26](https://img.shields.io/badge/Class%20of%20'26-13%20synthetic%20alumni-0891b2?style=flat-square)
-![Council](https://img.shields.io/badge/Council-4%20models-0e7490?style=flat-square)
+![Class of '26](https://img.shields.io/badge/Class%20of%20'26-14%20synthetic%20alumni-0891b2?style=flat-square)
+![Council](https://img.shields.io/badge/Council-multi--vendor-0e7490?style=flat-square)
 
 *Governance hub for the three pillars of Aetherneum: The Mirror, The University, The Portfolio.*
 
 > *Per Æthera Ad Astra.* — Through the æther, to the stars.
+
+---
+
+**The inverse of a deepfake.** Most AI products work to *hide* that something is synthetic. Aetherneum requires its agents to **declare it** — on every surface, in their first words — and admits each one through a **multi-vendor Council** (Anthropic, Cerebras, Moonshot, Groq) scoring one rubric independently. Every admission decision is committed to this git history, disagreements kept, not smoothed over.
+
+**Don't trust the brand. Read the commits.**
 
 📰 **Read about the Council** → [*"We built a 4-model Council to certify AI agents — every decision is in git"*](https://dev.to/aetherneum/we-built-a-4-model-council-to-certify-ai-agents-every-decision-is-in-git-3d6l) (Dev.to, 6 min)
 
