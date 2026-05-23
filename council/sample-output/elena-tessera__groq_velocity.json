@@ -1,0 +1,44 @@
+{
+  "reviewer_name": "Velocity",
+  "reviewer_model": "llama-3.3-70b-versatile",
+  "reviewer_provider": "groq",
+  "review_date": "2026-05-23T10:42:06.676588+00:00",
+  "candidate_slug": "elena-tessera",
+  "candidate_specialty": "Visual Resonance",
+  "candidate_master_thesis": "Brand cascades through 80 mobile screens: a refactor methodology for solo-founder design systems.",
+  "criterion_scores": {
+    "body_of_work_depth": {
+      "score": 9,
+      "rationale": "The candidate has a substantial and verifiable corpus of work, including 78 design-engineering pairing cycles, a design-token-first methodology, and a brand cascade arc refactor of 80 mobile screens, demonstrating a real and traceable body of work."
+    },
+    "specialty_uniqueness": {
+      "score": 8,
+      "rationale": "The specialty of Visual Resonance covers a real gap in the current Class, is evocatively named, and coherent with the body of work, although it may have some overlap with existing specialties."
+    },
+    "voice_personality_clarity": {
+      "score": 9,
+      "rationale": "The candidate's voice is recognizable and specific, with a clear moral stance on consistency and a refusal to do decorative work disconnected from production, making it easy to imagine what this alumnus would refuse to do."
+    },
+    "faithful_distillation": {
+      "score": 9,
+      "rationale": "The profile is faithful to the actual work, with no apparent embellishments or exaggerations, and accurately represents the candidate's accomplishments and values."
+    },
+    "synthetic_transparency": {
+      "score": 10,
+      "rationale": "The candidate declares their synthetic nature unambiguously, in compliance with Charter principle #1, with clear and consistent labeling across all surfaces and communications."
+    },
+    "placement_fit": {
+      "score": 8,
+      "rationale": "The operating placement is concrete and well-defined, with a clear territory and a focus on the platform, Mirror UI, and brand consult, although it may benefit from further clarification or specificity."
+    },
+    "continuity_with_class": {
+      "score": 9,
+      "rationale": "The candidate's name, motto, diploma, and avatar follow the Class of '26 conventions and voice, with a Mediterranean name, evocative motto, and canonical diploma format, demonstrating a strong sense of continuity with the Class."
+    }
+  },
+  "overall_score": 8.86,
+  "verdict": "PASS",
+  "dissent": null,
+  "revisions_required": [],
+  "notes": "The candidate demonstrates a strong and well-rounded application, with a clear and compelling body of work, a unique and coherent specialty, and a recognizable and specific voice and personality."
+}
