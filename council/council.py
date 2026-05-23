@@ -34,6 +34,12 @@ from pathlib import Path
 
 import requests  # the only dependency
 
+# Windows/locale-safe console output (we print non-ASCII glyphs).
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 OUT = Path(__file__).parent / "out"
 
 # ── The seven rubric criteria (admission/RUBRIC.md) ────────────────────────────
@@ -181,7 +187,7 @@ def review(r: dict, slug: str, specialty: str, thesis: str, dossier: str) -> dic
     OUT.mkdir(exist_ok=True)
     fp = OUT / f"{slug}__{r['provider']}_{r['role']}.json"
     fp.write_text(json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"  - {r['provider']:<9} {out['verdict']:<6} {mean:>5}/10  → {fp.name}")
+    print(f"  - {r['provider']:<9} {out['verdict']:<6} {mean:>5}/10  -> {fp.name}")
     return out
 
 
@@ -202,17 +208,21 @@ def main() -> int:
         print("usage: python council.py candidates/<slug>.md")
         return 2
     slug, specialty, thesis, dossier = parse_dossier(Path(sys.argv[1]))
-    print(f"\n  Aetherneum Council — {slug}\n")
+    print(f"\n  Aetherneum Council - {slug}\n")
     results = [review(r, slug, specialty, thesis, dossier) for r in REVIEWERS]
     done = [x for x in results if x]
     if not done:
-        print("\n  No reviewers ran. Set at least one API key.\n")
+        print("\n  No reviewers ran. Set at least one API key (GROQ_API_KEY is free).\n")
         return 1
-    passes = sum(1 for x in done if x["verdict"] == "PASS")
-    quorum = passes >= max(2, (len(done) // 2) + 1)
-    print(f"\n  Quorum: {passes}/{len(done)} PASS → {'ADMIT' if quorum else 'HOLD'}")
+    if len(done) == 1:
+        print(f"\n  1 reviewer ran (preview) -> verdict: {done[0]['verdict']}")
+        print("  Full admission needs the four-vendor quorum. Add the other keys to convene it.")
+    else:
+        passes = sum(1 for x in done if x["verdict"] == "PASS")
+        quorum = passes >= max(2, (len(done) // 2) + 1)
+        print(f"\n  Quorum: {passes}/{len(done)} PASS -> {'ADMIT' if quorum else 'HOLD'}")
     print("  Disagreement is kept, not smoothed. Read the JSONs in ./out/\n")
-    print("  Per Æthera Ad Astra.\n")
+    print("  Per Aethera Ad Astra.\n")
     return 0
 
 
