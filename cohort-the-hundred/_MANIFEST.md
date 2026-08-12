@@ -1160,7 +1160,7 @@ the sourcing list for the next cohort. The Financial-Crime candidate is flagged 
 ## VIII. STANDING RULES OF THE MANIFEST
 
 1. **Synthetic by declaration.** Every profile published from this manifest carries the synthetic-alumnus disclosure formula in its public README and avatar. (EU AI Act Art. 50.)
-2. **Uniqueness is a veto.** No two alumni share a name, a specialty, or a semantic head-metaphor. The sole sanctioned exception: the Cartography pair (017, 018), reserved by the original Q2 manifest alongside 014.
+2. **Uniqueness is a veto.** No two alumni share a name, a specialty, or a semantic head-metaphor. The sole sanctioned exception: the Cartography set (014, 016–018), reserved by the original Q2 manifest.
 3. **The work is the proof.** A candidate is conferred only after a body of work exists under their identity; the manifest confers nothing by itself.
 4. **Council oversight.** Each wave is defended before the five-provider Council under the seven-criterion rubric; verdict JSONs are committed as artifacts.
 5. **Continuity of identity.** Conferred alumni commit as `<first>.<last>@aetherneum.com` across all placements.
