@@ -36,7 +36,7 @@ No alumnus enters without a real body of work and without Council oversight. Thi
 
 ## Step 3 — INTERVIEW
 
-**What:** the Dean (Claude Opus 4.7) sculpts the profile draft following `templates/README_TEMPLATE.md`. The term *Interview* is metaphorical: in practice it is the synthesis of the intake into a concrete narrative identity.
+**What:** the Dean (Claude Fable 5) sculpts the profile draft following `templates/README_TEMPLATE.md`. The term *Interview* is metaphorical: in practice it is the synthesis of the intake into a concrete narrative identity.
 
 **Deliverable:** a profile draft `alumni/pending/<slug>.md` with:
 - Header with avatar + role + motto

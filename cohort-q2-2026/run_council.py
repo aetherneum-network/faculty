@@ -52,7 +52,7 @@ BUNDLE_FILES = [
 REVIEWERS = {
     "anthropic_chair": {
         "endpoint": "https://api.anthropic.com/v1/messages",
-        "model": os.getenv("ANTHROPIC_COUNCIL_MODEL", "claude-sonnet-4-5-20250929"),
+        "model": os.getenv("ANTHROPIC_COUNCIL_MODEL", "claude-sonnet-5"),
         "api_key": os.getenv("ANTHROPIC_API_KEY"),
         "provider": "anthropic",
         "name": "Faculty Chair",
