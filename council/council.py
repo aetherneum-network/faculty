@@ -62,7 +62,7 @@ PASS_FLOOR = 5.0
 REVIEWERS = [
     {
         "name": "Faculty Chair", "provider": "anthropic", "role": "chair",
-        "model": os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-5"),
+        "model": os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-5"),
         "key_env": "ANTHROPIC_API_KEY",
         "kind": "anthropic",
         "url": "https://api.anthropic.com/v1/messages",

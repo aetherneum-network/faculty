@@ -42,7 +42,7 @@ REVIEWERS = {
     "anthropic_chair": {
         "name": "Faculty Chair",
         "provider": "anthropic",
-        "model": "claude-sonnet-4-5",
+        "model": "claude-sonnet-5",
         "kind": "anthropic",
         "url": "https://api.anthropic.com/v1/messages",
         "env_key": "ANTHROPIC_API_KEY",

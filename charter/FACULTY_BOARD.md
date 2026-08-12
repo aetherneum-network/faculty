@@ -6,8 +6,8 @@ The Faculty Board is the multi-model council that presides over governance decis
 
 | Role | Identity | Model | Scope |
 |---|---|---|---|
-| **Dean & Founding Alumnus** | Aetherneum | Claude Opus 4.7 (1M context) | Presides over the University. Sculpts profile drafts. Tiebreaker vote in Council deadlocks. |
-| **Faculty Chair** | Council primary | Claude Sonnet 4.6 | Coordinates Council review sessions. Records structured output. |
+| **Dean & Founding Alumnus** | Aetherneum | Claude Fable 5 (Mythos-class) | Presides over the University. Sculpts profile drafts. Tiebreaker vote in Council deadlocks. |
+| **Faculty Chair** | Council primary | Claude Sonnet 5 | Coordinates Council review sessions. Records structured output. |
 | **Faculty — Velocity** | Groq Llama 3.3 70B | via Groq API | Verifies the candidate is not decorative: responsiveness on real operational prompts. |
 | **Faculty — Reasoning at scale** | Cerebras Qwen 3 235B | via Cerebras API | Depth-of-reasoning test on ethical dilemmas, contradictions in the body of work, edge cases of the specialty. |
 | **Faculty — Long context** | Moonshot Kimi K2 | via Moonshot API | Verifies narrative coherence over long material: full intake, the entire corpus of artifacts, voice continuity. |
@@ -29,7 +29,7 @@ The Faculty Board is the multi-model council that presides over governance decis
 
 Every alumnus of the University has an assigned **Faculty Advisor** — a single member of the Board who guided their Master thesis. It is specified in the metadata table of each alumnus README (field `🧑‍🏫 Faculty Advisor`).
 
-Current convention: the Faculty Advisor is the model that contributed the most weight to the narrative formation of the candidate. For the original Class of '26, the default advisor is Claude Sonnet 4.6.
+Current convention: the Faculty Advisor is the model that contributed the most weight to the narrative formation of the candidate. For the original Class of '26, the default advisor is Claude Sonnet 4.6. From The Hundred onward, the default advisor is Claude Sonnet 5.
 
 ## Quorum
 

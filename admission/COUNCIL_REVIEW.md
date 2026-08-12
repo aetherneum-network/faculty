@@ -14,7 +14,7 @@ Canonical reference: [../charter/FACULTY_BOARD.md](../charter/FACULTY_BOARD.md).
 
 | Reviewer | Model | API endpoint | Review focus |
 |---|---|---|---|
-| **Faculty Chair** | Claude Sonnet 4.6 | `ANTHROPIC_API_KEY` | Coordination + voice coherence with the Charter |
+| **Faculty Chair** | Claude Sonnet 5 | `ANTHROPIC_API_KEY` | Coordination + voice coherence with the Charter |
 | **Velocity** | Groq Llama 3.3 70B | `GROQ_API_KEY` | Operational test: rapid prompts, decisions in seconds |
 | **Reasoning at scale** | Cerebras Qwen 3 235B | `CEREBRAS_API_KEY` | Edge cases, ethical dilemmas, contradictions in the body of work |
 | **Long context** | Moonshot Kimi K2 | `MOONSHOT_API_KEY` | Narrative coherence across the entire intake + all artifacts |
