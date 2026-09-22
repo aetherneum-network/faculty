@@ -13,7 +13,7 @@ Reviewers:
 
 Output: cohort-phase-0/council-reviews/<slug>__<reviewer>.json (40 files)
 
-Run on cryptohost. Reads keys from /opt/aetherneum/apps/mirror-agent/.env.
+Reads the provider API keys from the .env file given by ENV_FILE (default: ./.env).
 """
 from __future__ import annotations
 import asyncio
@@ -27,7 +27,7 @@ from typing import Any
 
 import httpx
 
-ENV_FILE = Path(os.environ.get("ENV_FILE", "/opt/aetherneum/apps/mirror-agent/.env"))
+ENV_FILE = Path(os.environ.get("ENV_FILE", ".env"))
 FACULTY = Path(os.environ.get("FACULTY_DIR", "/tmp/faculty-fresh"))
 ALUMNI_DIR = Path(os.environ.get("ALUMNI_DIR", "/tmp/alumni-push"))
 OUT_DIR = FACULTY / "cohort-phase-0" / "council-reviews"
