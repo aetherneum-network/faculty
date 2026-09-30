@@ -222,7 +222,7 @@
           "text": "the executor ran and crashed: the number of declared scenarios is unknown, the outcome is VETO",
           "when": {"executor_crashed": true},
           "effect": {"outcome": "VETO"},
-          "approved": "coordinator ruling on D19 dissent point 2, 2026-09-30 [TO CONFIRM: Rector]",
+          "approved": "Rector decision D23, 2026-09-30 (proposed as coordinator ruling on D19 dissent point 2)",
           "note": "a crash of the scenario runner must never be more lenient than a failing scenario; EX-1.b applies as well (zero scenarios started)"
         }
       ],
