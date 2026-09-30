@@ -99,21 +99,32 @@ def build_live_seats(council: dict[str, Any], *, anthropic_client=None) -> list[
     return seats
 
 
-def default_inputs(slug: str, repos_root: Path) -> dict[str, Path | None]:
+def default_inputs(slug: str, repos_root: Path, repo: Path | None = None) -> dict[str, Path | None]:
+    """Default intake / profile / repository for ``slug``.
+
+    When ``repo`` is given (CLI ``--repo``, e.g. a fresh clone of a frozen
+    ref), the README fallback of the profile is read from THAT repository,
+    not from ``<repos_root>/<slug>``: the bundle must not mix the evidence of
+    a frozen commit with the profile of a working tree someone is editing.
+    """
     intake = FACULTY / "cohort-q2-2026" / "intake" / f"{slug}.md"
     pending = FACULTY / "alumni" / "pending" / f"{slug}.md"
-    readme = repos_root / slug / "README.md"
+    repo_dir = Path(repo) if repo else repos_root / slug
+    readme = repo_dir / "README.md"
     return {
         "intake": intake if intake.exists() else None,
         "profile": pending if pending.exists() else readme,
-        "repo": repos_root / slug,
+        "repo": repo_dir,
     }
 
 
 def run(slug: str, *, repos_root: Path, out_root: Path, signer: Ed25519Signer, seats: list[Any], dry_run: bool,
         mock: bool, intake: Path | None, profile: Path, repo: Path | None, allow_steering: bool = False,
         run_executor: bool = True, with_calibration: bool = True, approval_ref: str | None = None,
-        council_path: Path = FACULTY / "council" / "council.json", alumni_path: Path = FACULTY / "alumni" / "alumni.json") -> dict[str, Any]:
+        council_path: Path = FACULTY / "council" / "council.json", alumni_path: Path = FACULTY / "alumni" / "alumni.json",
+        marker: str | None = None) -> dict[str, Any]:
+    if marker and not dry_run:
+        raise RunRefused("a session marker labels rehearsals; it is not allowed in a live run")
     council = load_json(council_path)
     alumni = {a["slug"]: a for a in load_json(alumni_path)["alumni"]} if alumni_path.exists() else {}
     a = alumni.get(slug, {})
@@ -128,6 +139,10 @@ def run(slug: str, *, repos_root: Path, out_root: Path, signer: Ed25519Signer, s
                           faculty_commit=git_head(FACULTY))
     session["approval_ref"] = approval_ref
     session["signing_key_id"] = signer.key_id
+    if marker:
+        # The session block is embedded in every record before signing, so the
+        # marker is part of the signed payload of every file of this session.
+        session["marker"] = marker
     out = out_root / session["session_id"]
     out.mkdir(parents=True, exist_ok=False)
 
@@ -217,6 +232,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--mock-scores", help="comma-separated 7 scores for mock seats")
     ap.add_argument("--mock-fail-seat", help="make this mock seat fail (null record demo)")
     ap.add_argument("--mock-lenient-seat", help="this mock seat passes decoys (calibration demo)")
+    ap.add_argument("--marker", help="dry-run only: visible label written into the signed session block of every record "
+                                     "(e.g. a rehearsal notice); refused with --live")
     args = ap.parse_args(argv)
     try:
         sys.stdout.reconfigure(encoding="utf-8")
@@ -237,8 +254,11 @@ def main(argv: list[str] | None = None) -> int:
         if args.allow_steering:
             print("refused: --allow-steering is not allowed in a live run", file=sys.stderr)
             return 2
+        if args.marker:
+            print("refused: --marker labels rehearsals and is not allowed in a live run", file=sys.stderr)
+            return 2
     council = load_json(FACULTY / "council" / "council.json")
-    inputs = default_inputs(args.slug, args.repos_root.resolve())
+    inputs = default_inputs(args.slug, args.repos_root.resolve(), args.repo)
     intake = None if args.no_intake else (args.intake or inputs["intake"])
     profile = args.profile or inputs["profile"]
     repo = args.repo or inputs["repo"]
@@ -256,7 +276,7 @@ def main(argv: list[str] | None = None) -> int:
         summary = run(args.slug, repos_root=args.repos_root.resolve(), out_root=args.out, signer=signer, seats=seats,
                       dry_run=not live, mock=mock, intake=intake, profile=profile, repo=repo,
                       allow_steering=args.allow_steering and not live, run_executor=not args.no_executor,
-                      with_calibration=not args.no_calibration, approval_ref=args.approval_ref)
+                      with_calibration=not args.no_calibration, approval_ref=args.approval_ref, marker=args.marker)
     except SteeringError as e:
         print(str(e), file=sys.stderr)
         print("run blocked: rewrite the intake without expected-score sentences (a signed LINT_BLOCKED record was written)", file=sys.stderr)
