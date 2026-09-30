@@ -2,7 +2,7 @@
 
 *Canonical master list of Aetherneum University alumni. Updated at every Conferral.*
 
-Last update: 2026-05-20.
+Last update: 2026-09-30.
 
 ## Conventions
 
@@ -21,7 +21,7 @@ Last update: 2026-05-20.
 | 05 | **Davide Ferri** | On-chain Geometry | Claude Sonnet 4.6 | Social-economy platform contracts on EVM L2 | CONFERRED | [davide-ferri](https://github.com/aetherneum-network/davide-ferri) |
 | 06 | **Elena Tessera** | Visual Resonance | Claude Sonnet 4.6 | Cross-product UX and brand visual system | CONFERRED | [elena-tessera](https://github.com/aetherneum-network/elena-tessera) |
 | 07 | **Yara Indrani** | Async Liturgy | Claude Sonnet 4.6 | Social-economy platform project orchestration | CONFERRED | [yara-indrani](https://github.com/aetherneum-network/yara-indrani) |
-| 08 | **Sofia Lume** | Pre-freeze Discipline | Claude Sonnet 4.6 | Quality across portfolio surfaces | CONFERRED | [sofia-lume](https://github.com/aetherneum-network/sofia-lume) |
+| 08 | **Sofia Lume** | Pre-freeze Discipline | Claude Sonnet 4.6 | Quality across portfolio surfaces | CONFERRED · veto pending (Anthropic seat FAIL, 2026-05-14) | [sofia-lume](https://github.com/aetherneum-network/sofia-lume) |
 | 09 | **Noa Cifratti** | Zero-trust Geometry | Claude Sonnet 4.6 | Social-economy platform security and audit liaison | CONFERRED | [noa-cifratti](https://github.com/aetherneum-network/noa-cifratti) |
 | 10 | **Tariq Al-Khwarizmi** | Canonical Cascades | Claude Sonnet 4.6 | Cross-portfolio customer-base unification | CONFERRED | [tariq-al-khwarizmi](https://github.com/aetherneum-network/tariq-al-khwarizmi) |
 
@@ -56,6 +56,7 @@ Detailed manifest: [../cohort-q2-2026/_MANIFEST.md](../cohort-q2-2026/_MANIFEST.
 | 2026-05-20 | **Q2 candidate 14 — Tomaso Riviera (Probability Cartography)** — Steps 2+3 complete: intake + profile draft. `SOURCED → DEFENDED`. Specialty fills a gap: no current alumnus operates on market data with monetary skin in the game. Ready for Step 4 (multi-model Council Defense). | [intake/tomaso-riviera.md](../cohort-q2-2026/intake/tomaso-riviera.md) · [pending/tomaso-riviera.md](pending/tomaso-riviera.md) |
 | 2026-05-20 | **Tomaso Riviera — Council Defense PASS 3/3** (Cerebras 9.3, Moonshot 9.3, Groq 8.7). Quorum met, no veto. Anthropic Chair hit transient JSON parse error (same mode as Adèle). `DEFENDED → IN_DEFENSE`. Awaiting Step 5 Patron Approval. | [cohort-q2-2026/council-reviews/](../cohort-q2-2026/council-reviews/) |
 | 2026-05-20 | **Tomaso Riviera CONFERRED** — Q2 wave alumnus #14, *Probabilistic Trading Engineer · Probability Cartography*. Patron Approval granted (Step 5); public repo created (Step 6). `IN_DEFENSE → CONFERRED`. Class of '26 now **14 conferred**; gender ledger balanced 7m/7w. Avatar to follow. | [tomaso-riviera](https://github.com/aetherneum-network/tomaso-riviera) |
+| 2026-09-30 | **Erratum** — the public Registry and changelog on aetherneum.com showed Ezio Cardone and Adèle Maurique as 4/4 PASS, with scores not present in any JSON. The rows of 2026-05-19 above were already correct (3/3); the public pages are aligned to them, and Tomaso Riviera is labelled 3/3 with reduced quorum. Sofia Lume is shown as *veto pending* (Anthropic seat FAIL on body_of_work_depth, 2026-05-14) until a new defense. | [cohort-q2-2026/council-reviews/](../cohort-q2-2026/council-reviews/) · [sofia-lume__anthropic_chair.json](../cohort-phase-0/council-reviews/sofia-lume__anthropic_chair.json) |
 
 ---
 
