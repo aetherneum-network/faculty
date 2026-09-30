@@ -184,9 +184,47 @@
     "production_key": "[TO CONFIRM] generated offline by the Rector with `python -m council_v2.signing keygen`; only the public key is committed",
     "backend": "cryptography if installed, else the pure-Python RFC 8032 reference implementation (identical signatures; not constant-time)"
   },
+  "rules_order": "Ordered list, read top to bottom: the first rule for a subject is the one in force. Inside a rule the exceptions are read before the clauses, and the first exception that matches silences the rule; every clause whose condition holds applies. council_v2/rules.py only extracts ids, conditions and effects from here: to change the behaviour, change this file with the approval it names.",
+  "rules": [
+    {
+      "id": "EX-1",
+      "name": "Executor rule",
+      "subject": "executor",
+      "text": "veto until every declared scenario passes; zero scenarios started counts as zero artifacts",
+      "approved": "Rector decision D19, 2026-09-30",
+      "applies": "mock, dry-run and live sessions alike; decided by code from the executor result, whatever the seats scored",
+      "exceptions": [
+        {
+          "id": "EX-1.x",
+          "when": {"executor": "not run"},
+          "effect": "silent",
+          "text": "executor not run: the rule is silent, the records say 'executor: not run' and carry no executor veto. Two cases only: a mock / dry-run session started with --no-executor, and the legacy-import records of the 2026 JSON, which have no executor result."
+        }
+      ],
+      "clauses": [
+        {
+          "id": "EX-1.a",
+          "text": "veto until every declared scenario passes",
+          "when": {"scenarios_found_min": 1, "passed_below_found": true},
+          "effect": {"outcome": "VETO"},
+          "note": "any fail, error or timeout counts as not passed; the reason names this rule and the scenarios not passed"
+        },
+        {
+          "id": "EX-1.b",
+          "text": "zero scenarios started counts as zero artifacts",
+          "when": {"scenarios_started_max": 0},
+          "effect": {"artifact_count": 0},
+          "started_statuses": ["pass", "fail", "timeout"],
+          "note": "no scenarios/ directory, none found, or every one failing to launch (status error): the evidence caps apply as for artifact_count = 0 (council_v2/scoring.py evidence_caps), in addition to EX-1.a when scenarios were found"
+        }
+      ],
+      "live_requires_executor": true,
+      "live_requires_executor_text": "--live together with --no-executor is refused"
+    }
+  ],
   "open_questions": [
     "Providers and models for the reasoning, longctx and velocity seats ([TO CONFIRM]); each must be a different model family from the others and from Anthropic.",
     "The Anthropic seat evaluates profiles drafted by Anthropic models (Dean, Faculty Advisors). Consider whether the Chair role should sit with a non-Anthropic seat.",
-    "Whether failing scenarios (executor) should cap body_of_work_depth the way zero artifacts does (not in RUBRIC.md today)."
+    "RESOLVED by rule EX-1 (see rules; Rector decision D19, 2026-09-30) — the question was: Whether failing scenarios (executor) should cap body_of_work_depth the way zero artifacts does (not in RUBRIC.md today)."
   ]
 }

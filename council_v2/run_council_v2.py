@@ -37,7 +37,7 @@ FACULTY = Path(__file__).resolve().parents[1]
 if str(FACULTY) not in sys.path:
     sys.path.insert(0, str(FACULTY))
 
-from council_v2 import CRITERIA_ORDER, scoring  # noqa: E402
+from council_v2 import CRITERIA_ORDER, rules, scoring  # noqa: E402
 from council_v2.bundle import SteeringError, blocking, build_bundle, git_head, lint_intake  # noqa: E402
 from council_v2.calibrate import load_decoys, run_calibration  # noqa: E402
 from council_v2.evidence import scan_repo  # noqa: E402
@@ -126,6 +126,9 @@ def run(slug: str, *, repos_root: Path, out_root: Path, signer: Ed25519Signer, s
     if marker and not dry_run:
         raise RunRefused("a session marker labels rehearsals; it is not allowed in a live run")
     council = load_json(council_path)
+    ex_rule = rules.ExecutorRule.from_council(council)
+    if ex_rule and ex_rule.live_requires_executor and not dry_run and not run_executor:
+        raise RunRefused(live_needs_executor_message(ex_rule))
     alumni = {a["slug"]: a for a in load_json(alumni_path)["alumni"]} if alumni_path.exists() else {}
     a = alumni.get(slug, {})
     candidate = {
@@ -166,8 +169,11 @@ def run(slug: str, *, repos_root: Path, out_root: Path, signer: Ed25519Signer, s
             exec_error = f"{type(e).__name__}: {e}"
     if run_executor:
         write_signed(build_executor_record(session, candidate, exec_result, error=exec_error or (
-            None if exec_result is not None else "no scenarios/ directory: nothing to execute"), faculty_commit=session["faculty_commit"]),
+            None if exec_result is not None else rules.NOTHING_TO_EXECUTE), faculty_commit=session["faculty_commit"]),
             out / record_filename(slug, "executor"), signer)
+    # rule EX-1 (council/council.json): its signed input and its ruling; "not run" can only happen in a dry run
+    ex_summary = rules.executor_summary(run_executor, exec_result, exec_error) if ex_rule else None
+    ex_ruling = ex_rule.evaluate(ex_summary) if ex_rule else None
 
     # 3. bundle (identical for every seat)
     bundle = build_bundle(slug, faculty_root=FACULTY, intake_path=intake, profile_path=profile,
@@ -188,13 +194,14 @@ def run(slug: str, *, repos_root: Path, out_root: Path, signer: Ed25519Signer, s
                      cal_dir / "CALIBRATION.json", signer)
 
     # 5. seats -> scoring -> records
-    caps = scoring.evidence_caps(manifest)
+    caps = scoring.evidence_caps(manifest, ex_ruling)
     seat_records = []
     for seat in seats:
         res = seat.score(bundle)
         cfg = next((c for c in council["seats"] if c["seat_id"] == seat.seat_id), {"role": seat.seat_id, "voting": True})
         cal = calibration.status_for(seat.seat_id) if calibration else None
-        rec = build_seat_record(session, cfg, res, bundle, candidate=candidate, caps=caps, calibration=cal)
+        rec = build_seat_record(session, cfg, res, bundle, candidate=candidate, caps=caps, calibration=cal,
+                                executor=ex_summary)
         write_signed(rec, out / record_filename(slug, seat.seat_id), signer)
         seat_records.append(rec)
 
@@ -203,14 +210,20 @@ def run(slug: str, *, repos_root: Path, out_root: Path, signer: Ed25519Signer, s
                               min_valid_seats=int(council["quorum"]["min_valid_seats"]),
                               min_pass_seats=int(council["quorum"]["min_pass_seats"]),
                               exclude_uncalibrated=bool(council["quorum"]["exclude_uncalibrated_seats"]))
-    decision = build_decision_record(session, candidate, seat_records, rule, bundle_sha256=bundle.sha256)
+    decision = build_decision_record(session, candidate, seat_records, rule, bundle_sha256=bundle.sha256, council=council)
     write_signed(decision, out / f"{slug}__DECISION.json", signer)
     return {"out": str(out), "session": session, "bundle_sha256": bundle.sha256, "decision": decision["decision"],
+            "executor_rule": decision["executor_rule"],
             "calibration_failed": calibration.failed if calibration else None, "caps": [c.__dict__ for c in caps],
             "lint_warnings": [f.__dict__ for f in findings if f.severity == "warn"],
             "seats": {r["seat"]["seat_id"]: {"status": r["status"], "model_from_response": r["model_from_response"],
                                              "overall": (r["scoring"] or {}).get("overall"), "verdict": (r["scoring"] or {}).get("verdict"),
                                              "error": (r["error"] or {}).get("type") if r["error"] else None} for r in seat_records}}
+
+
+def live_needs_executor_message(rule: "rules.ExecutorRule") -> str:
+    return (f"--live together with --no-executor is not allowed: rule {rule.rule_id} ({rule.approved}) reads the "
+            f"executor result (\"{rule.text}\"); --no-executor exists for mock / dry-run sessions only")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -227,7 +240,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--key", type=Path, help="private signing key file (required with --live)")
     ap.add_argument("--approval-ref", help="Rector approval minutes reference (required with --live)")
     ap.add_argument("--allow-steering", action="store_true", help="dry-run only: continue despite lint block findings")
-    ap.add_argument("--no-executor", action="store_true")
+    ap.add_argument("--no-executor", action="store_true",
+                    help="mock / dry-run only: skip the scenario suite (records say 'executor: not run'); refused with --live")
     ap.add_argument("--no-calibration", action="store_true")
     ap.add_argument("--mock-scores", help="comma-separated 7 scores for mock seats")
     ap.add_argument("--mock-fail-seat", help="make this mock seat fail (null record demo)")
@@ -245,7 +259,12 @@ def main(argv: list[str] | None = None) -> int:
     if live and mock:
         print("refused: --live and --mock are exclusive", file=sys.stderr)
         return 2
+    council = load_json(FACULTY / "council" / "council.json")
     if live:
+        ex_rule = rules.ExecutorRule.from_council(council)
+        if args.no_executor and ex_rule and ex_rule.live_requires_executor:
+            print("refused: " + live_needs_executor_message(ex_rule), file=sys.stderr)
+            return 2
         missing = [n for n, ok in (("--key", args.key), ("--approval-ref", args.approval_ref),
                                    (f"{LIVE_ENV}=1", os.environ.get(LIVE_ENV) == "1")) if not ok]
         if missing:
@@ -257,7 +276,6 @@ def main(argv: list[str] | None = None) -> int:
         if args.marker:
             print("refused: --marker labels rehearsals and is not allowed in a live run", file=sys.stderr)
             return 2
-    council = load_json(FACULTY / "council" / "council.json")
     inputs = default_inputs(args.slug, args.repos_root.resolve(), args.repo)
     intake = None if args.no_intake else (args.intake or inputs["intake"])
     profile = args.profile or inputs["profile"]

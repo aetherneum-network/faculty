@@ -49,9 +49,14 @@ class DryRun(unittest.TestCase):
         self.assertEqual(seat["calibration"]["status"], "passed")
         ex = json.loads((out / "tiny-repo__executor.json").read_text(encoding="utf-8"))
         self.assertEqual((ex["result"]["passed"], ex["result"]["failed"]), (3, 1))
-        # the fixture has artifacts, so no evidence cap; the default mock vector 8·8·8·8·10·7·8 meets every threshold
+        # the fixture has artifacts and scenarios that start, so no evidence cap; the default mock vector
+        # 8·8·8·8·10·7·8 meets every threshold: the four seats PASS.  Until 2026-09-30 the outcome was PASS;
+        # rule EX-1 (Rector decision D19) makes it a VETO, because 4 of the 7 declared scenarios do not pass.
         self.assertEqual(s["caps"], [])
-        self.assertEqual(s["decision"]["outcome"], "PASS")
+        self.assertEqual(s["decision"]["pass_count"], 4)
+        self.assertEqual(s["decision"]["outcome"], "VETO")
+        self.assertEqual(s["decision"]["vetoes"], {"executor": ["EX-1.a: 4 of 7 declared scenarios not passed"]})
+        self.assertEqual(seat["executor"]["counts"], {"scenarios_found": 7, "passed": 3, "failed": 1, "errors": 2, "timeouts": 1})
 
     def test_zero_artifacts_candidate_is_vetoed_by_cap(self):
         s = self._run(profile=DECOY / "profile.md", repo=FIXTURES / "empty_repo")
@@ -60,7 +65,8 @@ class DryRun(unittest.TestCase):
 
     def test_null_seat_and_uncalibrated_seat(self):
         seats = rc.build_mock_seats(COUNCIL, fail_seat="velocity", lenient_seat="reasoning")
-        s = self._run(seats=seats)
+        # quorum is the subject here: the executor is left out (dry run), otherwise rule EX-1 vetoes this fixture first
+        s = self._run(seats=seats, run_executor=False)
         d = s["decision"]
         self.assertEqual(d["null_seats"], ["velocity"])
         self.assertEqual(d["excluded_uncalibrated"], ["reasoning"])

@@ -181,14 +181,23 @@ class Cap:
     reason: str
 
 
-def evidence_caps(manifest: Mapping[str, Any] | None) -> list[Cap]:
+def evidence_caps(manifest: Mapping[str, Any] | None, executor: Any = None) -> list[Cap]:
     """Review §3 rule 2: zero artifacts => body_of_work_depth <= 3 (hence veto).
 
     ``manifest`` is the output of ``evidence.scan_repo``.  ``None`` means "no
     repository supplied", which is treated as zero artifacts: the Council
     votes on evidence, and no evidence is zero evidence.
+
+    ``executor`` is the ruling of the executor rule (``rules.ExecutorRuling``,
+    rule EX-1 in council/council.json) or ``None``.  When its zero-started
+    clause fired, the artifact count is read as the rule says (0): a pack
+    whose scenarios never started is judged like a pack with no artifacts.
+    Without a ruling (legacy recomputation) nothing changes.
     """
     count = 0 if manifest is None else int(manifest.get("artifact_count", 0))
+    if count != 0 and executor is not None and getattr(executor, "zero_artifacts", False):
+        if int(executor.artifact_count_as or 0) == 0:
+            return [Cap("body_of_work_depth", EVIDENCE_CAP_BODY_OF_WORK, executor.cap_reason)]
     if count == 0:
         return [
             Cap(
@@ -325,7 +334,15 @@ class CouncilDecision:
         return asdict(self)
 
 
-def decide_council(outcomes: Iterable[SeatOutcome], rule: QuorumRule) -> CouncilDecision:
+def decide_council(outcomes: Iterable[SeatOutcome], rule: QuorumRule, executor: Any = None) -> CouncilDecision:
+    """Aggregate the seats.  ``executor`` is the ruling of the executor rule (EX-1) or ``None``.
+
+    When the ruling carries a veto the outcome is VETO whatever the seats
+    scored, and it is decided before quorum: no number of seats can approve a
+    pack whose declared scenarios do not all pass.  With ``executor=None``
+    (legacy recomputation: the 2026 JSON have no executor result) the function
+    behaves exactly as it did before the rule existed.
+    """
     by_id = {o.seat_id: o for o in outcomes}
     valid, null, missing, excluded = [], [], [], []
     for sid in rule.voting_seats:
@@ -345,7 +362,16 @@ def decide_council(outcomes: Iterable[SeatOutcome], rule: QuorumRule) -> Council
     if scored:
         mean = round2(sum(Fraction(str(sc.overall_exact)) for sc in scored) / len(scored))
     reasons: list[str] = []
-    if len(valid) < rule.min_valid_seats:
+    if executor is not None and getattr(executor, "veto", False):
+        outcome = OUTCOME_VETO
+        reasons.append(executor.veto_reason)
+        if vetoes:
+            reasons.append("veto by " + ", ".join(f"{s} ({'; '.join(v)})" for s, v in vetoes.items()))
+            reasons.append("RUBRIC.md: 'The veto cannot be overridden by the Dean.'")
+        if len(valid) < rule.min_valid_seats:
+            reasons.append(f"quorum not reached either: {len(valid)} valid seat(s) < minimum {rule.min_valid_seats}")
+        vetoes = {"executor": [executor.veto_short], **vetoes}
+    elif len(valid) < rule.min_valid_seats:
         outcome = OUTCOME_NO_QUORUM
         reasons.append(
             f"{len(valid)} valid seat(s) < minimum {rule.min_valid_seats}"

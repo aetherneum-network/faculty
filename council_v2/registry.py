@@ -21,7 +21,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 from . import scoring
-from .record import SCORE_BEARING, LEGACY_SCHEMA, load_records, seat_outcome_from_record
+from .record import SCORE_BEARING, LEGACY_SCHEMA, executor_ruling_from_records, load_records, seat_outcome_from_record
 
 
 def load_council(path: str | Path) -> dict[str, Any]:
@@ -117,7 +117,10 @@ def build_rows(records: Iterable[Mapping[str, Any]], council: Mapping[str, Any],
         for key in voting:
             if key not in seats:
                 seats[key] = {"status": "missing", "error": "no record"}
-        decision = scoring.decide_council(outcomes, scoring.QuorumRule(voting_seats=tuple(voting)))
+        # rule EX-1: recomputed here from the executor summary signed in the seat records (None for legacy imports)
+        ruling, ruling_notes = executor_ruling_from_records(recs, council)
+        notes.extend(ruling_notes)
+        decision = scoring.decide_council(outcomes, scoring.QuorumRule(voting_seats=tuple(voting)), ruling)
         cand: dict[str, Any] = {}
         for r in recs:  # first non-empty value per key (null seat records may carry less)
             for k, v in r["candidate"].items():

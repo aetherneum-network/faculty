@@ -25,7 +25,7 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 
-from . import CRITERIA_ORDER, scoring
+from . import CRITERIA_ORDER, rules, scoring
 from .bundle import Bundle
 from .seats import SeatResult, PROMPT_SHA256
 from .signing import Ed25519Signer, VerifyResult, sign_record, verify_record
@@ -75,12 +75,18 @@ def build_seat_record(
     candidate: Mapping[str, Any],
     caps: Iterable[scoring.Cap] = (),
     calibration: Mapping[str, Any] | None = None,
+    executor: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
+    """``executor`` is ``rules.executor_summary(...)``: the signed input of rule EX-1.
+
+    The key is written only when given, so decoy calibration records and
+    legacy imports keep their shape.
+    """
     caps = list(caps)
     scored = scoring.score_seat(result.scores, caps).to_dict() if result.status == "ok" else None
     requested = result.model_requested
     got = result.model_from_response
-    return {
+    rec = {
         "schema": SEAT_SCHEMA,
         "session": dict(session),
         "candidate": dict(candidate),
@@ -120,6 +126,9 @@ def build_seat_record(
         "mock": result.mock,
         "dry_run": bool(session.get("dry_run")),
     }
+    if executor is not None:
+        rec["executor"] = dict(executor)  # what rule EX-1 reads; signed with the rest of the record
+    return rec
 
 
 def build_executor_record(session: Mapping[str, Any], candidate: Mapping[str, Any], executor_result: Mapping[str, Any] | None,
@@ -150,10 +159,37 @@ def seat_outcome_from_record(rec: Mapping[str, Any]) -> scoring.SeatOutcome:
     return scoring.SeatOutcome(sid, "ok", sc, None, calibrated=cal.get("status") != "failed")
 
 
+def executor_ruling_from_records(seat_records: Iterable[Mapping[str, Any]], council: Mapping[str, Any] | None,
+                                 ) -> tuple[rules.ExecutorRuling | None, list[str]]:
+    """Recompute the ruling of the executor rule from the summaries signed in the seat records.
+
+    Returns ``(ruling, notes)``.  ``ruling`` is ``None`` when no record carries
+    a summary (legacy imports) or the council file has no executor rule.  If
+    the records of one session disagree, the most restrictive ruling is kept
+    and a note says so.
+    """
+    rule = rules.ExecutorRule.from_council(council)
+    summaries: list[Mapping[str, Any]] = []
+    for r in seat_records:
+        s = r.get("executor")
+        if isinstance(s, Mapping) and s not in summaries:
+            summaries.append(s)
+    if rule is None or not summaries:
+        return None, []
+    rulings = sorted((rule.evaluate(s) for s in summaries), key=lambda x: (x.veto, x.zero_artifacts), reverse=True)
+    notes = [f"executor summaries differ between the seat records of this session ({len(summaries)} variants): "
+             "the most restrictive one is applied"] if len(summaries) > 1 else []
+    return rulings[0], notes
+
+
 def build_decision_record(session: Mapping[str, Any], candidate: Mapping[str, Any], seat_records: list[Mapping[str, Any]],
-                          rule: scoring.QuorumRule, *, bundle_sha256: str | None) -> dict[str, Any]:
+                          rule: scoring.QuorumRule, *, bundle_sha256: str | None,
+                          council: Mapping[str, Any] | None = None) -> dict[str, Any]:
+    """``council`` is the council.json document: its executor rule (EX-1) is applied to the executor
+    summary signed in the seat records.  Without it the decision is seats-only, as for legacy records."""
     outcomes = [seat_outcome_from_record(r) for r in seat_records if r["seat"].get("voting", True)]
-    decision = scoring.decide_council(outcomes, rule)
+    ruling, ruling_notes = executor_ruling_from_records(seat_records, council)
+    decision = scoring.decide_council(outcomes, rule, ruling)
     return {
         "schema": DECISION_SCHEMA,
         "session": dict(session),
@@ -161,6 +197,8 @@ def build_decision_record(session: Mapping[str, Any], candidate: Mapping[str, An
         "bundle_sha256": bundle_sha256,
         "seat_files": sorted(f"{candidate['slug']}__{r['seat']['seat_id']}.json" for r in seat_records),
         "decision": decision.to_dict(),
+        # rule id, approval, executor counts, clauses fired (None: the council file given has no executor rule)
+        "executor_rule": ({**ruling.to_dict(), "notes": ruling_notes} if ruling is not None else None),
         "interpretations": scoring.INTERPRETATIONS,
         "human_steps_pending": [
             "external human reviewer minutes (review §3 rule 8)",

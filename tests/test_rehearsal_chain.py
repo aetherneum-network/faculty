@@ -99,7 +99,9 @@ class RegistryLabelsMockRows(_Run):
         self.assertTrue(any(ln.startswith("> **") and MARKER in ln for ln in md.splitlines()))
         h = registry.to_html(rows, COUNCIL)
         self.assertIn('<p class="registry-mock-banner">', h)
-        self.assertIn('class="outcome-pass registry-mock" data-slug="tiny-repo"', h)
+        # tiny_repo has scenarios that do not pass: rule EX-1 makes the row a VETO (it was "outcome-pass" before D19)
+        self.assertIn('class="outcome-veto registry-mock" data-slug="tiny-repo"', h)
+        self.assertIn("executor: EX-1.a: 4 of 7 declared scenarios not passed", h)
         self.assertEqual(h.count(MARKER), 2)  # banner + the row's provenance cell
         self.assertEqual(h.count("<tr class="), 1)
 
