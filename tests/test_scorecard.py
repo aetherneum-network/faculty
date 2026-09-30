@@ -357,6 +357,18 @@ class StatusTransitions(unittest.TestCase):
         before = accepted([a_run(day(-3), 1, "protocol", never=2), a_run(day(-1), 2)])
         self.assertEqual(status(v=verdict(), card=before).status, CERTIFIED)
 
+    def test_a_never_event_in_an_earlier_run_with_no_verdict_is_under_review(self):
+        # P3.3 "until a new defence": a clean last run does not wash out an earlier never-event before any verdict
+        card = accepted([a_run(day(-4), 1, "protocol"), a_run(day(-3), 2, "protocol", never=2),
+                         a_run(day(-2), 3, never=1), a_run(day(-1), 4)])
+        s = status(card=card)
+        self.assertEqual((s.status, s.clause_id, s.conditions), (UNDER_REVIEW, "P3.b", ("never_event_not_defended",)))
+        self.assertIn("runs[1]", s.reasons[0])
+        self.assertIn("runs[2]", s.reasons[0])
+        self.assertEqual(status(card=accepted([a_run(day(-2), 1, "protocol"), a_run(day(-1), 2)])).status, EVIDENCE_PENDING)
+        # a verdict signed after those runs is the new defence
+        self.assertEqual(status(v=verdict(), card=card).status, CERTIFIED)
+
     def test_the_never_event_threshold_is_the_file_s(self):
         edited = copy.deepcopy(COUNCIL)
         next(r for r in edited["rules"] if r["id"] == "P3")["parameters"][2]["value"] = 2

@@ -255,7 +255,7 @@
       "statuses_order": "read top to bottom: the first status with a condition that holds is the status",
       "statuses": [
         {"id": "P3.a", "status": "profile-attested", "when": ["no_pack"], "text": "no proof pack: admitted on profile, no re-runnable evidence"},
-        {"id": "P3.b", "status": "under-review", "when": ["executor_veto", "never_event_in_headline_run", "never_event_after_verdict"], "text": "executor veto (rule EX-1), or the never-event threshold reached in the headline run or in any run after the signed verdict"},
+        {"id": "P3.b", "status": "under-review", "when": ["executor_veto", "never_event_in_headline_run", "never_event_after_verdict", "never_event_not_defended"], "text": "executor veto (rule EX-1), or the never-event threshold reached in the headline run, in any run after the signed verdict, or in any run when there is no signed verdict yet (no defence yet: P3.3)", "never_event_not_defended_added": "2026-09-30, coordinator: the code read P3.3 only on the headline run; the approved text says a run with a never-event holds under-review until a new defence"},
         {"id": "P3.c", "status": "evidence-pending", "when": ["no_signed_verdict"], "text": "frozen pack measured, no signed verdict"},
         {"id": "P3.d", "status": "lapsed", "when": ["validity_over", "blind_run_too_old"], "text": "validity over, or last valid blind run older than the maximum"},
         {"id": "P3.e", "status": "certified", "when": ["otherwise"], "text": "signed verdict, inside validity, last valid blind run not older than the maximum, no never-event in the headline run"}

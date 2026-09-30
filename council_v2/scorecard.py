@@ -448,11 +448,15 @@ def derive_status(*, pack: bool, verdict: Verdict | None, scorecard: Scorecard |
     blind_age = (today - last_blind).days if last_blind else None
     after = [r for r in scorecard.runs if r.run_at > verdict.signed_at and r.never_events >= threshold] \
         if (signed and scorecard) else []
+    # P3.3: a run with a never-event holds the status under-review "until a new defence"; with no signed verdict
+    # there has been no defence yet, so every run counts, not only the headline run
+    undefended = [r for r in scorecard.runs if r.never_events >= threshold] if (scorecard and not signed) else []
     facts = {
         "no_pack": not pack,
         "executor_veto": bool(executor_veto),
         "never_event_in_headline_run": bool(headline and headline.never_events >= threshold),
         "never_event_after_verdict": bool(after),
+        "never_event_not_defended": bool(undefended),
         "no_signed_verdict": not signed,
         "validity_over": bool(signed and today > certified_until),
         "blind_run_too_old": bool(signed and (blind_age is None or blind_age > rule.max_days_between_blind_runs)),
@@ -472,6 +476,8 @@ def derive_status(*, pack: bool, verdict: Verdict | None, scorecard: Scorecard |
                                         f"{headline.never_events} never-event(s); threshold {threshold}") if headline else "",
         "never_event_after_verdict": "never-event(s) in run(s) after the signed verdict: "
                                      + ", ".join(f"runs[{r.index}] ({r.run_at.date()}, {r.never_events})" for r in after),
+        "never_event_not_defended": "never-event(s) in run(s) with no signed verdict since: "
+                                    + ", ".join(f"runs[{r.index}] ({r.run_at.date()}, {r.never_events})" for r in undefended),
         "no_signed_verdict": "; ".join(why_not),
         "validity_over": f"validity over: certified until {certified_until}, status asked for {today}",
         "blind_run_too_old": (f"last valid blind run {last_blind} is {blind_age} days old; maximum "

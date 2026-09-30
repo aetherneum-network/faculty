@@ -288,6 +288,7 @@ def _head(rule: Mapping[str, Any], what: str) -> tuple[str, str, str]:
 DIPLOMA_PARAMETERS = ("validity_days", "max_days_between_blind_runs", "never_event_threshold")
 STATUSES = ("profile-attested", "evidence-pending", "certified", "lapsed", "under-review")
 STATUS_CONDITIONS = ("no_pack", "executor_veto", "never_event_in_headline_run", "never_event_after_verdict",
+                     "never_event_not_defended",
                      "no_signed_verdict", "validity_over", "blind_run_too_old", "otherwise")
 NOT_A_VERDICT = ("mock", "dry_run", "executor_not_run", "outcome_not_pass", "no_scorecard_digest")
 HEADLINE_LAST_BLIND = "last-blind-run"
