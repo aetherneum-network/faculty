@@ -14,10 +14,10 @@ Canonical reference: [../charter/FACULTY_BOARD.md](../charter/FACULTY_BOARD.md).
 
 | Reviewer | Model | API endpoint | Review focus |
 |---|---|---|---|
-| **Faculty Chair** | Claude Sonnet 5 | `ANTHROPIC_API_KEY` | Coordination + voice coherence with the Charter |
-| **Velocity** | Groq Llama 3.3 70B | `GROQ_API_KEY` | Operational test: rapid prompts, decisions in seconds |
-| **Reasoning at scale** | Cerebras Qwen 3 235B | `CEREBRAS_API_KEY` | Edge cases, ethical dilemmas, contradictions in the body of work |
-| **Long context** | Moonshot Kimi K2 | `MOONSHOT_API_KEY` | Narrative coherence across the entire intake + all artifacts |
+| **Faculty Chair** | recorded: `claude-sonnet-4-5` · Claude Sonnet 5 planned | `ANTHROPIC_API_KEY` | Coordination + voice coherence with the Charter |
+| **Velocity** | Groq Llama 3.3 70B (recorded: `llama-3.3-70b-versatile`) | `GROQ_API_KEY` | Operational test: rapid prompts, decisions in seconds |
+| **Reasoning at scale** | Cerebras Qwen 3 235B (recorded: `qwen-3-235b-a22b-instruct-2507`) | `CEREBRAS_API_KEY` | Edge cases, ethical dilemmas, contradictions in the body of work |
+| **Long context** | Moonshot (recorded: `moonshot-v1-32k` · Kimi K2 planned) | `MOONSHOT_API_KEY` | Narrative coherence across the entire intake + all artifacts |
 
 Minimum quorum: 3 reviews out of 4 available. If one provider is down the quorum reduces to 3.
 

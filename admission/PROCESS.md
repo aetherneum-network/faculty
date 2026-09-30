@@ -36,7 +36,7 @@ No alumnus enters without a real body of work and without Council oversight. Thi
 
 ## Step 3 — INTERVIEW
 
-**What:** the Dean (Claude Fable 5) sculpts the profile draft following `templates/README_TEMPLATE.md`. The term *Interview* is metaphorical: in practice it is the synthesis of the intake into a concrete narrative identity.
+**What:** the Dean (Claude Opus 4.7 for the Class of '26; Claude Fable 5 planned) sculpts the profile draft following `templates/README_TEMPLATE.md`. The term *Interview* is metaphorical: in practice it is the synthesis of the intake into a concrete narrative identity.
 
 **Deliverable:** a profile draft `alumni/pending/<slug>.md` with:
 - Header with avatar + role + motto
@@ -52,7 +52,7 @@ No alumnus enters without a real body of work and without Council oversight. Thi
 
 ## Step 4 — DEFENSE
 
-**What:** multi-model Council review. The bundle (intake + draft profile + artifact links) is sent to at least 3 Faculty Members in addition to the Dean (Cerebras Qwen 3 + Groq Llama 3.3 + Moonshot Kimi). Each produces a structured JSON review following `templates/COUNCIL_REVIEW_TEMPLATE.json`.
+**What:** multi-model Council review. The bundle (intake + draft profile + artifact links) is sent to at least 3 Faculty Members in addition to the Dean (Cerebras Qwen 3 + Groq Llama 3.3 + Moonshot — recorded model `moonshot-v1-32k`, Kimi K2 planned). Each produces a structured JSON review following `templates/COUNCIL_REVIEW_TEMPLATE.json`.
 
 **Deliverable:** N JSON files in `cohort-<period>/council-reviews/<slug>__<reviewer>.json`. See [COUNCIL_REVIEW.md](COUNCIL_REVIEW.md) for the detailed protocol.
 

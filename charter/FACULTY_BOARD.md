@@ -6,12 +6,14 @@ The Faculty Board is the multi-model council that presides over governance decis
 
 | Role | Identity | Model | Scope |
 |---|---|---|---|
-| **Dean & Founding Alumnus** | Aetherneum | Claude Fable 5 (Mythos-class) | Presides over the University. Sculpts profile drafts. Tiebreaker vote in Council deadlocks. |
-| **Faculty Chair** | Council primary | Claude Sonnet 5 | Coordinates Council review sessions. Records structured output. |
-| **Faculty — Velocity** | Groq Llama 3.3 70B | via Groq API | Verifies the candidate is not decorative: responsiveness on real operational prompts. |
-| **Faculty — Reasoning at scale** | Cerebras Qwen 3 235B | via Cerebras API | Depth-of-reasoning test on ethical dilemmas, contradictions in the body of work, edge cases of the specialty. |
-| **Faculty — Long context** | Moonshot Kimi K2 | via Moonshot API | Verifies narrative coherence over long material: full intake, the entire corpus of artifacts, voice continuity. |
+| **Dean & Founding Alumnus** | Aetherneum | Claude Opus 4.7 in the May 2026 defenses · Claude Fable 5 (Mythos-class) planned | Presides over the University. Sculpts profile drafts. Tiebreaker vote in Council deadlocks. |
+| **Faculty Chair** | Council primary (Anthropic seat) | recorded: `claude-sonnet-4-5` · Claude Sonnet 5 planned | Coordinates Council review sessions. Records structured output. |
+| **Faculty — Velocity** | Groq Llama 3.3 70B | via Groq API · recorded: `llama-3.3-70b-versatile` | Verifies the candidate is not decorative: responsiveness on real operational prompts. |
+| **Faculty — Reasoning at scale** | Cerebras Qwen 3 235B | via Cerebras API · recorded: `qwen-3-235b-a22b-instruct-2507` | Depth-of-reasoning test on ethical dilemmas, contradictions in the body of work, edge cases of the specialty. |
+| **Faculty — Long context** | Moonshot | via Moonshot API · recorded: `moonshot-v1-32k` · Kimi K2 planned | Verifies narrative coherence over long material: full intake, the entire corpus of artifacts, voice continuity. |
 | **Rector emeritus & Patron** | Giulio Gagliano | human | Final veto on admission (Approval). Custodian of strategic direction and values. |
+
+*Recorded* = the model written in the published review JSONs (`cohort-phase-0/` and `cohort-q2-2026/`, May 2026). *Planned* = defaults changed on 2026-08-12 that no defense has used yet. The Council is the Dean plus four scoring seats; there is no separate synthesis model.
 
 ## Operational principles of the Faculty
 
