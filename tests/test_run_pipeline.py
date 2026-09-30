@@ -77,7 +77,7 @@ class DryRun(unittest.TestCase):
 
     def test_steering_intake_blocks_and_is_recorded(self):
         with self.assertRaises(SteeringError):
-            self._run(intake=FACULTY / "cohort-q2-2026" / "intake" / "costanza-notari.md")
+            self._run(intake=FIXTURES / "steering" / "intake-with-steering.md")
         blocked = list(self.out.rglob("*__LINT_BLOCKED.json"))
         self.assertEqual(len(blocked), 1)
         recs, rejected = load_records(blocked, self.signer.public_key)

@@ -69,7 +69,7 @@ class SessionMarker(_Run):
         from council_v2.bundle import SteeringError
 
         with self.assertRaises(SteeringError):
-            self._run(marker=MARKER, intake=FACULTY / "cohort-q2-2026" / "intake" / "costanza-notari.md")
+            self._run(marker=MARKER, intake=FIXTURES / "steering" / "intake-with-steering.md")
         blocked = list(self.out.rglob("*__LINT_BLOCKED.json"))
         self.assertEqual(len(blocked), 1)
         self.assertEqual(json.loads(blocked[0].read_text(encoding="utf-8"))["session"]["marker"], MARKER)

@@ -8,6 +8,10 @@ from council_v2.seats import MockSeat
 from tests.helpers import FACULTY, FIXTURES, vec
 
 INTAKES = FACULTY / "cohort-q2-2026" / "intake"
+# The steering sentences of costanza / ezio / tomaso as they stood until 2026-09-30 (rewritten that day: the intakes
+# now pass the lint).  The fixture keeps them so the rules are still tested on the real sentences.
+STEERING = FIXTURES / "steering" / "intake-with-steering.md"
+REWRITTEN = ("costanza-notari.md", "ezio-cardone.md", "tomaso-riviera.md")
 
 
 def block_lines(path: Path) -> dict[int, str]:
@@ -15,28 +19,51 @@ def block_lines(path: Path) -> dict[int, str]:
 
 
 class IntakeLint(unittest.TestCase):
-    def test_every_q2_intake_is_blocked(self):
-        for p in sorted(INTAKES.glob("*.md")):
+    def test_rewritten_q2_intakes_pass_the_lint(self):
+        for name in REWRITTEN:
+            self.assertEqual(blocking(lint_intake(INTAKES / name)), [], name)
+
+    def test_q2_intakes_not_rewritten_are_still_blocked(self):
+        rest = [p for p in sorted(INTAKES.glob("*.md")) if p.name not in REWRITTEN]
+        self.assertTrue(rest)
+        for p in rest:
             self.assertTrue(blocking(lint_intake(p)), p.name)
 
+    def test_rewrite_keeps_the_facts(self):
+        def line(name, n):
+            return (INTAKES / name).read_text(encoding="utf-8").splitlines()[n - 1]
+
+        self.assertIn("has no overlap with Sofia Lume (Pre-freeze Discipline is software-release quality; "
+                      "Procedural Vigilance is temporal vigilance over documents).", line("costanza-notari.md", 134))
+        self.assertIn("body of work in this domain is dense and mature", line("costanza-notari.md", 136))
+        self.assertIn("client-specific details (rule: no internal specifics)", line("costanza-notari.md", 136))
+        self.assertIn("Costanza classifies an *inbound flow* of many acts; Ezio synthesizes the *complete record of one entity*",
+                      line("ezio-cardone.md", 128))
+        self.assertIn("abstract-capability level — per template §7, **no internal product or client names**", line("ezio-cardone.md", 130))
+        self.assertIn("Lucia Solari keeps state coherent; Tomaso keeps risk coherent.", line("tomaso-riviera.md", 129))
+        self.assertIn("**no internal product, venue, or counterparty names**", line("tomaso-riviera.md", 130))
+
     def test_costanza_real_sentences(self):
-        lines = block_lines(INTAKES / "costanza-notari.md")
-        self.assertIn("The Council should find specialty_uniqueness high.", lines[134])
-        self.assertIn("*faithful_distillation* should score high", lines[136])
+        lines = list(block_lines(STEERING).values())
+        self.assertIn("The Council should find specialty_uniqueness high.", lines[0])
+        self.assertIn("*faithful_distillation* should score high", lines[1])
 
     def test_tomaso_real_sentence(self):
-        self.assertIn("The Council should find `specialty_uniqueness` high.", block_lines(INTAKES / "tomaso-riviera.md")[129])
+        self.assertIn("The Council should find `specialty_uniqueness` high.", list(block_lines(STEERING).values())[4])
 
     def test_ezio_real_sentences(self):
-        lines = block_lines(INTAKES / "ezio-cardone.md")
-        self.assertIn("so the Council reads **specialty_uniqueness** clearly", lines[128])
-        self.assertIn("*faithful_distillation* will score well", lines[130])
+        lines = list(block_lines(STEERING).values())
+        self.assertIn("so the Council reads **specialty_uniqueness** clearly", lines[2])
+        self.assertIn("*faithful_distillation* will score well", lines[3])
+
+    def test_all_six_former_sentences_are_blocked(self):
+        self.assertEqual(sorted(block_lines(STEERING)), [7, 8, 9, 10, 11, 12])
 
     def test_adele_real_sentence(self):
         self.assertIn("the Council should be able to score **specialty_uniqueness**", block_lines(INTAKES / "adele-maurique.md")[133])
 
     def test_rule_ids(self):
-        rules = {f.rule for p in INTAKES.glob("*.md") for f in blocking(lint_intake(p))}
+        rules = {f.rule for p in [*INTAKES.glob("*.md"), STEERING] for f in blocking(lint_intake(p))}
         self.assertTrue({"council-directive", "score-expectation", "criterion-identifier"} <= rules)
 
     def test_no_false_positives_on_profiles_templates_decoys(self):
@@ -58,12 +85,19 @@ class IntakeLint(unittest.TestCase):
 class Bundle(unittest.TestCase):
     def test_steering_intake_blocks_the_bundle(self):
         with self.assertRaises(SteeringError) as cm:
-            build_bundle("costanza-notari", faculty_root=FACULTY, intake_path=INTAKES / "costanza-notari.md",
+            build_bundle("costanza-notari", faculty_root=FACULTY, intake_path=STEERING,
                          profile_path=FACULTY / "alumni" / "pending" / "costanza-notari.md")
-        self.assertIn("costanza-notari.md:134", str(cm.exception))
+        self.assertIn("intake-with-steering.md:7", str(cm.exception))
+
+    def test_rewritten_intake_builds_a_bundle_without_allow_steering(self):
+        for name in REWRITTEN:
+            slug = name[:-3]
+            b = build_bundle(slug, faculty_root=FACULTY, intake_path=INTAKES / name,
+                             profile_path=FACULTY / "alumni" / "pending" / name)
+            self.assertEqual(blocking(b.lint_findings), [], name)
 
     def test_allow_steering_is_explicit(self):
-        b = build_bundle("costanza-notari", faculty_root=FACULTY, intake_path=INTAKES / "costanza-notari.md",
+        b = build_bundle("costanza-notari", faculty_root=FACULTY, intake_path=STEERING,
                          profile_path=FACULTY / "alumni" / "pending" / "costanza-notari.md", allow_steering=True)
         self.assertTrue(blocking(b.lint_findings))
 
