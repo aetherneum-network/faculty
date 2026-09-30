@@ -216,10 +216,83 @@
           "effect": {"artifact_count": 0},
           "started_statuses": ["pass", "fail", "timeout"],
           "note": "no scenarios/ directory, none found, or every one failing to launch (status error): the evidence caps apply as for artifact_count = 0 (council_v2/scoring.py evidence_caps), in addition to EX-1.a when scenarios were found"
+        },
+        {
+          "id": "EX-1.c",
+          "text": "the executor ran and crashed: the number of declared scenarios is unknown, the outcome is VETO",
+          "when": {"executor_crashed": true},
+          "effect": {"outcome": "VETO"},
+          "approved": "coordinator ruling on D19 dissent point 2, 2026-09-30 [TO CONFIRM: Rector]",
+          "note": "a crash of the scenario runner must never be more lenient than a failing scenario; EX-1.b applies as well (zero scenarios started)"
         }
       ],
       "live_requires_executor": true,
       "live_requires_executor_text": "--live together with --no-executor is refused"
+    },
+    {
+      "id": "P3",
+      "name": "Diploma status",
+      "subject": "diploma",
+      "text": "the diploma is a blind number that expires",
+      "approved": "Rector, 2026-09-30",
+      "applies": "every alumnus and candidate. The status is derived by code (council_v2/scorecard.py derive_status) from the signed verdict or its absence, the scorecard, the date given as an argument, the parameters below and the executor veto of rule EX-1.",
+      "parameters": [
+        {"id": "P3.1", "name": "validity_days", "value": 90, "text": "the diploma is valid for 90 days from the date of the signed verdict", "approved": "Rector, 2026-09-30"},
+        {"id": "P3.2", "name": "max_days_between_blind_runs", "value": 30, "text": "the last valid blind run must not be older than 30 days", "approved": "Rector, 2026-09-30"},
+        {"id": "P3.3", "name": "never_event_threshold", "value": 1, "text": "a run with at least one never-event puts the status under-review until a new defence", "approved": "Rector, 2026-09-30"}
+      ],
+      "scorecard": {
+        "schema_id": "aetherneum-scorecard/0.1-draft",
+        "schema_file": "council_v2/scorecard.schema.json",
+        "run_kinds": ["protocol", "out-of-pool"],
+        "blind_run_kind": "out-of-pool",
+        "headline_run": "last-blind-run",
+        "headline_run_text": "the headline run is the LAST out-of-pool run, never the best",
+        "builder_labels": ["builder"],
+        "builder_text": "a run counts only if run by a hand other than the builder: run_by and written_by must not begin with a builder label",
+        "runs_kept_text": "every run is kept, in date order: a scorecard with fewer runs than its previous signed version is refused"
+      },
+      "statuses_order": "read top to bottom: the first status with a condition that holds is the status",
+      "statuses": [
+        {"id": "P3.a", "status": "profile-attested", "when": ["no_pack"], "text": "no proof pack: admitted on profile, no re-runnable evidence"},
+        {"id": "P3.b", "status": "under-review", "when": ["executor_veto", "never_event_in_headline_run", "never_event_after_verdict"], "text": "executor veto (rule EX-1), or the never-event threshold reached in the headline run or in any run after the signed verdict"},
+        {"id": "P3.c", "status": "evidence-pending", "when": ["no_signed_verdict"], "text": "frozen pack measured, no signed verdict"},
+        {"id": "P3.d", "status": "lapsed", "when": ["validity_over", "blind_run_too_old"], "text": "validity over, or last valid blind run older than the maximum"},
+        {"id": "P3.e", "status": "certified", "when": ["otherwise"], "text": "signed verdict, inside validity, last valid blind run not older than the maximum, no never-event in the headline run"}
+      ],
+      "not_a_signed_verdict": ["mock", "dry_run", "executor_not_run", "outcome_not_pass", "no_scorecard_digest"],
+      "not_a_signed_verdict_text": "for this rule a record is not a signed verdict when its session is mock or dry-run, when it says 'executor: not run', when its outcome is not PASS, or when it relied on no scorecard; the legacy-import records of the 2026 JSON are not signed verdicts either",
+      "not_a_signed_verdict_approved": "mock, dry_run, executor_not_run: coordinator ruling on D19 dissent point 3, 2026-09-30; outcome_not_pass, no_scorecard_digest: implementer's reading [TO CONFIRM: Rector]"
+    },
+    {
+      "id": "P4",
+      "name": "Admission rule",
+      "subject": "admission",
+      "text": "no new alumnus without a proof pack: a defence starts only for a candidate whose pack exists and passes the executor (rule EX-1)",
+      "approved": "Rector, 2026-09-30",
+      "applies": "live defence sessions: refused before any seat is called. The alumni admitted before this rule are not removed or rewritten: without a pack their status is profile-attested (rule P3).",
+      "exceptions": [
+        {
+          "id": "P4.x",
+          "when": {"session": "mock or dry-run"},
+          "effect": "record-only",
+          "text": "mock / dry-run session: the session still runs and its signed decision record says that the admission rule would have refused"
+        }
+      ],
+      "clauses": [
+        {
+          "id": "P4.a",
+          "text": "the pack exists: --repo points at a repository with at least one scenario",
+          "when": {"pack_scenarios_below": 1},
+          "effect": "refuse"
+        },
+        {
+          "id": "P4.b",
+          "text": "the pack passes the executor: no veto under rule EX-1",
+          "when": {"executor_veto": true},
+          "effect": "refuse"
+        }
+      ]
     }
   ],
   "open_questions": [

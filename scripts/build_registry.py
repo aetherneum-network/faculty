@@ -14,18 +14,24 @@ Usage::
 
 The public key can also come from AETHERNEUM_COUNCIL_PUBKEY.  Exit code 1 if
 any record was rejected and --strict is given.
+
+Status and expiry (rule P3 in council/council.json) are derived for the day
+given with ``--today YYYY-MM-DD`` (default: today's UTC date, read here and
+nowhere else) from the signed records and the scorecards of ``--scorecards
+<dir>`` (files ``<slug>.scorecard.json``).
 """
 
 from __future__ import annotations
 
 import argparse
 import sys
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 FACULTY = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(FACULTY))
 
-from council_v2 import registry  # noqa: E402
+from council_v2 import registry, scorecard  # noqa: E402
 from council_v2.signing import default_public_key_path, load_public_key  # noqa: E402
 
 
@@ -38,12 +44,18 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--out-html", type=Path)
     ap.add_argument("--include-mock", action="store_true", help="include dry-run/mock records (never for publication)")
     ap.add_argument("--strict", action="store_true", help="exit 1 if any record is rejected")
+    ap.add_argument("--today", type=date.fromisoformat,
+                    help="day the statuses are derived for, YYYY-MM-DD (default: today's UTC date)")
+    ap.add_argument("--scorecards", type=Path, help="directory of <slug>.scorecard.json files (rule P3)")
     args = ap.parse_args(argv)
     if args.public_key is None:
         print("error: no public key (--public-key or AETHERNEUM_COUNCIL_PUBKEY)", file=sys.stderr)
         return 2
     council = registry.load_council(args.council)
-    rows, rejected = registry.build(args.records, load_public_key(args.public_key), council, include_mock=args.include_mock)
+    today = args.today or datetime.now(timezone.utc).date()
+    cards, card_notes = scorecard.load_dir(args.scorecards) if args.scorecards else ({}, [])
+    rows, rejected = registry.build(args.records, load_public_key(args.public_key), council, include_mock=args.include_mock,
+                                    today=today, scorecards=cards)
     md = registry.to_markdown(rows, council, rejected)
     if args.out_md:
         args.out_md.write_text(md, encoding="utf-8")
@@ -54,6 +66,9 @@ def main(argv: list[str] | None = None) -> int:
         print(md)
     for f, why in rejected:
         print(f"rejected: {f}: {why}", file=sys.stderr)
+    for note in card_notes:
+        print(f"scorecard: {note}", file=sys.stderr)
+    print(f"status as of {today.isoformat()} ({len(cards)} scorecard(s) read)", file=sys.stderr)
     print(f"{len(rows)} row(s), {len(rejected)} rejected record(s)", file=sys.stderr)
     return 1 if (args.strict and rejected) else 0
 

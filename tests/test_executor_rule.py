@@ -16,6 +16,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from council_v2 import registry, rules, scoring
 from council_v2 import run_council_v2 as rc
@@ -69,10 +70,20 @@ class RuleIsReadFromTheFile(unittest.TestCase):
         rule = next(r for r in COUNCIL["rules"] if r["id"] == "EX-1")
         self.assertEqual(rule["text"], TEXT)
         self.assertEqual(rule["approved"], APPROVED)
-        self.assertEqual([c["id"] for c in rule["clauses"]], ["EX-1.a", "EX-1.b"])
-        self.assertEqual("; ".join(c["text"] for c in rule["clauses"]), TEXT)  # the two clauses are the approved wording
+        self.assertEqual([c["id"] for c in rule["clauses"]], ["EX-1.a", "EX-1.b", "EX-1.c"])
+        self.assertEqual("; ".join(c["text"] for c in rule["clauses"][:2]), TEXT)  # the first two clauses are the approved wording
         self.assertEqual((RULE.rule_id, RULE.text, RULE.approved), ("EX-1", TEXT, APPROVED))
         self.assertTrue(RULE.live_requires_executor)
+
+    def test_crash_clause_as_written(self):
+        # added after D19 by a ruling on the rule's gap; it carries its own approval line, not the Rector's
+        clause = next(r for r in COUNCIL["rules"] if r["id"] == "EX-1")["clauses"][2]
+        self.assertEqual((clause["when"], clause["effect"]), ({"executor_crashed": True}, {"outcome": "VETO"}))
+        self.assertEqual(clause["text"], "the executor ran and crashed: the number of declared scenarios is unknown, "
+                                         "the outcome is VETO")
+        self.assertTrue(clause["approved"].startswith("coordinator ruling on D19 dissent point 2, 2026-09-30"))
+        self.assertNotEqual(clause["approved"], APPROVED)
+        self.assertEqual((RULE.crash_clause_id, RULE.crash_approved), ("EX-1.c", clause["approved"]))
 
     def test_open_question_is_resolved_not_deleted(self):
         q = [x for x in COUNCIL["open_questions"] if "failing scenarios (executor)" in x]
@@ -161,6 +172,55 @@ class RuleOnASummary(unittest.TestCase):
         s = rules.executor_summary(True, result)
         self.assertEqual(s["not_passed"], [{"scenario_id": "b", "status": "fail"}, {"scenario_id": "c", "status": "timeout"}])
         self.assertEqual(s["counts"], {"scenarios_found": 3, "passed": 1, "failed": 1, "errors": 0, "timeouts": 1})
+
+    # ---- clause EX-1.c: the executor itself crashed
+    def test_a_crash_is_a_veto_that_names_the_rule(self):
+        s = rules.executor_summary(True, None, "RuntimeError: boom")
+        self.assertEqual((s["executor"], s["crashed"], s["error"]), ("ran", True, "RuntimeError: boom"))
+        r = RULE.evaluate(s)
+        self.assertEqual((r.veto, r.crashed, r.zero_artifacts, r.clauses_fired), (True, True, True, ["EX-1.b", "EX-1.c"]))
+        self.assertEqual(r.veto_short, "EX-1.c: the executor crashed, declared scenarios unknown")
+        self.assertTrue(r.veto_reason.startswith("EX-1 veto (EX-1.c, coordinator ruling on D19 dissent point 2, 2026-09-30"))
+        self.assertIn("the executor ran and crashed (RuntimeError: boom)", r.veto_reason)
+        self.assertIn("the number of declared scenarios is unknown", r.veto_reason)
+
+    def test_nothing_to_execute_is_not_a_crash(self):
+        s = rules.executor_summary(True, None)
+        self.assertNotIn("crashed", s)  # the summary of a run without scenarios is what it was under D19
+        r = RULE.evaluate(s)
+        self.assertEqual((r.veto, r.crashed, r.clauses_fired), (False, False, ["EX-1.b"]))
+        self.assertFalse(RULE.evaluate(summary(found=4, passed=4)).crashed)
+        self.assertFalse(RULE.evaluate(rules.executor_summary(False, None)).crashed)
+
+    def test_a_crash_summary_signed_before_the_clause_is_read_as_a_crash(self):
+        old = {"executor": "ran", "counts": {"scenarios_found": 0, "passed": 0, "failed": 0, "errors": 0, "timeouts": 0},
+               "not_passed": [], "error": "OSError: disk"}  # the D19 shape: no "crashed" key
+        r = RULE.evaluate(old)
+        self.assertEqual((r.veto, r.crashed, r.clauses_fired), (True, True, ["EX-1.b", "EX-1.c"]))
+        old_nothing = {**old, "error": rules.NOTHING_TO_EXECUTE}
+        self.assertEqual((RULE.evaluate(old_nothing).veto, RULE.evaluate(old_nothing).crashed), (False, False))
+
+    def test_a_crash_is_never_more_lenient_than_a_failure(self):
+        failing = RULE.evaluate(summary(found=1, failed=1, not_passed=[("S01", "fail")]))
+        crashed = RULE.evaluate(rules.executor_summary(True, None, "RuntimeError: boom"))
+        seats = [ok_seat(s) for s in QUORUM.voting_seats]
+        self.assertEqual(scoring.decide_council(seats, QUORUM, failing).outcome, scoring.OUTCOME_VETO)
+        d = scoring.decide_council(seats, QUORUM, crashed)
+        self.assertEqual(d.outcome, scoring.OUTCOME_VETO)
+        self.assertEqual(d.vetoes, {"executor": ["EX-1.c: the executor crashed, declared scenarios unknown"]})
+        self.assertTrue(any("EX-1" in r and "crashed" in r for r in d.reasons))
+        self.assertTrue(scoring.evidence_caps({"artifact_count": 12}, crashed))  # and the zero-artifact cap as well
+        self.assertEqual(scoring.evidence_caps({"artifact_count": 12}, failing), [])
+
+    def test_without_the_crash_clause_a_crash_is_what_it_was_under_d19(self):
+        edited = copy.deepcopy(COUNCIL)
+        edited["rules"][0]["clauses"] = [c for c in edited["rules"][0]["clauses"] if c["id"] != "EX-1.c"]
+        r = rules.ExecutorRule.from_council(edited).evaluate(rules.executor_summary(True, None, "RuntimeError: boom"))
+        self.assertEqual((r.veto, r.clauses_fired), (False, ["EX-1.b"]))  # the code only extracts: no clause, no veto
+        edited = copy.deepcopy(COUNCIL)
+        edited["rules"][0]["clauses"][2]["effect"] = {"outcome": "PASS"}
+        with self.assertRaises(rules.RuleError):
+            rules.ExecutorRule.from_council(edited)
 
 
 class ScoringReadsTheRuling(unittest.TestCase):
@@ -282,6 +342,29 @@ class Pipeline(_Run):
         self.assertEqual(d["outcome"], "VETO")
         self.assertEqual(d["vetoes"]["executor"], ["EX-1.a: 3 of 3 declared scenarios not passed"])
         self.assertEqual(sorted(k for k in d["vetoes"] if k != "executor"), sorted(QUORUM.voting_seats))
+
+    def test_a_crash_of_the_scenario_runner_is_a_veto(self):
+        def boom(*a, **kw):
+            raise RuntimeError("runner broke")
+
+        with mock.patch.object(rc, "run_scenarios", boom):
+            s = self._run({"S01": {"run.py": PASS_PY}})  # a pack that would pass: the crash must not read as a pass
+        ex = s["executor_rule"]
+        self.assertEqual((ex["executor"], ex["crashed"], ex["veto"], ex["clauses_fired"]), ("ran", True, True, ["EX-1.b", "EX-1.c"]))
+        d = s["decision"]
+        self.assertEqual((d["outcome"], d["pass_count"]), ("VETO", 0))  # the zero-artifact cap fails every seat as well
+        self.assertEqual(d["vetoes"]["executor"], ["EX-1.c: the executor crashed, declared scenarios unknown"])
+        self.assertTrue(any(r.startswith("EX-1 veto (EX-1.c") and "RuntimeError: runner broke" in r for r in d["reasons"]))
+        signed = self._decision(s)
+        self.assertTrue(verify_record(signed, self.signer.public_key).ok)
+        self.assertEqual(signed["executor_rule"]["clauses_fired"], ["EX-1.b", "EX-1.c"])
+        executor_record = json.loads((Path(s["out"]) / "pack__executor.json").read_text(encoding="utf-8"))
+        self.assertIn("RuntimeError: runner broke", json.dumps(executor_record))  # the crash is written down, signed
+        recs, rejected = load_records([s["out"]], self.signer.public_key)
+        self.assertEqual(rejected, [])
+        row = registry.build_rows(recs, COUNCIL, include_mock=True)[0]
+        self.assertEqual(row.decision.outcome, "VETO")
+        self.assertIn("EX-1.c", json.dumps(row.decision.vetoes))
 
     def test_dry_run_without_executor_says_not_run_and_carries_no_executor_veto(self):
         s = self._run({"S01": {"run.py": FAIL_PY}}, run_executor=False)

@@ -13,6 +13,12 @@ required, or the run refuses to start:
 * environment ``AETHERNEUM_COUNCIL_LIVE=1`` plus the providers' API keys
 * ``--key <private key file>`` (the production signing key; no ephemeral key)
 * ``--approval-ref "<minutes id>"`` (recorded in every record's session block)
+* ``--repo <proof pack>`` with at least one scenario, which passes the executor
+  (rule P4 in council/council.json: no defence without a proof pack)
+
+``--scorecard <file>`` (rule P3) gives the scorecard the verdict relies on: it
+is validated, and its sha256 and the expiry of the diploma are signed in the
+decision record.
 
 Seats whose provider/model is still ``[TO CONFIRM]`` in council/council.json
 produce null records (and may break quorum) — by design.
@@ -38,12 +44,14 @@ if str(FACULTY) not in sys.path:
     sys.path.insert(0, str(FACULTY))
 
 from council_v2 import CRITERIA_ORDER, rules, scoring  # noqa: E402
+from council_v2 import scorecard as scorecard_mod  # noqa: E402
 from council_v2.bundle import SteeringError, blocking, build_bundle, git_head, lint_intake  # noqa: E402
 from council_v2.calibrate import load_decoys, run_calibration  # noqa: E402
 from council_v2.evidence import scan_repo  # noqa: E402
 from council_v2.executor import run_scenarios  # noqa: E402
 from council_v2.record import (  # noqa: E402
-    build_decision_record, build_executor_record, build_seat_record, new_session, record_filename, write_signed,
+    ADMISSION_REFUSED_SCHEMA, build_decision_record, build_executor_record, build_seat_record, new_session,
+    record_filename, write_signed,
 )
 from council_v2.seats import LIVE_ENV, AnthropicSeat, MockSeat, OpenAICompatibleSeat  # noqa: E402
 from council_v2.signing import Ed25519Signer, load_signer  # noqa: E402
@@ -122,13 +130,33 @@ def run(slug: str, *, repos_root: Path, out_root: Path, signer: Ed25519Signer, s
         mock: bool, intake: Path | None, profile: Path, repo: Path | None, allow_steering: bool = False,
         run_executor: bool = True, with_calibration: bool = True, approval_ref: str | None = None,
         council_path: Path = FACULTY / "council" / "council.json", alumni_path: Path = FACULTY / "alumni" / "alumni.json",
-        marker: str | None = None) -> dict[str, Any]:
+        marker: str | None = None, scorecard: Path | None = None) -> dict[str, Any]:
     if marker and not dry_run:
         raise RunRefused("a session marker labels rehearsals; it is not allowed in a live run")
     council = load_json(council_path)
     ex_rule = rules.ExecutorRule.from_council(council)
     if ex_rule and ex_rule.live_requires_executor and not dry_run and not run_executor:
         raise RunRefused(live_needs_executor_message(ex_rule))
+    # rule P4, pack clause: a live defence without a proof pack is refused before anything is written
+    adm_rule = rules.AdmissionRule.from_council(council)
+    manifest = scan_repo(repo) if repo else None
+    n_scenarios = len((manifest or {}).get("scenario_ids") or [])
+    if adm_rule and not dry_run:
+        no_pack = adm_rule.pack_refusal(bool(repo), n_scenarios)
+        if no_pack:
+            raise RunRefused(no_pack)
+    # rule P3: the scorecard the verdict relies on is validated before anything is written
+    dip_rule = rules.DiplomaRule.from_council(council)
+    card = None
+    if scorecard is not None:
+        if dip_rule is None:
+            raise RunRefused("a scorecard was given but council.json has no rule with subject 'diploma' to read it with")
+        try:
+            card = scorecard_mod.load(scorecard, dip_rule)
+        except scorecard_mod.ScorecardRefused as e:
+            raise RunRefused(str(e)) from e
+        if card.alumnus != slug and not dry_run:
+            raise RunRefused(f"rule {dip_rule.rule_id}: the scorecard is of {card.alumnus!r}, the defence is of {slug!r}")
     alumni = {a["slug"]: a for a in load_json(alumni_path)["alumni"]} if alumni_path.exists() else {}
     a = alumni.get(slug, {})
     candidate = {
@@ -158,8 +186,7 @@ def run(slug: str, *, repos_root: Path, out_root: Path, signer: Ed25519Signer, s
         write_signed(rec, out / f"{slug}__LINT_BLOCKED.json", signer)
         raise SteeringError(blocking(findings))
 
-    # 2. evidence + executor
-    manifest = scan_repo(repo) if repo else None
+    # 2. evidence (scanned above, for rule P4) + executor
     exec_result = None
     exec_error = None
     if run_executor and repo and manifest and manifest.get("has_scenarios"):
@@ -174,6 +201,21 @@ def run(slug: str, *, repos_root: Path, out_root: Path, signer: Ed25519Signer, s
     # rule EX-1 (council/council.json): its signed input and its ruling; "not run" can only happen in a dry run
     ex_summary = rules.executor_summary(run_executor, exec_result, exec_error) if ex_rule else None
     ex_ruling = ex_rule.evaluate(ex_summary) if ex_rule else None
+    # rule P4 (council/council.json): the pack exists and passes the executor.  A live defence is refused
+    # here, before any seat is called; a mock / dry-run session goes on and its decision record says that
+    # the rule would have refused.
+    admission = (adm_rule.evaluate(repo_given=bool(repo), scenarios=n_scenarios, executor=ex_ruling, live=not dry_run)
+                 if adm_rule else None)
+    if admission and admission["refused"]:
+        write_signed({"schema": ADMISSION_REFUSED_SCHEMA, "session": session, "candidate": candidate,
+                      "outcome": "REFUSED_BY_ADMISSION_RULE", "admission": admission, "executor": ex_summary,
+                      "dry_run": dry_run}, out / f"{slug}__ADMISSION_REFUSED.json", signer)
+        raise RunRefused("; ".join(admission["reasons"]))
+    card_summary = None
+    if card is not None:
+        head = ((manifest or {}).get("git") or {}).get("head_sha")
+        card_summary = {**card.summary(), "alumnus_is_candidate": card.alumnus == slug,
+                        "freeze_commit_is_repo_head": (card.data["freeze_commit"] == head) if head else None}
 
     # 3. bundle (identical for every seat)
     bundle = build_bundle(slug, faculty_root=FACULTY, intake_path=intake, profile_path=profile,
@@ -210,10 +252,13 @@ def run(slug: str, *, repos_root: Path, out_root: Path, signer: Ed25519Signer, s
                               min_valid_seats=int(council["quorum"]["min_valid_seats"]),
                               min_pass_seats=int(council["quorum"]["min_pass_seats"]),
                               exclude_uncalibrated=bool(council["quorum"]["exclude_uncalibrated_seats"]))
-    decision = build_decision_record(session, candidate, seat_records, rule, bundle_sha256=bundle.sha256, council=council)
+    decision = build_decision_record(session, candidate, seat_records, rule, bundle_sha256=bundle.sha256, council=council,
+                                     admission=admission, scorecard=card_summary)
     write_signed(decision, out / f"{slug}__DECISION.json", signer)
     return {"out": str(out), "session": session, "bundle_sha256": bundle.sha256, "decision": decision["decision"],
             "executor_rule": decision["executor_rule"],
+            "admission": decision["admission"], "scorecard": decision["scorecard"],
+            "certified_until": decision["certified_until"], "diploma_rule": decision["diploma_rule"],
             "calibration_failed": calibration.failed if calibration else None, "caps": [c.__dict__ for c in caps],
             "lint_warnings": [f.__dict__ for f in findings if f.severity == "warn"],
             "seats": {r["seat"]["seat_id"]: {"status": r["status"], "model_from_response": r["model_from_response"],
@@ -232,7 +277,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--intake", type=Path)
     ap.add_argument("--no-intake", action="store_true", help="do not include an intake (profile + evidence only)")
     ap.add_argument("--profile", type=Path)
-    ap.add_argument("--repo", type=Path)
+    ap.add_argument("--repo", type=Path, help="the candidate's proof pack; required with --live (rule P4)")
+    ap.add_argument("--scorecard", type=Path,
+                    help="scorecard the verdict relies on (rule P3): validated; its sha256 is signed in the decision record")
     ap.add_argument("--repos-root", type=Path, default=FACULTY.parent)
     ap.add_argument("--out", type=Path, default=FACULTY / "council_v2" / "out")
     ap.add_argument("--live", action="store_true", help="call real providers (costs money; needs approval)")
@@ -261,20 +308,28 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     council = load_json(FACULTY / "council" / "council.json")
     if live:
+        # every reason is reported, not only the first: one refusal must not hide another
+        refusals: list[str] = []
         ex_rule = rules.ExecutorRule.from_council(council)
         if args.no_executor and ex_rule and ex_rule.live_requires_executor:
-            print("refused: " + live_needs_executor_message(ex_rule), file=sys.stderr)
-            return 2
+            refusals.append(live_needs_executor_message(ex_rule))
+        adm_rule = rules.AdmissionRule.from_council(council)
+        if adm_rule:  # rule P4: no defence without a proof pack
+            found = len(scan_repo(args.repo).get("scenario_ids") or []) if args.repo else 0
+            no_pack = adm_rule.pack_refusal(bool(args.repo), found)
+            if no_pack:
+                refusals.append(no_pack)
         missing = [n for n, ok in (("--key", args.key), ("--approval-ref", args.approval_ref),
                                    (f"{LIVE_ENV}=1", os.environ.get(LIVE_ENV) == "1")) if not ok]
         if missing:
-            print(f"refused: live run needs {', '.join(missing)} (it costs money and requires the Rector's approval)", file=sys.stderr)
-            return 2
+            refusals.append(f"live run needs {', '.join(missing)} (it costs money and requires the Rector's approval)")
         if args.allow_steering:
-            print("refused: --allow-steering is not allowed in a live run", file=sys.stderr)
-            return 2
+            refusals.append("--allow-steering is not allowed in a live run")
         if args.marker:
-            print("refused: --marker labels rehearsals and is not allowed in a live run", file=sys.stderr)
+            refusals.append("--marker labels rehearsals and is not allowed in a live run")
+        if refusals:
+            for why in refusals:
+                print("refused: " + why, file=sys.stderr)
             return 2
     inputs = default_inputs(args.slug, args.repos_root.resolve(), args.repo)
     intake = None if args.no_intake else (args.intake or inputs["intake"])
@@ -294,7 +349,11 @@ def main(argv: list[str] | None = None) -> int:
         summary = run(args.slug, repos_root=args.repos_root.resolve(), out_root=args.out, signer=signer, seats=seats,
                       dry_run=not live, mock=mock, intake=intake, profile=profile, repo=repo,
                       allow_steering=args.allow_steering and not live, run_executor=not args.no_executor,
-                      with_calibration=not args.no_calibration, approval_ref=args.approval_ref, marker=args.marker)
+                      with_calibration=not args.no_calibration, approval_ref=args.approval_ref, marker=args.marker,
+                      scorecard=args.scorecard)
+    except RunRefused as e:
+        print(f"refused: {e}", file=sys.stderr)
+        return 2
     except SteeringError as e:
         print(str(e), file=sys.stderr)
         print("run blocked: rewrite the intake without expected-score sentences (a signed LINT_BLOCKED record was written)", file=sys.stderr)

@@ -10,6 +10,12 @@ Council v2 rule 7 (review 2026-09-30 §3): "il Registry si genera dai JSON".
   never trusted.  A seat with no record, or a null record, is shown as null
   with its error — never as "—" and never as a number.
 * Dry-run and mock records are excluded unless ``include_mock=True``.
+* Status and expiry (rule P3, Rector, 2026-09-30) are derived by
+  ``council_v2.scorecard.derive_status`` when a date is given (``today``): the
+  two columns appear only then.  The date is an argument; nothing here reads a
+  clock.  A mock, dry-run or "executor: not run" record never reads as
+  certified, and a row whose records say the executor did not run says so in
+  plain words in its Provenance cell.
 """
 
 from __future__ import annotations
@@ -17,11 +23,14 @@ from __future__ import annotations
 import html
 import json
 from dataclasses import dataclass, field
+from datetime import date
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 
-from . import scoring
-from .record import SCORE_BEARING, LEGACY_SCHEMA, executor_ruling_from_records, load_records, seat_outcome_from_record
+from . import rules, scoring
+from . import scorecard as scorecard_mod
+from .record import (DECISION_SCHEMA, SCORE_BEARING, LEGACY_SCHEMA, executor_ruling_from_records, load_records,
+                     seat_outcome_from_record)
 
 
 def load_council(path: str | Path) -> dict[str, Any]:
@@ -57,9 +66,13 @@ class RegistryRow:
     sessions_seen: int = 1
     mock: bool = False  # True if any record of the session is mock or dry-run (only with include_mock)
     marker: str | None = None  # session marker (run_council_v2 --marker), e.g. a rehearsal notice
+    executor: str | None = None  # "ran" | "not run" | None (records without an executor summary: legacy imports)
+    status: scorecard_mod.Status | None = None  # rule P3; None when no date was given
 
 
 MOCK_PROVENANCE = "MOCK / DRY-RUN session — not a Council verdict"
+EXECUTOR_NOT_RUN = "executor: not run"
+STATUS_COLUMNS = ["Status", "Certified until"]
 
 
 def _seat_key(rec: Mapping[str, Any], voting: list[str], lmap: Mapping[str, str]) -> str:
@@ -74,7 +87,48 @@ def _session_time(recs: list[Mapping[str, Any]]) -> str:
     return s.get("started_at") or s.get("imported_at") or ""
 
 
-def build_rows(records: Iterable[Mapping[str, Any]], council: Mapping[str, Any], *, include_mock: bool = False) -> list[RegistryRow]:
+def _row_status(slug: str, dec_rec: Mapping[str, Any] | None, decision: scoring.CouncilDecision,
+                ruling: rules.ExecutorRuling | None, *, is_mock: bool, legacy: bool, rule: rules.DiplomaRule,
+                scorecards: Mapping[str, scorecard_mod.RawScorecard], today: date) -> tuple[scorecard_mod.Status, list[str]]:
+    """Rule P3 for one row: what ``derive_status`` needs, taken from signed records and the current scorecard."""
+    notes: list[str] = []
+    signed_card = (dec_rec or {}).get("scorecard") or None  # summary of the scorecard the verdict relied on
+    raw = scorecards.get((signed_card or {}).get("alumnus") or slug)
+    card = None
+    if raw is not None:
+        try:  # "every run kept": the current file is checked against the version the verdict signed
+            card = scorecard_mod.validate(raw.data, rule, previous=signed_card, sha256=raw.sha256, source=raw.source)
+        except scorecard_mod.ScorecardRefused as e:
+            notes.append(f"{e} — read as no scorecard")
+    admission = (dec_rec or {}).get("admission") or {}
+    if admission.get("pack"):
+        pack = admission["pack"]["scenarios"] >= admission["pack"].get("min_scenarios", 1)
+    elif ruling is not None and ruling.counts:
+        pack = ruling.counts["scenarios_found"] >= 1 or ruling.crashed
+    else:  # no record says anything about a pack (legacy imports): an accepted scorecard is a measured pack
+        pack = card is not None
+    verdict = None
+    if legacy:
+        pass  # the 2026 JSON were re-scored by code, their origin is unsigned: not a signed verdict
+    elif dec_rec is None:
+        notes.append("no signed decision record for this session: the status is derived without a verdict")
+    else:
+        verdict = scorecard_mod.Verdict.from_decision_record(
+            dec_rec, outcome=decision.outcome, executor=ruling.executor if ruling is not None else None, mock=is_mock)
+    status = scorecard_mod.derive_status(pack=pack, verdict=verdict, scorecard=card, today=today, rule=rule,
+                                         executor_veto=bool(ruling is not None and ruling.veto))
+    return status, notes
+
+
+def build_rows(records: Iterable[Mapping[str, Any]], council: Mapping[str, Any], *, include_mock: bool = False,
+               today: date | None = None,
+               scorecards: Mapping[str, scorecard_mod.RawScorecard] | None = None) -> list[RegistryRow]:
+    """``today`` (a ``date``) turns on rule P3: every row gets its status as of that day, from the signed
+    records and the current ``scorecards`` (by alumnus slug, as read by ``scorecard.load_dir``)."""
+    records = list(records)
+    diploma = rules.DiplomaRule.from_council(council) if today is not None else None
+    decisions = {(r["candidate"]["slug"], r["session"]["session_id"]): r
+                 for r in records if r.get("schema") == DECISION_SCHEMA}
     voting = seat_order(council)
     lmap = legacy_map(council)
     by_cand: dict[str, dict[str, list[Mapping[str, Any]]]] = {}
@@ -137,6 +191,14 @@ def build_rows(records: Iterable[Mapping[str, Any]], council: Mapping[str, Any],
             provenance = "legacy 2026 JSON, re-scored by code (origin unsigned)"
         else:
             provenance = "Council v2 session, signed at run"
+        executor_state = ruling.executor if ruling is not None else None
+        if executor_state == rules.NOT_RUN:
+            provenance += " · " + EXECUTOR_NOT_RUN  # plain words: nothing ran the scenarios for this row
+        status = None
+        if diploma is not None:
+            status, status_notes = _row_status(slug, decisions.get((slug, sid)), decision, ruling, is_mock=is_mock,
+                                               legacy=legacy, rule=diploma, scorecards=scorecards or {}, today=today)
+            notes.extend(status_notes)
         rows.append(RegistryRow(
             slug=slug,
             number=cand.get("number"),
@@ -150,6 +212,8 @@ def build_rows(records: Iterable[Mapping[str, Any]], council: Mapping[str, Any],
             sessions_seen=len(sessions),
             mock=is_mock,
             marker=marker,
+            executor=executor_state,
+            status=status,
         ))
     rows.sort(key=lambda r: (r.number is None, r.number or 0, r.slug))
     return rows
@@ -178,6 +242,31 @@ def tally_text(d: scoring.CouncilDecision, n_voting: int) -> str:
     return t + (" · " + ", ".join(extra) if extra else "")
 
 
+def has_status(rows: list[RegistryRow]) -> bool:
+    return any(r.status is not None for r in rows)
+
+
+def status_cells(r: RegistryRow) -> list[str]:
+    """[status, expiry].  The expiry is shown only while it means something: certified or lapsed."""
+    if r.status is None:
+        return ["not derived", "—"]
+    s = r.status
+    shown = s.status in (scorecard_mod.CERTIFIED, scorecard_mod.LAPSED) and s.certified_until is not None
+    return [s.status, s.certified_until.isoformat() if shown else "—"]
+
+
+def status_footer(rows: list[RegistryRow]) -> str | None:
+    s = next((r.status for r in rows if r.status is not None), None)
+    if s is None:
+        return None
+    p = s.parameters
+    return (f"Status as of {s.as_of.isoformat()}, derived by council_v2.scorecard.derive_status under rule {s.rule_id} "
+            f"({s.approved}): valid {p['validity_days']['value']} days from the signed verdict ({p['validity_days']['id']}), "
+            f"last valid blind run not older than {p['max_days_between_blind_runs']['value']} days "
+            f"({p['max_days_between_blind_runs']['id']}), never-event threshold {p['never_event_threshold']['value']} "
+            f"({p['never_event_threshold']['id']}). A mock, dry-run or 'executor: not run' record never certifies.")
+
+
 def mock_banner(rows: list[RegistryRow]) -> str | None:
     """One visible line for a table that contains mock / dry-run rows (None if it has none)."""
     mock_rows = [r for r in rows if r.mock]
@@ -190,7 +279,9 @@ def mock_banner(rows: list[RegistryRow]) -> str | None:
 
 def to_markdown(rows: list[RegistryRow], council: Mapping[str, Any], rejected: list[tuple[str, str]] = ()) -> str:
     voting = seat_order(council)
-    head = ["#", "Alumnus", "Master of the Æther in", "Council (rule-based)", "Outcome"] + [seat_label(council, s) for s in voting] + ["Vetoes", "Provenance"]
+    with_status = has_status(rows)  # rule P3 columns: only when a date was given to build_rows
+    head = (["#", "Alumnus", "Master of the Æther in", "Council (rule-based)", "Outcome"] + [seat_label(council, s) for s in voting]
+            + ["Vetoes"] + (STATUS_COLUMNS if with_status else []) + ["Provenance"])
     out = ["<!-- GENERATED by scripts/build_registry.py from signed records only. Do not edit by hand. -->", ""]
     banner = mock_banner(rows)
     if banner:
@@ -203,7 +294,7 @@ def to_markdown(rows: list[RegistryRow], council: Mapping[str, Any], rejected: l
         vetoes = "; ".join(f"{s}: {', '.join(v)}" for s, v in r.decision.vetoes.items()) or "—"
         cells = [f"{r.number:02d}" if r.number else "", r.name, r.specialty or "", tally_text(r.decision, len(voting)), r.decision.outcome]
         cells += [_seat_cell(r.seats[s]) for s in voting]
-        cells += [vetoes, r.provenance]
+        cells += [vetoes] + (status_cells(r) if with_status else []) + [r.provenance]
         out.append("| " + " | ".join(c.replace("|", "\\|") for c in cells) + " |")
     out += [
         "",
@@ -211,6 +302,10 @@ def to_markdown(rows: list[RegistryRow], council: Mapping[str, Any], rejected: l
         "(admission/RUBRIC.md weights, thresholds and vetoes). 'null' = the seat produced no valid result; "
         "it counts as absent, never as a PASS.",
     ]
+    if with_status:
+        out += ["", status_footer(rows), "", "Status reasons:"]
+        out += [f"- {r.name}: {r.status.status} ({r.status.clause_id}) — " + "; ".join(r.status.reasons + r.status.notes)
+                for r in rows if r.status is not None]
     notes = [f"- {r.name}: {n}" for r in rows for n in r.notes]
     if notes:
         out += ["", "Notes:", *notes]
@@ -223,13 +318,15 @@ def to_markdown(rows: list[RegistryRow], council: Mapping[str, Any], rejected: l
 def to_html(rows: list[RegistryRow], council: Mapping[str, Any]) -> str:
     voting = seat_order(council)
     e = html.escape
+    with_status = has_status(rows)
     th = "".join(f"<th>{e(h)}</th>" for h in ["#", "Alumnus", "Master of the Æther in", "Council", "Outcome"]
-                 + [seat_label(council, s) for s in voting] + ["Vetoes", "Provenance"])
+                 + [seat_label(council, s) for s in voting] + ["Vetoes"] + (STATUS_COLUMNS if with_status else [])
+                 + ["Provenance"])
     body = []
     for r in rows:
         vetoes = "; ".join(f"{s}: {', '.join(v)}" for s, v in r.decision.vetoes.items()) or "—"
         tds = [f"{r.number:02d}" if r.number else "", r.name, r.specialty or "", tally_text(r.decision, len(voting)), r.decision.outcome]
-        tds += [_seat_cell(r.seats[s]) for s in voting] + [vetoes, r.provenance]
+        tds += [_seat_cell(r.seats[s]) for s in voting] + [vetoes] + (status_cells(r) if with_status else []) + [r.provenance]
         cls = r.decision.outcome.lower().replace("_", "-") + (" registry-mock" if r.mock else "")
         body.append(f'<tr class="outcome-{cls}" data-slug="{e(r.slug)}">' + "".join(f"<td>{e(str(t))}</td>" for t in tds) + "</tr>")
     banner = mock_banner(rows)
@@ -237,10 +334,12 @@ def to_html(rows: list[RegistryRow], council: Mapping[str, Any]) -> str:
         "<!-- GENERATED by scripts/build_registry.py from signed records only. Do not edit by hand. -->\n"
         + (f'<p class="registry-mock-banner"><strong>{e(banner)}</strong></p>\n' if banner else "")
         + '<table class="registry-v2">\n<thead><tr>' + th + "</tr></thead>\n<tbody>\n" + "\n".join(body) + "\n</tbody>\n</table>\n"
+        + (f'<p class="registry-status-note">{e(status_footer(rows))}</p>\n' if with_status else "")
     )
 
 
-def build(record_dirs: Iterable[str | Path], public_key: bytes, council: Mapping[str, Any], *, include_mock: bool = False):
+def build(record_dirs: Iterable[str | Path], public_key: bytes, council: Mapping[str, Any], *, include_mock: bool = False,
+          today: date | None = None, scorecards: Mapping[str, scorecard_mod.RawScorecard] | None = None):
     records, rejected = load_records(record_dirs, public_key)
-    rows = build_rows(records, council, include_mock=include_mock)
+    rows = build_rows(records, council, include_mock=include_mock, today=today, scorecards=scorecards)
     return rows, rejected

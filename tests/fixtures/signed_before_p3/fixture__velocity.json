@@ -1,0 +1,319 @@
+{
+  "schema": "aetherneum.council-v2.seat-record/1",
+  "session": {
+    "session_id": "20260930T162502Z-dry-run-22940742",
+    "kind": "dry-run",
+    "started_at": "2026-09-30T16:25:02Z",
+    "dry_run": true,
+    "mock": true,
+    "council_config_sha256": "ca9a3219ccbf1f963183ae3cefd78ab98592301c89614f2ed041ebcf736d29df",
+    "faculty_commit": "5a9f369afa662b923b93673b3c3d10f5b6b75b0b",
+    "approval_ref": null,
+    "signing_key_id": "894834aa19e9da25",
+    "marker": "REHEARSAL — mock seats, test key — not a Council verdict"
+  },
+  "candidate": {
+    "slug": "fixture",
+    "name": "fixture",
+    "specialty": null,
+    "number": null,
+    "cohort": null
+  },
+  "seat": {
+    "seat_id": "velocity",
+    "role": "Velocity",
+    "voting": true,
+    "provider": "mock"
+  },
+  "status": "ok",
+  "model_requested": "mock-velocity",
+  "model_from_response": "mock-velocity",
+  "model_source": "api_response.model",
+  "model_mismatch": false,
+  "request_id": "mockreq_bb76a3e18220ab48",
+  "response_id": "mock_bb76a3e18220ab48",
+  "params": {
+    "model": "mock-velocity",
+    "mock": true,
+    "system_prompt_sha256": "783c294eb714484dccb3d2ce0434c458678ffb665141ce9e1384587558ac1075"
+  },
+  "prompt_sha256": "783c294eb714484dccb3d2ce0434c458678ffb665141ce9e1384587558ac1075",
+  "bundle_sha256": "00576669a0bef75b761202882348da2365c3d11742647323cd79e07b65ba1905",
+  "bundle": {
+    "format": "aetherneum.council-v2.bundle/1",
+    "candidate_slug": "fixture",
+    "sha256": "00576669a0bef75b761202882348da2365c3d11742647323cd79e07b65ba1905",
+    "chars": 26680,
+    "faculty_commit": "5a9f369afa662b923b93673b3c3d10f5b6b75b0b",
+    "faculty_tree_dirty": false,
+    "parts": [
+      {
+        "role": "charter",
+        "path": "charter/CHARTER.md",
+        "sha256": "3ca6bbc41a625f35b56e05b45e2ee4cda656c6c07656aaba0bf125b2c8740358",
+        "git_blob": "b608eae432500aaa0933d152b8fc09b2c57228b0",
+        "chars": 2395
+      },
+      {
+        "role": "faculty_board",
+        "path": "charter/FACULTY_BOARD.md",
+        "sha256": "a974d3dea2b96083af1e31eb8db3e6d2f9bb65a1c6530a3d3900e9dec4cbc16a",
+        "git_blob": "4674f699190a71a8d7814971013765a67516a6c8",
+        "chars": 3364
+      },
+      {
+        "role": "rubric",
+        "path": "admission/RUBRIC.md",
+        "sha256": "74c9ea65716691ea45d8acc739dbb847aa3c32bd0b72d997a69b88aac51dc794",
+        "git_blob": "36b2a391d54e30e2167a62fc28657e2c9779d554",
+        "chars": 4900
+      },
+      {
+        "role": "roster",
+        "path": "alumni/_ROSTER.md",
+        "sha256": "28327e27485fb7590b16be1a877686435c0be5a5925aaf3ef2c47ff0872e6b45",
+        "git_blob": "47f11b78f2e6410a7e3efaaa5f8892d3e7ef1ef3",
+        "chars": 8955
+      },
+      {
+        "role": "profile",
+        "path": "external:fixture/README.md",
+        "sha256": "5f9310833dc62d42ca20d699989059d44f79f439c0a296255c73fdc187eb1df8",
+        "git_blob": null,
+        "chars": 1081
+      }
+    ],
+    "evidence_artifact_count": 6,
+    "executor_included": true,
+    "lint_warnings": []
+  },
+  "faculty_commit": "5a9f369afa662b923b93673b3c3d10f5b6b75b0b",
+  "candidate_repo_head": "c0ccd701a7c74d839b34fb02d1e368c95eb401f0",
+  "started_at": "2026-09-30T16:25:03Z",
+  "finished_at": "2026-09-30T16:25:03Z",
+  "output": {
+    "criterion_scores": {
+      "body_of_work_depth": {
+        "score": 8,
+        "rationale": "mock rationale for body_of_work_depth",
+        "evidence": [
+          "admission/RUBRIC.md"
+        ]
+      },
+      "specialty_uniqueness": {
+        "score": 8,
+        "rationale": "mock rationale for specialty_uniqueness",
+        "evidence": [
+          "admission/RUBRIC.md"
+        ]
+      },
+      "voice_personality_clarity": {
+        "score": 8,
+        "rationale": "mock rationale for voice_personality_clarity",
+        "evidence": [
+          "admission/RUBRIC.md"
+        ]
+      },
+      "faithful_distillation": {
+        "score": 8,
+        "rationale": "mock rationale for faithful_distillation",
+        "evidence": [
+          "admission/RUBRIC.md"
+        ]
+      },
+      "synthetic_transparency": {
+        "score": 10,
+        "rationale": "mock rationale for synthetic_transparency",
+        "evidence": [
+          "admission/RUBRIC.md"
+        ]
+      },
+      "placement_fit": {
+        "score": 7,
+        "rationale": "mock rationale for placement_fit",
+        "evidence": [
+          "admission/RUBRIC.md"
+        ]
+      },
+      "continuity_with_class": {
+        "score": 8,
+        "rationale": "mock rationale for continuity_with_class",
+        "evidence": [
+          "admission/RUBRIC.md"
+        ]
+      }
+    },
+    "revisions_required": [],
+    "dissent": null,
+    "notes": "mock"
+  },
+  "scores_raw": {
+    "body_of_work_depth": 8,
+    "specialty_uniqueness": 8,
+    "voice_personality_clarity": 8,
+    "faithful_distillation": 8,
+    "synthetic_transparency": 10,
+    "placement_fit": 7,
+    "continuity_with_class": 8
+  },
+  "caps": [],
+  "scoring": {
+    "scores_raw": {
+      "body_of_work_depth": 8,
+      "specialty_uniqueness": 8,
+      "voice_personality_clarity": 8,
+      "faithful_distillation": 8,
+      "synthetic_transparency": 10,
+      "placement_fit": 7,
+      "continuity_with_class": 8
+    },
+    "scores_effective": {
+      "body_of_work_depth": 8,
+      "specialty_uniqueness": 8,
+      "voice_personality_clarity": 8,
+      "faithful_distillation": 8,
+      "synthetic_transparency": 10,
+      "placement_fit": 7,
+      "continuity_with_class": 8
+    },
+    "caps_applied": [],
+    "overall": 8.13,
+    "overall_exact": "122/15",
+    "arithmetic_mean": 8.14,
+    "vetoes": [],
+    "below_floor": [],
+    "below_threshold": [],
+    "verdict": "PASS",
+    "verdict_reasons": [
+      "all thresholds met"
+    ],
+    "rules": "admission/RUBRIC.md @ 371f010 + council_v2 interpretations I-1..I-7"
+  },
+  "unresolved_citations": {},
+  "usage": {
+    "input_tokens": 6670,
+    "output_tokens": 0
+  },
+  "stop_reason": "end_turn",
+  "stop_details": null,
+  "error": null,
+  "log": [
+    "2026-09-30T16:25:03Z seat velocity start bundle_sha256=00576669a0bef75b761202882348da2365c3d11742647323cd79e07b65ba1905",
+    "2026-09-30T16:25:03Z seat velocity end status=ok"
+  ],
+  "raw_response": {
+    "mock": true,
+    "output": {
+      "criterion_scores": {
+        "body_of_work_depth": {
+          "score": 8,
+          "rationale": "mock rationale for body_of_work_depth",
+          "evidence": [
+            "admission/RUBRIC.md"
+          ]
+        },
+        "specialty_uniqueness": {
+          "score": 8,
+          "rationale": "mock rationale for specialty_uniqueness",
+          "evidence": [
+            "admission/RUBRIC.md"
+          ]
+        },
+        "voice_personality_clarity": {
+          "score": 8,
+          "rationale": "mock rationale for voice_personality_clarity",
+          "evidence": [
+            "admission/RUBRIC.md"
+          ]
+        },
+        "faithful_distillation": {
+          "score": 8,
+          "rationale": "mock rationale for faithful_distillation",
+          "evidence": [
+            "admission/RUBRIC.md"
+          ]
+        },
+        "synthetic_transparency": {
+          "score": 10,
+          "rationale": "mock rationale for synthetic_transparency",
+          "evidence": [
+            "admission/RUBRIC.md"
+          ]
+        },
+        "placement_fit": {
+          "score": 7,
+          "rationale": "mock rationale for placement_fit",
+          "evidence": [
+            "admission/RUBRIC.md"
+          ]
+        },
+        "continuity_with_class": {
+          "score": 8,
+          "rationale": "mock rationale for continuity_with_class",
+          "evidence": [
+            "admission/RUBRIC.md"
+          ]
+        }
+      },
+      "revisions_required": [],
+      "dissent": null,
+      "notes": "mock"
+    }
+  },
+  "calibration": {
+    "status": "passed",
+    "decoys": {
+      "bruno-maschera": {
+        "raw_overall": 3.0,
+        "raw_verdict": "FAIL",
+        "scores": {
+          "body_of_work_depth": 2,
+          "specialty_uniqueness": 3,
+          "voice_personality_clarity": 3,
+          "faithful_distillation": 2,
+          "synthetic_transparency": 6,
+          "placement_fit": 2,
+          "continuity_with_class": 4
+        }
+      },
+      "livia-ornamenti": {
+        "raw_overall": 3.0,
+        "raw_verdict": "FAIL",
+        "scores": {
+          "body_of_work_depth": 2,
+          "specialty_uniqueness": 3,
+          "voice_personality_clarity": 3,
+          "faithful_distillation": 2,
+          "synthetic_transparency": 6,
+          "placement_fit": 2,
+          "continuity_with_class": 4
+        }
+      }
+    },
+    "reasons": []
+  },
+  "mock": true,
+  "dry_run": true,
+  "executor": {
+    "executor": "ran",
+    "counts": {
+      "scenarios_found": 4,
+      "passed": 4,
+      "failed": 0,
+      "errors": 0,
+      "timeouts": 0
+    },
+    "not_passed": [],
+    "error": null
+  },
+  "signature": {
+    "alg": "Ed25519",
+    "backend": "cryptography",
+    "key_id": "894834aa19e9da25",
+    "key_label": "TEST-REHEARSAL-council-v2",
+    "public_key_hex": "39dd423fcb397067cd025927261fa5826e809d3121680ed8895e01a7fe8dcac3",
+    "payload": "canonical JSON of the record without 'signature' (sort_keys, separators=(',',':'), UTF-8)",
+    "payload_sha256": "4d9ce123bedc21864b6a3565cc0b70ec125de135479b149e0a2fc380de0e3db8",
+    "value_hex": "7b830d09c92df77af639efbcc682aab508232877c499dacca02f06c24dcb5bdab0c74900479f5634c0ad55be4b086b58000445a521a60cf3441e3bc6038d0906"
+  }
+}

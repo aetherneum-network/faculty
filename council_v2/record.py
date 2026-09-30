@@ -9,7 +9,11 @@ Record kinds (field ``schema``):
 
 * ``aetherneum.council-v2.seat-record/1``     one voting seat, ok or null
 * ``aetherneum.council-v2.executor-record/1`` the non-voting executor seat
-* ``aetherneum.council-v2.decision/1``        the aggregate, recomputable from the seat records
+* ``aetherneum.council-v2.decision/1``        the aggregate, recomputable from the seat records; since rules
+  P3 / P4 (Rector, 2026-09-30) it also signs ``certified_until``, the digest of the scorecard the verdict
+  relied on and what the admission rule said.  Decision records signed before that have none of these
+  keys and keep verifying: they are read as "no scorecard, no expiry".
+* ``aetherneum.council-v2.admission-refused/1`` a live defence refused by rule P4 before any seat was called
 * ``aetherneum.council-v2.legacy-import/1``   a 2026 JSON re-scored by code (see legacy.py)
 
 Records are append-only: ``write_signed`` refuses to overwrite a file.
@@ -26,6 +30,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 from . import CRITERIA_ORDER, rules, scoring
+from . import scorecard as scorecard_mod
 from .bundle import Bundle
 from .seats import SeatResult, PROMPT_SHA256
 from .signing import Ed25519Signer, VerifyResult, sign_record, verify_record
@@ -33,6 +38,7 @@ from .signing import Ed25519Signer, VerifyResult, sign_record, verify_record
 SEAT_SCHEMA = "aetherneum.council-v2.seat-record/1"
 EXECUTOR_SCHEMA = "aetherneum.council-v2.executor-record/1"
 DECISION_SCHEMA = "aetherneum.council-v2.decision/1"
+ADMISSION_REFUSED_SCHEMA = "aetherneum.council-v2.admission-refused/1"
 LEGACY_SCHEMA = "aetherneum.council-v2.legacy-import/1"
 SCORE_BEARING = (SEAT_SCHEMA, LEGACY_SCHEMA)
 
@@ -182,14 +188,49 @@ def executor_ruling_from_records(seat_records: Iterable[Mapping[str, Any]], coun
     return rulings[0], notes
 
 
+def diploma_block(council: Mapping[str, Any] | None, session: Mapping[str, Any], seat_records: Iterable[Mapping[str, Any]],
+                  decision: scoring.CouncilDecision, ruling: rules.ExecutorRuling | None, recorded_at: str,
+                  scorecard: Mapping[str, Any] | None) -> tuple[str | None, dict[str, Any] | None]:
+    """Rule P3 on a decision about to be signed: ``(certified_until, block)``.
+
+    ``certified_until`` is the verdict date plus ``validity_days`` and is written only when the record is
+    a signed verdict for the rule (``scorecard.not_a_verdict_reasons``: not mock, not dry-run, executor
+    ran, outcome PASS, a scorecard digest).  Otherwise it is ``None`` and the block says why.
+    ``(None, None)`` when the council file has no diploma rule.
+    """
+    rule = rules.DiplomaRule.from_council(council)
+    if rule is None:
+        return None, None
+    signed_at = scorecard_mod.parse_utc(recorded_at)
+    verdict = scorecard_mod.Verdict(
+        outcome=decision.outcome, signed_at=signed_at, executor=ruling.executor if ruling is not None else None,
+        mock=bool(session.get("mock") or any(r.get("mock") for r in seat_records)), dry_run=bool(session.get("dry_run")),
+        scorecard_sha256=(scorecard or {}).get("sha256"))
+    why = scorecard_mod.not_a_verdict_reasons(verdict, rule)
+    until = rule.certified_until(signed_at.date()).isoformat()
+    return (None if why else until), {
+        "rule_id": rule.rule_id, "approved": rule.approved, "text": rule.text, "parameters": rule.parameters(),
+        "verdict_date": signed_at.date().isoformat(), "verdict_date_plus_validity": until,
+        "certified_until": None if why else until, "not_certified_because": why,
+        "note": "certified_until = date of the signed verdict + validity_days. The status of the diploma on a given day "
+                "is derived by council_v2.scorecard.derive_status from this record, the current scorecard and that day.",
+    }
+
+
 def build_decision_record(session: Mapping[str, Any], candidate: Mapping[str, Any], seat_records: list[Mapping[str, Any]],
                           rule: scoring.QuorumRule, *, bundle_sha256: str | None,
-                          council: Mapping[str, Any] | None = None) -> dict[str, Any]:
+                          council: Mapping[str, Any] | None = None, admission: Mapping[str, Any] | None = None,
+                          scorecard: Mapping[str, Any] | None = None) -> dict[str, Any]:
     """``council`` is the council.json document: its executor rule (EX-1) is applied to the executor
-    summary signed in the seat records.  Without it the decision is seats-only, as for legacy records."""
+    summary signed in the seat records.  Without it the decision is seats-only, as for legacy records.
+
+    ``admission`` is ``rules.AdmissionRule.evaluate(...)`` (rule P4); ``scorecard`` is
+    ``scorecard.Scorecard.summary()`` of the file the verdict relied on (rule P3), digest included."""
     outcomes = [seat_outcome_from_record(r) for r in seat_records if r["seat"].get("voting", True)]
     ruling, ruling_notes = executor_ruling_from_records(seat_records, council)
     decision = scoring.decide_council(outcomes, rule, ruling)
+    recorded_at = now()
+    certified_until, diploma = diploma_block(council, session, seat_records, decision, ruling, recorded_at, scorecard)
     return {
         "schema": DECISION_SCHEMA,
         "session": dict(session),
@@ -199,13 +240,19 @@ def build_decision_record(session: Mapping[str, Any], candidate: Mapping[str, An
         "decision": decision.to_dict(),
         # rule id, approval, executor counts, clauses fired (None: the council file given has no executor rule)
         "executor_rule": ({**ruling.to_dict(), "notes": ruling_notes} if ruling is not None else None),
+        # rule P4: pack present, executor passed, and whether the rule refused or (mock / dry-run) would have
+        "admission": dict(admission) if admission is not None else None,
+        # rule P3: the scorecard the verdict relied on (sha256 of the file), and the expiry of the diploma
+        "scorecard": dict(scorecard) if scorecard is not None else None,
+        "certified_until": certified_until,
+        "diploma_rule": diploma,
         "interpretations": scoring.INTERPRETATIONS,
         "human_steps_pending": [
             "external human reviewer minutes (review §3 rule 8)",
             "written Patron approval minutes with criteria used",
             "appeal window and planned revocation date",
         ],
-        "recorded_at": now(),
+        "recorded_at": recorded_at,
         "dry_run": bool(session.get("dry_run")),
     }
 
