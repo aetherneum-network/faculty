@@ -81,7 +81,7 @@ class RuleIsReadFromTheFile(unittest.TestCase):
         self.assertEqual((clause["when"], clause["effect"]), ({"executor_crashed": True}, {"outcome": "VETO"}))
         self.assertEqual(clause["text"], "the executor ran and crashed: the number of declared scenarios is unknown, "
                                          "the outcome is VETO")
-        self.assertTrue(clause["approved"].startswith("coordinator ruling on D19 dissent point 2, 2026-09-30"))
+        self.assertTrue(clause["approved"].startswith("Rector decision D23, 2026-09-30"))
         self.assertNotEqual(clause["approved"], APPROVED)
         self.assertEqual((RULE.crash_clause_id, RULE.crash_approved), ("EX-1.c", clause["approved"]))
 
@@ -180,7 +180,7 @@ class RuleOnASummary(unittest.TestCase):
         r = RULE.evaluate(s)
         self.assertEqual((r.veto, r.crashed, r.zero_artifacts, r.clauses_fired), (True, True, True, ["EX-1.b", "EX-1.c"]))
         self.assertEqual(r.veto_short, "EX-1.c: the executor crashed, declared scenarios unknown")
-        self.assertTrue(r.veto_reason.startswith("EX-1 veto (EX-1.c, coordinator ruling on D19 dissent point 2, 2026-09-30"))
+        self.assertTrue(r.veto_reason.startswith("EX-1 veto (EX-1.c, Rector decision D23, 2026-09-30"))
         self.assertIn("the executor ran and crashed (RuntimeError: boom)", r.veto_reason)
         self.assertIn("the number of declared scenarios is unknown", r.veto_reason)
 
