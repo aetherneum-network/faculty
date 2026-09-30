@@ -12,6 +12,8 @@ Last update: 2026-09-30.
 
 ## Class of '26 — original graduates (10)
 
+Public label since 2026-09-30: **Phase 0 · profile-attested — re-defense scheduled**. These alumni were conferred by the Dean; the retroactive Council reviews of 2026-05-14 ([cohort-phase-0](../cohort-phase-0/_MANIFEST.md)) read their public READMEs, not executable work.
+
 | # | Alumnus | Master of the Æther in | Faculty Advisor | Primary Placement | Status | Repo |
 |---|---|---|---|---|---|---|
 | 01 | **Marco Aurelius** | Surface Resilience | Claude Sonnet 4.6 | Social-economy platform admin surfaces + cross-product dashboards | CONFERRED | [marco-aurelius](https://github.com/aetherneum-network/marco-aurelius) |
