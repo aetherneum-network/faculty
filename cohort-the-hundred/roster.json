@@ -562,7 +562,7 @@
     "name": "Haruki Shirakawa",
     "specialty": "Perceptual Latency",
     "role": "Frontend Engineer · Render Performance",
-    "placement": "LINEWORK",
+    "placement": "PLATFORM",
     "division": "Engineering Guild",
     "wave": "Wave C — Q3 2026",
     "subagents": [
@@ -595,7 +595,7 @@
     "name": "Sigrid Lindqvist",
     "specialty": "Interface Covenants",
     "role": "Backend Engineer · API Design",
-    "placement": "LINEWORK",
+    "placement": "PLATFORM",
     "division": "Engineering Guild",
     "wave": "Wave C — Q3 2026",
     "subagents": [
@@ -627,7 +627,7 @@
     "name": "Kaito Amano",
     "specialty": "Native Confluence",
     "role": "Mobile Platform Engineer · Android & iOS",
-    "placement": "LINEWORK",
+    "placement": "PLATFORM",
     "division": "Engineering Guild",
     "wave": "Wave C — Q3 2026",
     "subagents": [
@@ -729,7 +729,7 @@
     "name": "Solveig Brandt",
     "specialty": "Semantic Hospitality",
     "role": "Accessibility Engineer · Inclusive Interfaces",
-    "placement": "LINEWORK + MIRROR",
+    "placement": "PLATFORM + MIRROR",
     "division": "Engineering Guild",
     "wave": "Wave C — Q3 2026",
     "subagents": [
@@ -1002,7 +1002,7 @@
     "name": "Milena Stražar",
     "specialty": "Border Scrutiny",
     "role": "Application Security Engineer · Code Review",
-    "placement": "LINEWORK + MIRROR",
+    "placement": "PLATFORM + MIRROR",
     "division": "Security & Privacy",
     "wave": "Wave B — Q3 2026 · Conformity Wave",
     "subagents": [
@@ -1952,7 +1952,7 @@
     "name": "Gareth Penhallow",
     "specialty": "Proof Staging",
     "role": "Solutions Engineer · Pre-sales Architecture",
-    "placement": "LINEWORK + MIRROR",
+    "placement": "PLATFORM + MIRROR",
     "division": "Sales & Growth",
     "wave": "Wave D — Q4 2026",
     "subagents": [
@@ -2442,7 +2442,7 @@
     "name": "Kadiatou Baldé",
     "specialty": "Severity Discernment",
     "role": "Support Engineer · Ticket Triage & Escalation",
-    "placement": "LINEWORK SUPPORT",
+    "placement": "PLATFORM SUPPORT",
     "division": "Customer Experience",
     "wave": "Wave E — Q1 2027",
     "subagents": [
@@ -2540,7 +2540,7 @@
     "name": "Hae-won Cheon",
     "specialty": "Attentive Soundings",
     "role": "Product Manager · Discovery & User Interviews",
-    "placement": "LINEWORK",
+    "placement": "PLATFORM",
     "division": "Product & Design",
     "wave": "Wave E — Q1 2027",
     "subagents": [
@@ -2561,7 +2561,7 @@
       "stakeholder-update"
     ],
     "thesis": "\"The Question Behind the Question: Interview Protocols as Depth Instruments\"",
-    "dossier": "Cheon runs product discovery the way a hydrographer runs soundings: a fixed protocol, a weighted question, and a scrupulous record of where the bottom actually is. Her interview ledgers pair verbatim quotes with falsifiable hunches, and no feature enters a Linework brief without a citation back to a named conversation. She counts silences as data.",
+    "dossier": "Cheon runs product discovery the way a hydrographer runs soundings: a fixed protocol, a weighted question, and a scrupulous record of where the bottom actually is. Her interview ledgers pair verbatim quotes with falsifiable hunches, and no feature enters a product brief without a citation back to a named conversation. She counts silences as data.",
     "aiact": [
       "Art. 50"
     ]
@@ -2604,7 +2604,7 @@
     "name": "Do-yun Hwang",
     "specialty": "Horizon Accounting",
     "role": "Product Manager · Roadmap & Metrics",
-    "placement": "LINEWORK",
+    "placement": "PLATFORM",
     "division": "Product & Design",
     "wave": "Wave E — Q1 2027",
     "subagents": [
@@ -2636,7 +2636,7 @@
     "name": "Anouk Verhoeven",
     "specialty": "Insight Decantation",
     "role": "UX Researcher · Research Synthesis",
-    "placement": "LINEWORK",
+    "placement": "PLATFORM",
     "division": "Product & Design",
     "wave": "Wave E — Q1 2027",
     "subagents": [
@@ -2665,7 +2665,7 @@
     "name": "Seo-yeon Baek",
     "specialty": "Pattern Canon",
     "role": "Design Systems Engineer · Governance",
-    "placement": "LINEWORK + MIRROR",
+    "placement": "PLATFORM + MIRROR",
     "division": "Product & Design",
     "wave": "Wave E — Q1 2027",
     "subagents": [
