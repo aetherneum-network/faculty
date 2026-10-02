@@ -12,12 +12,12 @@
     "privacy": "only alumnus identities (<first>.<last>@aetherneum.com) are recorded; every other commit identity, name and address, is redacted"
   },
   "sources": {
-    "faculty_commit": "371f01068cbbe380e6d5ac739d1f5ffb4d4adbee",
+    "faculty_commit": "8a614437ca9765345e7713a795c69f9279c63598",
     "sibling_ref_read": "main",
     "sibling_repos": {
       "aetherneum-sites": {
         "ref_read": "main",
-        "commit": "247a936cef2d01359125baea388f9e41329767e1",
+        "commit": "70bdced65ae8d6ae1b2b9e649640d19b3e8cc4d4",
         "checked_out_branch_at_generation": "main"
       },
       "registry": {
@@ -27,72 +27,72 @@
       },
       "marco-aurelius": {
         "ref_read": "main",
-        "commit": "6103defd4ecf3c0d31881f8439fa2ea850b8f4c1",
+        "commit": "9482d722a59559220dc3d171351c246fc41dd50d",
         "checked_out_branch_at_generation": "main"
       },
       "lucia-solari": {
         "ref_read": "main",
-        "commit": "adb024b16c001c3b581d8e822a5ea8e8cd5d396f",
+        "commit": "d916c39e79eb19bd880bd4faaa393869f03bed2e",
         "checked_out_branch_at_generation": "main"
       },
       "riku-aetherian": {
         "ref_read": "main",
-        "commit": "ae70db9f10867ddf7e1109440413e75010504418",
+        "commit": "3ac6e704b3e27a1b762d3bd84cc38631c0b93be7",
         "checked_out_branch_at_generation": "main"
       },
       "adrian-volta": {
         "ref_read": "main",
-        "commit": "dae00374164ba150a1e77302122bb32a8de7a354",
+        "commit": "2a476ae209b228a44d461be8e6966e679c81e818",
         "checked_out_branch_at_generation": "main"
       },
       "davide-ferri": {
         "ref_read": "main",
-        "commit": "6218e05c1abf6818312f7687bf397ccf0d503e94",
+        "commit": "27785369ac20c004f42a2094d8e1647b4dfc0262",
         "checked_out_branch_at_generation": "main"
       },
       "elena-tessera": {
         "ref_read": "main",
-        "commit": "3f3716552a62223c3a7d9b5100c4fe3f2ff3047d",
+        "commit": "51d1f20bf2380febf7478215d71b11a8647b0a9e",
         "checked_out_branch_at_generation": "main"
       },
       "yara-indrani": {
         "ref_read": "main",
-        "commit": "2a9ffbc3cf142131ca673fec3f460a772040ae54",
+        "commit": "e1669f6890f2bc7994923d35dab7288dab612281",
         "checked_out_branch_at_generation": "main"
       },
       "sofia-lume": {
         "ref_read": "main",
-        "commit": "651563edf6b211b4b6a96cbb42de21dd1cb65123",
+        "commit": "5bf393206f50301e55bcc3deb8deb217215a2f79",
         "checked_out_branch_at_generation": "main"
       },
       "noa-cifratti": {
         "ref_read": "main",
-        "commit": "3b258b6f8e3dce968c0796bf4e7ef0863df12bdf",
+        "commit": "4a6a1637269e0330e2ea6fd9caf9ffab02d9561c",
         "checked_out_branch_at_generation": "main"
       },
       "tariq-al-khwarizmi": {
         "ref_read": "main",
-        "commit": "2040ecf07ddfc99192c8200a88150137d1ac3b33",
+        "commit": "b1c512ffa60009ef26331224f808eabdce5f8b85",
         "checked_out_branch_at_generation": "main"
       },
       "costanza-notari": {
         "ref_read": "main",
-        "commit": "a46e96b310c47777b5d686b249cd6d9f779c8c29",
+        "commit": "da99173e0411aae99f11ee47dd03795f636fa483",
         "checked_out_branch_at_generation": "main"
       },
       "ezio-cardone": {
         "ref_read": "main",
-        "commit": "4d1f4d04e531032560d00f44723e7f324f65a3ac",
+        "commit": "9b346317c1d600f3fe6824d98fd4ffa35965ebc0",
         "checked_out_branch_at_generation": "main"
       },
       "adele-maurique": {
         "ref_read": "main",
-        "commit": "1934c6598ff1e99ac6592b54821980fb81074925",
+        "commit": "92f1743bee3f01e568e0717a311e715e645bb2b4",
         "checked_out_branch_at_generation": "main"
       },
       "tomaso-riviera": {
         "ref_read": "main",
-        "commit": "2edf8f99d9fcaef9d264044afe381ff9ab348c24",
+        "commit": "1a5a3d4ff9ba0f8cf56ca506471fd53f414c451f",
         "checked_out_branch_at_generation": "main"
       }
     }
@@ -414,7 +414,7 @@
       },
       "repo": {
         "name": "marco-aurelius",
-        "head_sha": "6103defd4ecf3c0d31881f8439fa2ea850b8f4c1",
+        "head_sha": "9482d722a59559220dc3d171351c246fc41dd50d",
         "files": [
           ".gitignore",
           "LICENSE",
@@ -767,7 +767,7 @@
         "identical_score_vector_seat": true
       },
       "flag_evidence": {
-        "revisions_required_not_done": "3 revisions asked by anthropic_chair (e.g. 'Link Master Thesis to verifiable artifact (repo path, schema diagram, or design doc with c'); repository lucia-solari@adb024b has 0 artifacts",
+        "revisions_required_not_done": "3 revisions asked by anthropic_chair (e.g. 'Link Master Thesis to verifiable artifact (repo path, schema diagram, or design doc with c'); repository lucia-solari@d916c39 has 0 artifacts",
         "overall_recorded_differs_from_rubric": "anthropic_chair: 7.47 vs 7.93; cerebras_reasoning: 9.07 vs 9.33; moonshot_longctx: 9.3 vs 9.6; groq_velocity: 8.93 vs 8.8",
         "phase0_retroactive_review": "Council JSONs dated 2026-05-14, after conferral (2026-05-10)",
         "zero_artifacts": "tracked files: .gitignore, LICENSE, README.md, avatar.jpg",
@@ -782,7 +782,7 @@
       },
       "repo": {
         "name": "lucia-solari",
-        "head_sha": "adb024b16c001c3b581d8e822a5ea8e8cd5d396f",
+        "head_sha": "d916c39e79eb19bd880bd4faaa393869f03bed2e",
         "files": [
           ".gitignore",
           "LICENSE",
@@ -1147,7 +1147,7 @@
       },
       "repo": {
         "name": "riku-aetherian",
-        "head_sha": "ae70db9f10867ddf7e1109440413e75010504418",
+        "head_sha": "3ac6e704b3e27a1b762d3bd84cc38631c0b93be7",
         "files": [
           ".gitignore",
           "LICENSE",
@@ -1506,7 +1506,7 @@
       },
       "repo": {
         "name": "adrian-volta",
-        "head_sha": "dae00374164ba150a1e77302122bb32a8de7a354",
+        "head_sha": "2a476ae209b228a44d461be8e6966e679c81e818",
         "files": [
           ".gitignore",
           "LICENSE",
@@ -1867,7 +1867,7 @@
       },
       "repo": {
         "name": "davide-ferri",
-        "head_sha": "6218e05c1abf6818312f7687bf397ccf0d503e94",
+        "head_sha": "27785369ac20c004f42a2094d8e1647b4dfc0262",
         "files": [
           ".gitignore",
           "LICENSE",
@@ -2226,7 +2226,7 @@
       },
       "repo": {
         "name": "elena-tessera",
-        "head_sha": "3f3716552a62223c3a7d9b5100c4fe3f2ff3047d",
+        "head_sha": "51d1f20bf2380febf7478215d71b11a8647b0a9e",
         "files": [
           ".gitignore",
           "LICENSE",
@@ -2585,7 +2585,7 @@
       },
       "repo": {
         "name": "yara-indrani",
-        "head_sha": "2a9ffbc3cf142131ca673fec3f460a772040ae54",
+        "head_sha": "e1669f6890f2bc7994923d35dab7288dab612281",
         "files": [
           ".gitignore",
           "LICENSE",
@@ -2953,7 +2953,7 @@
       },
       "repo": {
         "name": "sofia-lume",
-        "head_sha": "651563edf6b211b4b6a96cbb42de21dd1cb65123",
+        "head_sha": "5bf393206f50301e55bcc3deb8deb217215a2f79",
         "files": [
           ".gitignore",
           "LICENSE",
@@ -3310,7 +3310,7 @@
         "identical_score_vector_seat": true
       },
       "flag_evidence": {
-        "revisions_required_not_done": "3 revisions asked by anthropic_chair (e.g. 'Provide verifiable audit artifacts: commit hashes, security review documents, or incident '); repository noa-cifratti@3b258b6 has 0 artifacts",
+        "revisions_required_not_done": "3 revisions asked by anthropic_chair (e.g. 'Provide verifiable audit artifacts: commit hashes, security review documents, or incident '); repository noa-cifratti@4a6a163 has 0 artifacts",
         "overall_recorded_differs_from_rubric": "anthropic_chair: 7.27 vs 7.6; cerebras_reasoning: 9.28 vs 9.33; moonshot_longctx: 8.93 vs 9.2; groq_velocity: 8.67 vs 8.6",
         "phase0_retroactive_review": "Council JSONs dated 2026-05-14, after conferral (2026-05-10)",
         "zero_artifacts": "tracked files: .gitignore, LICENSE, README.md, avatar.jpg",
@@ -3326,7 +3326,7 @@
       },
       "repo": {
         "name": "noa-cifratti",
-        "head_sha": "3b258b6f8e3dce968c0796bf4e7ef0863df12bdf",
+        "head_sha": "4a6a1637269e0330e2ea6fd9caf9ffab02d9561c",
         "files": [
           ".gitignore",
           "LICENSE",
@@ -3689,7 +3689,7 @@
       },
       "repo": {
         "name": "tariq-al-khwarizmi",
-        "head_sha": "2040ecf07ddfc99192c8200a88150137d1ac3b33",
+        "head_sha": "b1c512ffa60009ef26331224f808eabdce5f8b85",
         "files": [
           ".gitignore",
           "LICENSE",
@@ -4061,7 +4061,7 @@
       },
       "repo": {
         "name": "costanza-notari",
-        "head_sha": "a46e96b310c47777b5d686b249cd6d9f779c8c29",
+        "head_sha": "da99173e0411aae99f11ee47dd03795f636fa483",
         "files": [
           ".gitignore",
           "LICENSE",
@@ -4418,7 +4418,7 @@
       },
       "repo": {
         "name": "ezio-cardone",
-        "head_sha": "4d1f4d04e531032560d00f44723e7f324f65a3ac",
+        "head_sha": "9b346317c1d600f3fe6824d98fd4ffa35965ebc0",
         "files": [
           "LICENSE",
           "README.md",
@@ -4773,7 +4773,7 @@
       },
       "repo": {
         "name": "adele-maurique",
-        "head_sha": "1934c6598ff1e99ac6592b54821980fb81074925",
+        "head_sha": "92f1743bee3f01e568e0717a311e715e645bb2b4",
         "files": [
           "LICENSE",
           "README.md",
@@ -5126,7 +5126,7 @@
       },
       "repo": {
         "name": "tomaso-riviera",
-        "head_sha": "2edf8f99d9fcaef9d264044afe381ff9ab348c24",
+        "head_sha": "1a5a3d4ff9ba0f8cf56ca506471fd53f414c451f",
         "files": [
           "LICENSE",
           "README.md",
