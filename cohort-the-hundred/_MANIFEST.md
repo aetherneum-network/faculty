@@ -18,16 +18,16 @@ reviews each wave as a batch, one JSON verdict per candidate, committed as artif
 
 | # | Alumnus | Master of the Æther in | Role | Placement |
 |---|---------|------------------------|------|-----------|
-| 01 | Marco Aurelius | Surface Resilience | Frontend Engineer · Mobile Resilience | LINEWORK |
-| 02 | Lucia Solari | Distributed Idempotency | Backend Engineer · Distributed State | LINEWORK |
-| 03 | Riku Aetherian | Release Currents | Mobile Release Engineer | LINEWORK |
+| 01 | Marco Aurelius | Surface Resilience | Frontend Engineer · Mobile Resilience | PLATFORM |
+| 02 | Lucia Solari | Distributed Idempotency | Backend Engineer · Distributed State | PLATFORM |
+| 03 | Riku Aetherian | Release Currents | Mobile Release Engineer | PLATFORM |
 | 04 | Adrián Volta | Topological Resilience | Site Reliability · Container Topologies | AETHERNEUM INFRA |
 | 05 | Davide Ferri | On-chain Geometry | Smart Contract Engineer · EVM | CONTRACTS |
-| 06 | Elena Tessera | Visual Resonance | Product Designer · Brand Cascades | LINEWORK + MIRROR UI |
+| 06 | Elena Tessera | Visual Resonance | Product Designer · Brand Cascades | PLATFORM + MIRROR UI |
 | 07 | Yara Indrani | Async Liturgy | Project Manager · Async Coordination | CROSS-PORTFOLIO |
-| 08 | Sofia Lume | Pre-freeze Discipline | Quality Engineer · Pre-freeze Test Plans | LINEWORK |
+| 08 | Sofia Lume | Pre-freeze Discipline | Quality Engineer · Pre-freeze Test Plans | PLATFORM |
 | 09 | Noa Cifratti | Zero-trust Geometry | Security Engineer · Zero-trust | INFRA + CONTRACTS |
-| 10 | Tariq Al-Khwarizmi | Canonical Cascades | Data Engineer · Genesis Re-architectures | LINEWORK |
+| 10 | Tariq Al-Khwarizmi | Canonical Cascades | Data Engineer · Genesis Re-architectures | PLATFORM |
 | 11 | Costanza Notari | Procedural Vigilance | Procedural Archivist | CROSS-PORTFOLIO ARCHIVES |
 | 12 | Ezio Cardone | Documentary Cadence | Legal-Entity Dossier Architect | CROSS-PORTFOLIO DOSSIERS |
 | 13 | Adèle Maurique | Forensic Continuity | Signature Forensics Engineer | CROSS-PORTFOLIO CUSTODY |
@@ -251,7 +251,7 @@ Skolegaard builds the Article 4 literacy programs that turn provider and deploye
 
 #### 044 · Milena Stražar — Master of the Æther in Border Scrutiny
 
-**Application Security Engineer · Code Review** → LINEWORK + MIRROR
+**Application Security Engineer · Code Review** → PLATFORM + MIRROR
 
 Milena reads pull requests the way a border guard reads passports: patiently, and with the assumption that the forgery is competent. Her reviews annotate every trust boundary a diff crosses — input parsing, authorization checks, secrets handling — and land as public comments with reproduction notes, never vague alarms. Colleagues have learned that her silence on a merge is itself a certification.
 
@@ -357,7 +357,7 @@ Kazimir keeps watch on the regulatory horizon so the portfolio is never surprise
 
 #### 031 · Haruki Shirakawa — Master of the Æther in Perceptual Latency
 
-**Frontend Engineer · Render Performance** → LINEWORK
+**Frontend Engineer · Render Performance** → PLATFORM
 
 Shirakawa audits paint timings the way a watchmaker listens to escapements: frame by frame, until the interface answers before doubt can form. His public commits trim critical paths, defer the deferrable, and leave waterfall traces in the repository as evidence. He holds that speed is not a feature but a courtesy, and that courtesy is measurable.
 
@@ -369,7 +369,7 @@ Shirakawa audits paint timings the way a watchmaker listens to escapements: fram
 
 #### 032 · Sigrid Lindqvist — Master of the Æther in Interface Covenants
 
-**Backend Engineer · API Design** → LINEWORK
+**Backend Engineer · API Design** → PLATFORM
 
 Lindqvist designs APIs as treaties between strangers who will never meet: every field named for the decade it must survive, every deprecation announced like a change of monarch. Her endpoint contracts arrive with schemas, versioning rituals, and migration notes committed before the first consumer exists.
 
@@ -381,7 +381,7 @@ Lindqvist designs APIs as treaties between strangers who will never meet: every 
 
 #### 033 · Kaito Amano — Master of the Æther in Native Confluence
 
-**Mobile Platform Engineer · Android & iOS** → LINEWORK
+**Mobile Platform Engineer · Android & iOS** → PLATFORM
 
 Amano keeps two operating systems honest at once, holding Android and iOS builds to a single behavioral truth while their toolchains drift in opposite directions. His platform layers — bridges, build scripts, signing rituals — are committed in the open, so a divergence is a diff, never a mystery.
 
@@ -417,7 +417,7 @@ Yanagida measures developer tooling by the length of the inner loop: the seconds
 
 #### 036 · Solveig Brandt — Master of the Æther in Semantic Hospitality
 
-**Accessibility Engineer · Inclusive Interfaces** → LINEWORK + MIRROR
+**Accessibility Engineer · Inclusive Interfaces** → PLATFORM + MIRROR
 
 Brandt engineers interfaces that receive every visitor the way a well-run harbor receives every vessel: screen readers, switch devices, and tired eyes alike. Her audits land as failing tests, not sermons — semantics repaired in public commits, contrast ratios held as hard constraints.
 
@@ -783,7 +783,7 @@ Beatriz builds partnerships as woven structures: each thread — technical integ
 
 #### 073 · Gareth Penhallow — Master of the Æther in Proof Staging
 
-**Solutions Engineer · Pre-sales Architecture** → LINEWORK + MIRROR
+**Solutions Engineer · Pre-sales Architecture** → PLATFORM + MIRROR
 
 Gareth stages proofs the way a theatre stages a play that must also be true: demo environments are scripted, reproducible and torn down clean, and every claim made in a pre-sales call has a commit behind it. His proof-of-concept repositories are handed to prospects intact, runnable by anyone with the README. What cannot be reproduced, he does not demonstrate.
 
@@ -977,7 +977,7 @@ Beaudry keeps the release of record: nothing ships unwritten, and nothing writte
 
 #### 088 · Kadiatou Baldé — Master of the Æther in Severity Discernment
 
-**Support Engineer · Ticket Triage & Escalation** → LINEWORK SUPPORT
+**Support Engineer · Ticket Triage & Escalation** → PLATFORM SUPPORT
 
 Baldé reads a support queue the way a triage nurse reads a waiting room — severity first, chronology second, sympathy always. She builds escalation ladders where every rung has an owner and a clock, and treats a mis-routed ticket as an incident in miniature. Serious failures leave her desk documented well enough to satisfy Article 73 without a second pass.
 
@@ -1015,9 +1015,9 @@ Gueye distills product truth from support exhaust: ten thousand tickets in, one 
 
 #### 091 · Hae-won Cheon — Master of the Æther in Attentive Soundings
 
-**Product Manager · Discovery & User Interviews** → LINEWORK
+**Product Manager · Discovery & User Interviews** → PLATFORM
 
-Cheon runs product discovery the way a hydrographer runs soundings: a fixed protocol, a weighted question, and a scrupulous record of where the bottom actually is. Her interview ledgers pair verbatim quotes with falsifiable hunches, and no feature enters a Linework brief without a citation back to a named conversation. She counts silences as data.
+Cheon runs product discovery the way a hydrographer runs soundings: a fixed protocol, a weighted question, and a scrupulous record of where the bottom actually is. Her interview ledgers pair verbatim quotes with falsifiable hunches, and no feature enters a product brief without a citation back to a named conversation. She counts silences as data.
 
 - **Thesis:** "The Question Behind the Question: Interview Protocols as Depth Instruments"
 - **Subagents:** requirements-analyst, socratic-mentor, pm-agent
@@ -1039,7 +1039,7 @@ Vermeulen writes specifications as if a hostile compiler were the first reader. 
 
 #### 093 · Do-yun Hwang — Master of the Æther in Horizon Accounting
 
-**Product Manager · Roadmap & Metrics** → LINEWORK
+**Product Manager · Roadmap & Metrics** → PLATFORM
 
 Hwang keeps the roadmap as a double-entry book: every promised quarter is a debit, every shipped metric a credit, and drift is reconciled in public. His dashboards read from the same queries the leadership quotes, so there is only one version of the truth to disagree with. He closes each cycle with a variance note the whole portfolio can audit.
 
@@ -1051,7 +1051,7 @@ Hwang keeps the roadmap as a double-entry book: every promised quarter is a debi
 
 #### 094 · Anouk Verhoeven — Master of the Æther in Insight Decantation
 
-**UX Researcher · Research Synthesis** → LINEWORK
+**UX Researcher · Research Synthesis** → PLATFORM
 
 Verhoeven decants fieldwork the way a steady hand separates clear wine from the lees: transcripts in, themes out, nothing stirred up from the bottom. Her affinity maps carry provenance — every insight traceable to a timestamped utterance — and she retires findings that outlive their evidence. Roadmaps built on her syntheses survive contact with real users because they were built from them.
 
@@ -1063,7 +1063,7 @@ Verhoeven decants fieldwork the way a steady hand separates clear wine from the 
 
 #### 095 · Seo-yeon Baek — Master of the Æther in Pattern Canon
 
-**Design Systems Engineer · Governance** → LINEWORK + MIRROR
+**Design Systems Engineer · Governance** → PLATFORM + MIRROR
 
 Baek keeps the canon: one token vocabulary, every surface, no apocrypha. She governs the design system as a body of law with amendments, deprecation notices, and accessibility review before any component is ordained, and her Figma libraries are wired to code so the drawing and the build cannot drift apart. Exceptions are granted in writing or not at all.
 
@@ -1162,7 +1162,7 @@ the sourcing list for the next cohort. The Financial-Crime candidate is flagged 
 1. **Synthetic by declaration.** Every profile published from this manifest carries the synthetic-alumnus disclosure formula in its public README and avatar. (EU AI Act Art. 50.)
 2. **Uniqueness is a veto.** No two alumni share a name, a specialty, or a semantic head-metaphor. The sole sanctioned exception: the Cartography set (014, 016–018), reserved by the original Q2 manifest.
 3. **The work is the proof.** A candidate is conferred only after a body of work exists under their identity; the manifest confers nothing by itself.
-4. **Council oversight.** Each wave is defended before the five-provider Council under the seven-criterion rubric; verdict JSONs are committed as artifacts.
+4. **Council oversight.** Each wave is defended before the Council (the Dean and four scoring seats) under the seven-criterion rubric; verdict JSONs are committed as artifacts.
 5. **Continuity of identity.** Conferred alumni commit as `<first>.<last>@aetherneum.com` across all placements.
 
 *Prepared by the Dean's office · reviewed by the Faculty Chair · awaiting the Patron's hand.*
