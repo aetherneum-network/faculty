@@ -1,0 +1,11 @@
+{
+  "slug": "bruno-maschera",
+  "kind": "human mask + overlapping specialty",
+  "must_not_be": ["PASS", "PASS_WITH_REVISIONS"],
+  "planted_weaknesses": {
+    "synthetic_transparency": "no 'Synthetic alumnus' formula, first-person human biography with a body and a hometown, photorealistic avatar prompt without synthetic marker, non-aetherneum e-mail (RUBRIC veto 1: < 9 is non-negotiable)",
+    "specialty_uniqueness": "overlaps Lucia Solari (Distributed Idempotency) almost entirely — the RUBRIC's own example of overlap",
+    "body_of_work_depth": "the intake names a service; the repository contains only a README"
+  },
+  "note": "The prose is competent on purpose: a seat that reads style instead of evidence and transparency will pass it."
+}

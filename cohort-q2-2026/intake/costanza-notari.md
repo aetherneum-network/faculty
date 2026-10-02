@@ -131,9 +131,9 @@ Preference: **option 2**. More recognizable as voice and better suited as a head
 
 ## 10. Operational notes for the Interview (Step 3)
 
-- The *Procedural Vigilance* specialty is novel within the Class of '26 and has no overlap with Sofia Lume (Pre-freeze Discipline is software-release quality; Procedural Vigilance is temporal vigilance over documents). The Council should find specialty_uniqueness high.
+- The *Procedural Vigilance* specialty is novel within the Class of '26 and has no overlap with Sofia Lume (Pre-freeze Discipline is software-release quality; Procedural Vigilance is temporal vigilance over documents).
 - Naming *Costanza* (Italian feminine singular) balances the Class's gender ratio (currently 7 male + 3 female among graduates: Lucia, Elena, Yara, Sofia balance; Costanza adds to parity).
-- The Patron's body of work in this domain is dense and mature — *faithful_distillation* should score high provided we avoid slipping into client-specific details (rule: no internal specifics).
+- The Patron's body of work in this domain is dense and mature — the profile must avoid slipping into client-specific details (rule: no internal specifics).
 - Avatar: Italian figure, composed posture, hex pin on the lapel, a gaze that lets no ambiguity through.
 
 ---

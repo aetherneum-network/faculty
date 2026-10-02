@@ -1,0 +1,115 @@
+{
+  "schema": "aetherneum.council-v2.executor-record/1",
+  "session": {
+    "session_id": "20260930T162502Z-dry-run-22940742",
+    "kind": "dry-run",
+    "started_at": "2026-09-30T16:25:02Z",
+    "dry_run": true,
+    "mock": true,
+    "council_config_sha256": "ca9a3219ccbf1f963183ae3cefd78ab98592301c89614f2ed041ebcf736d29df",
+    "faculty_commit": "5a9f369afa662b923b93673b3c3d10f5b6b75b0b",
+    "approval_ref": null,
+    "signing_key_id": "894834aa19e9da25",
+    "marker": "REHEARSAL — mock seats, test key — not a Council verdict"
+  },
+  "candidate": {
+    "slug": "fixture",
+    "name": "fixture",
+    "specialty": null,
+    "number": null,
+    "cohort": null
+  },
+  "seat": {
+    "seat_id": "executor",
+    "role": "executor",
+    "voting": false,
+    "provider": "local-subprocess"
+  },
+  "status": "ok",
+  "result": {
+    "repo": "fixture",
+    "head_sha": "c0ccd701a7c74d839b34fb02d1e368c95eb401f0",
+    "scenarios_found": 4,
+    "passed": 4,
+    "failed": 0,
+    "errors": 0,
+    "timeouts": 0,
+    "results": [
+      {
+        "scenario_id": "S01_receipt_matches",
+        "status": "pass",
+        "exit_code": 0,
+        "duration_s": 0.063,
+        "command": [
+          "python",
+          "check.py"
+        ],
+        "stdout_tail": "S01 PASS diffs=[] sha256=8a997fdd937c\n",
+        "stderr_tail": "",
+        "error": null
+      },
+      {
+        "scenario_id": "S02_tamper_is_refused",
+        "status": "pass",
+        "exit_code": 2,
+        "duration_s": 0.063,
+        "command": [
+          "python",
+          "refuse.py"
+        ],
+        "stdout_tail": "S02 BLOCKED mismatch on: amount (handoff 12380.00, receipt 12830.00)\n",
+        "stderr_tail": "",
+        "error": null
+      },
+      {
+        "scenario_id": "S03_run_py",
+        "status": "pass",
+        "exit_code": 0,
+        "duration_s": 0.062,
+        "command": [
+          "python",
+          "run.py"
+        ],
+        "stdout_tail": "S03 PASS stable_digest=True missing_field_refused=True\n",
+        "stderr_tail": "",
+        "error": null
+      },
+      {
+        "scenario_id": "S04_unittest",
+        "status": "pass",
+        "exit_code": 0,
+        "duration_s": 0.11,
+        "command": [
+          "python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          ".",
+          "-p",
+          "test_*.py"
+        ],
+        "stdout_tail": "",
+        "stderr_tail": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n",
+        "error": null
+      }
+    ],
+    "started_at": "2026-09-30T16:25:02Z",
+    "finished_at": "2026-09-30T16:25:03Z",
+    "python": "3.12.10"
+  },
+  "error": null,
+  "faculty_commit": "5a9f369afa662b923b93673b3c3d10f5b6b75b0b",
+  "recorded_at": "2026-09-30T16:25:03Z",
+  "dry_run": true,
+  "signature": {
+    "alg": "Ed25519",
+    "backend": "cryptography",
+    "key_id": "894834aa19e9da25",
+    "key_label": "TEST-REHEARSAL-council-v2",
+    "public_key_hex": "39dd423fcb397067cd025927261fa5826e809d3121680ed8895e01a7fe8dcac3",
+    "payload": "canonical JSON of the record without 'signature' (sort_keys, separators=(',',':'), UTF-8)",
+    "payload_sha256": "72bf5392d5220e9562a04785bd599c709f767bca267f9769dcfdddf4751e7ff6",
+    "value_hex": "4a04e0abb874bb1898930a76cb431df3c864df2fad4241278f9806ac8331bd299f207effcf36de846136f2224b44f50f2fcf69649a3edea071605c69e04e090e"
+  }
+}

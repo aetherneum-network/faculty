@@ -1,0 +1,1 @@
+{"run": ["python", "check.py"], "timeout_s": 30, "expect_exit": 0}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aetherneum-scorecard/0.1-draft",
+  "title": "Aetherneum scorecard",
+  "description": "One file per proof pack, written by the evaluator, never by the builder (rule P3 in council/council.json, Rector, 2026-09-30). Every evaluation run made on frozen code is listed in date order and none is removed; the headline run is the LAST out-of-pool run, never the best. This schema fixes the shape; council_v2/scorecard.py adds the checks a schema cannot express (date order, headline run, who ran, runs kept).",
+  "type": "object",
+  "required": ["schema", "alumnus", "pack_version", "freeze_tag", "freeze_commit", "written_by", "headline_run", "limits", "runs"],
+  "properties": {
+    "schema": {"const": "aetherneum-scorecard/0.1-draft"},
+    "alumnus": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "slug of the alumnus"},
+    "alumnus_nature": {"type": "string"},
+    "status": {
+      "enum": ["profile-attested", "evidence-pending", "certified", "lapsed", "under-review"],
+      "description": "informative only: the status is derived by code (council_v2/scorecard.py derive_status), never read from here"
+    },
+    "pack_version": {"type": "string", "minLength": 1},
+    "freeze_tag": {"type": "string", "minLength": 1},
+    "freeze_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "builder": {"type": "string", "minLength": 1, "description": "optional: who built the pack; no run may be run by this name"},
+    "written_by": {"type": "string", "minLength": 1, "description": "who wrote this file: the evaluator, never the builder"},
+    "written_at_utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "certified_until": {"type": ["string", "null"], "description": "informative only: the expiry is derived from the signed verdict"},
+    "headline_run": {"type": ["integer", "null"], "minimum": 0, "description": "0-based index in runs of the LAST out-of-pool run; null only when there is none"},
+    "never_event_definition": {"type": "string"},
+    "limits": {"type": "string", "minLength": 1, "description": "what the runs do not prove, in one line"},
+    "runs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["run_at_utc", "seed", "kind", "run_by", "n", "abstained", "never_events", "metrics"],
+        "properties": {
+          "run_at_utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+          "seed": {"type": ["integer", "string"]},
+          "kind": {"enum": ["protocol", "out-of-pool"], "description": "protocol = wording already used in development; out-of-pool = wording never seen by the builder (a blind run)"},
+          "kind_note": {"type": "string"},
+          "run_by": {"type": "string", "minLength": 1, "description": "who ran it: never the builder"},
+          "command": {"type": "string"},
+          "n": {"type": "integer", "minimum": 0},
+          "abstained": {"type": "integer", "minimum": 0},
+          "never_events": {"type": "integer", "minimum": 0, "description": "count of committed values that are wrong"},
+          "metrics": {"type": "object", "description": "the numbers of the run, with the pack's own names, as they came out"},
+          "expected_answers_sha256_prefix": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}

@@ -126,8 +126,8 @@ Preference: **option 1** — sharp as a headline, captures the non-negotiable. O
 
 ## 10. Operational notes for the Interview (Step 3)
 
-- *Probability Cartography* is novel within the Class of '26 and has **no overlap with any existing alumnus**. Davide Ferri writes the contracts that *hold* value; Tomaso writes the systems that *act on* probabilistic value flows. Lucia Solari keeps state coherent; Tomaso keeps risk coherent. The Council should find `specialty_uniqueness` high.
-- *faithful_distillation* depends on staying at abstract-capability level — per template §7, **no internal product, venue, or counterparty names**. The body of work is concrete, the profile must describe the *method*, not the venues.
+- *Probability Cartography* is novel within the Class of '26 and has **no overlap with any existing alumnus**. Davide Ferri writes the contracts that *hold* value; Tomaso writes the systems that *act on* probabilistic value flows. Lucia Solari keeps state coherent; Tomaso keeps risk coherent.
+- The profile must stay at abstract-capability level — per template §7, **no internal product, venue, or counterparty names**. The body of work is concrete, the profile must describe the *method*, not the venues.
 - Naming *Tomaso* (Italian masculine) is noted for the Class gender ledger: brings the count to 7 male / 7 female after Adèle (was 6 male / 7 female).
 - Avatar: an Italian/Mediterranean figure with a quiet, measuring expression — the gaze of someone reading an edge number against a cost threshold and already knowing whether to act. A hex pin on the lapel. The synthetic-marker constraint applies as usual (iridescent shimmer along the brow, hex-pattern reflection in the iris).
 

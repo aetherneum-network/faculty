@@ -1,0 +1,114 @@
+{
+  "schema": "aetherneum.council-v2.decision/1",
+  "session": {
+    "session_id": "20260930T162502Z-dry-run-22940742",
+    "kind": "dry-run",
+    "started_at": "2026-09-30T16:25:02Z",
+    "dry_run": true,
+    "mock": true,
+    "council_config_sha256": "ca9a3219ccbf1f963183ae3cefd78ab98592301c89614f2ed041ebcf736d29df",
+    "faculty_commit": "5a9f369afa662b923b93673b3c3d10f5b6b75b0b",
+    "approval_ref": null,
+    "signing_key_id": "894834aa19e9da25",
+    "marker": "REHEARSAL — mock seats, test key — not a Council verdict"
+  },
+  "candidate": {
+    "slug": "fixture",
+    "name": "fixture",
+    "specialty": null,
+    "number": null,
+    "cohort": null
+  },
+  "bundle_sha256": "00576669a0bef75b761202882348da2365c3d11742647323cd79e07b65ba1905",
+  "seat_files": [
+    "fixture__anthropic.json",
+    "fixture__longctx.json",
+    "fixture__reasoning.json",
+    "fixture__velocity.json"
+  ],
+  "decision": {
+    "outcome": "PASS",
+    "valid_seats": [
+      "anthropic",
+      "reasoning",
+      "longctx",
+      "velocity"
+    ],
+    "null_seats": [],
+    "missing_seats": [],
+    "excluded_uncalibrated": [],
+    "pass_count": 4,
+    "tally": "4/4",
+    "council_overall_mean": 8.13,
+    "reduced_quorum": false,
+    "vetoes": {},
+    "reasons": [
+      "4 PASS >= 3, council mean 8.13 >= 7"
+    ],
+    "rule": {
+      "voting_seats": [
+        "anthropic",
+        "reasoning",
+        "longctx",
+        "velocity"
+      ],
+      "min_valid_seats": 3,
+      "min_pass_seats": 3,
+      "exclude_uncalibrated": true
+    }
+  },
+  "executor_rule": {
+    "rule_id": "EX-1",
+    "approved": "Rector decision D19, 2026-09-30",
+    "text": "veto until every declared scenario passes; zero scenarios started counts as zero artifacts",
+    "executor": "ran",
+    "counts": {
+      "scenarios_found": 4,
+      "passed": 4,
+      "failed": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "started": 4
+    },
+    "fired": false,
+    "clauses_fired": [],
+    "veto": false,
+    "zero_artifacts": false,
+    "artifact_count_as": null,
+    "not_passed": [],
+    "reasons": [
+      "EX-1 silent: 4 of 4 declared scenario(s) passed"
+    ],
+    "veto_short": null,
+    "veto_reason": null,
+    "cap_reason": null,
+    "exception": null,
+    "notes": []
+  },
+  "interpretations": {
+    "I-1": "'average >= 7' (RUBRIC.md top line) is read as the WEIGHTED overall of the Score table, not the arithmetic mean.  COUNCIL_REVIEW.md says 'overall_score (arithmetic mean of the 7)'; RUBRIC.md says 'Final overall score = weighted sum / sum of weights'. RUBRIC.md is the rubric, so it wins; the arithmetic mean is still reported.",
+    "I-2": "Vetoes are applied automatically by code.  RUBRIC.md says 'any reviewer CAN mark verdict: FAIL' but titles the section 'Automatic veto' and calls rule 1 'non-negotiable'; a veto that depends on the reviewer remembering it is how Sofia Lume's FAIL was lost.",
+    "I-3": "Seat verdict: FAIL if a veto fires, or overall < 7, or any criterion < 5; otherwise PASS_WITH_REVISIONS if any criterion is below its Score-table threshold; otherwise PASS.  RUBRIC.md never defines PASS_WITH_REVISIONS; this mapping reproduces the verdicts recorded for Lucia Solari and Noa Cifratti (Anthropic seat).",
+    "I-4": "Council outcome: most restrictive seat wins (VETO > FAIL > REVISIONS_REQUIRED > PASS). COUNCIL_REVIEW.md lets '>=3 PASS' and '>=1 PASS_WITH_REVISIONS' both match a 3+1 split; the 2026-09-30 review labels Lucia Solari (3 PASS + 1 PASS_WITH_REVISIONS) 'PASS con revisioni', i.e. the restrictive reading.",
+    "I-5": "Quorum = at least 3 VALID voting-seat results.  A null seat (failure, refusal, timeout, unparseable output) or a missing record counts as absent, never as a PASS. A decision taken with fewer valid seats than voting seats is labelled 'reduced_quorum' wherever it is shown.",
+    "I-6": "The Dean does not vote in Council v2 (council/council.json).  FACULTY_BOARD.md still says 'The Dean counts as 1 Faculty if not already in the Council' and gives the Dean a 'Tiebreaker vote'; that text needs a Charter amendment (4 Faculty + Patron).",
+    "I-7": "Scores are compared as exact fractions; 'overall' is shown rounded to 2 decimals (round-half-even on the exact value)."
+  },
+  "human_steps_pending": [
+    "external human reviewer minutes (review §3 rule 8)",
+    "written Patron approval minutes with criteria used",
+    "appeal window and planned revocation date"
+  ],
+  "recorded_at": "2026-09-30T16:25:03Z",
+  "dry_run": true,
+  "signature": {
+    "alg": "Ed25519",
+    "backend": "cryptography",
+    "key_id": "894834aa19e9da25",
+    "key_label": "TEST-REHEARSAL-council-v2",
+    "public_key_hex": "39dd423fcb397067cd025927261fa5826e809d3121680ed8895e01a7fe8dcac3",
+    "payload": "canonical JSON of the record without 'signature' (sort_keys, separators=(',',':'), UTF-8)",
+    "payload_sha256": "3bbd808cc736a1e81f43f09fa05d7e6749a6fb8f6c7f27d9ea920338aa6279b4",
+    "value_hex": "9b87d0ba50192a15061902c6eac92fb7e47b735ad49675cbae32f0e2a4985438666971dd057bfe84e1579a00c8a4b75f3b2007684cd34ea525b27690f592600e"
+  }
+}

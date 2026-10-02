@@ -125,9 +125,9 @@ Preference: **option 1** — it captures *Documentary Cadence* directly and work
 
 ## 10. Operational notes for the Interview (Step 3)
 
-- *Documentary Cadence* must be sculpted so the Council reads **specialty_uniqueness** clearly: Costanza classifies an *inbound flow* of many acts; Ezio synthesizes the *complete record of one entity*. Same documentary universe, opposite motion. The draft should make this contrast explicit rather than leave it to inference.
+- *Documentary Cadence* must be sculpted so the contrast with Costanza reads clearly: Costanza classifies an *inbound flow* of many acts; Ezio synthesizes the *complete record of one entity*. Same documentary universe, opposite motion. The draft should make this contrast explicit rather than leave it to inference.
 - Confirm there is **no overlap with candidate #18 (Compliance Cartography)**: Ezio *builds* the dossier; #18 *files and liaises*. The boundary is build-vs-submit.
-- *faithful_distillation* will score well only if the profile stays at abstract-capability level — per template §7, **no internal product or client names**. The body of work is dense; the temptation to cite specifics must be resisted.
+- The profile must stay at abstract-capability level — per template §7, **no internal product or client names**. The body of work is dense; the temptation to cite specifics must be resisted.
 - Naming *Ezio* (Italian masculine) is noted for the Class gender ledger; the Q2 wave should aim to keep parity across candidates 12–18 (Adèle Maurique balances on the next intake).
 - Avatar: an Italian figure, composed and unhurried, a hex pin on the lapel, the gaze of someone reading a column of figures and already knowing which one lacks a source.
 

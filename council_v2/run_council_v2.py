@@ -1,0 +1,376 @@
+#!/usr/bin/env python3
+"""Council v2 orchestrator: lint -> bundle -> calibration -> seats -> scoring -> signed records -> summary.
+
+Default mode is ``--dry-run --mock``: no network, mock seats, an ephemeral
+signing key, output under ``council_v2/out/<session>/`` (git-ignored).  It
+exercises every step with the real bundle of the candidate, so a dry run
+shows what the evidence cap and the vetoes would do today.
+
+Live mode costs money and needs the Rector's approval.  All of these are
+required, or the run refuses to start:
+
+* ``--live`` (and not ``--mock``)
+* environment ``AETHERNEUM_COUNCIL_LIVE=1`` plus the providers' API keys
+* ``--key <private key file>`` (the production signing key; no ephemeral key)
+* ``--approval-ref "<minutes id>"`` (recorded in every record's session block)
+* ``--repo <proof pack>`` with at least one scenario, which passes the executor
+  (rule P4 in council/council.json: no defence without a proof pack)
+
+``--scorecard <file>`` (rule P3) gives the scorecard the verdict relies on: it
+is validated, and its sha256 and the expiry of the diploma are signed in the
+decision record.
+
+Seats whose provider/model is still ``[TO CONFIRM]`` in council/council.json
+produce null records (and may break quorum) — by design.
+
+Examples::
+
+    python -m council_v2.run_council_v2 --slug costanza-notari
+    python -m council_v2.run_council_v2 --slug costanza-notari --mock-fail-seat velocity
+    python -m council_v2.run_council_v2 --slug costanza-notari --mock-lenient-seat velocity
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+from pathlib import Path
+from typing import Any
+
+FACULTY = Path(__file__).resolve().parents[1]
+if str(FACULTY) not in sys.path:
+    sys.path.insert(0, str(FACULTY))
+
+from council_v2 import CRITERIA_ORDER, rules, scoring  # noqa: E402
+from council_v2 import scorecard as scorecard_mod  # noqa: E402
+from council_v2.bundle import SteeringError, blocking, build_bundle, git_head, lint_intake  # noqa: E402
+from council_v2.calibrate import load_decoys, run_calibration  # noqa: E402
+from council_v2.evidence import scan_repo  # noqa: E402
+from council_v2.executor import run_scenarios  # noqa: E402
+from council_v2.record import (  # noqa: E402
+    ADMISSION_REFUSED_SCHEMA, build_decision_record, build_executor_record, build_seat_record, new_session,
+    record_filename, write_signed,
+)
+from council_v2.seats import LIVE_ENV, AnthropicSeat, MockSeat, OpenAICompatibleSeat  # noqa: E402
+from council_v2.signing import Ed25519Signer, load_signer  # noqa: E402
+
+DEFAULT_MOCK_VECTOR = (8, 8, 8, 8, 10, 7, 8)
+DECOY_LOW = (2, 3, 3, 2, 6, 2, 4)
+
+
+class RunRefused(RuntimeError):
+    pass
+
+
+def load_json(p: Path) -> dict[str, Any]:
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def _vec(v) -> dict[str, int]:
+    return dict(zip(CRITERIA_ORDER, (int(x) for x in v)))
+
+
+def build_mock_seats(council: dict[str, Any], *, vector=DEFAULT_MOCK_VECTOR, fail_seat: str | None = None,
+                     lenient_seat: str | None = None) -> list[MockSeat]:
+    decoys = {d.slug for d in load_decoys()}
+    seats = []
+    for sid in council["quorum"]["voting_seats"]:
+        def scorer(bundle, sid=sid):
+            if bundle.candidate_slug in decoys and sid != lenient_seat:
+                return _vec(DECOY_LOW)
+            return _vec(vector)
+        seats.append(MockSeat(sid, provider="mock", scores=scorer, model=f"mock-{sid}",
+                              fail=("mock failure: seat unavailable" if sid == fail_seat else None)))
+    return seats
+
+
+def build_live_seats(council: dict[str, Any], *, anthropic_client=None) -> list[Any]:
+    seats = []
+    for cfg in council["seats"]:
+        if not cfg.get("voting"):
+            continue
+        if cfg["provider"] == "anthropic":
+            p = cfg.get("params", {})
+            seats.append(AnthropicSeat(cfg["seat_id"], model=cfg["model_planned"], effort=p.get("effort", "high"),
+                                       max_tokens=int(p.get("max_tokens", 16000)), client=anthropic_client, allow_live=True))
+        else:
+            p = cfg.get("params", {})
+            temp = p.get("temperature")
+            seats.append(OpenAICompatibleSeat(
+                cfg["seat_id"], cfg["provider"], endpoint=cfg.get("endpoint", "[TO CONFIRM]"),
+                model=cfg.get("model_planned", "[TO CONFIRM]"), api_key_env=cfg.get("api_key_env", "[TO CONFIRM]"),
+                temperature=temp if isinstance(temp, (int, float)) else None,
+                max_tokens=int(p.get("max_tokens", 8000)), allow_live=True,
+            ))
+    return seats
+
+
+def default_inputs(slug: str, repos_root: Path, repo: Path | None = None) -> dict[str, Path | None]:
+    """Default intake / profile / repository for ``slug``.
+
+    When ``repo`` is given (CLI ``--repo``, e.g. a fresh clone of a frozen
+    ref), the README fallback of the profile is read from THAT repository,
+    not from ``<repos_root>/<slug>``: the bundle must not mix the evidence of
+    a frozen commit with the profile of a working tree someone is editing.
+    """
+    intake = FACULTY / "cohort-q2-2026" / "intake" / f"{slug}.md"
+    pending = FACULTY / "alumni" / "pending" / f"{slug}.md"
+    repo_dir = Path(repo) if repo else repos_root / slug
+    readme = repo_dir / "README.md"
+    return {
+        "intake": intake if intake.exists() else None,
+        "profile": pending if pending.exists() else readme,
+        "repo": repo_dir,
+    }
+
+
+def run(slug: str, *, repos_root: Path, out_root: Path, signer: Ed25519Signer, seats: list[Any], dry_run: bool,
+        mock: bool, intake: Path | None, profile: Path, repo: Path | None, allow_steering: bool = False,
+        run_executor: bool = True, with_calibration: bool = True, approval_ref: str | None = None,
+        council_path: Path = FACULTY / "council" / "council.json", alumni_path: Path = FACULTY / "alumni" / "alumni.json",
+        marker: str | None = None, scorecard: Path | None = None) -> dict[str, Any]:
+    if marker and not dry_run:
+        raise RunRefused("a session marker labels rehearsals; it is not allowed in a live run")
+    council = load_json(council_path)
+    ex_rule = rules.ExecutorRule.from_council(council)
+    if ex_rule and ex_rule.live_requires_executor and not dry_run and not run_executor:
+        raise RunRefused(live_needs_executor_message(ex_rule))
+    # rule P4, pack clause: a live defence without a proof pack is refused before anything is written
+    adm_rule = rules.AdmissionRule.from_council(council)
+    manifest = scan_repo(repo) if repo else None
+    n_scenarios = len((manifest or {}).get("scenario_ids") or [])
+    if adm_rule and not dry_run:
+        no_pack = adm_rule.pack_refusal(bool(repo), n_scenarios)
+        if no_pack:
+            raise RunRefused(no_pack)
+    # rule P3: the scorecard the verdict relies on is validated before anything is written
+    dip_rule = rules.DiplomaRule.from_council(council)
+    card = None
+    if scorecard is not None:
+        if dip_rule is None:
+            raise RunRefused("a scorecard was given but council.json has no rule with subject 'diploma' to read it with")
+        try:
+            card = scorecard_mod.load(scorecard, dip_rule)
+        except scorecard_mod.ScorecardRefused as e:
+            raise RunRefused(str(e)) from e
+        if card.alumnus != slug and not dry_run:
+            raise RunRefused(f"rule {dip_rule.rule_id}: the scorecard is of {card.alumnus!r}, the defence is of {slug!r}")
+    alumni = {a["slug"]: a for a in load_json(alumni_path)["alumni"]} if alumni_path.exists() else {}
+    a = alumni.get(slug, {})
+    candidate = {
+        "slug": slug,
+        "name": (a.get("name") or {}).get("canonical") or slug,
+        "specialty": (a.get("specialty") or {}).get("poetic_name"),
+        "number": a.get("number"),
+        "cohort": a.get("cohort"),
+    }
+    session = new_session("dry-run" if dry_run else "defense", dry_run=dry_run, mock=mock, council_config=council,
+                          faculty_commit=git_head(FACULTY))
+    session["approval_ref"] = approval_ref
+    session["signing_key_id"] = signer.key_id
+    if marker:
+        # The session block is embedded in every record before signing, so the
+        # marker is part of the signed payload of every file of this session.
+        session["marker"] = marker
+    out = out_root / session["session_id"]
+    out.mkdir(parents=True, exist_ok=False)
+
+    # 1. lint (blocks the run before any seat is called)
+    findings = (lint_intake(intake) if intake else []) + lint_intake(profile)
+    if blocking(findings) and not allow_steering:
+        rec = {"schema": "aetherneum.council-v2.lint-block/1", "session": session, "candidate": candidate,
+               "outcome": "BLOCKED_BY_LINT",
+               "findings": [f.__dict__ for f in blocking(findings)], "dry_run": dry_run}
+        write_signed(rec, out / f"{slug}__LINT_BLOCKED.json", signer)
+        raise SteeringError(blocking(findings))
+
+    # 2. evidence (scanned above, for rule P4) + executor
+    exec_result = None
+    exec_error = None
+    if run_executor and repo and manifest and manifest.get("has_scenarios"):
+        try:
+            exec_result = run_scenarios(repo, head_sha=(manifest.get("git") or {}).get("head_sha")).to_dict()
+        except Exception as e:  # noqa: BLE001 - recorded as a null executor record
+            exec_error = f"{type(e).__name__}: {e}"
+    if run_executor:
+        write_signed(build_executor_record(session, candidate, exec_result, error=exec_error or (
+            None if exec_result is not None else rules.NOTHING_TO_EXECUTE), faculty_commit=session["faculty_commit"]),
+            out / record_filename(slug, "executor"), signer)
+    # rule EX-1 (council/council.json): its signed input and its ruling; "not run" can only happen in a dry run
+    ex_summary = rules.executor_summary(run_executor, exec_result, exec_error) if ex_rule else None
+    ex_ruling = ex_rule.evaluate(ex_summary) if ex_rule else None
+    # rule P4 (council/council.json): the pack exists and passes the executor.  A live defence is refused
+    # here, before any seat is called; a mock / dry-run session goes on and its decision record says that
+    # the rule would have refused.
+    admission = (adm_rule.evaluate(repo_given=bool(repo), scenarios=n_scenarios, executor=ex_ruling, live=not dry_run)
+                 if adm_rule else None)
+    if admission and admission["refused"]:
+        write_signed({"schema": ADMISSION_REFUSED_SCHEMA, "session": session, "candidate": candidate,
+                      "outcome": "REFUSED_BY_ADMISSION_RULE", "admission": admission, "executor": ex_summary,
+                      "dry_run": dry_run}, out / f"{slug}__ADMISSION_REFUSED.json", signer)
+        raise RunRefused("; ".join(admission["reasons"]))
+    card_summary = None
+    if card is not None:
+        head = ((manifest or {}).get("git") or {}).get("head_sha")
+        card_summary = {**card.summary(), "alumnus_is_candidate": card.alumnus == slug,
+                        "freeze_commit_is_repo_head": (card.data["freeze_commit"] == head) if head else None}
+
+    # 3. bundle (identical for every seat)
+    bundle = build_bundle(slug, faculty_root=FACULTY, intake_path=intake, profile_path=profile,
+                          evidence_manifest=manifest, executor_result=exec_result, allow_steering=allow_steering)
+
+    # 4. calibration on decoys, same seats, same session
+    calibration = None
+    if with_calibration:
+        calibration, decoy_results, decoy_bundles = run_calibration(seats, faculty_root=FACULTY)
+        cal_dir = out / "_calibration"
+        for sid, per in decoy_results.items():
+            for dslug, res in per.items():
+                cfg = next((c for c in council["seats"] if c["seat_id"] == sid), {"role": sid, "voting": True})
+                rec = build_seat_record({**session, "kind": "calibration"}, cfg, res, decoy_bundles[dslug],
+                                        candidate={"slug": dslug, "decoy": True}, caps=[])
+                write_signed(rec, cal_dir / record_filename(dslug, sid), signer)
+        write_signed({"schema": "aetherneum.council-v2.calibration/1", "session": session, **calibration.to_dict()},
+                     cal_dir / "CALIBRATION.json", signer)
+
+    # 5. seats -> scoring -> records
+    caps = scoring.evidence_caps(manifest, ex_ruling)
+    seat_records = []
+    for seat in seats:
+        res = seat.score(bundle)
+        cfg = next((c for c in council["seats"] if c["seat_id"] == seat.seat_id), {"role": seat.seat_id, "voting": True})
+        cal = calibration.status_for(seat.seat_id) if calibration else None
+        rec = build_seat_record(session, cfg, res, bundle, candidate=candidate, caps=caps, calibration=cal,
+                                executor=ex_summary)
+        write_signed(rec, out / record_filename(slug, seat.seat_id), signer)
+        seat_records.append(rec)
+
+    # 6. decision, recomputed from the records just written
+    rule = scoring.QuorumRule(voting_seats=tuple(council["quorum"]["voting_seats"]),
+                              min_valid_seats=int(council["quorum"]["min_valid_seats"]),
+                              min_pass_seats=int(council["quorum"]["min_pass_seats"]),
+                              exclude_uncalibrated=bool(council["quorum"]["exclude_uncalibrated_seats"]))
+    decision = build_decision_record(session, candidate, seat_records, rule, bundle_sha256=bundle.sha256, council=council,
+                                     admission=admission, scorecard=card_summary)
+    write_signed(decision, out / f"{slug}__DECISION.json", signer)
+    return {"out": str(out), "session": session, "bundle_sha256": bundle.sha256, "decision": decision["decision"],
+            "executor_rule": decision["executor_rule"],
+            "admission": decision["admission"], "scorecard": decision["scorecard"],
+            "certified_until": decision["certified_until"], "diploma_rule": decision["diploma_rule"],
+            "calibration_failed": calibration.failed if calibration else None, "caps": [c.__dict__ for c in caps],
+            "lint_warnings": [f.__dict__ for f in findings if f.severity == "warn"],
+            "seats": {r["seat"]["seat_id"]: {"status": r["status"], "model_from_response": r["model_from_response"],
+                                             "overall": (r["scoring"] or {}).get("overall"), "verdict": (r["scoring"] or {}).get("verdict"),
+                                             "error": (r["error"] or {}).get("type") if r["error"] else None} for r in seat_records}}
+
+
+def live_needs_executor_message(rule: "rules.ExecutorRule") -> str:
+    return (f"--live together with --no-executor is not allowed: rule {rule.rule_id} ({rule.approved}) reads the "
+            f"executor result (\"{rule.text}\"); --no-executor exists for mock / dry-run sessions only")
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--slug", required=True)
+    ap.add_argument("--intake", type=Path)
+    ap.add_argument("--no-intake", action="store_true", help="do not include an intake (profile + evidence only)")
+    ap.add_argument("--profile", type=Path)
+    ap.add_argument("--repo", type=Path, help="the candidate's proof pack; required with --live (rule P4)")
+    ap.add_argument("--scorecard", type=Path,
+                    help="scorecard the verdict relies on (rule P3): validated; its sha256 is signed in the decision record")
+    ap.add_argument("--repos-root", type=Path, default=FACULTY.parent)
+    ap.add_argument("--out", type=Path, default=FACULTY / "council_v2" / "out")
+    ap.add_argument("--live", action="store_true", help="call real providers (costs money; needs approval)")
+    ap.add_argument("--mock", action="store_true", default=None, help="mock seats (default unless --live)")
+    ap.add_argument("--key", type=Path, help="private signing key file (required with --live)")
+    ap.add_argument("--approval-ref", help="Rector approval minutes reference (required with --live)")
+    ap.add_argument("--allow-steering", action="store_true", help="dry-run only: continue despite lint block findings")
+    ap.add_argument("--no-executor", action="store_true",
+                    help="mock / dry-run only: skip the scenario suite (records say 'executor: not run'); refused with --live")
+    ap.add_argument("--no-calibration", action="store_true")
+    ap.add_argument("--mock-scores", help="comma-separated 7 scores for mock seats")
+    ap.add_argument("--mock-fail-seat", help="make this mock seat fail (null record demo)")
+    ap.add_argument("--mock-lenient-seat", help="this mock seat passes decoys (calibration demo)")
+    ap.add_argument("--marker", help="dry-run only: visible label written into the signed session block of every record "
+                                     "(e.g. a rehearsal notice); refused with --live")
+    args = ap.parse_args(argv)
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:  # pragma: no cover
+        pass
+
+    live = bool(args.live)
+    mock = (not live) if args.mock is None else bool(args.mock)
+    if live and mock:
+        print("refused: --live and --mock are exclusive", file=sys.stderr)
+        return 2
+    council = load_json(FACULTY / "council" / "council.json")
+    if live:
+        # every reason is reported, not only the first: one refusal must not hide another
+        refusals: list[str] = []
+        ex_rule = rules.ExecutorRule.from_council(council)
+        if args.no_executor and ex_rule and ex_rule.live_requires_executor:
+            refusals.append(live_needs_executor_message(ex_rule))
+        adm_rule = rules.AdmissionRule.from_council(council)
+        if adm_rule:  # rule P4: no defence without a proof pack
+            found = len(scan_repo(args.repo).get("scenario_ids") or []) if args.repo else 0
+            no_pack = adm_rule.pack_refusal(bool(args.repo), found)
+            if no_pack:
+                refusals.append(no_pack)
+        missing = [n for n, ok in (("--key", args.key), ("--approval-ref", args.approval_ref),
+                                   (f"{LIVE_ENV}=1", os.environ.get(LIVE_ENV) == "1")) if not ok]
+        if missing:
+            refusals.append(f"live run needs {', '.join(missing)} (it costs money and requires the Rector's approval)")
+        if args.allow_steering:
+            refusals.append("--allow-steering is not allowed in a live run")
+        if args.marker:
+            refusals.append("--marker labels rehearsals and is not allowed in a live run")
+        if refusals:
+            for why in refusals:
+                print("refused: " + why, file=sys.stderr)
+            return 2
+    inputs = default_inputs(args.slug, args.repos_root.resolve(), args.repo)
+    intake = None if args.no_intake else (args.intake or inputs["intake"])
+    profile = args.profile or inputs["profile"]
+    repo = args.repo or inputs["repo"]
+
+    if args.key:
+        signer = load_signer(args.key)
+    else:
+        signer = Ed25519Signer.generate(label="ephemeral-dry-run")
+    if mock:
+        vec = tuple(int(x) for x in args.mock_scores.split(",")) if args.mock_scores else DEFAULT_MOCK_VECTOR
+        seats = build_mock_seats(council, vector=vec, fail_seat=args.mock_fail_seat, lenient_seat=args.mock_lenient_seat)
+    else:
+        seats = build_live_seats(council)
+    try:
+        summary = run(args.slug, repos_root=args.repos_root.resolve(), out_root=args.out, signer=signer, seats=seats,
+                      dry_run=not live, mock=mock, intake=intake, profile=profile, repo=repo,
+                      allow_steering=args.allow_steering and not live, run_executor=not args.no_executor,
+                      with_calibration=not args.no_calibration, approval_ref=args.approval_ref, marker=args.marker,
+                      scorecard=args.scorecard)
+    except RunRefused as e:
+        print(f"refused: {e}", file=sys.stderr)
+        return 2
+    except SteeringError as e:
+        print(str(e), file=sys.stderr)
+        print("run blocked: rewrite the intake without expected-score sentences (a signed LINT_BLOCKED record was written)", file=sys.stderr)
+        return 3
+    if not args.key:
+        pub = Path(summary["out"]) / "ephemeral_public_key.pub"
+        write_public_key_only(signer, pub)
+        summary["public_key"] = str(pub)
+    print(json.dumps(summary, indent=2, ensure_ascii=False))
+    return 0
+
+
+def write_public_key_only(signer: Ed25519Signer, path: Path) -> None:
+    """Write only the public key of an ephemeral signer (its seed is discarded)."""
+    path.write_text(f"# EPHEMERAL dry-run key — not a Council key. key_id: {signer.key_id}\n{signer.public_key.hex()}\n",
+                    encoding="utf-8")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
