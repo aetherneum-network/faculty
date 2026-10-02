@@ -1,0 +1,1 @@
+{"run": ["python", "slow.py"], "timeout_s": 1}

@@ -60,3 +60,7 @@ logs/
 # Local overrides
 docker-compose.override.yml
 .env.local
+
+# Council v2 — dry-run / mock output (never published) and private signing keys
+council_v2/out/
+council_v2/keys/*.key

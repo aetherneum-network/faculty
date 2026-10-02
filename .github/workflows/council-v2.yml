@@ -1,0 +1,82 @@
+name: council-v2
+
+# Tests + consistency check for Council v2 and the alumni single source of truth.
+# No secrets: no job has an API key, and the test-suite blocks every outbound
+# socket connection (tests/__init__.py).  Nothing here calls a model provider.
+
+on:
+  push:
+    paths:
+      - "council_v2/**"
+      - "alumni/**"
+      - "council/council.json"
+      - "admission/**"
+      - "cohort-*/**"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/council-v2.yml"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Unit tests (offline, no API keys)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # git history is read (review file versions, blob ids)
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run tests
+        env:
+          AETHERNEUM_COUNCIL_LIVE: "0"
+        run: python -m unittest discover -s tests -t . -v
+      - name: Dry run of the orchestrator (mock seats, ephemeral key)
+        run: |
+          python -m council_v2.run_council_v2 --slug costanza-notari --no-intake \
+            --profile alumni/pending/costanza-notari.md --repo tests/fixtures/empty_repo \
+            --out "$RUNNER_TEMP/council-out" > "$RUNNER_TEMP/dry-run.json"
+          python -c "import json,sys; d=json.load(open(sys.argv[1])); print(d['decision']['outcome']); assert d['decision']['outcome']=='VETO'" "$RUNNER_TEMP/dry-run.json"
+      - name: Steering intake is blocked
+        run: |
+          set +e
+          python -m council_v2.run_council_v2 --slug costanza-notari --out "$RUNNER_TEMP/council-out"
+          code=$?
+          set -e
+          test "$code" -eq 3
+
+  consistency:
+    # Fails (exit 1) while any public surface diverges from alumni/alumni.json.
+    # That is the intended behaviour (review 2026-09-30 §5): it stays red until
+    # the Rector has chosen canonical values and the surfaces are regenerated.
+    name: alumni.json vs public surfaces
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: faculty
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Clone public sibling repositories (read-only)
+        run: |
+          set -e
+          for repo in aetherneum-sites registry marco-aurelius lucia-solari riku-aetherian adrian-volta \
+                      davide-ferri elena-tessera yara-indrani sofia-lume noa-cifratti tariq-al-khwarizmi \
+                      costanza-notari ezio-cardone adele-maurique tomaso-riviera; do
+            git clone --quiet --depth 50 --branch main "https://github.com/aetherneum-network/$repo.git" "$repo"
+          done
+      - name: Check consistency
+        run: python faculty/scripts/check_consistency.py --repos-root . --json "$RUNNER_TEMP/divergences.json"
+      - name: Upload divergence report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: divergences
+          path: ${{ runner.temp }}/divergences.json
+          if-no-files-found: ignore

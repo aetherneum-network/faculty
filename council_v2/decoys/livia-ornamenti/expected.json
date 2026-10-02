@@ -1,0 +1,14 @@
+{
+  "slug": "livia-ornamenti",
+  "kind": "hollow profile",
+  "must_not_be": ["PASS", "PASS_WITH_REVISIONS"],
+  "planted_weaknesses": {
+    "body_of_work_depth": "no artifacts, 'has done similar things' without proof (RUBRIC anti-pattern)",
+    "specialty_uniqueness": "cool but empty title (RUBRIC anti-pattern)",
+    "voice_personality_clarity": "'detail-oriented, team player' (RUBRIC anti-pattern)",
+    "faithful_distillation": "prophetic bio, invented skills (RUBRIC anti-pattern)",
+    "placement_fit": "vague placement, abstract advisor without territory (RUBRIC anti-pattern)",
+    "continuity_with_class": "generic motto 'Excellence' (RUBRIC anti-pattern), no diploma"
+  },
+  "note": "Synthetic transparency is deliberately adequate: a seat must fail this decoy on substance, not on the veto it would get for free."
+}

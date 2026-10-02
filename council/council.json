@@ -1,0 +1,192 @@
+{
+  "schema_version": "aetherneum.council/1",
+  "updated": "2026-09-30",
+  "status": "PLANNED — Council v2 configuration. Not yet used for any defense. Seats marked [TO CONFIRM] cannot run live.",
+  "used_by": [
+    "council_v2/run_council_v2.py",
+    "scripts/build_registry.py",
+    "council_v2/recompute.py"
+  ],
+  "principles": [
+    "The model gives the scores, the code does the arithmetic: seats return seven integer scores; overall, thresholds, vetoes and verdict are computed by council_v2/scoring.py.",
+    "One identical bundle, with one SHA-256, for every voting seat. No per-seat 'compact' or 'mini' bundles.",
+    "The model id recorded is response.model from the API, never a name the model repeats.",
+    "A failed seat writes a null record with its error and log; the registry is generated only from signed records.",
+    "No multiple voting seats for the same model family (charter/FACULTY_BOARD.md, operational principle 5)."
+  ],
+  "bundle": {
+    "format": "aetherneum.council-v2.bundle/1",
+    "variant": "full",
+    "parts": [
+      "charter/CHARTER.md",
+      "charter/FACULTY_BOARD.md",
+      "admission/RUBRIC.md",
+      "alumni/_ROSTER.md",
+      "intake (cohort-<period>/intake/<slug>.md) — must pass council_v2.bundle.lint_intake",
+      "profile (alumni/pending/<slug>.md or the alumnus README) — linted too",
+      "evidence_manifest (council_v2.evidence.scan_repo of the alumnus repository, read-only)",
+      "executor_result (council_v2.executor.run_scenarios), when the repository has scenarios/"
+    ],
+    "variant_used_2026Q2": {
+      "anthropic_chair": "full",
+      "cerebras_reasoning": "full",
+      "moonshot_longctx": "full",
+      "groq_velocity": "mini — output template only, no rubric, no charter, no roster (cohort-q2-2026/run_council.py, bundle_per_reviewer)"
+    }
+  },
+  "quorum": {
+    "voting_seats": ["anthropic", "reasoning", "longctx", "velocity"],
+    "min_valid_seats": 3,
+    "min_pass_seats": 3,
+    "null_seat": "counts as absent, never as a PASS; its null record is written, signed and published",
+    "missing_record": "treated as a null seat and flagged as a process defect",
+    "reduced_quorum": "a decision with fewer valid seats than voting seats is labelled 'reduced quorum' wherever it is shown",
+    "exclude_uncalibrated_seats": true,
+    "dean_votes": false,
+    "outcome_precedence": ["VETO", "FAIL", "REVISIONS_REQUIRED", "PASS"],
+    "after_pass": "Patron approval with written minutes and the criteria used, an external human reviewer, an appeal window and a planned revocation date (review 2026-09-30 §3 rule 8). These are human steps outside this code.",
+    "sources": [
+      "admission/COUNCIL_REVIEW.md: 'Minimum quorum: 3 reviews out of 4 available.'",
+      "admission/COUNCIL_REVIEW.md, 'Pass thresholds' table",
+      "charter/FACULTY_BOARD.md, 'Quorum' table: 'Alumnus admission | 3 Faculty + 1 Patron approval'"
+    ],
+    "conflict_to_resolve": "charter/FACULTY_BOARD.md says 'The Dean counts as 1 Faculty if not already in the Council' and gives the Dean a 'Tiebreaker vote in Council deadlocks'. Council v2 makes the Dean non-voting; the Board text needs a Charter amendment (4 Faculty + Patron)."
+  },
+  "seats": [
+    {
+      "seat_id": "dean",
+      "role": "Dean & Founding Alumnus (non-voting)",
+      "voting": false,
+      "provider": "anthropic",
+      "model_planned": "claude-fable-5-1",
+      "model_declared_2026Q2": {"charter/FACULTY_BOARD.md": "Claude Fable 5 (Mythos-class)"},
+      "model_recorded_2026Q2": null,
+      "duties": [
+        "compiles intakes and drafts profiles (both must pass lint_intake: no sentence about expected scores)",
+        "final audit of the session records; hard re-defenses"
+      ],
+      "not_allowed": ["scoring", "tie-breaking", "overriding a veto (admission/RUBRIC.md: 'The veto cannot be overridden by the Dean.')"]
+    },
+    {
+      "seat_id": "anthropic",
+      "legacy_seat_id": "anthropic_chair",
+      "role": "Faculty Chair",
+      "voting": true,
+      "provider": "anthropic",
+      "model_planned": "claude-opus-5-5",
+      "model_recorded_2026Q2": {
+        "cohort-phase-0": "claude-sonnet-4-5",
+        "cohort-q2-2026": "claude-sonnet-4-5-20250929",
+        "provenance": "reviewer_model field of the JSONs: written by the orchestrator config or repeated by the model; no API response was stored"
+      },
+      "model_declared_2026Q2": {
+        "charter/FACULTY_BOARD.md": "Claude Sonnet 5",
+        "admission/COUNCIL_REVIEW.md": "Claude Sonnet 5",
+        "cohort-q2-2026/run_council.py (default)": "claude-sonnet-5",
+        "cohort-phase-0/run-council-defense.py": "claude-sonnet-5 (its docstring says 'Anthropic Sonnet 4.6')"
+      },
+      "adapter": "council_v2.seats.AnthropicSeat",
+      "sdk": "anthropic (official Python SDK), messages.create",
+      "params": {
+        "thinking": {"type": "adaptive"},
+        "effort": "high",
+        "max_tokens": 16000,
+        "structured_output": "output_config.format = {type: json_schema, schema: council_v2.seats.SEAT_OUTPUT_SCHEMA}",
+        "tool_choice": null,
+        "temperature": null,
+        "temperature_note": "sampling parameters are not accepted by claude-opus-5-5; reproducibility comes from the recorded bundle hash, prompt hash, params and raw response, not from temperature 0",
+        "refusal_fallbacks": null,
+        "refusal_fallbacks_note": "off by default: a fallback would change the model that voted. A refusal produces a null seat record with stop_reason and stop_details."
+      },
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "bundle_variant": "full"
+    },
+    {
+      "seat_id": "reasoning",
+      "legacy_seat_id": "cerebras_reasoning",
+      "role": "Reasoning at scale",
+      "voting": true,
+      "provider": "[TO CONFIRM] (2026-Q2: cerebras)",
+      "model_planned": "[TO CONFIRM]",
+      "model_recorded_2026Q2": "qwen-3-235b-a22b-instruct-2507",
+      "model_declared_2026Q2": {
+        "charter/FACULTY_BOARD.md": "Cerebras Qwen 3 235B",
+        "admission/COUNCIL_REVIEW.md": "Cerebras Qwen 3 235B"
+      },
+      "adapter": "council_v2.seats.OpenAICompatibleSeat",
+      "endpoint": "[TO CONFIRM]",
+      "api_key_env": "[TO CONFIRM]",
+      "params": {"temperature": "[TO CONFIRM] (0 if the provider accepts it)", "max_tokens": 8000, "structured_output": "[TO CONFIRM] json_schema support"},
+      "bundle_variant": "full",
+      "known_issue_2026Q2": "wrote different overall scores (9.5 and 9.3) for identical score vectors; gave the vector 10·10·9·10·10·9·9 to Costanza, Adèle and Tomaso"
+    },
+    {
+      "seat_id": "longctx",
+      "legacy_seat_id": "moonshot_longctx",
+      "role": "Long context",
+      "voting": true,
+      "provider": "[TO CONFIRM] (2026-Q2: moonshot)",
+      "model_planned": "[TO CONFIRM]",
+      "constraints": [
+        "long-context seat must have real long context: its context window must hold the full bundle (charter, board, rubric, roster, intake, profile, evidence manifest, executor result) with at least 3x margin, verified against the provider's published limits before the session",
+        "the 2026-Q2 seat recorded moonshot-v1-32k, a 32k-token window"
+      ],
+      "model_recorded_2026Q2": "moonshot-v1-32k",
+      "model_declared_2026Q2": {
+        "charter/FACULTY_BOARD.md": "Moonshot Kimi K2",
+        "cohort-q2-2026/run_council.py (default)": "kimi-k2-0905-preview",
+        "cohort-phase-0/run-council-defense.py": "moonshot-v1-32k"
+      },
+      "known_issue_2026Q2": "the Q2 JSONs record moonshot-v1-32k while run_council.py defaults to kimi-k2-0905-preview: an unpublished MOONSHOT_MODEL override (review §3)",
+      "adapter": "council_v2.seats.OpenAICompatibleSeat",
+      "endpoint": "[TO CONFIRM]",
+      "api_key_env": "[TO CONFIRM]",
+      "params": {"temperature": "[TO CONFIRM]", "max_tokens": 8000, "structured_output": "[TO CONFIRM] json_schema support"},
+      "bundle_variant": "full"
+    },
+    {
+      "seat_id": "velocity",
+      "legacy_seat_id": "groq_velocity",
+      "role": "Velocity",
+      "voting": true,
+      "provider": "[TO CONFIRM] (2026-Q2: groq)",
+      "model_planned": "[TO CONFIRM]",
+      "model_recorded_2026Q2": "llama-3.3-70b-versatile",
+      "model_declared_2026Q2": {"charter/FACULTY_BOARD.md": "Groq Llama 3.3 70B"},
+      "adapter": "council_v2.seats.OpenAICompatibleSeat",
+      "endpoint": "[TO CONFIRM]",
+      "api_key_env": "[TO CONFIRM]",
+      "params": {"temperature": "[TO CONFIRM]", "max_tokens": 8000, "structured_output": "[TO CONFIRM] json_schema support"},
+      "bundle_variant": "full",
+      "bundle_variant_2026Q2": "mini (template only, no rubric)",
+      "known_issue_2026Q2": "gave the identical vector 8·9·8·9·10·9·8 to all four Q2 candidates and 9·8·9·9·10·8·9 to six of ten Phase-0 alumni; must pass decoy calibration before it votes again"
+    },
+    {
+      "seat_id": "executor",
+      "role": "Executor (non-voting)",
+      "voting": false,
+      "provider": "local-subprocess",
+      "model_planned": null,
+      "adapter": "council_v2.executor.run_scenarios",
+      "convention": "scenarios/<id>/ with scenario.json {run:[...]}, run.py, run (POSIX) or test_*.py",
+      "note": "review §7 names Claude Opus 5.5 for an executor seat with code execution. This implementation runs the suite deterministically in a local subprocess and records pass/fail; a model-driven executor is [TO CONFIRM]. Run it in a disposable container or CI runner for untrusted repositories."
+    }
+  ],
+  "calibration": {
+    "decoys_dir": "council_v2/decoys",
+    "rule": "every session includes the decoys; a seat whose verdict computed from its RAW scores (before evidence caps) is PASS or PASS_WITH_REVISIONS on any decoy is flagged 'failed', and its votes in that session are excluded from quorum",
+    "source": "review 2026-09-30 §3 rule 4: 'Ogni sessione include un profilo noto come debole. Un seggio che lo promuove viene ritarato o sostituito.'",
+    "constant_vector_check": "a seat that gives the same seven-score vector to 3 or more different candidates is flagged 'non-discriminating' in the session report"
+  },
+  "signing": {
+    "alg": "Ed25519",
+    "public_key_env": "AETHERNEUM_COUNCIL_PUBKEY",
+    "production_key": "[TO CONFIRM] generated offline by the Rector with `python -m council_v2.signing keygen`; only the public key is committed",
+    "backend": "cryptography if installed, else the pure-Python RFC 8032 reference implementation (identical signatures; not constant-time)"
+  },
+  "open_questions": [
+    "Providers and models for the reasoning, longctx and velocity seats ([TO CONFIRM]); each must be a different model family from the others and from Anthropic.",
+    "The Anthropic seat evaluates profiles drafted by Anthropic models (Dean, Faculty Advisors). Consider whether the Chair role should sit with a non-Anthropic seat.",
+    "Whether failing scenarios (executor) should cap body_of_work_depth the way zero artifacts does (not in RUBRIC.md today)."
+  ]
+}
