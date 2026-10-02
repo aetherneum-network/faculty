@@ -175,7 +175,7 @@ def git_head(root: Path) -> str | None:
 
 
 def git_dirty(root: Path) -> bool | None:
-    out = _git(root, "status", "--porcelain")
+    out = _git(root, "--no-optional-locks", "status", "--porcelain")  # never take the index lock
     return None if out is None else bool(out.strip())
 
 

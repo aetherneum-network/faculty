@@ -173,7 +173,7 @@ def git_facts(repo: Path, ref: str | None = None) -> dict[str, Any]:
         "tags": tags,
     }
     if ref is None:
-        status = _git(repo, "status", "--porcelain")
+        status = _git(repo, "--no-optional-locks", "status", "--porcelain")  # never take the index lock
         facts["working_tree_dirty"] = bool(status and status.strip())
     return facts
 
