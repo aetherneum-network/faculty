@@ -4,7 +4,7 @@ Divergence kinds:
 
 * ``MISMATCH``   a canonical value is set and a surface shows something else
 * ``UNRESOLVED`` no canonical value and the surfaces disagree among themselves
-                 (placement under legal review is reported as ``UNRESOLVED (legal hold)``)
+                 (a placement under name review is reported as ``UNRESOLVED (name review)``)
 * ``STALE``      the values alumni.json recorded no longer match the surfaces
                  (regenerate with scripts/build_alumni_json.py, then re-curate)
 * ``REGISTRY``   a Registry claims a tally or scores that the Council JSONs do not contain
@@ -73,7 +73,7 @@ def check_alumnus(a: Mapping[str, Any], surfaces: Mapping[str, Mapping[str, Any]
             keys = S.distinct_keys(field, pairs)
             if len(keys) > 1:
                 groups = S.group_values(pairs, S.keyfn_for(field))
-                kind = "UNRESOLVED (legal hold)" if field == "placement" and a["placement"].get("legal_review") else "UNRESOLVED"
+                kind = "UNRESOLVED (name review)" if field == "placement" and a["placement"].get("name_review") else "UNRESOLVED"
                 out.append(Divergence(kind, slug, field, f"{len(keys)} distinct values on {len(pairs)} surfaces",
                                       [g["value"] for g in groups]))
         now = {(S.keyfn_for(field)(v), w) for v, w in pairs}

@@ -8,7 +8,7 @@
     "contradictions": "recorded under declared_values_found / variants; never silently resolved",
     "canonical": "filled automatically only when every surface agrees (for the Faculty Advisor, 'Claude Sonnet 4.6' = 'Sonnet 4.6' and parenthetical notes such as '(Dean, pilot Q2 cohort)' are ignored; '+ <skill>' suffixes are not); otherwise null until a human sets it together with 'canonical_set_by'",
     "thesis": "canonical is null for every alumnus until the Rector chooses one thesis per alumnus (review §8, week 1)",
-    "placement": "descriptions mentioning 'the platform' or its trading domains are under legal review: canonical stays null",
+    "placement": "descriptions mentioning 'the platform' or its trading domains are being reworded without client names: canonical stays null",
     "privacy": "only alumnus identities (<first>.<last>@aetherneum.com) are recorded; every other commit identity, name and address, is redacted"
   },
   "sources": {
@@ -155,8 +155,8 @@
       "synthetic_label": "Synthetic alumnus",
       "placement": {
         "canonical": null,
-        "legal_review": true,
-        "note": "under legal review — do not resolve",
+        "name_review": true,
+        "note": "client names being removed — do not resolve",
         "declared_values_found": [
           {
             "value": "The platform — mobile application",
@@ -389,7 +389,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": true,
         "placement_contradiction": true,
-        "placement_under_legal_review": true,
+        "placement_under_name_review": true,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,
@@ -407,7 +407,7 @@
         "multiple_thesis_variants": "3 distinct theses across surfaces",
         "advisor_contradiction": "Claude Sonnet 4.6 | Sonnet 4.5 | Sonnet 4.6",
         "placement_contradiction": "2 distinct placement descriptions",
-        "placement_under_legal_review": "a placement value mentions the platform or its trading domains; canonical left null",
+        "placement_under_name_review": "a placement value mentions the platform or its trading domains; canonical left null",
         "personal_addresses_in_commit_history": "3 commit(s) authored with non-alumnus addresses (redacted here; review §8)",
         "jsonld_type_person": "site profile JSON-LD declares \"@type\": \"Person\" (review §5)",
         "identical_score_vector_seat": "groq_velocity gave 9·8·9·9·10·8·9 to 6 candidates; moonshot_longctx gave 9·8·9·10·10·7·8 to 4 candidates"
@@ -512,8 +512,8 @@
       "synthetic_label": "Synthetic alumna",
       "placement": {
         "canonical": null,
-        "legal_review": true,
-        "note": "under legal review — do not resolve",
+        "name_review": true,
+        "note": "client names being removed — do not resolve",
         "declared_values_found": [
           {
             "value": "The platform + trading domains",
@@ -757,7 +757,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": true,
         "placement_contradiction": true,
-        "placement_under_legal_review": true,
+        "placement_under_name_review": true,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,
@@ -775,7 +775,7 @@
         "multiple_thesis_variants": "4 distinct theses across surfaces",
         "advisor_contradiction": "Claude Sonnet 4.6 | Sonnet 4.5 | Sonnet 4.6",
         "placement_contradiction": "2 distinct placement descriptions",
-        "placement_under_legal_review": "a placement value mentions the platform or its trading domains; canonical left null",
+        "placement_under_name_review": "a placement value mentions the platform or its trading domains; canonical left null",
         "personal_addresses_in_commit_history": "3 commit(s) authored with non-alumnus addresses (redacted here; review §8)",
         "jsonld_type_person": "site profile JSON-LD declares \"@type\": \"Person\" (review §5)",
         "identical_score_vector_seat": "cerebras_reasoning gave 9·10·9·9·10·9·9 to 5 candidates; groq_velocity gave 9·8·9·9·10·8·9 to 6 candidates"
@@ -880,8 +880,8 @@
       "synthetic_label": "Synthetic alumnus",
       "placement": {
         "canonical": null,
-        "legal_review": true,
-        "note": "under legal review — do not resolve",
+        "name_review": true,
+        "note": "client names being removed — do not resolve",
         "declared_values_found": [
           {
             "value": "The platform — currently armed under TEST FREEZE protocol",
@@ -1123,7 +1123,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": true,
         "placement_contradiction": true,
-        "placement_under_legal_review": true,
+        "placement_under_name_review": true,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,
@@ -1140,7 +1140,7 @@
         "multiple_thesis_variants": "4 distinct theses across surfaces",
         "advisor_contradiction": "Claude Opus 4.7 (1M context) | Claude Sonnet 4.6 | Sonnet 4.5 | Sonnet 4.6",
         "placement_contradiction": "2 distinct placement descriptions",
-        "placement_under_legal_review": "a placement value mentions the platform or its trading domains; canonical left null",
+        "placement_under_name_review": "a placement value mentions the platform or its trading domains; canonical left null",
         "personal_addresses_in_commit_history": "3 commit(s) authored with non-alumnus addresses (redacted here; review §8)",
         "jsonld_type_person": "site profile JSON-LD declares \"@type\": \"Person\" (review §5)",
         "identical_score_vector_seat": "cerebras_reasoning gave 9·10·9·9·10·9·9 to 5 candidates"
@@ -1245,7 +1245,7 @@
       "synthetic_label": "Synthetic alumnus",
       "placement": {
         "canonical": null,
-        "legal_review": false,
+        "name_review": false,
         "note": "surfaces disagree; to be chosen by the Rector",
         "declared_values_found": [
           {
@@ -1484,7 +1484,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": false,
         "placement_contradiction": true,
-        "placement_under_legal_review": false,
+        "placement_under_name_review": false,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,
@@ -1610,8 +1610,8 @@
       "synthetic_label": "Synthetic alumnus",
       "placement": {
         "canonical": null,
-        "legal_review": true,
-        "note": "under legal review — do not resolve",
+        "name_review": true,
+        "note": "client names being removed — do not resolve",
         "declared_values_found": [
           {
             "value": "The platform contracts",
@@ -1842,7 +1842,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": true,
         "placement_contradiction": true,
-        "placement_under_legal_review": true,
+        "placement_under_name_review": true,
         "role_contradiction": true,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,
@@ -1859,7 +1859,7 @@
         "multiple_thesis_variants": "3 distinct theses across surfaces",
         "advisor_contradiction": "Claude Sonnet 4.6 | Sonnet 4.5 | Sonnet 4.6",
         "placement_contradiction": "2 distinct placement descriptions",
-        "placement_under_legal_review": "a placement value mentions the platform or its trading domains; canonical left null",
+        "placement_under_name_review": "a placement value mentions the platform or its trading domains; canonical left null",
         "role_contradiction": "Smart Contract Engineer | Solidity Engineer",
         "personal_addresses_in_commit_history": "3 commit(s) authored with non-alumnus addresses (redacted here; review §8)",
         "jsonld_type_person": "site profile JSON-LD declares \"@type\": \"Person\" (review §5)",
@@ -1965,8 +1965,8 @@
       "synthetic_label": "Synthetic alumna",
       "placement": {
         "canonical": null,
-        "legal_review": true,
-        "note": "under legal review — do not resolve",
+        "name_review": true,
+        "note": "client names being removed — do not resolve",
         "declared_values_found": [
           {
             "value": "The platform + Mirror UI + brand consult across portfolio",
@@ -2202,7 +2202,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": true,
         "placement_contradiction": true,
-        "placement_under_legal_review": true,
+        "placement_under_name_review": true,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,
@@ -2219,7 +2219,7 @@
         "multiple_thesis_variants": "3 distinct theses across surfaces",
         "advisor_contradiction": "Claude Opus 4.7 + canvas-design skill | Claude Sonnet 4.6 | Sonnet 4.5 | Sonnet 4.6",
         "placement_contradiction": "2 distinct placement descriptions",
-        "placement_under_legal_review": "a placement value mentions the platform or its trading domains; canonical left null",
+        "placement_under_name_review": "a placement value mentions the platform or its trading domains; canonical left null",
         "personal_addresses_in_commit_history": "3 commit(s) authored with non-alumnus addresses (redacted here; review §8)",
         "jsonld_type_person": "site profile JSON-LD declares \"@type\": \"Person\" (review §5)",
         "identical_score_vector_seat": "cerebras_reasoning gave 9·10·9·9·10·9·9 to 5 candidates; moonshot_longctx gave 9·8·9·10·10·7·8 to 4 candidates"
@@ -2324,8 +2324,8 @@
       "synthetic_label": "Synthetic alumna",
       "placement": {
         "canonical": null,
-        "legal_review": true,
-        "note": "under legal review — do not resolve",
+        "name_review": true,
+        "note": "client names being removed — do not resolve",
         "declared_values_found": [
           {
             "value": "Cross-portfolio — the connective tissue",
@@ -2561,7 +2561,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": true,
         "placement_contradiction": true,
-        "placement_under_legal_review": true,
+        "placement_under_name_review": true,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,
@@ -2578,7 +2578,7 @@
         "multiple_thesis_variants": "3 distinct theses across surfaces",
         "advisor_contradiction": "Claude Sonnet 4.6 | Sonnet 4.5 | Sonnet 4.6",
         "placement_contradiction": "3 distinct placement descriptions",
-        "placement_under_legal_review": "a placement value mentions the platform or its trading domains; canonical left null",
+        "placement_under_name_review": "a placement value mentions the platform or its trading domains; canonical left null",
         "personal_addresses_in_commit_history": "3 commit(s) authored with non-alumnus addresses (redacted here; review §8)",
         "jsonld_type_person": "site profile JSON-LD declares \"@type\": \"Person\" (review §5)",
         "identical_score_vector_seat": "groq_velocity gave 9·8·9·9·10·8·9 to 6 candidates; moonshot_longctx gave 9·8·9·10·10·7·8 to 4 candidates"
@@ -2683,8 +2683,8 @@
       "synthetic_label": "Synthetic alumna",
       "placement": {
         "canonical": null,
-        "legal_review": true,
-        "note": "under legal review — do not resolve",
+        "name_review": true,
+        "note": "client names being removed — do not resolve",
         "declared_values_found": [
           {
             "value": "The platform",
@@ -2928,7 +2928,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": true,
         "placement_contradiction": true,
-        "placement_under_legal_review": true,
+        "placement_under_name_review": true,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,
@@ -2946,7 +2946,7 @@
         "multiple_thesis_variants": "4 distinct theses across surfaces",
         "advisor_contradiction": "Claude Sonnet 4.6 | Sonnet 4.5 | Sonnet 4.6",
         "placement_contradiction": "2 distinct placement descriptions",
-        "placement_under_legal_review": "a placement value mentions the platform or its trading domains; canonical left null",
+        "placement_under_name_review": "a placement value mentions the platform or its trading domains; canonical left null",
         "personal_addresses_in_commit_history": "4 commit(s) authored with non-alumnus addresses (redacted here; review §8)",
         "jsonld_type_person": "site profile JSON-LD declares \"@type\": \"Person\" (review §5)",
         "identical_score_vector_seat": "groq_velocity gave 9·8·9·9·10·8·9 to 6 candidates"
@@ -3051,8 +3051,8 @@
       "synthetic_label": "Synthetic alumnus",
       "placement": {
         "canonical": null,
-        "legal_review": true,
-        "note": "under legal review — do not resolve",
+        "name_review": true,
+        "note": "client names being removed — do not resolve",
         "declared_values_found": [
           {
             "value": "The substrate + platform (smart contracts, auth surfaces)",
@@ -3300,7 +3300,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": true,
         "placement_contradiction": true,
-        "placement_under_legal_review": true,
+        "placement_under_name_review": true,
         "role_contradiction": false,
         "pronoun_inconsistency": true,
         "multiple_commit_addresses": false,
@@ -3318,7 +3318,7 @@
         "multiple_thesis_variants": "3 distinct theses across surfaces",
         "advisor_contradiction": "Claude Sonnet 4.6 | Claude Sonnet 4.6 + security-review skill | Sonnet 4.5 | Sonnet 4.6",
         "placement_contradiction": "3 distinct placement descriptions",
-        "placement_under_legal_review": "a placement value mentions the platform or its trading domains; canonical left null",
+        "placement_under_name_review": "a placement value mentions the platform or its trading domains; canonical left null",
         "pronoun_inconsistency": "{\"alumnus_readme\": {\"he\": 3, \"she\": 6}, \"site_profile\": {\"he\": 3, \"she\": 0}}",
         "personal_addresses_in_commit_history": "4 commit(s) authored with non-alumnus addresses (redacted here; review §8)",
         "jsonld_type_person": "site profile JSON-LD declares \"@type\": \"Person\" (review §5)",
@@ -3424,8 +3424,8 @@
       "synthetic_label": "Synthetic alumnus",
       "placement": {
         "canonical": null,
-        "legal_review": true,
-        "note": "under legal review — do not resolve",
+        "name_review": true,
+        "note": "client names being removed — do not resolve",
         "declared_values_found": [
           {
             "value": "Cross-portfolio analytics",
@@ -3663,7 +3663,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": true,
         "placement_contradiction": true,
-        "placement_under_legal_review": true,
+        "placement_under_name_review": true,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": true,
@@ -3681,7 +3681,7 @@
         "multiple_thesis_variants": "3 distinct theses across surfaces",
         "advisor_contradiction": "Claude Sonnet 4.6 | Sonnet 4.5 | Sonnet 4.6",
         "placement_contradiction": "3 distinct placement descriptions",
-        "placement_under_legal_review": "a placement value mentions the platform or its trading domains; canonical left null",
+        "placement_under_name_review": "a placement value mentions the platform or its trading domains; canonical left null",
         "multiple_commit_addresses": "tariq.al-khwarizmi@aetherneum.com, tariq.al.khwarizmi@aetherneum.com",
         "personal_addresses_in_commit_history": "3 commit(s) authored with non-alumnus addresses (redacted here; review §8)",
         "jsonld_type_person": "site profile JSON-LD declares \"@type\": \"Person\" (review §5)",
@@ -3793,7 +3793,7 @@
       "synthetic_label": "Synthetic alumna",
       "placement": {
         "canonical": null,
-        "legal_review": false,
+        "name_review": false,
         "note": "surfaces disagree; to be chosen by the Rector",
         "declared_values_found": [
           {
@@ -4038,7 +4038,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": false,
         "placement_contradiction": true,
-        "placement_under_legal_review": false,
+        "placement_under_name_review": false,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,
@@ -4164,7 +4164,7 @@
       "synthetic_label": "Synthetic alumnus",
       "placement": {
         "canonical": null,
-        "legal_review": false,
+        "name_review": false,
         "note": "surfaces disagree; to be chosen by the Rector",
         "declared_values_found": [
           {
@@ -4391,7 +4391,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": false,
         "placement_contradiction": true,
-        "placement_under_legal_review": false,
+        "placement_under_name_review": false,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,
@@ -4519,7 +4519,7 @@
       "synthetic_label": "Synthetic alumna",
       "placement": {
         "canonical": null,
-        "legal_review": false,
+        "name_review": false,
         "note": "surfaces disagree; to be chosen by the Rector",
         "declared_values_found": [
           {
@@ -4745,7 +4745,7 @@
         "multiple_thesis_variants": true,
         "advisor_contradiction": false,
         "placement_contradiction": true,
-        "placement_under_legal_review": false,
+        "placement_under_name_review": false,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,
@@ -4874,7 +4874,7 @@
       "synthetic_label": "Synthetic alumnus",
       "placement": {
         "canonical": null,
-        "legal_review": false,
+        "name_review": false,
         "note": "surfaces disagree; to be chosen by the Rector",
         "declared_values_found": [
           {
@@ -5101,7 +5101,7 @@
         "multiple_thesis_variants": false,
         "advisor_contradiction": false,
         "placement_contradiction": true,
-        "placement_under_legal_review": false,
+        "placement_under_name_review": false,
         "role_contradiction": false,
         "pronoun_inconsistency": false,
         "multiple_commit_addresses": false,

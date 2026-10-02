@@ -14,8 +14,8 @@ Contradictions are RECORDED, not resolved:
   value chosen by a human in an existing alumni.json is preserved on
   regeneration (``--reset`` discards human choices);
 * placement descriptions that mention "the platform" or its trading
-  domains are under legal review: ``canonical`` stays null and
-  ``legal_review`` is true, whatever the surfaces say.
+  domains are being reworded without client names: ``canonical`` stays null and
+  ``name_review`` is true, whatever the surfaces say.
 
 Personal e-mail addresses found in commit metadata are never written: only
 alumnus identities (<first>.<last>@aetherneum.com) are kept; every other
@@ -46,7 +46,7 @@ from council_v2.evidence import NON_ALUMNUS, read_bytes, scan_repo  # noqa: E402
 from council_v2.legacy import LEGACY_SEATS, LEGACY_PROVIDER, load_cohort, rescore  # noqa: E402
 
 SCHEMA_VERSION = "aetherneum.alumni/1"
-LEGAL_REVIEW_RX = re.compile(r"\bplatform\b|trading bot|trading domains|trading analytics", re.I)
+NAME_REVIEW_RX = re.compile(r"\bplatform\b|trading bot|trading domains|trading analytics", re.I)
 
 # Proposed plain-language subtitles (review 2026-09-30 §5 "Nomi": keep the
 # poetic name as a mark, always add a standard descriptive subtitle).  They
@@ -104,7 +104,7 @@ FLAG_NAMES = (
     "multiple_thesis_variants",
     "advisor_contradiction",
     "placement_contradiction",
-    "placement_under_legal_review",
+    "placement_under_name_review",
     "role_contradiction",
     "pronoun_inconsistency",
     "multiple_commit_addresses",
@@ -221,7 +221,7 @@ def build_one(slug: str, repos_root: Path, identical: dict[str, list[str]], ref:
     name_pairs, role_pairs = S.values_for("name", surfaces, slug), S.values_for("role", surfaces, slug)
     spec_pairs, adv_pairs = S.values_for("specialty", surfaces, slug), S.values_for("faculty_advisor", surfaces, slug)
     plc_pairs = S.values_for("placement", surfaces, slug)
-    legal = any(LEGAL_REVIEW_RX.search(v) for v, _ in plc_pairs)
+    named = any(NAME_REVIEW_RX.search(v) for v, _ in plc_pairs)
     theses = thesis_variants(surfaces, slug)
     distinct_theses = S.distinct_keys("thesis", S.values_for("thesis", surfaces, slug))
 
@@ -319,8 +319,8 @@ def build_one(slug: str, repos_root: Path, identical: dict[str, list[str]], ref:
         flag("advisor_contradiction", " | ".join(sorted({v for v, _ in adv_pairs})))
     if len({S.norm_key(v) for v, _ in plc_pairs}) > 1:
         flag("placement_contradiction", f"{len({S.norm_key(v) for v, _ in plc_pairs})} distinct placement descriptions")
-    if legal:
-        flag("placement_under_legal_review", "a placement value mentions the platform or its trading domains; canonical left null")
+    if named:
+        flag("placement_under_name_review", "a placement value mentions the platform or its trading domains; canonical left null")
     if len({S.norm_key(v) for v, _ in role_pairs}) > 1:
         flag("role_contradiction", " | ".join(sorted({v for v, _ in role_pairs})))
     if not pron_ok:
@@ -352,8 +352,8 @@ def build_one(slug: str, repos_root: Path, identical: dict[str, list[str]], ref:
         "synthetic_label": readme.get("synthetic_label"),
         "placement": {
             "canonical": None,
-            "legal_review": legal,
-            "note": "under legal review — do not resolve" if legal else "surfaces disagree; to be chosen by the Rector",
+            "name_review": named,
+            "note": "client names being removed — do not resolve" if named else "surfaces disagree; to be chosen by the Rector",
             "declared_values_found": declared("placement", surfaces, slug),
         },
         "faculty_advisor": {
@@ -413,7 +413,7 @@ def merge_human_choices(new: dict[str, Any], old: dict[str, Any] | None) -> dict
         if old.get(field, {}).get("canonical") and old[field].get("canonical_set_by"):
             new[field]["canonical"] = old[field]["canonical"]
             new[field]["canonical_set_by"] = old[field]["canonical_set_by"]
-    if not new["placement"]["legal_review"] and old.get("placement", {}).get("canonical_set_by"):
+    if not new["placement"]["name_review"] and old.get("placement", {}).get("canonical_set_by"):
         new["placement"]["canonical"] = old["placement"]["canonical"]
         new["placement"]["canonical_set_by"] = old["placement"]["canonical_set_by"]
     ost = (old.get("specialty") or {}).get("descriptive_subtitle") or {}
@@ -467,7 +467,7 @@ def main(argv: list[str] | None = None) -> int:
             "contradictions": "recorded under declared_values_found / variants; never silently resolved",
             "canonical": "filled automatically only when every surface agrees (for the Faculty Advisor, 'Claude Sonnet 4.6' = 'Sonnet 4.6' and parenthetical notes such as '(Dean, pilot Q2 cohort)' are ignored; '+ <skill>' suffixes are not); otherwise null until a human sets it together with 'canonical_set_by'",
             "thesis": "canonical is null for every alumnus until the Rector chooses one thesis per alumnus (review §8, week 1)",
-            "placement": "descriptions mentioning 'the platform' or its trading domains are under legal review: canonical stays null",
+            "placement": "descriptions mentioning 'the platform' or its trading domains are being reworded without client names: canonical stays null",
             "privacy": "only alumnus identities (<first>.<last>@aetherneum.com) are recorded; every other commit identity, name and address, is redacted",
         },
         "sources": {

@@ -110,9 +110,9 @@ No adapter can reach the network unless the process runs with `AETHERNEUM_COUNCI
 
 ## alumni.json and council.json
 
-`alumni/alumni.json` has one record per alumnus: every value found on every surface (`declared_values_found` / `variants` with `where`), `canonical` (null unless every surface agrees or a human sets it with `canonical_set_by`), the Council seats with recorded and recomputed numbers, 25 status flags with evidence, the repository facts, and the 2026-09-30 review's finding. Theses have no canonical value yet; placements that mention "the platform" or its trading domains are under legal review and stay null. Commit addresses outside `@aetherneum.com` are redacted.
+`alumni/alumni.json` has one record per alumnus: every value found on every surface (`declared_values_found` / `variants` with `where`), `canonical` (null unless every surface agrees or a human sets it with `canonical_set_by`), the Council seats with recorded and recomputed numbers, 25 status flags with evidence, the repository facts, and the 2026-09-30 review's finding. Theses have no canonical value yet; placements that mention "the platform" or its trading domains are being reworded without client names and stay null. Commit addresses outside `@aetherneum.com` are redacted.
 
-`scripts/check_consistency.py` compares it with the READMEs, site pages, diploma SVGs and both Registries and exits 1 on any divergence. On 2026-09-30 it reports 64 divergences against `main` (29 unresolved values, 9 under legal hold, 10 Registry claims not backed by the JSONs, 16 policy issues). The `consistency` CI job is therefore red, by design, until canonical values are chosen and the surfaces are regenerated from `alumni.json`.
+`scripts/check_consistency.py` compares it with the READMEs, site pages, diploma SVGs and both Registries and exits 1 on any divergence. On 2026-09-30 it reports 64 divergences against `main` (29 unresolved values, 9 under name review, 10 Registry claims not backed by the JSONs, 16 policy issues). The `consistency` CI job is therefore red, by design, until canonical values are chosen and the surfaces are regenerated from `alumni.json`.
 
 ## Registry
 

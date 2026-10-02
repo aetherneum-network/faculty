@@ -27,7 +27,7 @@ class AlumniJson(unittest.TestCase):
     def test_contradictions_recorded_not_resolved(self):
         for a in DOC["alumni"]:
             self.assertIsNone(a["thesis"]["canonical"])
-            if a["placement"]["legal_review"]:
+            if a["placement"]["name_review"]:
                 self.assertIsNone(a["placement"]["canonical"])
         self.assertIsNone(BY["marco-aurelius"]["faculty_advisor"]["canonical"])
         self.assertGreaterEqual(len(BY["marco-aurelius"]["thesis"]["variants"]), 3)
@@ -105,7 +105,7 @@ def alumnus(surf, **canon):
          "council": {"seats": [{"seat": s, "status": "file", "overall_recorded": 9.0, "overall_recomputed": 9.0,
                                 "verdict_rule_based": "PASS"} for s in ("anthropic_chair", "cerebras_reasoning", "moonshot_longctx")]
                      + [{"seat": "groq_velocity", "status": "no_file"}]},
-         "placement": {"legal_review": False}}
+         "placement": {"name_review": False}}
     for field in consistency.FIELDS:
         pairs = S.values_for(field, surf, "ada-test")
         groups = S.group_values(pairs, S.keyfn_for(field))

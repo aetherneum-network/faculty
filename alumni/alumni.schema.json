@@ -123,10 +123,10 @@
         "placement": {
           "allOf": [{"$ref": "#/$defs/declaredField"}],
           "properties": {
-            "legal_review": {"type": "boolean", "description": "true: the description mentions 'the platform' or its trading domains; canonical must stay null"},
+            "name_review": {"type": "boolean", "description": "true: the description mentions 'the platform' or its trading domains; canonical must stay null"},
             "note": {"type": "string"}
           },
-          "if": {"properties": {"legal_review": {"const": true}}},
+          "if": {"properties": {"name_review": {"const": true}}},
           "then": {"properties": {"canonical": {"const": null}}}
         },
         "faculty_advisor": {"$ref": "#/$defs/declaredField"},
@@ -193,7 +193,7 @@
             "registry_tally_overstated", "registry_scores_not_in_json", "phase0_retroactive_review",
             "phase0_claims_defended_cum_laude", "council_reviewed_prose_not_artifacts", "zero_artifacts",
             "intake_contains_steering", "council_review_precedes_repo", "multiple_thesis_variants",
-            "advisor_contradiction", "placement_contradiction", "placement_under_legal_review",
+            "advisor_contradiction", "placement_contradiction", "placement_under_name_review",
             "role_contradiction", "pronoun_inconsistency", "multiple_commit_addresses",
             "no_commits_authored_as_alumnus", "personal_addresses_in_commit_history",
             "jsonld_type_person", "identical_score_vector_seat"
