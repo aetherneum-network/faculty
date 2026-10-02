@@ -43,9 +43,12 @@ jobs:
             --out "$RUNNER_TEMP/council-out" > "$RUNNER_TEMP/dry-run.json"
           python -c "import json,sys; d=json.load(open(sys.argv[1])); print(d['decision']['outcome']); assert d['decision']['outcome']=='VETO'" "$RUNNER_TEMP/dry-run.json"
       - name: Steering intake is blocked
+        # The real Q2 intakes no longer steer (they were rewritten so the lint passes), so the block is shown
+        # on the same fixture the unit tests use.
         run: |
           set +e
-          python -m council_v2.run_council_v2 --slug costanza-notari --out "$RUNNER_TEMP/council-out"
+          python -m council_v2.run_council_v2 --slug costanza-notari \
+            --intake tests/fixtures/steering/intake-with-steering.md --out "$RUNNER_TEMP/council-out"
           code=$?
           set -e
           test "$code" -eq 3
